@@ -1,0 +1,5 @@
+for each Admin:
+  it is true that self.user.email = "admin@nmc.nt"
+
+for each ClimbingSeason:
+  it is true that self.start.isBefore(self.end)

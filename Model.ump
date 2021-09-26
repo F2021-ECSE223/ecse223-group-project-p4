@@ -1,0 +1,109 @@
+namespace ca.mcgill.ecse223.climbsafe.model;
+
+class ClimbSafe{
+}
+
+class User{
+  unique immutable email;
+  password;
+  name;
+}
+
+class Admin{
+  singleton;
+  immutable email = "admin@nmc.nt";
+  password = "admin";
+}
+
+class Guide{
+}
+
+class Member{
+}
+
+class EmergencyContact{
+  name;
+  Integer number;
+  email;
+}
+
+class ClimbingSeason{
+  Date start;
+  Date end;
+}
+
+class ClimbingWeek{
+  Integer weekNumber;
+}
+
+class EquipmentItem{
+  Double weight;
+  Integer pricePerWeek;
+  name;
+}
+
+class Bundle{
+  name;
+  Integer pricePerWeek = {
+    // See eric for this
+  }
+  Integer percentageDiscount;
+}
+
+class Hotel{
+  name;
+  address;
+  Rating rating;
+  
+  enum Rating{1star, 2stars, 3stars, 4stars, 5stars} //?
+}
+
+class MountainClimb{
+  Boolean hasGuide;
+} 
+
+associationClass BundleQuantity{
+  * MountainClimb chosenClimb;
+  * Bundle chosenBundle;
+  Integer desiredAmount;
+}
+
+associationClass ItemQuantity{
+  * MountainClimb chosenClimb;
+  * Bundle chosenBundle;
+  Integer desiredAmount;
+}
+
+associationClass ExtendedStay{
+  * Member member;
+  * MountainClimb climb;
+  Boolean needsHotel;
+}
+
+association{
+  
+  // The user-admin-guide system
+  1..* User users -- 1 EmergencyContact contact;
+  1 User user -- 0..1 Member member;
+  1 User user -- 0..1 Guide guide;
+  1 Admin admin -- * ClimbingSeason seasons;
+  
+  // The climbing weeks system
+  * Member members -- * ClimbingWeek weeks;
+  
+  // The climbing season system
+  1 ClimbingSeason season -- 1..* ClimbingWeek weeks;
+  * ClimbingSeason seasons -- * EquipmentItem allItems;
+  * ClimbingSeason seasons -- * Bundle allBundles;
+  * ClimbingSeason seasons -- * Hotel allHotels;
+  
+  // The equipment system
+  * Bundle bundles -- 2..* EquipmentItem items;
+  
+  // The mountainclimb system
+  * MountainClimb climbs -- 1..* ClimbingWeek weeks;
+  * MountainClimb climbs -- 0..1 Guide guide;
+  * MountainClimb climbs -- * EquipmentItem chosenItems;
+  * MountainClimb climbs -- * Bundle chosenBundles;
+  * MountainClimb climbs -- * Hotel availableHotels;
+}
