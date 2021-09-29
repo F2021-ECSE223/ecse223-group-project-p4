@@ -1,5 +1,10 @@
-for each Admin:
-  it is true that self.user.email = "admin@nmc.nt"
+for each Guide:
+  ForAll c1,c2 in climbs it is true that c1.doesNotOverlapWith(c2)
 
 for each ClimbingSeason:
-  it is true that self.start.isBefore(self.end)
+  it is true that start.isBefore(end)
+
+for each MountainClimb:
+  it is true that startWeek < endWeek
+  ForAll m in members it is true that ((m.wantsGuide implies self.guide <> null) and (self.guide <> null implies m.wantsGuide))
+  ForAll m in members it is true that ((self.startWeek - self.endWeek) = m.totalNumberOfWeeksDesired)

@@ -1,6 +1,10 @@
+//Check compositions for quantity association classes
+//See answer about before / after constraints
+//Make sure functions can be put the way we did
+
 namespace ca.mcgill.ecse223.climbsafe.model;
 
-class ClimbSafe{
+class ClimbSafeSystem{
 }
 
 class User{
@@ -16,9 +20,21 @@ class Admin{
 }
 
 class Guide{
+  isA User;
+  Integer pricePerWeek;
 }
 
 class Member{
+  isA User;
+  Integer totalNumberOfWeeksDesired; // Saves user input in memory before the admin assigns him to a mountain climb of that length
+  Boolean wantsGuide; // Saves user input in memory before the admin assigns him to a mountain climb
+  Boolean wantsHotel; // Saves user input in memory before the admin assigns him to a hotel
+  Integer totalCost = {
+    // Will implement this later
+  }
+  Integer totalWeight = {
+    // Will implement this later
+  }
 }
 
 class EmergencyContact{
@@ -32,10 +48,6 @@ class ClimbingSeason{
   Date end;
 }
 
-class ClimbingWeek{
-  Integer weekNumber;
-}
-
 class EquipmentItem{
   Double weight;
   Integer pricePerWeek;
@@ -45,65 +57,69 @@ class EquipmentItem{
 class Bundle{
   name;
   Integer pricePerWeek = {
-    // See eric for this
+    // Will implement this later
+  }
+  Integer weight = {
+    // Will implement this later
   }
   Integer percentageDiscount;
 }
 
-class Hotel{
+  class Hotel{
   name;
   address;
   Rating rating;
   
-  enum Rating{1star, 2stars, 3stars, 4stars, 5stars} //?
+  enum Rating{onestar, twostars, threestars, fourstars, fivestars}
 }
 
 class MountainClimb{
-  Boolean hasGuide;
+  Integer startWeek;
+  Integer endWeek;
 } 
 
 associationClass BundleQuantity{
-  * MountainClimb chosenClimb;
+  * Member bundlePicker;
   * Bundle chosenBundle;
-  Integer desiredAmount;
+  Integer desiredAmountOfBundles;
 }
 
 associationClass ItemQuantity{
-  * MountainClimb chosenClimb;
-  * Bundle chosenBundle;
-  Integer desiredAmount;
-}
-
-associationClass ExtendedStay{
-  * Member member;
-  * MountainClimb climb;
-  Boolean needsHotel;
+  * Member itemPicker;
+  * EquipmentItem chosenItem;
+  Integer desiredAmountOfItems;
 }
 
 association{
   
-  // The user-admin-guide system
+  // The Member-Guide-Admin associations
   1..* User users -- 1 EmergencyContact contact;
-  1 User user -- 0..1 Member member;
-  1 User user -- 0..1 Guide guide;
-  1 Admin admin -- * ClimbingSeason seasons;
+  1 Admin admin -- 0..1 ClimbingSeason season;
   
-  // The climbing weeks system
-  * Member members -- * ClimbingWeek weeks;
+  // The climbing season associations
+  1 ClimbingSeason season -- * EquipmentItem allItems;
+  1 ClimbingSeason season -- * Bundle allBundles;
+  1 ClimbingSeason season -- * Hotel allHotels;
+  1 ClimbingSeason season <@>- * MountainClimb climbs;
   
-  // The climbing season system
-  1 ClimbingSeason season -- 1..* ClimbingWeek weeks;
-  * ClimbingSeason seasons -- * EquipmentItem allItems;
-  * ClimbingSeason seasons -- * Bundle allBundles;
-  * ClimbingSeason seasons -- * Hotel allHotels;
-  
-  // The equipment system
+  // The equipment association
   * Bundle bundles -- 2..* EquipmentItem items;
   
-  // The mountainclimb system
-  * MountainClimb climbs -- 1..* ClimbingWeek weeks;
-  * MountainClimb climbs -- 0..1 Guide guide;
-  * MountainClimb climbs -- * EquipmentItem chosenItems;
-  * MountainClimb climbs -- * Bundle chosenBundles;
-  * MountainClimb climbs -- * Hotel availableHotels;
+  // The member trip details associations
+  * Member guests -- 0..1 Hotel hotel;
+  1..* Member members -- 0..1 MountainClimb climb; // 0..1 cause there is a delay between creating a member and assigning him to a climb
+  
+  // The guide trip details association
+  0..1 Guide guide -- * MountainClimb climbs;
+  
+  // Additional compositions
+  1 ClimbSafeSystem <@>- 1 ClimbingSeason;
+  0..1 ClimbSafeSystem <@>- 1 Admin; // We made the system's multiplicity 0..1 since we cannot pass parameters to the constructor of the singleton class Admin (The system's association is set after initializing the admin using the setClimbSafeSystem() method)
+  1 ClimbSafeSystem <@>- * Hotel;
+  1 ClimbSafeSystem <@>- * EquipmentItem;
+  1 ClimbSafeSystem <@>- * Bundle;
+  1 ClimbingSeason <@>- * EmergencyContact;
+  1 ClimbingSeason <@>- * ItemQuantity;
+  1 ClimbingSeason <@>- * BundleQuantity;
+  
 }
