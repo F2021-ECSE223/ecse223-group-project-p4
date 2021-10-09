@@ -3,12 +3,27 @@
  */
 package ca.mcgill.ecse.climbsafe.application;
 
+//Imports
+import java.sql.Date;
+import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
+
 public class ClimbSafeApplication {
+	
+	private static ClimbSafe climbSafe; // The system instance
+	
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
         System.out.println(new ClimbSafeApplication().getGreeting());
+    }
+    
+    public static void setClimbSafe(Date startDate, int nrWeeks, int PriceOfGuidePerWeek) {
+    	climbSafe = new ClimbSafe(startDate, nrWeeks, PriceOfGuidePerWeek);
+    }
+    
+    public static ClimbSafe getClimbSafe() {
+    	return climbSafe;
     }
 }
