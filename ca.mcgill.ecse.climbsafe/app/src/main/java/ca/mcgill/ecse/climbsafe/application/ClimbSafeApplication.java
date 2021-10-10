@@ -19,11 +19,12 @@ public class ClimbSafeApplication {
         System.out.println(new ClimbSafeApplication().getGreeting());
     }
     
-    public static void setClimbSafe(Date startDate, int nrWeeks, int PriceOfGuidePerWeek) {
-    	climbSafe = new ClimbSafe(startDate, nrWeeks, PriceOfGuidePerWeek);
-    }
-    
     public static ClimbSafe getClimbSafe() {
-    	return climbSafe;
-    }
+        if (climbSafe == null) {
+          // these attributes are default, you should set them later with the setters
+          climbSafe = new ClimbSafe(new Date(0), 0, 0);
+        }
+        
+        return climbSafe;
+      }
 }
