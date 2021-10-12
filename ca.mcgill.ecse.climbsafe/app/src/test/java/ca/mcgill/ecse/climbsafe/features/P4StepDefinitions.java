@@ -1,5 +1,6 @@
 package ca.mcgill.ecse.climbsafe.features;
 
+import io.cucumber.java.Before;
 //Default imports
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,10 +10,8 @@ import io.cucumber.java.en.When;
 import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,31 +19,25 @@ import static org.junit.jupiter.api.Assertions.*;
 //Step method definitions
 public class P4StepDefinitions {
 	
-	ClimbSafe system; // The system we are working on
-	String error; // The current error
+	private ClimbSafe system; // The system instance variable
+	private String error; // The current error
 	
   @Given("the following ClimbSafe system exists: \\(p4)")
   public void the_following_climb_safe_system_exists_p4(io.cucumber.datatable.DataTable dataTable) {
     
 	  List<String> list = dataTable.asList();
 	  
-	  //Extracting the date components
-	  String startDate = list.get(0);
-	  int year = Integer.parseInt(startDate.substring(0,4));
-	  int month = Integer.parseInt(startDate.substring(5,7));
-	  int day = Integer.parseInt(startDate.substring(8,10)); 
-	  Date date = new Date(year, month, day);
-			  
-	  int nrWeeks = Integer.parseInt(list.get(1));
-	  int priceOfGuidePerWeek = Integer.parseInt(list.get(2));
+	  //Extracting the components of the table
+	  String startDate = list.get(3);
+	  Date date = Date.valueOf(startDate);  
+	  int nrWeeks = Integer.parseInt(list.get(4));
+	  int priceOfGuidePerWeek = Integer.parseInt(list.get(5));
 	  
-	  try {
-		ClimbSafeFeatureSet1Controller.setup(date, nrWeeks, priceOfGuidePerWeek);
-	} catch (InvalidInputException e) {
-		e.printStackTrace();
-	}
-	  //TODO Ask if we need to call this from the ClimbSafeApplication class
-	  
+	  //Creating the new system
+	  system = ClimbSafeApplication.getClimbSafe();
+	  system.setNrWeeks(nrWeeks);
+	  system.setStartDate(date);
+	  system.setPriceOfGuidePerWeek(priceOfGuidePerWeek);
   }
 
   @Given("the following pieces of equipment exist in the system: \\(p4)")
@@ -53,11 +46,14 @@ public class P4StepDefinitions {
     
 	  List<List<String>> list = dataTable.cells();
 	  
-	  for(List<String> row : list) {
+	  for(int i = 1; i < list.size(); i++) {
 		  
+		  List<String> row = list.get(i);
 		  String name = row.get(0);
 		  int weight = Integer.parseInt(row.get(1));
 		  int pricePerWeek = Integer.parseInt(row.get(2));
+		  
+		  System.out.println("test");
 		  
 		  try {
 			ClimbSafeFeatureSet4Controller.addEquipment(name, weight, pricePerWeek);
@@ -74,16 +70,17 @@ public class P4StepDefinitions {
 	  
 	  List<List<String>> list = dataTable.cells();
 	  
-	  for(List<String> row : list) {
+	  for(int i = 1; i < list.size(); i++) {
 		  
+		  List<String> row = list.get(i);
 		  String name = row.get(0);
 		  int discount = Integer.parseInt(row.get(1));
 		  String[] items = row.get(2).split("[,]");
 		  String[] quantity = row.get(3).split("[,]");
 		  Integer[] quantityIntegers = new Integer[quantity.length];
 		  
-		  for(int i = 0; i < quantity.length; i++) {
-			  quantityIntegers[i] = Integer.parseInt(quantity[i]);
+		  for(int j = 0; j < quantity.length; j++) {
+			  quantityIntegers[j] = Integer.parseInt(quantity[j]);
 		  }
 		  
 		  try {
@@ -96,14 +93,10 @@ public class P4StepDefinitions {
 
   @When("the administator attempts to add a new piece of equipment to the system with name {string}, weight {string}, and price per week {string} \\(p4)")
   public void the_administator_attempts_to_add_a_new_piece_of_equipment_to_the_system_with_name_weight_and_price_per_week_p4(
-      String string, String string2, String string3) {
-    
-	  String name = string; //TODO Just for better naming - Make sure we can change header name
-	  int weight = Integer.parseInt(string2); //TODO Make sure that we can parse int
-	  int pricePerWeek = Integer.parseInt(string3);
+      String name, String weight, String pricePerWeek) {
 	  
 	  try {
-		  ClimbSafeFeatureSet4Controller.addEquipment(name, weight, pricePerWeek);
+		  ClimbSafeFeatureSet4Controller.addEquipment(name, Integer.parseInt(weight), Integer.parseInt(pricePerWeek));
 	  }
 	  catch(InvalidInputException e) {
 		  error = e.getMessage();
@@ -111,42 +104,43 @@ public class P4StepDefinitions {
   }
 
   @Then("the number of pieces of equipment in the system shall be {string} \\(p4)")
-  public void the_number_of_pieces_of_equipment_in_the_system_shall_be_p4(String string) {
+  public void the_number_of_pieces_of_equipment_in_the_system_shall_be_p4(String number) {
 	 
-	  assertEquals(Integer.parseInt(string), system.numberOfEquipment());
+	  assertEquals(Integer.parseInt(number), system.numberOfEquipment());
   
   }
 
   @Then("the piece of equipment with name {string}, weight {string}, and price per week {string} shall exist in the system \\(p4)")
   public void the_piece_of_equipment_with_name_weight_and_price_per_week_shall_exist_in_the_system_p4(
-      String string, String string2, String string3) {
+      String name, String weight, String pricePerWeek) {
 	  
-	  BookableItem item = BookableItem.getWithName(string);
+	  BookableItem item = BookableItem.getWithName(name);
 	  assertNotNull(item);
 	  assertTrue(item instanceof Equipment);
-	  assertEquals(Integer.parseInt(string2), ((Equipment) item).getWeight());
-	  assertEquals(Integer.parseInt(string3), ((Equipment) item).getPricePerWeek());
+	  assertEquals(Integer.parseInt(weight), ((Equipment) item).getWeight());
+	  assertEquals(Integer.parseInt(pricePerWeek), ((Equipment) item).getPricePerWeek());
 	  
   }
 
   @Then("the piece of equipment with name {string}, weight {string}, and price per week {string} shall not exist in the system \\(p4)")
   public void the_piece_of_equipment_with_name_weight_and_price_per_week_shall_not_exist_in_the_system_p4(
-      String string, String string2, String string3) {
+      String name, String weight, String pricePerWeek) {
     
-	  BookableItem item = BookableItem.getWithName(string);
+	  BookableItem item = BookableItem.getWithName(name);
 	  
-	  assertTrue(item == null || !(item instanceof Equipment) || Integer.parseInt(string2) != ((Equipment) item).getWeight() ||
-			  Integer.parseInt(string3) != ((Equipment) item).getPricePerWeek());
+	  assertTrue(item == null || !(item instanceof Equipment) || Integer.parseInt(weight) != ((Equipment) item).getWeight() ||
+			  Integer.parseInt(pricePerWeek) != ((Equipment) item).getPricePerWeek());
 	  
   }
 
   @Then("the system shall raise the error {string} \\(p4)")
-  public void the_system_shall_raise_the_error_p4(String string) {
-	  assertEquals(string, error);
+  public void the_system_shall_raise_the_error_p4(String expectedError) {
+	  assertEquals(expectedError, error);
   }
   
-  @AfterEach
-  public void resetSystem() {
-	  //TODO After each test is done (Make sure)
+  @Before
+  public void beforeEachScenario() {
+	  ClimbSafeApplication.getClimbSafe().delete();
+	  error = "";
   }
 }
