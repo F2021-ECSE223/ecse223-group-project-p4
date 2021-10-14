@@ -1,6 +1,5 @@
 package ca.mcgill.ecse.climbsafe.features;
 
-import io.cucumber.java.Before;
 //Default imports
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,6 +13,7 @@ import ca.mcgill.ecse.climbsafe.model.*;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.*;
 import static org.junit.jupiter.api.Assertions.*;
+import io.cucumber.java.Before;
 
 
 //Step method definitions
