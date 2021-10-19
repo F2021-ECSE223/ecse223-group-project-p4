@@ -138,7 +138,7 @@ public class P4StepDefinitions {
 	  assertEquals(expectedError, error);
   }
   
-  @Before
+  @BeforeEach
   public void beforeEachScenario() {
 	  ClimbSafeApplication.getClimbSafe().delete();
 	  error = "";
