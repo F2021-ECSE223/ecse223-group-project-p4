@@ -32,8 +32,6 @@ public class ClimbSafeFeatureSet4Controller {
 
   public static void updateEquipment(String oldName, String newName, int newWeight,
       int newPricePerWeek) throws InvalidInputException {
-	 
-	  ClimbSafe system = ClimbSafeApplication.getClimbSafe();
 	  
 	  checkCommonConditions(newWeight, newName, newPricePerWeek);
 	  
@@ -50,7 +48,7 @@ public class ClimbSafeFeatureSet4Controller {
    	   if(existingItem instanceof Equipment) 
    		   throw new InvalidInputException("The piece of equipment already exists");    
    	   if(existingItem instanceof EquipmentBundle)
-   		   throw new InvalidInputException("The equipment bundle already exists");    
+   		   throw new InvalidInputException("An equipment bundle with the same name already exists");    
       }
 	 
    	   //Updating the equipment
