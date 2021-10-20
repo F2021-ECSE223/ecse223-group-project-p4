@@ -9,14 +9,11 @@ import io.cucumber.java.en.When;
 import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
-
 import ca.mcgill.ecse.climbsafe.model.*;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.*;
 import static org.junit.jupiter.api.Assertions.*;
-import io.cucumber.java.Before;
 
 
 //Step method definitions
