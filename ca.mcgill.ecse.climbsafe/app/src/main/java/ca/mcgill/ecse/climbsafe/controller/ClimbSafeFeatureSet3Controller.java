@@ -181,6 +181,9 @@ public class ClimbSafeFeatureSet3Controller {
 	  ((Guide) User.getWithEmail(email)).setEmergencyContact(newEmergencyContact);
 		  
   }
+  
+  
+}
 
 
 
