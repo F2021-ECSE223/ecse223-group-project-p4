@@ -2,7 +2,7 @@ package ca.mcgill.ecse.climbsafe.controller;
 
 import java.util.List;
 
-import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
+import ca.mcgill.ecse.climbsafe.application.*;
 import ca.mcgill.ecse.climbsafe.model.*;
 
 public class ClimbSafeFeatureSet5Controller {
@@ -16,7 +16,7 @@ public class ClimbSafeFeatureSet5Controller {
       List<Integer> equipmentQuantities) throws InvalidInputException {
 	  
 		
-	  if(name ==  "") {
+	  if(name.trim().isEmpty()) {
 		  //TODO: make string full of spaces invalid too
 		  throw new InvalidInputException("Equipment bundle name cannot be empty");
 		  
@@ -65,12 +65,7 @@ public class ClimbSafeFeatureSet5Controller {
 		  throw new InvalidInputException("Each bundle item must have quantity greater than or equal to 1");
 	  }
 	  
-	  
-	  
-	  //TODO: Do not count duplicates in the size of list
-	  //TODO: Ask what we should do if there is a duplicate equipment but size constraint is satisfied (do we add another quantity?)
-	  
-	  
+	  	  
 	  if(equipmentNames.size() < 2) {
 		  
 		  throw new InvalidInputException("Equipment bundle must contain at least two distinct types of equipment");
@@ -94,7 +89,7 @@ public class ClimbSafeFeatureSet5Controller {
 	  	  
 
 	  EquipmentBundle newBundle = new EquipmentBundle(name, discount, system);
-	  for(int i = 0; i < equipmentQuantities.size(); i++) {
+	  for(int i = 0; i < equipmentNames.size(); i++) {
 		  
 		  BundleItem item = new BundleItem(equipmentQuantities.get(i), system, newBundle, (Equipment)(BookableItem.getWithName(equipmentNames.get(i))));
 		  newBundle.addBundleItem(item);
@@ -106,6 +101,15 @@ public class ClimbSafeFeatureSet5Controller {
 
 	public static void updateEquipmentBundle(String oldName, String newName, int newDiscount,
       List<String> newEquipmentNames, List<Integer> newEquipmentQuantities)
-      throws InvalidInputException {}
+      throws InvalidInputException {
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 
 }
