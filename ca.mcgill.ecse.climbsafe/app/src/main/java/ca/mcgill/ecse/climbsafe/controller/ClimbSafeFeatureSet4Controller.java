@@ -11,76 +11,75 @@ public class ClimbSafeFeatureSet4Controller {
   public static void addEquipment(String name, int weight, int pricePerWeek)
       
 		  throws InvalidInputException {
+    	   
+	  checkCommonConditions(weight, name, pricePerWeek);
 	  
-	 //System into local variables 
-	  
+	//Checks to see if equipment with same name already exists in the system 
+      
+      BookableItem existingItem = BookableItem.getWithName(name);
+      
+      if (existingItem != null) {
+   	   if(existingItem instanceof Equipment) 
+   		   throw new InvalidInputException("The piece of equipment already exists");    
+   	   if(existingItem instanceof EquipmentBundle)
+   		   throw new InvalidInputException("The equipment bundle already exists");    
+   	   
 	  ClimbSafe system = ClimbSafeApplication.getClimbSafe();
 	  
-     //Checking for Invalid Input in for name 
-	  
-	  if(name.equals("")){
-		  throw new InvalidInputException("Equipment name cannot be empty.");
-	  }
-
-    //User inputs special character in the name, checks each character in the string 
-      int i;
-       for (i=0 ; i < (name.length() - 1) ; i++) {
-    	   char chTest = name.charAt(i);
-    	   int test = chTest;
-    	   
-    	   if (test < 32) {
-    		  
-    		   throw new InvalidInputException("Equipment name cannot have special characters.");
-    	   
-    	   }else if (test == 32 && i == 0) {
-    		   
-    		   throw new InvalidInputException("Equipment name cannot start with an empty space.");
-    
-               }else if (test > 32 && test < 65) {
-    		   
-    		   throw new InvalidInputException("Equipment name cannot have special characters.");
-    	   
-    	   }else if (test > 90 && test < 97) {
-    		   
-    		   throw new InvalidInputException("Equipment name cannot have special characters.");
-    	   
-    	   }else if (test > 122) {
-    		  
-    		   throw new InvalidInputException("Equipment name cannot have special characters.");
-    	   }
-       }
-       
-     //Checks for invalid weight inputs 
-    
-       if (weight <= 0) {
-    	   
-    	   throw new InvalidInputException("The weight must be greater than 0.");    
-       }
-       //TODO the case that there is no weight inputed 
-       
-    //Checks for invalid price per week inputs 
-       
-       if (pricePerWeek < 0 ) {
-    	   
-    	   throw new InvalidInputException("The price per week must be greater than or equal to 0.");    
-       }
-       //TODO the case that no price per week in inputed 
-       
-   //Checks to see if equipment with same name already exists in the system 
-      
-       BookableItem existingItem = Equipment.getWithName(name);
-       
-       if (existingItem != null) {
-    	   throw new InvalidInputException("A bookable item called" + name + "alreay exists in the system.");    
-       }else {
-    	   //TODO add equipment to BookableItem 
-    	   
-    	//   BookableItem newItem = Equipment.add());
-       }  
-       
+	  system.addEquipment(new Equipment (name, weight, pricePerWeek, system));
+      }
   }
 
   public static void updateEquipment(String oldName, String newName, int newWeight,
-      int newPricePerWeek) throws InvalidInputException {}
+      int newPricePerWeek) throws InvalidInputException {
+	 
+	  ClimbSafe system = ClimbSafeApplication.getClimbSafe();
+	  
+	  checkCommonConditions(newWeight, newName, newPricePerWeek);
+	  
+	  BookableItem toChange = BookableItem.getWithName(oldName);
+	  
+	  if (toChange == null || toChange instanceof EquipmentBundle)
+		 throw new InvalidInputException("That equipment does not yet exist in the system.");	 
+	 
+	  //Checks to see if equipment with same name already exists in the system 
+      
+      BookableItem existingItem = BookableItem.getWithName(newName);
+      
+      if (existingItem != null) {
+   	   if(existingItem instanceof Equipment) 
+   		   throw new InvalidInputException("The piece of equipment already exists");    
+   	   if(existingItem instanceof EquipmentBundle)
+   		   throw new InvalidInputException("The equipment bundle already exists");    
+      }
+	 
+   	   //Updating the equipment
+   	   toChange.setName(newName);
+   	   ((Equipment) toChange).setWeight(newWeight);
+   	   ((Equipment) toChange).setPricePerWeek(newPricePerWeek);
+      
+  }
+  
+  private static void checkCommonConditions(int weight, String name, int pricePerWeek) throws InvalidInputException{
+	  
+	  //Checking for Invalid Input in for name 
+	  if(name.equals("")){
+		  throw new InvalidInputException("Equipment name cannot be empty.");
+	  }
+       
+	  //Checks for invalid weight inputs 
+       if (weight <= 0) {
+    	   
+    	   throw new InvalidInputException("The weight must be greater than 0");    
+       }
+
+       
+       //Checks for invalid price per week inputs 
+       if (pricePerWeek < 0 ) {
+    	   
+    	   throw new InvalidInputException("The price per week must be greater than or equal to 0");    
+       }
+    		   
+  }
 
 }
