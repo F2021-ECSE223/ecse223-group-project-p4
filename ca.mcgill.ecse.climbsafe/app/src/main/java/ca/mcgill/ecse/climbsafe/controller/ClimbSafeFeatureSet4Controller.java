@@ -1,10 +1,9 @@
 package ca.mcgill.ecse.climbsafe.controller;
 
-// Imports (remove if not used)
-import java.util.List;
+//Imports
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.model.*;
-import java.util.ArrayList;
+
 
 public class ClimbSafeFeatureSet4Controller {
 
@@ -23,11 +22,12 @@ public class ClimbSafeFeatureSet4Controller {
    		   throw new InvalidInputException("The piece of equipment already exists");    
    	   if(existingItem instanceof EquipmentBundle)
    		   throw new InvalidInputException("The equipment bundle already exists");    
-   	   
+      }
+      
 	  ClimbSafe system = ClimbSafeApplication.getClimbSafe();
 	  
 	  system.addEquipment(new Equipment (name, weight, pricePerWeek, system));
-      }
+      
   }
 
   public static void updateEquipment(String oldName, String newName, int newWeight,
@@ -61,8 +61,8 @@ public class ClimbSafeFeatureSet4Controller {
   private static void checkCommonConditions(int weight, String name, int pricePerWeek) throws InvalidInputException{
 	  
 	  //Checking for Invalid Input in for name 
-	  if(name.equals("")){
-		  throw new InvalidInputException("Equipment name cannot be empty.");
+	  if(name.trim().equals("")){
+		  throw new InvalidInputException("The name must not be empty");
 	  }
        
 	  //Checks for invalid weight inputs 
