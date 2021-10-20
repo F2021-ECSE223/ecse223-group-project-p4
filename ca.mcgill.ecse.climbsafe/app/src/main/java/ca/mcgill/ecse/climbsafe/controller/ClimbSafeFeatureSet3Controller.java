@@ -91,8 +91,6 @@ public class ClimbSafeFeatureSet3Controller {
 	  
   }
 
-}
-
 
 
 
