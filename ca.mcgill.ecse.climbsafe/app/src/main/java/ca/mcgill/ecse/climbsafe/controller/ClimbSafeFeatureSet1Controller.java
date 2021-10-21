@@ -1,7 +1,6 @@
 package ca.mcgill.ecse.climbsafe.controller;
 
 import java.sql.Date;
-import java.util.List;
 
 //My imports
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
