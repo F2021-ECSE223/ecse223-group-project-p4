@@ -1,6 +1,7 @@
 package ca.mcgill.ecse.climbsafe.controller;
 
 import java.sql.Date;
+import java.util.List;
 
 //My imports
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
@@ -11,14 +12,26 @@ public class ClimbSafeFeatureSet1Controller {
 
 	private static ClimbSafe climbSafe; // The system instance
 
-  
+  /**
+   * @author karl rouhana
+   * @param startDate - the input start date
+   * @param nrWeeks - the input number of weeks
+   * @param priceOfGuidePerWeek - the input price of guide per week
+   * @throws InvalidInputException - throws invalid input exception if there's an error
+   * 
+   * The setup method will checks if its input has any error with the way they were given. 
+   * If there's an error with the given input, it raises an InvalidInputException 
+   * and if not, it will add them to the system just fine.
+
+   * 
+   */
 	
 	public static void setup(Date startDate, int nrWeeks, int priceOfGuidePerWeek)
       throws InvalidInputException {
 	  
 	
 	  
-	  checkValidDate(startDate);			//Check if the input date is valid using the private helper method
+	  checkValidDate(startDate);			//Check if the input date is valid using a private helper method
 	  	  
 	  
 	  if(nrWeeks <= 0) 						//Checks if the number of climbing weeks is greater than or equal to zero
@@ -44,8 +57,17 @@ public class ClimbSafeFeatureSet1Controller {
 
   
   
+  /**
+   * @author karl rouhana
+   * @param email - the input email
+   * 
+   * The deleteMember method will delete a member if and only if the given email
+   * is associated with a User, and that User is a Member.
+   * If it's a Guide or the email does not exist in the system, 
+   * don't do anything.
+   */
   
-  
+	
   
   public static void deleteMember(String email) {
 	  //check if member exists or no 
@@ -87,6 +109,18 @@ public class ClimbSafeFeatureSet1Controller {
 	  
 	  
   }
+  
+  
+  /**
+   * @author karl rouhana
+   * @param email - the input email
+   * 
+   * The deleteGuide method will delete a guide if and only if the given email
+   * is associated with a User, and that User is a guide.
+   * If it's a Member or the email does not exist in the system, 
+   * don't do anything.
+   */
+
 
   public static void deleteGuide(String email) {
 	 	 
@@ -121,38 +155,50 @@ public class ClimbSafeFeatureSet1Controller {
   }
 
  
-    private static void checkValidDate(Date startDate) throws InvalidInputException{
+  
+  /**
+   * @author karl rouhana
+   * @param date - input date
+   * @throws InvalidInputException - throws invalid input exception if there's an error
+   * 
+   * The checkValidDate method is a helper method that will check if the given Start Date is valid.
+   * 
+   * 
+   */
+  
+  
+    private static void checkValidDate(Date date) throws InvalidInputException{
 	 
 	  int [] monthWith30Days = {3,5,8,10};					//These are the months with 30 days in them
 	  
 	  
-	  if(startDate.getYear() < 2021) throw new InvalidInputException("Invalide date"); //If year before 2021
+	  if(date.getYear() < 2021) throw new InvalidInputException("Invalide date"); //If year before 2021
 	  
-	  if(startDate.getDate() < 1 || startDate.getDate() > 31) throw new InvalidInputException("Invalide date"); //If date is less than 0 or more than 31
+	  if(date.getDate() < 1 || date.getDate() > 31) throw new InvalidInputException("Invalide date"); //If date is less than 0 or more than 31
 
-	  if(startDate.getMonth() < 0 || startDate.getMonth() > 11 ) throw new InvalidInputException("Invalide date"); //If month is less than 0 or more than 11 (Date class takes it like this)
+	  if(date.getMonth() < 0 || date.getMonth() > 11 ) throw new InvalidInputException("Invalide date"); //If month is less than 0 or more than 11 (Date class takes it like this)
 	
 	  
 	  //Checks for month that has 30 days in it has 31 days in it
 	  for(int i=0; i < monthWith30Days.length; i++) {
 		  
-		  if(startDate.getMonth() == monthWith30Days[i]) {
+		  if(date.getMonth() == monthWith30Days[i]) {
 			 
-			  if(startDate.getDate() == 31) 
+			  if(date.getDate() == 31) 
 				  throw new InvalidInputException("Invalide date");
 		  }
 	  }
 	  
 	 
-	  if(startDate.getMonth() == 1) {		//Checks if the Month is February
+	  if(date.getMonth() == 1) {		//Checks if the Month is February
 		  
 		  
-		  if(startDate.getDate() > 29) 			//Check if there's more than 29 days
+		  if(date.getDate() > 29) 			//Check if there's more than 29 days
 			  throw new InvalidInputException("Invalide date");			
 
 		  
 		  
-		  if(startDate.getDate() == 28 && startDate.getYear() % 4 == 0 ) //Check if leap year and has only 28 days  
+		  if(date.getDate() == 28 && date.getYear() % 4 == 0 ) //Check if leap year and has only 28 days  
 			  throw new InvalidInputException("Invalide date"); 	
 
 	  }
