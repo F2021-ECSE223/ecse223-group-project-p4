@@ -50,9 +50,6 @@ public class ClimbSafeFeatureSet6Controller {
 
   public static void deleteEquipmentBundle(String name) {
 	  
-	  // Putting the system we're working on in a local variable
-	  ClimbSafe system = ClimbSafeApplication.getClimbSafe();
-	  
 	  // Retrieving the bundle to delete from the system
 	  BookableItem toDelete = EquipmentBundle.getWithName(name);
 	  
