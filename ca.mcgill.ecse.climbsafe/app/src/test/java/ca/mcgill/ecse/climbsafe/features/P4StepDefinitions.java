@@ -42,20 +42,20 @@ public class P4StepDefinitions {
 
     List<Map<String, String>> rows = dataTable.asMaps();
 
-    for(var row : rows) {
-      
+    for (var row : rows) {
+
       // Extracting the components of the table
       String startDate = row.get("startDate");
       Date date = Date.valueOf(startDate);
       int nrWeeks = Integer.parseInt(row.get("nrWeeks"));
       int priceOfGuidePerWeek = Integer.parseInt(row.get("priceOfGuidePerWeek"));
-  
+
       // Creating the new system
       climbSafe = ClimbSafeApplication.getClimbSafe();
       climbSafe.setNrWeeks(nrWeeks);
       climbSafe.setStartDate(date);
       climbSafe.setPriceOfGuidePerWeek(priceOfGuidePerWeek);
-      
+
     }
   }
 
@@ -72,7 +72,7 @@ public class P4StepDefinitions {
       io.cucumber.datatable.DataTable dataTable) {
 
     List<Map<String, String>> rows = dataTable.asMaps();
-    
+
     // Extracting the components of the table and adding the corresponding pieces of equipment
     for (var row : rows) {
 
@@ -81,7 +81,7 @@ public class P4StepDefinitions {
       int pricePerWeek = Integer.parseInt(row.get("pricePerWeek"));
 
       climbSafe.addEquipment(name, weight, pricePerWeek);
-      
+
     }
   }
 
@@ -97,7 +97,7 @@ public class P4StepDefinitions {
       io.cucumber.datatable.DataTable dataTable) {
 
     List<Map<String, String>> rows = dataTable.asMaps();
-    
+
     for (var row : rows) {
 
       // Extracting the components of the table
@@ -202,10 +202,11 @@ public class P4StepDefinitions {
 
     // Checking that it's either null, that it's a bundle, or that one of the attributes do not
     // match
-    if(item != null && item instanceof Equipment) {
-      Equipment equipmentItem = (Equipment) item;
-      assertTrue(Integer.parseInt(weight) != equipmentItem.getWeight() || 
-      Integer.parseInt(pricePerWeek) != equipmentItem.getPricePerWeek(), "The equipment item exists in the system");
+    if (item != null && item instanceof Equipment equipmentItem) {
+      assertTrue(
+          Integer.parseInt(weight) != equipmentItem.getWeight()
+              || Integer.parseInt(pricePerWeek) != equipmentItem.getPricePerWeek(),
+          "The equipment item exists in the system");
     }
 
   }
