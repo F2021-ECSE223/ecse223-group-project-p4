@@ -1,19 +1,26 @@
 package ca.mcgill.ecse.climbsafe.features;
 
+// Our imports
+import io.cucumber.java.After;
+
 // Default imports
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-// Our imports
-import io.cucumber.java.After;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.sql.Date;
 import java.util.List;
 import java.util.Map;
-import ca.mcgill.ecse.climbsafe.model.*;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
-import ca.mcgill.ecse.climbsafe.controller.*;
-import static org.junit.jupiter.api.Assertions.*;
+import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet4Controller;
+import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
+import ca.mcgill.ecse.climbsafe.model.BookableItem;
+import ca.mcgill.ecse.climbsafe.model.BundleItem;
+import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
+import ca.mcgill.ecse.climbsafe.model.Equipment;
+import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
 
 
 // Step method definitions
@@ -195,9 +202,11 @@ public class P4StepDefinitions {
 
     // Checking that it's either null, that it's a bundle, or that one of the attributes do not
     // match
-    assertTrue(item == null || !(item instanceof Equipment)
-        || Integer.parseInt(weight) != ((Equipment) item).getWeight()
-        || Integer.parseInt(pricePerWeek) != ((Equipment) item).getPricePerWeek());
+    if(item != null && item instanceof Equipment) {
+      Equipment equipmentItem = (Equipment) item;
+      assertTrue(Integer.parseInt(weight) != equipmentItem.getWeight() || 
+      Integer.parseInt(pricePerWeek) != equipmentItem.getPricePerWeek(), "The equipment item exists in the system");
+    }
 
   }
 
