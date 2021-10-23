@@ -9,15 +9,28 @@ public class ClimbSafeFeatureSet5Controller {
 	
 	
 	
-	private static ClimbSafe system = ClimbSafeApplication.getClimbSafe(); // The system instance
-
-	
+	/**
+	   * @author Matthieu Hakim
+	   * @param name - The name of the new bundle
+	   * @param discount - The discount for the bundle
+	   * @param equipmentNames - The list of names for all the desired equipment items
+	   * @param equipmentQuantities - The list of quantities for each equipment item
+	   * @throws InvalidInputException - throws invalid input exception if there's an error
+	   * 
+	   * The addEquipmentBundle method creates a new bundle with specified name, discount, equipment items and their quantities
+	   * The method throws an InvalidInputException whenever any of the input is invalid
+	   * 
+	   */
 	public static void addEquipmentBundle(String name, int discount, List<String> equipmentNames,
       List<Integer> equipmentQuantities) throws InvalidInputException {
 	  
 		
+	
+	  ClimbSafe system = ClimbSafeApplication.getClimbSafe(); // The system instance
+
+		
 	  if(name.trim().isEmpty()) {
-		  //TODO: make string full of spaces invalid too
+		  
 		  throw new InvalidInputException("Equipment bundle name cannot be empty");
 		  
 		  
@@ -43,7 +56,7 @@ public class ClimbSafeFeatureSet5Controller {
 	  
 	  
 	  for(String equipmentName : equipmentNames) {
-		  if(!Equipment.hasWithName(equipmentName) || (Equipment.getWithName(equipmentName) instanceof Equipment)) {
+		  if(!Equipment.hasWithName(equipmentName) || !(Equipment.getWithName(equipmentName) instanceof Equipment)) {
 			  
 			  throw new InvalidInputException("Equipment " + equipmentName + " does not exist");
 		  }
@@ -72,7 +85,7 @@ public class ClimbSafeFeatureSet5Controller {
 	  }
 	  
 	  boolean hasTwoDifferentEquipments = false;
-	  for(int i = 0; i < equipmentNames.size(); i++) {
+	  for(int i = 1; i < equipmentNames.size(); i++) {
 		  
 		  if(equipmentNames.get(i) != equipmentNames.get(0)) {
 			  
@@ -99,17 +112,129 @@ public class ClimbSafeFeatureSet5Controller {
 	  
   }
 
+	
+	
+	
+	
+	
+	
+	/**
+	   * @author Matthieu Hakim
+	   * @param oldName - The name of the bundle to be updated
+	   * @param newName - The new name of the bundle
+	   * @param newDiscount - The new discount for the bundle
+	   * @param newEquipmentNames - The new list of names for all the desired equipment items
+	   * @param newEquipmentQuantities - The new list of quantities for each equipment item
+	   * @throws InvalidInputException - throws invalid input exception if there's an error
+	   * 
+	   * The updateEquipmentBundle method modifies an existing bundle and changes its name, discount, equipment items and their quantities
+	   * The method throws an InvalidInputException whenever any of the input is invalid
+	   * 
+	   */
 	public static void updateEquipmentBundle(String oldName, String newName, int newDiscount,
       List<String> newEquipmentNames, List<Integer> newEquipmentQuantities)
       throws InvalidInputException {
 		
 		
+		ClimbSafe system = ClimbSafeApplication.getClimbSafe(); // The system instance
+
+		
+		if(!BookableItem.hasWithName(oldName)) {
+			
+			throw new InvalidInputException("Equipment bundle " + oldName + " does not exist");
+		}//equipment bundle exists
 		
 		
 		
+		if(newDiscount < 0) {
+			  
+			throw new InvalidInputException("Discount must be at least 0");
+			  
+		  }else if(newDiscount > 100) {
+			  
+			 throw new InvalidInputException("Discount must be no more than 100");
+		  }
+		  //discount is now valid
 		
 		
 		
+		for(String equipmentName : newEquipmentNames) {
+			  if(!Equipment.hasWithName(equipmentName) || !(Equipment.getWithName(equipmentName) instanceof Equipment)) {
+				  
+				  throw new InvalidInputException("Equipment " + equipmentName + " does not exist");
+			  }
+		}
+		//all names have a corresponding equipment
+		
+		
+		if(newEquipmentQuantities.size() == newEquipmentNames.size()) {
+			  
+			  
+			  for(Integer equipmentQuantity : newEquipmentQuantities) {
+				  if(equipmentQuantity <= 0) {
+					  throw new InvalidInputException("Each bundle item must have quantity greater than or equal to 1");
+				  }
+			  }
+			  
+		  }else {
+			  
+			  throw new InvalidInputException("Each bundle item must have quantity greater than or equal to 1");
+		  }
+		  
+		  	  
+		  if(newEquipmentNames.size() < 2) {
+			  
+			  throw new InvalidInputException("Equipment bundle must contain at least two distinct types of equipment");
+		  }
+		  
+		  boolean hasTwoDifferentEquipments = false;
+		  for(int i = 1; i < newEquipmentNames.size(); i++) {
+			  
+			  if(newEquipmentNames.get(i) != newEquipmentNames.get(0)) {
+				  
+				  hasTwoDifferentEquipments = true;
+			  }
+		  }
+		  if(!hasTwoDifferentEquipments) {
+			  throw new InvalidInputException("Equipment bundle must contain at least two distinct types of equipment");
+
+		  }
+		 //There are at least 2 distinct types of equipment
+		
+		
+		
+		  
+		  if(oldName != newName) {
+				
+			if(newName.trim().isEmpty()) {
+
+				throw new InvalidInputException("Equipment bundle name cannot be empty");
+					  
+					  
+			}else if(BookableItem.hasWithName(newName)) {
+					  
+				throw new InvalidInputException("A bookable item called " + newName + " already exists");
+					  
+			}
+		  }// new name is valid
+		  
+		  
+		  EquipmentBundle bundle = (EquipmentBundle) BookableItem.getWithName(oldName);
+		  bundle.setName(newName);
+		  bundle.setDiscount(newDiscount);
+		  
+		  
+		  for(BundleItem bundleItem : bundle.getBundleItems()) {
+			  
+			  bundle.removeBundleItem(bundleItem);
+		  }// removed all old bundle items
+		  
+		  for(int i = 0; i < newEquipmentNames.size(); i++) {
+			  
+			  BundleItem item = new BundleItem(newEquipmentQuantities.get(i), system, bundle, (Equipment)(BookableItem.getWithName(newEquipmentNames.get(i))));
+			  bundle.addBundleItem(item);
+		  }// added new bundle items
+		  
 	}
 
 }
