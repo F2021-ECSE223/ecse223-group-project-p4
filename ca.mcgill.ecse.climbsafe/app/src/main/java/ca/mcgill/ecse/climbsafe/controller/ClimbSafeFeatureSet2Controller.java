@@ -160,6 +160,9 @@ public class ClimbSafeFeatureSet2Controller {
    * @return True (If email is valid), False (If any of the conditions are not met)
    */
   private static boolean emailIsValid(String email) {
+    if(email.charAt(email.length()-1) == '.') {
+      return false;
+    }
     int atNum = 0;
     int atIndex = email.length()-1;
     int dotNumAfterAt = 0;
