@@ -12,54 +12,28 @@ public class ClimbSafeFeatureSet6Controller {
 
   public static void deleteEquipment(String name) throws InvalidInputException {
 	  
-	  
-	  // Putting the system we're working on in a local variable
-	  ClimbSafe system = ClimbSafeApplication.getClimbSafe();
-	  
-	  
-	  // Checking if the equipment with the indicated name is part of a bundle
-	  boolean foundEquipment = false;
-	 
-	  equipmentSearch:
-	  for(EquipmentBundle bundle : system.getBundles()) {
-		  for(BundleItem association : bundle.getBundleItems()) {
-			  if(association.getEquipment().getName().equals(name)){
-				  foundEquipment = true;
-				  break equipmentSearch;
-			  }
-		  }
-	  }
-	  
-	  if(foundEquipment) {
-		  throw(new InvalidInputException("The piece of equipment is in a bundle and cannot be deleted"));
-	  }
-	  
-	  
-	  
 	  // Retrieving the item to delete from the system
-	  BookableItem toDelete = Equipment.getWithName(name);
-	  
-	  // Checking that it is actually of type equipment
-	  if(toDelete == null) {
-		  return; //If the piece of equipment does not exist in the system
-	  }
-	  
-	  // Deleting the piece of equipment
-	  toDelete.delete();
+      BookableItem toDelete = BookableItem.getWithName(name);
+      
+      // Checking that it is actually of type equipment
+      if(toDelete != null && toDelete instanceof Equipment equipmentItem) {
+        
+        // Checking that the equipment with the indicated name is not part of a bundle
+        if(equipmentItem.getBundleItems().size() != 0)
+          throw(new InvalidInputException("The piece of equipment is in a bundle and cannot be deleted"));
+        
+        // Deleting the piece of equipment
+        toDelete.delete();
+      }
   }
 
   public static void deleteEquipmentBundle(String name) {
 	  
 	  // Retrieving the bundle to delete from the system
-	  BookableItem toDelete = EquipmentBundle.getWithName(name);
+	  var toDelete = BookableItem.getWithName(name);
 	  
-	  // If the bundle does not exist in the system
-	  if(toDelete == null) {
-		  return;
-	  }
-	  
-	  // If the bundle exists in the system
-	  toDelete.delete();
+	  // Delete the bundle if it exists in the system
+	  if(toDelete != null && toDelete instanceof EquipmentBundle) toDelete.delete();
 	  
   }
 
@@ -89,14 +63,14 @@ public class ClimbSafeFeatureSet6Controller {
 			 guideName = assignment.getGuide().getName();
 		 }
 		 else {
-			 guideEmail = "";
-			 guideName = "";
+			 guideEmail = null;
+			 guideName = null;
 		 }
 		 
 		 // Extracting the hotel name
 		 String hotelName;
 		 if(assignment.getHotel() != null) hotelName = assignment.getHotel().getName();
-		 else hotelName = "";
+		 else hotelName = null;
 		 
 		 // Extracting the assignment start week
 		 int startWeek = assignment.getStartWeek();
@@ -106,11 +80,11 @@ public class ClimbSafeFeatureSet6Controller {
 		 
 		 // Calculating the total cost for the guide
 		 int totalCostForGuide;
-		 if(guideEmail != "") totalCostForGuide = (endWeek - startWeek + 1) * system.getPriceOfGuidePerWeek();
+		 if(guideEmail != null) totalCostForGuide = (endWeek - startWeek + 1) * system.getPriceOfGuidePerWeek();
 		 else totalCostForGuide = 0;
 		 
 		 // Calculating the total cost of the booked equipment using a helper method
-		 int totalCostForEquipment = getTotalCostOfEquipment(assignment, startWeek, endWeek, guideName != "");
+		 int totalCostForEquipment = getTotalCostOfEquipment(assignment, startWeek, endWeek, guideName != null);
 		
 		 // Adding the corresponding TOAssignment to the list we will be returning
 		 TOassignments.add(new TOAssignment(memberEmail, memberName, guideEmail, guideName, hotelName, startWeek, endWeek, totalCostForGuide, totalCostForEquipment)); 
@@ -121,21 +95,17 @@ public class ClimbSafeFeatureSet6Controller {
   
   //Helper method that computes the total price of the equipment booked by the member of the assignment over the duration of the trip
   private static int getTotalCostOfEquipment(Assignment assignment, int startWeek, int endWeek, boolean hasGuide) {
-	  
-	// Putting the system we're working on in a local variable
-	ClimbSafe system = ClimbSafeApplication.getClimbSafe();
 	
 	// Variable that keeps track of the total cost throughout the method
 	int totalPrice = 0;
 	
 	// Looping over all the booked items of the member
-	for(BookedItem bookedItem : assignment.getMember().getBookedItems()) {
+	for(var bookedItem : assignment.getMember().getBookedItems()) {
 		
 		// If it is an equipment item
-		if(bookedItem.getItem() instanceof Equipment) {
-			Equipment item = (Equipment) bookedItem.getItem(); // Extracting the equipment item by downcasting
+		if(bookedItem.getItem() instanceof Equipment item)
 			totalPrice += bookedItem.getQuantity() * item.getPricePerWeek() * (endWeek - startWeek + 1); // Multiplying by the number of weeks and the quantity
-		}
+		
 		
 		// If it is an equipment bundle
 		else {
@@ -145,10 +115,13 @@ public class ClimbSafeFeatureSet6Controller {
 			// Looping over all the items in the bundle
 			for(BundleItem bundleItem : bundle.getBundleItems()) {
 				int itemPricePerWeek = bundleItem.getEquipment().getPricePerWeek() * bundleItem.getQuantity(); 
-				if(hasGuide) itemPricePerWeek = (int) Math.round(itemPricePerWeek*(100-bundle.getDiscount())/100.0); // Applying the discount if a guide was hired
 				bundlePricePerWeek += itemPricePerWeek;
 			}
 			
+			// Applying the discount if a guide was hired
+			if(hasGuide) bundlePricePerWeek = (int) Math.round(bundlePricePerWeek*(100-bundle.getDiscount())/100.0);
+			
+			// Adding the price of this bundle by multiplying by the quantity and the number of weeks
 			totalPrice += bookedItem.getQuantity() * bundlePricePerWeek * (endWeek - startWeek + 1); // Multiplying by the number of weeks and the quantity
 		}
 	}
