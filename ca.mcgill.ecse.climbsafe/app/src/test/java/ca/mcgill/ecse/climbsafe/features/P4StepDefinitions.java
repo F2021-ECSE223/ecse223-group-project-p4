@@ -1,12 +1,5 @@
 package ca.mcgill.ecse.climbsafe.features;
 
-// Our imports
-import io.cucumber.java.After;
-
-// Default imports
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -21,6 +14,10 @@ import ca.mcgill.ecse.climbsafe.model.BundleItem;
 import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
 import ca.mcgill.ecse.climbsafe.model.Equipment;
 import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
+// Default imports
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 
 // Step method definitions
@@ -39,6 +36,7 @@ public class P4StepDefinitions {
    */
   @Given("the following ClimbSafe system exists: \\(p4)")
   public void the_following_climb_safe_system_exists_p4(io.cucumber.datatable.DataTable dataTable) {
+    error = "";
 
     List<Map<String, String>> rows = dataTable.asMaps();
 
@@ -224,22 +222,5 @@ public class P4StepDefinitions {
     // Checking that the error is as expected
     assertTrue(error.contains(expectedError));
 
-  }
-
-  /**
-   * Resets the system and the error instance variables before each new scenario (or each example of
-   * the same scenario)
-   * 
-   * @author Wassim Jabbour, Matthieu Hakim, Karl Rouhana, Tinetendo Makata, Adam Kazma, Ralph
-   *         Nassar
-   */
-  @After
-  public void tearDown() {
-
-    // Deleting the system
-    ClimbSafeApplication.getClimbSafe().delete();
-
-    // Re-initializing the error instance variable
-    error = "";
   }
 }
