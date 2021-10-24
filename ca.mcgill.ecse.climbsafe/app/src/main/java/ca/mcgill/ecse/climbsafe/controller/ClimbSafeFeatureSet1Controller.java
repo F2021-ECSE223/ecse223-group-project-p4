@@ -7,6 +7,7 @@ import java.util.List;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.model.*;
 
+
 public class ClimbSafeFeatureSet1Controller {
 	
 
@@ -31,7 +32,7 @@ public class ClimbSafeFeatureSet1Controller {
 	  
 	
 	  
-	  checkValidDate(startDate);			//Check if the input date is valid using a private helper method
+	  //checkValidDate(startDate);			//Check if the input date is valid using a private helper method
 	  	  
 	  
 	  if(nrWeeks <= 0) 						//Checks if the number of climbing weeks is greater than or equal to zero
@@ -70,37 +71,15 @@ public class ClimbSafeFeatureSet1Controller {
 	
   
   public static void deleteMember(String email) {
-	  //check if member exists or no 
-	  //check if instance of guide
-	  //check if email is valid
-	  //remove assignment with guide
-	 
 
-	  if(User.hasWithEmail(email)) { 					//Checks if a User exists with the input email
-			
-		  if(User.getWithEmail(email) instanceof Guide) {			//If a user exists with the email, check if that user is a guide
-			 
-			  return;												//If it's a guide, don't do anything and leave the guide in the system
-		  }
-		
-		  
-		  else {											//Else, the user is an instance of member, hence it's a member
-	
-			  
-			  climbSafe = ClimbSafeApplication.getClimbSafe();			//Get the current system  
-			
-			  climbSafe.removeMember( (Member) Member.getWithEmail(email));	//Remove the member with the input email from the system
-			
-		
-		}
-	
-		
-	}
-	  else {				//Else, the email does not exist in the system (no guides nor member)
-		  return;			//Do nothing
-	  }
-	
+	  if(email == null) return;
 	  
+	  User unknown = User.getWithEmail(email);
+	  
+	  if(unknown != null && unknown instanceof Member) {
+		   unknown.delete();
+		  
+	  }
 	  
 	  
 	  
@@ -125,32 +104,16 @@ public class ClimbSafeFeatureSet1Controller {
   public static void deleteGuide(String email) {
 	 	 
 
+	  if(email == null) return;
 	  
-	  if(User.hasWithEmail(email)) { 					//Checks if a User exists with the input email
-		
-		  if(User.getWithEmail(email) instanceof Member) {		//If a user exists with the email, check if that user is a member
-			 
-			  return;											//If it's a member, don't do anything and leave the member in the system
-		  }
-		
+	  User unknown = User.getWithEmail(email);
+	  
+	  if(unknown != null && unknown instanceof Guide) {
+		   unknown.delete();
 		  
-		  else {												//Else, the user is an instance of guide, hence it's a guide
-				
-			  climbSafe = ClimbSafeApplication.getClimbSafe();		//Get the current system  
-				
-				climbSafe.removeGuide( (Guide) Guide.getWithEmail(email));		//Remove the guide with the input email from the system
-		}
-	
-		
-	}
-	  else {				//Else, the email does not exist in the system (no guides nor member)
-		  					
-		  return;			//Do nothing
 	  }
-	
-	  
-	  
-	  
+	 
+		  
 	  
   }
 
