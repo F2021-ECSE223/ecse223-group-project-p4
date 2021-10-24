@@ -6,7 +6,23 @@ import ca.mcgill.ecse.climbsafe.application.*;
 import ca.mcgill.ecse.climbsafe.model.*;
 
 public class ClimbSafeFeatureSet2Controller {
-
+	/**
+	 * This method checks for the validity of all the input data entered by the User upon registration. If it is valid, a Member object is created,
+	 * added to the system and all required equipment is booked in the system.
+	 * @author Adam Kazma
+	 * @param email -  The new member's e-mail address
+	 * @param password - The new member's password
+	 * @param name - The new member's full Name
+	 * @param emergencyContact - The emergencyContact information submitted by the new member
+	 * @param nrWeeks - The number of climbing weeks desired by the new member
+	 * @param guideRequired - Whether the new member requires a guide or not
+	 * @param hotelRequired - Whether the new member requires a hotel or not
+	 * @param itemNames - List of names of the equipment items or bundles chosen by the new member
+	 * @param itemQuantities - List of quantities of items whose name is in the previous parameter
+	 * @throws InvalidInputException If any information entered by the user invalidates registration
+	 * 
+	 *  
+	 */
   public static void registerMember(String email, String password, String name,
       String emergencyContact, int nrWeeks, boolean guideRequired, boolean hotelRequired,
       List<String> itemNames, List<Integer> itemQuantities) throws InvalidInputException {
@@ -49,6 +65,22 @@ public class ClimbSafeFeatureSet2Controller {
 		  system.addBookedItem(system.addBookedItem(itemQuantities.get(a), memb, BookableItem.getWithName(itemNames.get(a))));
 	  }
   }
+	  /**
+	   * This method checks for the validity of the updated data entered by the Member before overwriting his password, name, number of weeks, 
+	   * hotel requirement and guide requirement. 
+	   * The previously booked equipment items are cleared from the system and the new ones are booked instead.
+	   * @param email - Member's e-mail address, that is used to identify him as it is not changed.
+	   * @param newPassword - The new password desired by the member, which will replace the old one.
+	   * @param newName - The Member's new name.
+	   * @param newEmergencyContact - The member's new emergency contact information.
+	   * @param newNrWeeks - The new number of weeks desired.
+	   * @param newGuideRequired - Update to the guide requirement.
+	   * @param newHotelRequired - Update to the hotel requirement.
+	   * @param newItemNames - New names of the items required by the Member, which will overwrite the old ones.
+	   * @param newItemQuantities - New quantities for the new items (whose name is in the previous parameter).
+	   * @throws InvalidInputException If any data entered is invalid.
+	   * @author Adam Kazma
+	   */
 	public static void updateMember(String email, String newPassword, String newName,
 	      String newEmergencyContact, int newNrWeeks, boolean newGuideRequired,
 	      boolean newHotelRequired, List<String> newItemNames, List<Integer> newItemQuantities)
@@ -87,6 +119,19 @@ public class ClimbSafeFeatureSet2Controller {
 		  }
 	}
 	//Helper method
+	/**
+	 * 
+	 * This method checks the validity of the email by checking the following conditions:
+	 * <ul>
+	 * <li>The email contains exactly one '@' character that is not at the beginning.</li>
+	 * <li>The email contains exactly one dot '.' after the '@' character.</li>
+	 * <li>There is at least one character between the '@' character and each '.' dot character.</li>
+	 * <li>The email isn't an empty string.</li>
+	 * </ul>
+	 * @param email - The email address to be checked
+	 * @author Adam Kazma
+	 * @return True (If email is valid), False (If any of the conditions are not met)
+	 */
 	private static boolean emailIsValid(String email) {
 		int atNum = 0;
 		int atIndex = 0;
