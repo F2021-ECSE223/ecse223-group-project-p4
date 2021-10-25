@@ -14,7 +14,7 @@ public class ClimbSafeFeatureSet1Controller {
 	private static ClimbSafe climbSafe; // The system instance
 
   /**
-   * @author karl rouhana
+   * @author Karl Rouhana
    * @param startDate - the input start date
    * @param nrWeeks - the input number of weeks
    * @param priceOfGuidePerWeek - the input price of guide per week
@@ -23,26 +23,19 @@ public class ClimbSafeFeatureSet1Controller {
    * The setup method will checks if its input has any error with the way they were given. 
    * If there's an error with the given input, it raises an InvalidInputException 
    * and if not, it will add them to the system just fine.
-
-   * 
    */
 	
 	public static void setup(Date startDate, int nrWeeks, int priceOfGuidePerWeek)
       throws InvalidInputException {
 	  
-	
+		  	  
 	  
-	  //checkValidDate(startDate);			//Check if the input date is valid using a private helper method
-	  	  
-	  
-	  if(nrWeeks <= 0) 						//Checks if the number of climbing weeks is greater than or equal to zero
-		  
-		  throw new InvalidInputException("The number of climbing weeks must be greater than or equal to zero");		
+	  if(! (nrWeeks > 0) ) 						//Checks if the number of climbing weeks is greater than or equal to zero
+		   throw new InvalidInputException("The number of climbing weeks must be greater than or equal to zero");		
 	  
 	  
-	  if(priceOfGuidePerWeek <= 0) 			//Checks if the price of guide per week is greater than or equal to zero
-		  
-		  throw new InvalidInputException("The price of guide per week must be greater than or equal to zero");
+	  if(! (priceOfGuidePerWeek > 0) ) 			//Checks if the price of guide per week is greater than or equal to zero
+		   throw new InvalidInputException("The price of guide per week must be greater than or equal to zero");
 
 
 	  climbSafe = ClimbSafeApplication.getClimbSafe();			//Get the current system
@@ -50,7 +43,7 @@ public class ClimbSafeFeatureSet1Controller {
 	  
 	  //If everything is fine, set the start date, Number of weeks and the Price of the guide per week to the system
 	  
-	  climbSafe.setStartDate(startDate);
+	  climbSafe.setStartDate(startDate);			
 	  climbSafe.setNrWeeks(nrWeeks);
 	  climbSafe.setPriceOfGuidePerWeek(priceOfGuidePerWeek);
 	  
@@ -59,7 +52,7 @@ public class ClimbSafeFeatureSet1Controller {
   
   
   /**
-   * @author karl rouhana
+   * @author Karl Rouhana
    * @param email - the input email
    * 
    * The deleteMember method will delete a member if and only if the given email
@@ -72,26 +65,18 @@ public class ClimbSafeFeatureSet1Controller {
   
   public static void deleteMember(String email) {
 
-	  if(email == null) return;
+	  if(email == null) return;			//Stop if the email is null
 	  
-	  User unknown = User.getWithEmail(email);
+	  User toBeDeleted = User.getWithEmail(email);			//Return the User with the associated email
 	  
-	  if(unknown != null && unknown instanceof Member) {
-		   unknown.delete();
-		  
-	  }
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+	  if(toBeDeleted != null && toBeDeleted instanceof Member) 				//If the user exists and is a member 
+		   toBeDeleted.delete();												//Delete the member
+
   }
   
   
   /**
-   * @author karl rouhana
+   * @author Karl Rouhana
    * @param email - the input email
    * 
    * The deleteGuide method will delete a guide if and only if the given email
@@ -103,76 +88,16 @@ public class ClimbSafeFeatureSet1Controller {
 
   public static void deleteGuide(String email) {
 	 	 
-
-	  if(email == null) return;
+	  if(email == null) return;					//Stop if the email is null
 	  
-	  User unknown = User.getWithEmail(email);
+	  User toBeDeleted = User.getWithEmail(email);		//Return the User with the associated email
 	  
-	  if(unknown != null && unknown instanceof Guide) {
-		   unknown.delete();
-		  
-	  }
-	 
-		  
-	  
+	  if(toBeDeleted != null && toBeDeleted instanceof Guide) 			//If the user exists and is a Guide 
+		   toBeDeleted.delete();											//Delete the guide
+  
   }
 
- 
-  
-  /**
-   * @author karl rouhana
-   * @param date - input date
-   * @throws InvalidInputException - throws invalid input exception if there's an error
-   * 
-   * The checkValidDate method is a helper method that will check if the given Start Date is valid.
-   * 
-   * 
-   */
-  
-  
-    private static void checkValidDate(Date date) throws InvalidInputException{
-	 
-	  int [] monthWith30Days = {3,5,8,10};					//These are the months with 30 days in them
-	  
-	  
-	  if(date.getYear() < 2021) throw new InvalidInputException("Invalide date"); //If year before 2021
-	  
-	  if(date.getDate() < 1 || date.getDate() > 31) throw new InvalidInputException("Invalide date"); //If date is less than 0 or more than 31
 
-	  if(date.getMonth() < 0 || date.getMonth() > 11 ) throw new InvalidInputException("Invalide date"); //If month is less than 0 or more than 11 (Date class takes it like this)
-	
-	  
-	  //Checks for month that has 30 days in it has 31 days in it
-	  for(int i=0; i < monthWith30Days.length; i++) {
-		  
-		  if(date.getMonth() == monthWith30Days[i]) {
-			 
-			  if(date.getDate() == 31) 
-				  throw new InvalidInputException("Invalide date");
-		  }
-	  }
-	  
-	 
-	  if(date.getMonth() == 1) {		//Checks if the Month is February
-		  
-		  
-		  if(date.getDate() > 29) 			//Check if there's more than 29 days
-			  throw new InvalidInputException("Invalide date");			
-
-		  
-		  
-		  if(date.getDate() == 28 && date.getYear() % 4 == 0 ) //Check if leap year and has only 28 days  
-			  throw new InvalidInputException("Invalide date"); 	
-
-	  }
-  }
-  
-  
-  
-  
-  
-  
-  
   
   // this method needs to be implemented only by teams with seven team members
   public static void deleteHotel(String name) {}
