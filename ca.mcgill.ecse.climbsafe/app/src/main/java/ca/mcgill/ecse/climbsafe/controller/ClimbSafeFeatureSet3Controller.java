@@ -15,18 +15,20 @@ public class ClimbSafeFeatureSet3Controller {
    * 
    * The method throws an invalid input exception when the following cases happen:
    * 
-   * Case 1: the email is "admin@nmc.nt", a guide email cannot be the admin email
+   * Case 1: the input email must not contain any space
    * 
    * Case 2: the input email cannot be linked to another guide's or member's email in the system
    * 
-   * Case 3: the input email must not contain any space
+   * Case 3: email, password, name, and emergency contact must not be empty
    * 
    * Case 4: The input email must be valid
    * 
-   * Case 5: email, password, name, and emergency contact must not be empty
+   * Case 5: the input email must not be admin@nmc.nt
    * 
    * Finally, if there is no exception, a new guide with the input information is added in the
    * system
+   * 
+   * @author Ralph Nassar
    * 
    * @param email
    * @param password
@@ -39,7 +41,7 @@ public class ClimbSafeFeatureSet3Controller {
   public static void registerGuide(String email, String password, String name,
       String emergencyContact) throws InvalidInputException {
 
-    // Case 3
+    // Case 1
     if (email.contains(" "))
       throw new InvalidInputException("Email must not contain any spaces");
     
@@ -55,7 +57,7 @@ public class ClimbSafeFeatureSet3Controller {
     }
 
     
-    // Case 5 (the four following conditions)
+    // Case 3 (the four following conditions)
     if (email.isEmpty())
       throw new InvalidInputException("Email cannot be empty");
 
@@ -68,33 +70,21 @@ public class ClimbSafeFeatureSet3Controller {
     if (emergencyContact.isEmpty())
       throw new InvalidInputException("Emergency contact cannot be empty");
     
+    // Case 4 (the email is invalid)
     if (!emailIsValid(email))
       throw new InvalidInputException("Invalid email");
     
- // Case 1
+    // Case 5 (the email equals admin@nmc.nt
     if (email.equals("admin@nmc.nt"))
       throw new InvalidInputException("Email cannot be admin@nmc.nt");
 
-    // Finally, if no exception is thrown, add a new guide in the system.
+    // Finally, if no exception is thrown, add a new guide in the system!
     ClimbSafeApplication.getClimbSafe().addGuide(
         new Guide(email, password, name, emergencyContact, ClimbSafeApplication.getClimbSafe()));
   }
-
-
-  private static boolean containSpace(String aemail) {
-    for (char c : aemail.toCharArray()) {
-      if (Character.isWhitespace(c)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  /*private static boolean emailIsInvalid(String aemail) {
-    return containsDuplicateAtOrDot(aemail) || !aemail.contains("@email.com")
-        || aemail.charAt(aemail.length() - 4) != '.' || aemail.charAt(0) == '@';
-  }*/
- 
+  
+  
+ // Helper method that returns true if an email is valid, false otherwise
  private static boolean emailIsValid(String email) {
    
   if(email.charAt(email.length()-1) == '.') {
@@ -106,7 +96,7 @@ public class ClimbSafeFeatureSet3Controller {
   char[] charArr = email.toCharArray();
   for (int i = 0; i < charArr.length; i++) {
     if (charArr[i] == '@') {
-      atNum += 1;
+      atNum++;
       atIndex = i;
       if (i == 0)
         return false;
@@ -121,7 +111,7 @@ public class ClimbSafeFeatureSet3Controller {
     }
     if (charArr[i] == '.') {
       if (i > atIndex)
-        dotNumAfterAt += 1;
+        dotNumAfterAt++;
       if (i < charArr.length - 1) {
         if (charArr[i + 1] == '.')
           return false;
@@ -140,27 +130,6 @@ public class ClimbSafeFeatureSet3Controller {
 }
 
 
-  private static boolean containsDuplicateAtOrDot(String aemail) {
-    int numberOfAt = 0;
-    int numberOfDot = 0;
-    int n;
-
-    // Iterate through the characters of the string
-    for (int i = 0; i < aemail.length(); i++) {
-      // Incrementing the number of '@' in the email
-      if (aemail.charAt(i) == '@') {
-        numberOfAt++;
-      }
-      // Incrementing the number of '.' in the email
-      if (aemail.charAt(i) == '.') {
-        numberOfDot++;
-      }
-    }
-    // And finally, return true if numbers of '.' and '@' are exactly one each
-    return numberOfAt == 1 && numberOfDot == 1;
-  }
-
-
   /**
    * This method update a guide's information. The guide can update his password, his name, and his
    * emergency contact, but not his email.
@@ -173,6 +142,8 @@ public class ClimbSafeFeatureSet3Controller {
    * 
    * Finally, if there is no exceptions, password, name, and emergency contact are updated using
    * setPassword, setName, and setEmergencyContact.
+   * 
+   * @author Ralph Nassar
    * 
    * @param email
    * @param newPassword
@@ -200,6 +171,8 @@ public class ClimbSafeFeatureSet3Controller {
     if (newEmergencyContact.equals(""))
       throw new InvalidInputException("Emergency contact cannot be empty.");
 
+    //If no error is thrown, set new personnal informations
+    
     // set the new Password linked to the input email
     ((Guide) User.getWithEmail(email)).setPassword(newPassword);
 
