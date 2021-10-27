@@ -29,7 +29,6 @@ public class ClimbSafeFeatureSet1Controller {
       throws InvalidInputException {
 
 
-
     if (!(nrWeeks > 0)) // Checks if the number of climbing weeks is greater than or equal to zero
       throw new InvalidInputException(
           "The number of climbing weeks must be greater than or equal to zero");
@@ -69,8 +68,6 @@ public class ClimbSafeFeatureSet1Controller {
 
   public static void deleteMember(String email) {
 
-    if (email == null)
-      return; // Stop if the email is null
 
     User toBeDeleted = User.getWithEmail(email); // Return the User with the associated email
 
@@ -91,8 +88,6 @@ public class ClimbSafeFeatureSet1Controller {
 
   public static void deleteGuide(String email) {
 
-    if (email == null)
-      return; // Stop if the email is null
 
     User toBeDeleted = User.getWithEmail(email); // Return the User with the associated email
 
