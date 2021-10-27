@@ -60,15 +60,14 @@ public class ClimbSafeFeatureSet4Controller {
     BookableItem existingItem = BookableItem.getWithName(newName);
 
     if (existingItem != null) {
-      if (existingItem instanceof Equipment item && item.getWeight() == newWeight
-          && item.getPricePerWeek() == newPricePerWeek)
+      if (existingItem instanceof Equipment && !newName.equals(oldName))
         throw new InvalidInputException("The piece of equipment already exists");
       if (existingItem instanceof EquipmentBundle)
         throw new InvalidInputException("An equipment bundle with the same name already exists");
     }
 
     // Updating the equipment by setting a new name, weight and price per week
-    toChange.setName(newName);
+    if(newName != oldName) toChange.setName(newName);
     ((Equipment) toChange).setWeight(newWeight);
     ((Equipment) toChange).setPricePerWeek(newPricePerWeek);
 
