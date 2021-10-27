@@ -118,7 +118,7 @@ public class ClimbSafeFeatureSet2Controller {
           "The number of weeks must be greater than zero and less than or equal"
               + " to the number of climbing weeks in the climbing season");
     }
-    if(Member.getWithEmail(email) == null || !(Member.getWithEmail(email) instanceof Member)) {
+    if (Member.getWithEmail(email) == null || !(Member.getWithEmail(email) instanceof Member)) {
       throw new InvalidInputException("Member not found");
     }
     if (email.equals("admin@nmc.nt"))
@@ -129,14 +129,15 @@ public class ClimbSafeFeatureSet2Controller {
         throw new InvalidInputException("Requested item not found");
     }
     // Clear previously booked items for this member
-    for (int i = 0; i < ((Member)Member.getWithEmail(email)).getBookedItems().size(); i++) {
+    for (int i = 0; i < ((Member) Member.getWithEmail(email)).getBookedItems().size(); i++) {
       system.getBookedItem(i).delete();
-      ((Member)Member.getWithEmail(email)).getBookedItem(i).delete();
+      ((Member) Member.getWithEmail(email)).getBookedItem(i).delete();
     }
     // Enter new booked items for this member
     for (int a = 0; a < newItemNames.size(); a++) {
-      ((Member)Member.getWithEmail(email)).addBookedItem(system.addBookedItem(newItemQuantities.get(a),
-          ((Member) Member.getWithEmail(email)), BookableItem.getWithName(newItemNames.get(a))));
+      ((Member) Member.getWithEmail(email)).addBookedItem(
+          system.addBookedItem(newItemQuantities.get(a), ((Member) Member.getWithEmail(email)),
+              BookableItem.getWithName(newItemNames.get(a))));
     }
     // Update member details
     Member.getWithEmail(email).setPassword(newPassword);
@@ -163,11 +164,11 @@ public class ClimbSafeFeatureSet2Controller {
    * @return True (If email is valid), False (If any of the conditions are not met)
    */
   private static boolean emailIsValid(String email) {
-    if(email.charAt(email.length()-1) == '.') {
+    if (email.charAt(email.length() - 1) == '.') {
       return false;
     }
     int atNum = 0;
-    int atIndex = email.length()-1;
+    int atIndex = email.length() - 1;
     int dotNumAfterAt = 0;
     char[] charArr = email.toCharArray();
     for (int i = 0; i < charArr.length; i++) {
