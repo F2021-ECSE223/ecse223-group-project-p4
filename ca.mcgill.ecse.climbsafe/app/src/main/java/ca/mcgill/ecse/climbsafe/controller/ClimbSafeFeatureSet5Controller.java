@@ -28,6 +28,11 @@ public class ClimbSafeFeatureSet5Controller {
 	
 	  ClimbSafe system = ClimbSafeApplication.getClimbSafe(); // The system instance
 
+	  
+	  if(equipmentNames.size() < 2) {
+		  
+		  throw new InvalidInputException("Equipment bundle must contain at least two distinct types of equipment");
+	  }
 		
 	  if(name.trim().isEmpty()) {
 		  
@@ -79,20 +84,18 @@ public class ClimbSafeFeatureSet5Controller {
 	  }
 	  
 	  	  
-	  if(equipmentNames.size() < 2) {
-		  
-		  throw new InvalidInputException("Equipment bundle must contain at least two distinct types of equipment");
-	  }
 	  
 	  boolean hasTwoDifferentEquipments = false;
+	  
 	  for(int i = 1; i < equipmentNames.size(); i++) {
 		  
-		  if(equipmentNames.get(i) != equipmentNames.get(0)) {
+		  if(!equipmentNames.get(0).equals(equipmentNames.get(i))) {
 			  
 			  hasTwoDifferentEquipments = true;
 		  }
 	  }
 	  if(!hasTwoDifferentEquipments) {
+		  
 		  throw new InvalidInputException("Equipment bundle must contain at least two distinct types of equipment");
 
 	  }
@@ -138,8 +141,12 @@ public class ClimbSafeFeatureSet5Controller {
 		
 		ClimbSafe system = ClimbSafeApplication.getClimbSafe(); // The system instance
 
+		if(newEquipmentNames.size() < 2) {
+			  
+			  throw new InvalidInputException("Equipment bundle must contain at least two distinct types of equipment");
+		}
 		
-		if(!BookableItem.hasWithName(oldName)) {
+		if(!BookableItem.hasWithName(oldName) || !(BookableItem.getWithName(oldName) instanceof EquipmentBundle)) {
 			
 			throw new InvalidInputException("Equipment bundle " + oldName + " does not exist");
 		}//equipment bundle exists
@@ -167,7 +174,7 @@ public class ClimbSafeFeatureSet5Controller {
 		//all names have a corresponding equipment
 		
 		
-		if(newEquipmentQuantities.size() == newEquipmentNames.size()) {
+		 if(newEquipmentQuantities.size() == newEquipmentNames.size()) {
 			  
 			  
 			  for(Integer equipmentQuantity : newEquipmentQuantities) {
@@ -182,22 +189,17 @@ public class ClimbSafeFeatureSet5Controller {
 		  }
 		  
 		  	  
-		  if(newEquipmentNames.size() < 2) {
-			  
-			  throw new InvalidInputException("Equipment bundle must contain at least two distinct types of equipment");
-		  }
 		  
 		  boolean hasTwoDifferentEquipments = false;
 		  for(int i = 1; i < newEquipmentNames.size(); i++) {
 			  
-			  if(newEquipmentNames.get(i) != newEquipmentNames.get(0)) {
+			  if(!newEquipmentNames.get(0).equals(newEquipmentNames.get(i))) {
 				  
 				  hasTwoDifferentEquipments = true;
 			  }
 		  }
 		  if(!hasTwoDifferentEquipments) {
 			  throw new InvalidInputException("Equipment bundle must contain at least two distinct types of equipment");
-
 		  }
 		 //There are at least 2 distinct types of equipment
 		
@@ -219,21 +221,18 @@ public class ClimbSafeFeatureSet5Controller {
 		  }// new name is valid
 		  
 		  
-		  EquipmentBundle bundle = (EquipmentBundle) BookableItem.getWithName(oldName);
-		  bundle.setName(newName);
-		  bundle.setDiscount(newDiscount);
+		  EquipmentBundle oldBundle = (EquipmentBundle) BookableItem.getWithName(oldName);
+		  system.removeBundle(oldBundle);
+		  oldBundle.delete();
 		  
-		  
-		  for(BundleItem bundleItem : bundle.getBundleItems()) {
-			  
-			  bundle.removeBundleItem(bundleItem);
-		  }// removed all old bundle items
-		  
+		  EquipmentBundle newBundle = new EquipmentBundle(newName, newDiscount, system);
+
 		  for(int i = 0; i < newEquipmentNames.size(); i++) {
 			  
-			  BundleItem item = new BundleItem(newEquipmentQuantities.get(i), system, bundle, (Equipment)(BookableItem.getWithName(newEquipmentNames.get(i))));
-			  bundle.addBundleItem(item);
-		  }// added new bundle items
+			  BundleItem item = new BundleItem(newEquipmentQuantities.get(i), system, newBundle, (Equipment)(BookableItem.getWithName(newEquipmentNames.get(i))));
+			  newBundle.addBundleItem(item);
+		  }
+		 //Updated Bundle with name, discount, bundle items and quantities
 		  
 	}
 
