@@ -11,7 +11,7 @@ import ca.mcgill.ecse.climbsafe.model.*;
 public class ClimbSafeFeatureSet1Controller {
 
 
-  private static ClimbSafe climbSafe; // The system instance
+  private static ClimbSafe system; // The system instance
 
   /**
    * @author Karl Rouhana
@@ -41,15 +41,16 @@ public class ClimbSafeFeatureSet1Controller {
           "The price of guide per week must be greater than or equal to zero");
 
 
-    climbSafe = ClimbSafeApplication.getClimbSafe(); // Get the current system
+    system = ClimbSafeApplication.getClimbSafe(); // Get the current system
 
 
     // If everything is fine, set the start date, Number of weeks and the Price of the guide per
     // week to the system
 
-    climbSafe.setStartDate(startDate);
-    climbSafe.setNrWeeks(nrWeeks);
-    climbSafe.setPriceOfGuidePerWeek(priceOfGuidePerWeek);
+    system.setStartDate(startDate);
+    system.setNrWeeks(nrWeeks);
+    system.setPriceOfGuidePerWeek(priceOfGuidePerWeek);
+
 
   }
 
@@ -75,7 +76,6 @@ public class ClimbSafeFeatureSet1Controller {
 
     if (toBeDeleted != null && toBeDeleted instanceof Member) // If the user exists and is a member
       toBeDeleted.delete(); // Delete the member
-
   }
 
 
