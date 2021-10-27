@@ -120,9 +120,9 @@ public class ClimbSafeFeatureSet6Controller {
   }
 
   /*
-   * Helper method that computes the total price of the equipment booked by a member. It accounts for
-   * the length of the trip and the number of booked items. In the case of booking a bundle, it also
-   * applies a discount if a guide was requested
+   * Helper method that computes the total price of the equipment booked by a member. It accounts
+   * for the length of the trip and the number of booked items. In the case of booking a bundle, it
+   * also applies a discount if a guide was requested
    */
   private static int getTotalCostOfEquipment(Assignment assignment, int startWeek, int endWeek,
       boolean hasGuide) {
