@@ -52,7 +52,7 @@ public class ClimbSafeFeatureSet4Controller {
 	  //Checks to see if the item to change exists in the system and that it is not a bundle 
 	  
 	  if (toChange == null || toChange instanceof EquipmentBundle)
-		 throw new InvalidInputException("That equipment does not yet exist in the system.");	 
+		 throw new InvalidInputException("The piece of equipment does not exist");	 
 	 
 	  //Checks to see if equipment or bundle with same name already exists in the system 
       
