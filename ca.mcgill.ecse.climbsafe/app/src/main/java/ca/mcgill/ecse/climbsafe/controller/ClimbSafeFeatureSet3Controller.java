@@ -67,7 +67,7 @@ public class ClimbSafeFeatureSet3Controller {
       throw new InvalidInputException("Emergency contact cannot be empty");
 
     // Case 4 (the email is invalid)
-    if (!emailIsValid(email))
+    if (!ClimbSafeFeatureSet2Controller.emailIsValid(email))
       throw new InvalidInputException("Invalid email");
 
     // Case 5 (the email equals admin@nmc.nt
@@ -80,50 +80,7 @@ public class ClimbSafeFeatureSet3Controller {
   }
 
 
-  // Helper method that returns true if an email is valid, false otherwise
-  private static boolean emailIsValid(String email) {
-
-    if (email.charAt(email.length() - 1) == '.') {
-      return false;
-    }
-    int atNum = 0;
-    int atIndex = email.length() - 1;
-    int dotNumAfterAt = 0;
-    char[] charArr = email.toCharArray();
-    for (int i = 0; i < charArr.length; i++) {
-      if (charArr[i] == '@') {
-        atNum++;
-        atIndex = i;
-        if (i == 0)
-          return false;
-        if (i < charArr.length - 1) {
-          if (charArr[i + 1] == '.')
-            return false;
-        }
-        if (i > 0) {
-          if (charArr[i - 1] == '.')
-            return false;
-        }
-      }
-      if (charArr[i] == '.') {
-        if (i > atIndex)
-          dotNumAfterAt++;
-        if (i < charArr.length - 1) {
-          if (charArr[i + 1] == '.')
-            return false;
-        }
-        if (i > 0) {
-          if (charArr[i - 1] == '.')
-            return false;
-        }
-      }
-    }
-    if (atNum != 1)
-      return false;
-    if (dotNumAfterAt != 1)
-      return false;
-    return true;
-  }
+  
 
 
   /**
