@@ -101,7 +101,7 @@ public class ClimbSafeFeatureSet1Controller {
 
 
 
-  // this method needs to be implemented only by teams with seven team members
+  // We did not implement this method since we have 6 members on the team
   public static void deleteHotel(String name) {}
 
 }
