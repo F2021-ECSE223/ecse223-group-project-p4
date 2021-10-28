@@ -76,7 +76,18 @@ public class ClimbSafeFeatureSet4Controller {
     ((Equipment) toChange).setPricePerWeek(newPricePerWeek);
 
   }
-// This is a helper method which checks for the common invalid input exceptions 
+
+  /**
+   * @author Tinetendo Makata
+   * @param name name inputed by the admin for a new or updated equipment
+   * @param weight weight of the equipment inputed by the admin
+   * @param pricePerWeek weekly cost of the equipment for the equipment specified by the admin
+   * @throws InvalidInputException when the values for weight are less or equal to than 0, the name is already
+   *         in the system and the price per week is less than 0 This is a helper method which
+   *         checks for the common invalid input exceptions
+   */
+
+
   private static void checkCommonConditions(int weight, String name, int pricePerWeek)
       throws InvalidInputException {
 
@@ -90,8 +101,6 @@ public class ClimbSafeFeatureSet4Controller {
 
       throw new InvalidInputException("The weight must be greater than 0");
     }
-
-
     // Checks for invalid price per week inputs
     if (pricePerWeek < 0) {
 
