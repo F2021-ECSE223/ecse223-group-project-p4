@@ -23,12 +23,13 @@ public class ClimbSafeFeatureSet2Controller {
    * @param itemQuantities - List of quantities of items whose name is in the previous parameter
    * @throws InvalidInputException If any information entered by the user invalidates registration
    * 
-   * 
    */
   public static void registerMember(String email, String password, String name,
       String emergencyContact, int nrWeeks, boolean guideRequired, boolean hotelRequired,
       List<String> itemNames, List<Integer> itemQuantities) throws InvalidInputException {
+    
     ClimbSafe system = ClimbSafeApplication.getClimbSafe();
+    
     // Edge Cases
     if (User.hasWithEmail(email)) {
       if (User.getWithEmail(email) instanceof Member) {
@@ -39,6 +40,7 @@ public class ClimbSafeFeatureSet2Controller {
         throw new InvalidInputException("A guide with this email already exists");
       }
     }
+    
     if (email.contains(" "))
       throw new InvalidInputException("The email must not contain any spaces.");
 
@@ -59,6 +61,7 @@ public class ClimbSafeFeatureSet2Controller {
           "The number of weeks must be greater than zero and less than or equal"
               + " to the number of climbing weeks in the climbing season");
     }
+    
     if (email.equals("admin@nmc.nt"))
       throw new InvalidInputException("The email entered is not allowed for members");
 
@@ -66,14 +69,17 @@ public class ClimbSafeFeatureSet2Controller {
       if (!BookableItem.hasWithName(itemLabel))
         throw new InvalidInputException("Requested item not found");
     }
+    
     // Creating a new member
     Member memb = system.addMember(email, password, name, emergencyContact, nrWeeks, guideRequired,
         hotelRequired);
+    
     // Adding the new member to the system
     system.addMember(memb);
+    
     // Adding booked items for this member
     for (int a = 0; a < itemNames.size(); a++) {
-      system.addBookedItem(system.addBookedItem(itemQuantities.get(a), memb,
+      system.addBookedItem(new BookedItem(itemQuantities.get(a),system, memb,
           BookableItem.getWithName(itemNames.get(a))));
     }
   }

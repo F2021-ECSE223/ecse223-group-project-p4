@@ -117,7 +117,7 @@ public class ClimbSafeFeatureSet3Controller {
     if (newEmergencyContact.equals(""))
       throw new InvalidInputException("Emergency contact cannot be empty.");
 
-    // If no error is thrown, set new personnal informations
+    // If no error is thrown, set new personal informations
 
     // set the new Password linked to the input email
     ((Guide) User.getWithEmail(email)).setPassword(newPassword);

@@ -40,7 +40,7 @@ public class ClimbSafeFeatureSet6Controller {
    * Deletes an equipment bundle with a given name from the system (If it exists)
    * 
    * @author Wassim Jabbour
-   * @param name The name of the quipment bundle to delete from the system
+   * @param name The name of the equipment bundle to delete from the system
    */
   public static void deleteEquipmentBundle(String name) {
 
