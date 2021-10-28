@@ -76,17 +76,7 @@ public class ClimbSafeFeatureSet4Controller {
     ((Equipment) toChange).setPricePerWeek(newPricePerWeek);
 
   }
-
-  /**
-   * This method checks the common conditions that are tested whether the item is being added or
-   * updated
-   * 
-   * @author Tinetendo Makata
-   * @param weight
-   * @param name
-   * @param pricePerWeek
-   * @throws InvalidInputException
-   */
+// This is a helper method which checks for the common invalid input exceptions 
   private static void checkCommonConditions(int weight, String name, int pricePerWeek)
       throws InvalidInputException {
 
