@@ -154,7 +154,8 @@ public class ClimbSafeFeatureSet2Controller {
    * This method checks the validity of the email by checking the following conditions:
    * <ul>
    * <li>The email contains exactly one '@' character that is not at the beginning.</li>
-   * <li>The email contains exactly one dot '.' after the '@' character, which is not at the very end of the string.</li>
+   * <li>The email contains exactly one dot '.' after the '@' character, which is not at the very
+   * end of the string.</li>
    * <li>There is at least one character between the '@' character and each '.' dot character.</li>
    * <li>The email isn't an empty string.</li>
    * </ul>

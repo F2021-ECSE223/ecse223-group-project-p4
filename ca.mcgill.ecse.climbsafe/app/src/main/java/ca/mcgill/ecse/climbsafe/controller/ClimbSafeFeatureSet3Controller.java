@@ -80,8 +80,6 @@ public class ClimbSafeFeatureSet3Controller {
   }
 
 
-  
-
 
   /**
    * This method update a guide's information. The guide can update his password, his name, and his
