@@ -108,8 +108,7 @@ public class ClimbSafeFeatureSet6Controller {
         totalCostForGuide = 0;
 
       // Calculating the total cost of the booked equipment using a helper method
-      int totalCostForEquipment =
-          getTotalCostOfEquipment(assignment, startWeek, endWeek, guideName != null);
+      int totalCostForEquipment = getTotalCostOfEquipment(assignment);
 
       // Adding the corresponding TOAssignment to the list we will be returning
       TOassignments.add(new TOAssignment(memberEmail, memberName, guideEmail, guideName, hotelName,
@@ -119,13 +118,20 @@ public class ClimbSafeFeatureSet6Controller {
     return TOassignments; // Returning a list of TOAssignments
   }
 
-  /*
+  /**
    * Helper method that computes the total price of the equipment booked by a member. It accounts
    * for the length of the trip and the number of booked items. In the case of booking a bundle, it
    * also applies a discount if a guide was requested
+   * 
+   * @author Wassim Jabbour
+   * @param assignment The assignment we want to compute the total cost of the equipment for
    */
-  private static int getTotalCostOfEquipment(Assignment assignment, int startWeek, int endWeek,
-      boolean hasGuide) {
+  private static int getTotalCostOfEquipment(Assignment assignment) {
+
+    // Extracting the attributes of the assignment
+    int startWeek = assignment.getStartWeek();
+    int endWeek = assignment.getEndWeek();
+    boolean hasGuide = (assignment.getGuide() != null);
 
     // Variable that keeps track of the total cost throughout the method
     int totalPrice = 0;
