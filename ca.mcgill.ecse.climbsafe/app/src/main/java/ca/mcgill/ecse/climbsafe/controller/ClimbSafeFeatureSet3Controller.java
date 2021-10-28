@@ -13,28 +13,24 @@ public class ClimbSafeFeatureSet3Controller {
    * The guide personal informations include his email, his password, his name, and an emergency
    * contact of his choice
    * 
-   * The method throws an invalid input exception when the following cases happen:
-   * 
-   * Case 1: the input email must not contain any space
-   * 
-   * Case 2: the input email cannot be linked to another guide's or member's email in the system
-   * 
-   * Case 3: email, password, name, and emergency contact must not be empty
-   * 
-   * Case 4: The input email must be valid
-   * 
-   * Case 5: the input email must not be admin@nmc.nt
-   * 
-   * Finally, if there is no exception, a new guide with the input information is added in the
-   * system
-   * 
    * @author Ralph Nassar
    * 
    * @param email
    * @param password
    * @param name
    * @param emergencyContact
-   * @throws InvalidInputException
+   * @throws InvalidInputException when the following cases happen:
+   * 
+   *         Case 1: the input email must not contain any space
+   * 
+   *         Case 2: the input email cannot be linked to another guide's or member's email in the
+   *         system
+   * 
+   *         Case 3: email, password, name, and emergency contact must not be empty
+   * 
+   *         Case 4: The input email must be valid
+   * 
+   *         Case 5: the input email must not be admin@nmc.nt
    */
 
 
@@ -44,7 +40,7 @@ public class ClimbSafeFeatureSet3Controller {
     // Case 1
     if (email.contains(" "))
       throw new InvalidInputException("Email must not contain any spaces");
-    
+
     // Case 2
     if (User.hasWithEmail(email)) {
       if (User.getWithEmail(email) instanceof Guide) {
@@ -56,7 +52,7 @@ public class ClimbSafeFeatureSet3Controller {
       }
     }
 
-    
+
     // Case 3 (the four following conditions)
     if (email.isEmpty())
       throw new InvalidInputException("Email cannot be empty");
@@ -69,11 +65,11 @@ public class ClimbSafeFeatureSet3Controller {
 
     if (emergencyContact.isEmpty())
       throw new InvalidInputException("Emergency contact cannot be empty");
-    
+
     // Case 4 (the email is invalid)
     if (!emailIsValid(email))
       throw new InvalidInputException("Invalid email");
-    
+
     // Case 5 (the email equals admin@nmc.nt
     if (email.equals("admin@nmc.nt"))
       throw new InvalidInputException("Email cannot be admin@nmc.nt");
@@ -82,74 +78,69 @@ public class ClimbSafeFeatureSet3Controller {
     ClimbSafeApplication.getClimbSafe().addGuide(
         new Guide(email, password, name, emergencyContact, ClimbSafeApplication.getClimbSafe()));
   }
-  
-  
- // Helper method that returns true if an email is valid, false otherwise
- private static boolean emailIsValid(String email) {
-   
-  if(email.charAt(email.length()-1) == '.') {
-    return false;
-  }
-  int atNum = 0;
-  int atIndex = email.length()-1;
-  int dotNumAfterAt = 0;
-  char[] charArr = email.toCharArray();
-  for (int i = 0; i < charArr.length; i++) {
-    if (charArr[i] == '@') {
-      atNum++;
-      atIndex = i;
-      if (i == 0)
-        return false;
-      if (i < charArr.length - 1) {
-        if (charArr[i + 1] == '.')
+
+
+  // Helper method that returns true if an email is valid, false otherwise
+  private static boolean emailIsValid(String email) {
+
+    if (email.charAt(email.length() - 1) == '.') {
+      return false;
+    }
+    int atNum = 0;
+    int atIndex = email.length() - 1;
+    int dotNumAfterAt = 0;
+    char[] charArr = email.toCharArray();
+    for (int i = 0; i < charArr.length; i++) {
+      if (charArr[i] == '@') {
+        atNum++;
+        atIndex = i;
+        if (i == 0)
           return false;
+        if (i < charArr.length - 1) {
+          if (charArr[i + 1] == '.')
+            return false;
+        }
+        if (i > 0) {
+          if (charArr[i - 1] == '.')
+            return false;
+        }
       }
-      if (i > 0) {
-        if (charArr[i - 1] == '.')
-          return false;
+      if (charArr[i] == '.') {
+        if (i > atIndex)
+          dotNumAfterAt++;
+        if (i < charArr.length - 1) {
+          if (charArr[i + 1] == '.')
+            return false;
+        }
+        if (i > 0) {
+          if (charArr[i - 1] == '.')
+            return false;
+        }
       }
     }
-    if (charArr[i] == '.') {
-      if (i > atIndex)
-        dotNumAfterAt++;
-      if (i < charArr.length - 1) {
-        if (charArr[i + 1] == '.')
-          return false;
-      }
-      if (i > 0) {
-        if (charArr[i - 1] == '.')
-          return false;
-      }
-    }
+    if (atNum != 1)
+      return false;
+    if (dotNumAfterAt != 1)
+      return false;
+    return true;
   }
-  if (atNum != 1)
-    return false;
-  if (dotNumAfterAt != 1)
-    return false;
-  return true;
-}
 
 
   /**
    * This method update a guide's information. The guide can update his password, his name, and his
-   * emergency contact, but not his email.
-   * 
-   * The method throws an invalid input exception when the following cases happen:
-   * 
-   * Case 1: if the input email is not in the system.
-   * 
-   * Case 2: if the new password, the new name, or the new emergency contact is empty.
-   * 
-   * Finally, if there is no exceptions, password, name, and emergency contact are updated using
-   * setPassword, setName, and setEmergencyContact.
+   * emergency contact, but not his email, using setPassword, setName, and setEmergencyContact.
    * 
    * @author Ralph Nassar
    * 
-   * @param email
-   * @param newPassword
-   * @param newName
-   * @param newEmergencyContact
-   * @throws InvalidInputException
+   * @param email the email of the current guide
+   * @param newPassword the new password of the guide
+   * @param newName the new name that the guide wants to set in the system
+   * @param newEmergencyContact the new emergency contact of the guide
+   * @throws InvalidInputException when one of the following cases happen:
+   * 
+   *         Case 1: if the input email is not in the system.
+   * 
+   *         Case 2: if the new password, the new name, or the new emergency contact is empty.
    */
 
   public static void updateGuide(String email, String newPassword, String newName,
@@ -171,8 +162,8 @@ public class ClimbSafeFeatureSet3Controller {
     if (newEmergencyContact.equals(""))
       throw new InvalidInputException("Emergency contact cannot be empty.");
 
-    //If no error is thrown, set new personnal informations
-    
+    // If no error is thrown, set new personnal informations
+
     // set the new Password linked to the input email
     ((Guide) User.getWithEmail(email)).setPassword(newPassword);
 

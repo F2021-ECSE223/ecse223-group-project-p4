@@ -14,15 +14,16 @@ public class ClimbSafeFeatureSet1Controller {
   private static ClimbSafe system; // The system instance
 
   /**
+   * The setup method will checks if its input has any error with the way they were given. If
+   * there's an error with the given input, it raises an InvalidInputException and if not, it will
+   * add them to the system just fine.
+   * 
    * @author Karl Rouhana
    * @param startDate - the input start date
    * @param nrWeeks - the input number of weeks
    * @param priceOfGuidePerWeek - the input price of guide per week
    * @throws InvalidInputException - throws invalid input exception if there's an error
    * 
-   *         The setup method will checks if its input has any error with the way they were given.
-   *         If there's an error with the given input, it raises an InvalidInputException and if
-   *         not, it will add them to the system just fine.
    */
 
   public static void setup(Date startDate, int nrWeeks, int priceOfGuidePerWeek)
@@ -56,12 +57,13 @@ public class ClimbSafeFeatureSet1Controller {
 
 
   /**
+   * The deleteMember method will delete a member if and only if the given email is associated with
+   * a User, and that User is a Member. If it's a Guide or the email does not exist in the system,
+   * don't do anything.
+   * 
    * @author Karl Rouhana
    * @param email - the input email
    * 
-   *        The deleteMember method will delete a member if and only if the given email is
-   *        associated with a User, and that User is a Member. If it's a Guide or the email does not
-   *        exist in the system, don't do anything.
    */
 
 
@@ -77,12 +79,13 @@ public class ClimbSafeFeatureSet1Controller {
 
 
   /**
+   * The deleteGuide method will delete a guide if and only if the given email is associated with a
+   * User, and that User is a guide. If it's a Member or the email does not exist in the system,
+   * don't do anything.
+   * 
    * @author Karl Rouhana
    * @param email - the input email
    * 
-   *        The deleteGuide method will delete a guide if and only if the given email is associated
-   *        with a User, and that User is a guide. If it's a Member or the email does not exist in
-   *        the system, don't do anything.
    */
 
 
