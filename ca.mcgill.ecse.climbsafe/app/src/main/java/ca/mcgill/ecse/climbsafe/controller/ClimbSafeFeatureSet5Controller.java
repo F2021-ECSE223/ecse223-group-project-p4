@@ -37,6 +37,7 @@ public class ClimbSafeFeatureSet5Controller {
       throw new InvalidInputException(
           "Equipment bundle must contain at least two distinct types of equipment");
     }
+    // There are at least 2 equipments
 
     if (name.trim().isEmpty()) {
 
@@ -87,7 +88,7 @@ public class ClimbSafeFeatureSet5Controller {
       throw new InvalidInputException(
           "Each bundle item must have quantity greater than or equal to 1");
     }
-
+    // Each item has a corresponding quantity
 
 
     boolean hasTwoDifferentEquipments = false;
@@ -150,6 +151,8 @@ public class ClimbSafeFeatureSet5Controller {
       throw new InvalidInputException(
           "Equipment bundle must contain at least two distinct types of equipment");
     }
+    // There are at least 2 equiments
+
 
     if (!BookableItem.hasWithName(oldName)
         || !(BookableItem.getWithName(oldName) instanceof EquipmentBundle)) {
@@ -196,7 +199,7 @@ public class ClimbSafeFeatureSet5Controller {
       throw new InvalidInputException(
           "Each bundle item must have quantity greater than or equal to 1");
     }
-
+    // Each item has a corresponding quantity
 
 
     boolean hasTwoDifferentEquipments = false;
@@ -230,10 +233,15 @@ public class ClimbSafeFeatureSet5Controller {
 
 
 
+    // The bundle we want to update
     EquipmentBundle bundle = (EquipmentBundle) BookableItem.getWithName(oldName);
 
+    // update the name
     bundle.setName(newName);
+
+    // update the discount
     bundle.setDiscount(newDiscount);
+
 
     ArrayList<BundleItem> oldItemsToRemove = new ArrayList<BundleItem>();
 
@@ -244,14 +252,14 @@ public class ClimbSafeFeatureSet5Controller {
 
     for (int i = 0; i < newEquipmentNames.size(); i++) {
 
-      if (newEquipmentNames.get(i).equals("backpack"))
-        System.out.println("t");
-
       Equipment equipment = (Equipment) BookableItem.getWithName(newEquipmentNames.get(i));
       boolean found = false;
 
       for (BundleItem bundleItem : equipment.getBundleItems()) {
         if (bundleItem.getBundle() == bundle) {
+
+
+          // when the item is the same for the old and new bundle
           bundleItem.setQuantity(newEquipmentQuantities.get(i));
           found = true;
 
@@ -261,6 +269,8 @@ public class ClimbSafeFeatureSet5Controller {
       }
 
       if (!found) {
+
+        // if new item was not in old bundle
         bundle.addBundleItem(newEquipmentQuantities.get(i), system, equipment);
       }
 
@@ -269,6 +279,9 @@ public class ClimbSafeFeatureSet5Controller {
     for (BundleItem bundleItem : oldItemsToRemove) {
       bundleItem.delete();
     }
+    // Delete items that are not in the new bundle
+
+
     // Updated Bundle with name, discount, bundle items and quantities
 
   }
