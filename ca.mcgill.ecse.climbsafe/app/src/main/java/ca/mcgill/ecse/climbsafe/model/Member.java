@@ -4,7 +4,8 @@
 package ca.mcgill.ecse.climbsafe.model;
 import java.util.*;
 
-// line 39 "../../../../../ClimbSafe.ump"
+// line 57 "../../../../../AssignmentProcess.ump"
+// line 40 "../../../../../ClimbSafe.ump"
 public class Member extends NamedUser
 {
 
@@ -16,6 +17,10 @@ public class Member extends NamedUser
   private int nrWeeks;
   private boolean guideRequired;
   private boolean hotelRequired;
+
+  //Member State Machines
+  public enum MemberState { Authorized, Banned }
+  private MemberState memberState;
 
   //Member Associations
   private ClimbSafe climbSafe;
@@ -38,6 +43,7 @@ public class Member extends NamedUser
       throw new RuntimeException("Unable to create member due to climbSafe. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
     bookedItems = new ArrayList<BookedItem>();
+    setMemberState(MemberState.Authorized);
   }
 
   //------------------------
@@ -91,6 +97,40 @@ public class Member extends NamedUser
   public boolean isHotelRequired()
   {
     return hotelRequired;
+  }
+
+  public String getMemberStateFullName()
+  {
+    String answer = memberState.toString();
+    return answer;
+  }
+
+  public MemberState getMemberState()
+  {
+    return memberState;
+  }
+
+  public boolean ban()
+  {
+    boolean wasEventProcessed = false;
+    
+    MemberState aMemberState = memberState;
+    switch (aMemberState)
+    {
+      case Authorized:
+        setMemberState(MemberState.Banned);
+        wasEventProcessed = true;
+        break;
+      default:
+        // Other states do respond to this event
+    }
+
+    return wasEventProcessed;
+  }
+
+  private void setMemberState(MemberState aMemberState)
+  {
+    memberState = aMemberState;
   }
   /* Code from template association_GetOne */
   public ClimbSafe getClimbSafe()

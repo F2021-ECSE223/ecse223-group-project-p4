@@ -3,15 +3,15 @@ class Assignment{
   lazy String authorizationCode;
   int refundPercentage = 0;
   
-  assignmentState{
+  AssignmentState{
     
     Assigned{
-      pay(String authorizationCode)[isValidCode(authorizationCode)] / {setAuthorizationCode(authorizationCode.trim())} -> Paid;
+      pay(String authorizationCode)[isValidCode(authorizationCode)] / {setAuthorizationCode(authorizationCode.trim());} -> Paid;
       pay(String authorizationCode)[!isValidCode(authorizationCode)] / {throwException("Invalid authorization code");} -> Assigned; 
       //TODO rethrow as invalidinput in controller
       //TODO make sure the email address exists in controller
       cancel -> Cancelled;
-      start / {banMember()} -> Assigned;
+      start / {banMember();} -> Assigned;
       finish / {throwException("Cannot finish a trip which has not started");} -> Assigned;
     }
     
@@ -50,10 +50,20 @@ class Assignment{
   }
   
   private void banMember(){
-    getMember().setBanned(true);
+    getMember().ban();
   }
 }
 
 class Member{
-  Boolean banned = false;
+  
+  MemberState{
+    
+    Authorized{
+      ban -> Banned;
+    }
+    Banned{
+      
+    }
+    
+  }
 }
