@@ -258,6 +258,11 @@ public class Assignment
     getMember().ban();
   }
 
+  // line 57 "AssignmentProcess.ump"
+   public AssignmentState setState(AssignmentState state){
+    setAssignmentState(state);
+  }
+
 
   public String toString()
   {

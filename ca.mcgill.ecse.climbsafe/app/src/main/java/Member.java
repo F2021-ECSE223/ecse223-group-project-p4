@@ -3,7 +3,7 @@
 
 
 
-// line 57 "AssignmentProcess.ump"
+// line 61 "AssignmentProcess.ump"
 public class Member
 {
 

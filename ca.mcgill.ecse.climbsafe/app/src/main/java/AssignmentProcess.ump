@@ -52,6 +52,10 @@ class Assignment{
   private void banMember(){
     getMember().ban();
   }
+  
+  public AssignmentState setState(AssignmentState state){
+    setAssignmentState(state);
+  }
 }
 
 class Member{
