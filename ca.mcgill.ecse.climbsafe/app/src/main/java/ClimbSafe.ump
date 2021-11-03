@@ -1,5 +1,4 @@
 namespace ca.mcgill.ecse.climbsafe.model;
-use  AssignmentProcess.ump;
 
 class ClimbSafe {
   Date startDate;
