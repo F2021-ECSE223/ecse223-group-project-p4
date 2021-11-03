@@ -1,0 +1,77 @@
+class Assignment{
+  
+  lazy String authorizationCode;
+  int refundPercentage = 0;
+
+  AssignmentState{
+
+    Assigned{
+      pay(String authorizationCode)[isValidCode(authorizationCode)] / {setAuthorizationCode(authorizationCode.trim());} -> Paid;
+      pay(String authorizationCode)[!isValidCode(authorizationCode)] / {throwException("Invalid authorization code");} -> Assigned; 
+      //TODO rethrow as invalidinput in controller
+      //TODO make sure the email address exists in controller
+      cancel -> Cancelled;
+      start / {banMember();} -> Assigned;
+      finish / {throwException("Cannot finish a trip which has not started");} -> Assigned;
+    }
+
+    Paid{
+      cancel / {setRefundPercentage(50);} -> Cancelled;
+      finish / {throwException("Cannot finish a trip which has not started");} -> Paid;
+      pay(String authorizationCode) / {throwException("Trip has already been paid for");} -> Paid;
+      start -> Started;
+    }
+    
+    Started{
+      cancel / {setRefundPercentage(10);} -> Cancelled;
+      pay(String authorizationCode) / {throwException("Trip has already been paid for");} -> Started;
+      finish -> Finished;
+    }
+    
+    Finished{
+      pay(String authorizationCode) / {throwException("Cannot pay for a trip which has finished");} -> Finished;
+      start / {throwException("Cannot start a trip which has finished");} -> Finished;
+      cancel / {throwException("Cannot cancel a trip which has finished");} -> Finished;
+    } 
+    
+    Cancelled{
+      pay(String authorizationCode) / {throwException("Cannot pay for a trip which has been cancelled");} -> Cancelled;
+      start / {throwException("Cannot start a trip which has been cancelled");} -> Cancelled;
+      finish / {throwException("Cannot finish a trip which has been cancelled");} -> Cancelled;
+    }     
+  }
+  
+  private boolean isValidCode(String authorizationCode){
+    return !authorizationCode.trim().isEmpty();
+  }
+  
+  private void throwException(String error){
+    throw new RuntimeException(error);
+  }
+
+  private void banMember(){
+    getMember().ban();
+  }
+  
+  public void setState(AssignmentState state){
+    setAssignmentState(state);
+  }
+}
+
+class Member{
+
+  MemberState{
+
+    Authorized{
+      ban -> Banned;
+    }
+    Banned{
+
+    }
+
+  }
+  
+  public void setState(MemberState state){
+  	setMemberState(state);
+  }
+}

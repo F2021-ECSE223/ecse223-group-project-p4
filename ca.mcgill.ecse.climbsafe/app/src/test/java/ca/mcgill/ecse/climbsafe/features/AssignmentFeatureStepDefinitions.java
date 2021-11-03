@@ -8,6 +8,8 @@ import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.AssignmentController;
 import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
 import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.model.Assignment.AssignmentState;
+import ca.mcgill.ecse.climbsafe.model.Member.MemberState;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -195,24 +197,6 @@ public class AssignmentFeatureStepDefinitions {
     assertEquals(expectedError, error);
   }
 
-  @Given("the following equipment exists in the system:")
-  public void the_following_equipment_exists_in_the_system(
-      io.cucumber.datatable.DataTable dataTable) {
-
-    List<Map<String, String>> rows = dataTable.asMaps();
-
-    // Extracting the components of the table and adding the corresponding pieces of equipment
-    for (var row : rows) {
-
-      String name = row.get("name");
-      int weight = Integer.parseInt(row.get("weight"));
-      int pricePerWeek = Integer.parseInt(row.get("pricePerWeek"));
-
-      climbSafe.addEquipment(name, weight, pricePerWeek);
-    }
-
-  }
-
   @Given("the following assignments exist in the system:")
   public void the_following_assignments_exist_in_the_system(
       io.cucumber.datatable.DataTable dataTable) {
@@ -285,7 +269,7 @@ public class AssignmentFeatureStepDefinitions {
   @Given("the member with {string} has paid for their trip")
   public void the_member_with_has_paid_for_their_trip(String memberEmail) {
     Member member = (Member) User.getWithEmail(memberEmail);
-    member.getAssignment().pay("RandomCode");
+    member.getAssignment().setState(AssignmentState.Paid);
   }
 
   @Then("the member with email address {string} shall receive a refund of {string} percent")
@@ -301,8 +285,7 @@ public class AssignmentFeatureStepDefinitions {
   @Given("the member with {string} has started their trip")
   public void the_member_with_has_started_their_trip(String memberEmail) {
     Member member = (Member) User.getWithEmail(memberEmail);
-    member.getAssignment().pay("RandomCode");
-    member.getAssignment().start();
+    member.getAssignment().setState(AssignmentState.Started);
   }
 
   @When("the administrator attempts to finish the trip for the member with email {string}")
@@ -318,7 +301,7 @@ public class AssignmentFeatureStepDefinitions {
   @Given("the member with {string} is banned")
   public void the_member_with_is_banned(String memberEmail) {
     Member member = (Member) User.getWithEmail(memberEmail);
-    member.ban();
+    member.setState(MemberState.Banned);
   }
 
   @Then("the member with email {string} shall be {string}")
@@ -343,24 +326,13 @@ public class AssignmentFeatureStepDefinitions {
   @Given("the member with {string} has cancelled their trip")
   public void the_member_with_has_cancelled_their_trip(String memberEmail) {
     Member member = (Member) User.getWithEmail(memberEmail);
-    member.getAssignment().cancel();
+    member.getAssignment().setState(AssignmentState.Cancelled);
   }
 
   @Given("the member with {string} has finished their trip")
   public void the_member_with_has_finished_their_trip(String memberEmail) {
     Member member = (Member) User.getWithEmail(memberEmail);
-    member.getAssignment().pay("RandomCode");
-    member.getAssignment().start();
-    member.getAssignment().finish();
+    member.getAssignment().setState(AssignmentState.Finished);
   }
-
-  @Then("the member with email {string} shall be banned")
-  public void the_member_with_email_shall_be_banned(String memberEmail) {
-
-    User user = User.getWithEmail(memberEmail); // Return the User with the associated email
-    assertNotNull(user); // Checking it is not null
-    assertTrue(user instanceof Member); // Checking that it is a member
-
-    assertEquals("Banned", ((Member) user).getMemberState().name());
-  }
+  
 }
