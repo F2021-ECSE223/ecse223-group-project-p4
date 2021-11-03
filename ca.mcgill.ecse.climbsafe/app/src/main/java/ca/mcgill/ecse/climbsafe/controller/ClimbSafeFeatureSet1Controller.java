@@ -98,3 +98,4 @@ public class ClimbSafeFeatureSet1Controller {
       toBeDeleted.delete(); // Delete the guide
 
   }
+}
