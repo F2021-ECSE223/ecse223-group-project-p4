@@ -98,4 +98,8 @@ public class ClimbSafeFeatureSet1Controller {
       toBeDeleted.delete(); // Delete the guide
 
   }
+
+  // We did not implement this method since we have 6 members on the team
+  public static void deleteHotel(String name) {}
+
 }
