@@ -77,6 +77,11 @@ public class AssignmentController {
   public static void cancelTrip(String memberEmail) throws InvalidInputException {
     Member member = (Member) Member.getWithEmail(memberEmail);
 
+    if (member == null)
+      throw new InvalidInputException(
+          "Member with email address " + memberEmail + " does not exist"); // Checks if the Member
+                                                                           // exists
+
     if (member.getMemberStateFullName().equals("Banned")) { // Check if the member is banned
 
       throw new InvalidInputException("Cannot cancel the trip due to a ban"); // Throw exception
@@ -93,6 +98,6 @@ public class AssignmentController {
 
 
     }
-  }
 
+  }
 }
