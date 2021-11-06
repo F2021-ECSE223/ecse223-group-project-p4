@@ -11,7 +11,34 @@ public class AssignmentController {
    * @throws InvalidInputException
    */
   public static void initiateAssignment() throws InvalidInputException {
-    // If banned throw exception
+
+    for (Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
+      int weeksTaken = 0;
+      for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
+        if (member.getAssignment() == null) {
+          if (member.getGuideRequired()) {
+            if (member.getNrWeeks() <= ClimbSafeApplication.getClimbSafe().getNrWeeks()
+                - weeksTaken) {
+              Assignment assignmnt = new Assignment(weeksTaken + 1,
+                  weeksTaken + member.getNrWeeks(), member, ClimbSafeApplication.getClimbSafe());
+              assignmnt.setGuide(guide);
+              ClimbSafeApplication.getClimbSafe().addAssignment(assignmnt);
+              weeksTaken += member.getNrWeeks();
+            } else {
+              if (ClimbSafeApplication.getClimbSafe().getGuides()
+                  .indexOf(guide) == ClimbSafeApplication.getClimbSafe().getGuides().size() - 1) {
+                throw new InvalidInputException(
+                    "Assignments could not be completed for all members");
+              }
+            }
+          } else {
+            ClimbSafeApplication.getClimbSafe().addAssignment(new Assignment(1, member.getNrWeeks(),
+                member, ClimbSafeApplication.getClimbSafe()));
+          }
+        }
+      }
+
+    }
   }
 
   /**

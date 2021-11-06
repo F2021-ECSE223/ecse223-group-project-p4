@@ -168,7 +168,7 @@ public class AssignmentFeatureStepDefinitions {
       Member member = (Member) user;
       Assignment assignment = member.getAssignment();
 
-      if (guideEmail.trim().isEmpty()) {
+      if (guideEmail == null) {
         assertNull(assignment.getGuide());
       } else {
         assertEquals(guideEmail, assignment.getGuide().getEmail());
@@ -334,5 +334,5 @@ public class AssignmentFeatureStepDefinitions {
     Member member = (Member) User.getWithEmail(memberEmail);
     member.getAssignment().setState(AssignmentState.Finished);
   }
-  
+
 }
