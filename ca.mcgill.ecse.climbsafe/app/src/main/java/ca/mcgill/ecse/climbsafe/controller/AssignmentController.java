@@ -67,15 +67,18 @@ public class AssignmentController {
   public static void cancelTrip(String memberEmail) throws InvalidInputException {
     Member member = (Member) Member.getWithEmail(memberEmail);
 
-    if (member.getMemberStateFullName().equals("Banned")) { //Check if the member is banned 
+    if (member.getMemberStateFullName().equals("Banned")) { // Check if the member is banned
 
-      throw new InvalidInputException("Cannot cancel the trip due to a ban");   //Throw exception that the member is banned from the system
+      throw new InvalidInputException("Cannot cancel the trip due to a ban"); // Throw exception
+                                                                              // that the member is
+                                                                              // banned from the
+                                                                              // system
     } else {
 
       try {
-        member.getAssignment().cancel();            //Try to cancel the assignment
+        member.getAssignment().cancel(); // Try to cancel the assignment
       } catch (RuntimeException e) {
-        throw new InvalidInputException(e.getMessage());    //Raise error if it doesn't work
+        throw new InvalidInputException(e.getMessage()); // Raise error if it doesn't work
       }
 
 
