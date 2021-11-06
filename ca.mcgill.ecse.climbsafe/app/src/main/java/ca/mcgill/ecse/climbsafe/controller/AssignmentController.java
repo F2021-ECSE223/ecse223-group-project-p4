@@ -49,8 +49,29 @@ public class AssignmentController {
    */
   public static void payForTrip(String memberEmail, String authorizationCode)
       throws InvalidInputException {
-    // If banned throw exception
+    
+    Member member = (Member) Member.getWithEmail(memberEmail);
+
+    if (member == null)
+      throw new InvalidInputException(
+          "Member with email address " + memberEmail + " does not exist"); 
+
+    if (member.getMemberStateFullName().equals("Banned")) {
+
+      throw new InvalidInputException("Cannot pay for the trip due to a ban");
+    } else {
+
+      try {
+        member.getAssignment().pay(authorizationCode);
+      } catch (RuntimeException e) {
+        throw new InvalidInputException(e.getMessage());
+      }
+
+
+    }
+
   }
+    // If banned throw exception
 
   /**
    * @author Wassim Jabbour
