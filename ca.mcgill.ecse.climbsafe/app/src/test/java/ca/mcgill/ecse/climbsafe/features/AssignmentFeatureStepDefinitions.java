@@ -216,7 +216,7 @@ public class AssignmentFeatureStepDefinitions {
 
       member.setAssignment(assignment);
 
-      if (!guideEmail.trim().isEmpty()) {
+      if (guideEmail != null) {
         assignment.setGuide((Guide) User.getWithEmail(guideEmail));
       }
     }
