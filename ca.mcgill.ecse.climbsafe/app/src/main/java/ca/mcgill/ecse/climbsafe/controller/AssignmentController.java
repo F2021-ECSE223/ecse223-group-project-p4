@@ -31,7 +31,17 @@ public class AssignmentController {
    * @throws InvalidInputException
    */
   public static void startTrips(int weekNr) throws InvalidInputException {
-    // If banned throw exception
+
+    for (Assignment assignment : ClimbSafeApplication.getClimbSafe().getAssignments()) {
+      if (assignment.getStartWeek() == weekNr) {
+        try {
+          assignment.start();
+        } catch (RuntimeException e) {
+          throw new InvalidInputException(e.getMessage());
+        }
+      }
+    }
+
   }
 
   /**
