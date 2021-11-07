@@ -50,7 +50,7 @@ public class AssignmentController {
   public static void payForTrip(String memberEmail, String authorizationCode)
       throws InvalidInputException {
 
-    Member member = (Member) Member.getWithEmail(memberEmail);
+    Member member = (Member) User.getWithEmail(memberEmail);
 
     if (member == null)
       throw new InvalidInputException(
@@ -82,10 +82,15 @@ public class AssignmentController {
 
     for (Assignment assignment : ClimbSafeApplication.getClimbSafe().getAssignments()) {
       if (assignment.getStartWeek() == weekNr) {
-        try {
-          assignment.start();
-        } catch (RuntimeException e) {
-          throw new InvalidInputException(e.getMessage());
+
+        if (assignment.getMember().getMemberStateFullName().equals("Banned")) {
+          throw new InvalidInputException("Cannot start the trip due to a ban");
+        } else {
+          try {
+            assignment.start();
+          } catch (RuntimeException e) {
+            throw new InvalidInputException(e.getMessage());
+          }
         }
       }
     }
@@ -128,17 +133,14 @@ public class AssignmentController {
   public static void cancelTrip(String memberEmail) throws InvalidInputException {
     Member member = (Member) Member.getWithEmail(memberEmail);
 
+    // Checks if the member exists
     if (member == null)
       throw new InvalidInputException(
-          "Member with email address " + memberEmail + " does not exist"); // Checks if the Member
-                                                                           // exists
-
+          "Member with email address " + memberEmail + " does not exist");
     if (member.getMemberStateFullName().equals("Banned")) { // Check if the member is banned
-
-      throw new InvalidInputException("Cannot cancel the trip due to a ban"); // Throw exception
-                                                                              // that the member is
-                                                                              // banned from the
-                                                                              // system
+      
+   // Throw exception that the member is banned from the system
+      throw new InvalidInputException("Cannot cancel the trip due to a ban"); 
     } else {
 
       try {
