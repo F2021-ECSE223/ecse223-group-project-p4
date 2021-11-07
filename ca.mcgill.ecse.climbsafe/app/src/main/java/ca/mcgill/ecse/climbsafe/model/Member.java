@@ -4,8 +4,8 @@
 package ca.mcgill.ecse.climbsafe.model;
 import java.util.*;
 
-// line 61 "../../../../../AssignmentProcess.ump"
-// line 40 "../../../../../ClimbSafe.ump"
+// line 59 "../../../../../AssignmentProcess.ump"
+// line 41 "../../../../../ClimbSafe.ump"
 public class Member extends NamedUser
 {
 
@@ -319,7 +319,7 @@ public class Member extends NamedUser
     super.delete();
   }
 
-  // line 75 "../../../../../AssignmentProcess.ump"
+  // line 73 "../../../../../AssignmentProcess.ump"
    public void setState(MemberState state){
     setMemberState(state);
   }

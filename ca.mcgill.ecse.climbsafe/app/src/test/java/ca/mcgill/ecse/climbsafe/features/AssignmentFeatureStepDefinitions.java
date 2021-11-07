@@ -19,6 +19,11 @@ public class AssignmentFeatureStepDefinitions {
   ClimbSafe climbSafe;
   String error;
 
+  /**
+   * 
+   * @author 
+   * @param dataTable
+   */
   @Given("the following ClimbSafe system exists:")
   public void the_following_climb_safe_system_exists(io.cucumber.datatable.DataTable dataTable) {
     error = "";
@@ -184,7 +189,7 @@ public class AssignmentFeatureStepDefinitions {
   @Then("the assignment for {string} shall be marked as {string}")
   public void the_assignment_for_shall_be_marked_as(String memberEmail, String assignmentState) {
     Member member = (Member) User.getWithEmail(memberEmail);
-    assertEquals(assignmentState, member.getAssignment().getAssignmentState().name());
+    assertEquals(assignmentState, member.getAssignment().getAssignmentStateFullName());
   }
 
   @Then("the number of assignments in the system shall be {string}")
@@ -311,7 +316,7 @@ public class AssignmentFeatureStepDefinitions {
     assertNotNull(user); // Checking it is not null
     assertTrue(user instanceof Member); // Checking that it is a member
 
-    assertEquals(memberState, ((Member) user).getMemberState().name());
+    assertEquals(memberState, ((Member) user).getMemberStateFullName());
   }
 
   @When("the administrator attempts to start the trips for week {string}")

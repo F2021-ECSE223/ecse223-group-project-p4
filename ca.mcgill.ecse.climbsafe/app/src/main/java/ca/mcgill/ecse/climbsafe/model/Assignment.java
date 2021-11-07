@@ -4,7 +4,7 @@
 package ca.mcgill.ecse.climbsafe.model;
 
 // line 1 "../../../../../AssignmentProcess.ump"
-// line 82 "../../../../../ClimbSafe.ump"
+// line 83 "../../../../../ClimbSafe.ump"
 public class Assignment
 {
 
@@ -118,7 +118,7 @@ public class Assignment
     return assignmentState;
   }
 
-  public boolean pay(String authorizationCode)
+  public boolean pay(String authCode)
   {
     boolean wasEventProcessed = false;
     
@@ -126,15 +126,15 @@ public class Assignment
     switch (aAssignmentState)
     {
       case Assigned:
-        if (isValidCode(getAuthorizationCode()))
+        if (isValidCode(authCode))
         {
         // line 9 "../../../../../AssignmentProcess.ump"
-          setAuthorizationCode(authorizationCode.trim());
+          setAuthorizationCode(authCode.trim());
           setAssignmentState(AssignmentState.Paid);
           wasEventProcessed = true;
           break;
         }
-        if (!(isValidCode(getAuthorizationCode())))
+        if (!(isValidCode(authCode)))
         {
         // line 10 "../../../../../AssignmentProcess.ump"
           throwException("Invalid authorization code");
@@ -144,25 +144,25 @@ public class Assignment
         }
         break;
       case Paid:
-        // line 21 "../../../../../AssignmentProcess.ump"
+        // line 19 "../../../../../AssignmentProcess.ump"
         throwException("Trip has already been paid for");
         setAssignmentState(AssignmentState.Paid);
         wasEventProcessed = true;
         break;
       case Started:
-        // line 27 "../../../../../AssignmentProcess.ump"
+        // line 25 "../../../../../AssignmentProcess.ump"
         throwException("Trip has already been paid for");
         setAssignmentState(AssignmentState.Started);
         wasEventProcessed = true;
         break;
       case Finished:
-        // line 32 "../../../../../AssignmentProcess.ump"
+        // line 30 "../../../../../AssignmentProcess.ump"
         throwException("Cannot pay for a trip which has finished");
         setAssignmentState(AssignmentState.Finished);
         wasEventProcessed = true;
         break;
       case Cancelled:
-        // line 38 "../../../../../AssignmentProcess.ump"
+        // line 36 "../../../../../AssignmentProcess.ump"
         throwException("Cannot pay for a trip which has been cancelled");
         setAssignmentState(AssignmentState.Cancelled);
         wasEventProcessed = true;
@@ -186,19 +186,19 @@ public class Assignment
         wasEventProcessed = true;
         break;
       case Paid:
-        // line 19 "../../../../../AssignmentProcess.ump"
+        // line 17 "../../../../../AssignmentProcess.ump"
         setRefundPercentage(50);
         setAssignmentState(AssignmentState.Cancelled);
         wasEventProcessed = true;
         break;
       case Started:
-        // line 26 "../../../../../AssignmentProcess.ump"
+        // line 24 "../../../../../AssignmentProcess.ump"
         setRefundPercentage(10);
         setAssignmentState(AssignmentState.Cancelled);
         wasEventProcessed = true;
         break;
       case Finished:
-        // line 34 "../../../../../AssignmentProcess.ump"
+        // line 32 "../../../../../AssignmentProcess.ump"
         throwException("Cannot cancel a trip which has finished");
         setAssignmentState(AssignmentState.Finished);
         wasEventProcessed = true;
@@ -218,7 +218,7 @@ public class Assignment
     switch (aAssignmentState)
     {
       case Assigned:
-        // line 14 "../../../../../AssignmentProcess.ump"
+        // line 12 "../../../../../AssignmentProcess.ump"
         banMember();
         setAssignmentState(AssignmentState.Assigned);
         wasEventProcessed = true;
@@ -228,13 +228,13 @@ public class Assignment
         wasEventProcessed = true;
         break;
       case Finished:
-        // line 33 "../../../../../AssignmentProcess.ump"
+        // line 31 "../../../../../AssignmentProcess.ump"
         throwException("Cannot start a trip which has finished");
         setAssignmentState(AssignmentState.Finished);
         wasEventProcessed = true;
         break;
       case Cancelled:
-        // line 39 "../../../../../AssignmentProcess.ump"
+        // line 37 "../../../../../AssignmentProcess.ump"
         throwException("Cannot start a trip which has been cancelled");
         setAssignmentState(AssignmentState.Cancelled);
         wasEventProcessed = true;
@@ -254,13 +254,13 @@ public class Assignment
     switch (aAssignmentState)
     {
       case Assigned:
-        // line 15 "../../../../../AssignmentProcess.ump"
+        // line 13 "../../../../../AssignmentProcess.ump"
         throwException("Cannot finish a trip which has not started");
         setAssignmentState(AssignmentState.Assigned);
         wasEventProcessed = true;
         break;
       case Paid:
-        // line 20 "../../../../../AssignmentProcess.ump"
+        // line 18 "../../../../../AssignmentProcess.ump"
         throwException("Cannot finish a trip which has not started");
         setAssignmentState(AssignmentState.Paid);
         wasEventProcessed = true;
@@ -270,7 +270,7 @@ public class Assignment
         wasEventProcessed = true;
         break;
       case Cancelled:
-        // line 40 "../../../../../AssignmentProcess.ump"
+        // line 38 "../../../../../AssignmentProcess.ump"
         throwException("Cannot finish a trip which has been cancelled");
         setAssignmentState(AssignmentState.Cancelled);
         wasEventProcessed = true;
@@ -428,22 +428,22 @@ public class Assignment
     }
   }
 
-  // line 45 "../../../../../AssignmentProcess.ump"
-   private boolean isValidCode(String authorizationCode){
-    return !authorizationCode.trim().isEmpty();
+  // line 43 "../../../../../AssignmentProcess.ump"
+   private boolean isValidCode(String authCode){
+    return !(authCode == null || authCode.trim().isEmpty());
   }
 
-  // line 49 "../../../../../AssignmentProcess.ump"
+  // line 47 "../../../../../AssignmentProcess.ump"
    private void throwException(String error){
     throw new RuntimeException(error);
   }
 
-  // line 53 "../../../../../AssignmentProcess.ump"
+  // line 51 "../../../../../AssignmentProcess.ump"
    private void banMember(){
     getMember().ban();
   }
 
-  // line 57 "../../../../../AssignmentProcess.ump"
+  // line 55 "../../../../../AssignmentProcess.ump"
    public void setState(AssignmentState state){
     setAssignmentState(state);
   }

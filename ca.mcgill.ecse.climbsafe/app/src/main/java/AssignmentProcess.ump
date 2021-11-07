@@ -6,10 +6,8 @@ class Assignment{
   AssignmentState{
 
     Assigned{
-      pay(String authorizationCode)[isValidCode(authorizationCode)] / {setAuthorizationCode(authorizationCode.trim());} -> Paid;
-      pay(String authorizationCode)[!isValidCode(authorizationCode)] / {throwException("Invalid authorization code");} -> Assigned; 
-      //TODO rethrow as invalidinput in controller
-      //TODO make sure the email address exists in controller
+      pay(String authCode)[isValidCode(authCode)] / {setAuthorizationCode(authCode.trim());} -> Paid;
+      pay(String authCode)[!isValidCode(authCode)] / {throwException("Invalid authorization code");} -> Assigned; 
       cancel -> Cancelled;
       start / {banMember();} -> Assigned;
       finish / {throwException("Cannot finish a trip which has not started");} -> Assigned;
@@ -18,31 +16,31 @@ class Assignment{
     Paid{
       cancel / {setRefundPercentage(50);} -> Cancelled;
       finish / {throwException("Cannot finish a trip which has not started");} -> Paid;
-      pay(String authorizationCode) / {throwException("Trip has already been paid for");} -> Paid;
+      pay(String authCode) / {throwException("Trip has already been paid for");} -> Paid;
       start -> Started;
     }
     
     Started{
       cancel / {setRefundPercentage(10);} -> Cancelled;
-      pay(String authorizationCode) / {throwException("Trip has already been paid for");} -> Started;
+      pay(String authCode) / {throwException("Trip has already been paid for");} -> Started;
       finish -> Finished;
     }
     
     Finished{
-      pay(String authorizationCode) / {throwException("Cannot pay for a trip which has finished");} -> Finished;
+      pay(String authCode) / {throwException("Cannot pay for a trip which has finished");} -> Finished;
       start / {throwException("Cannot start a trip which has finished");} -> Finished;
       cancel / {throwException("Cannot cancel a trip which has finished");} -> Finished;
     } 
     
     Cancelled{
-      pay(String authorizationCode) / {throwException("Cannot pay for a trip which has been cancelled");} -> Cancelled;
+      pay(String authCode) / {throwException("Cannot pay for a trip which has been cancelled");} -> Cancelled;
       start / {throwException("Cannot start a trip which has been cancelled");} -> Cancelled;
       finish / {throwException("Cannot finish a trip which has been cancelled");} -> Cancelled;
     }     
   }
   
-  private boolean isValidCode(String authorizationCode){
-    return !authorizationCode.trim().isEmpty();
+  private boolean isValidCode(String authCode){
+    return !(authCode == null || authCode.trim().isEmpty());
   }
   
   private void throwException(String error){
