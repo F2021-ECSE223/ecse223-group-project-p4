@@ -3,6 +3,7 @@ package ca.mcgill.ecse.climbsafe.controller;
 
 import ca.mcgill.ecse.climbsafe.application.*;
 import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 
 public class AssignmentController {
 
@@ -19,10 +20,10 @@ public class AssignmentController {
           if (member.getGuideRequired()) {
             if (member.getNrWeeks() <= ClimbSafeApplication.getClimbSafe().getNrWeeks()
                 - weeksTaken) {
-              Assignment assignmnt = new Assignment(weeksTaken + 1,
+              Assignment assignment = new Assignment(weeksTaken + 1,
                   weeksTaken + member.getNrWeeks(), member, ClimbSafeApplication.getClimbSafe());
-              assignmnt.setGuide(guide);
-              ClimbSafeApplication.getClimbSafe().addAssignment(assignmnt);
+              assignment.setGuide(guide);
+              ClimbSafeApplication.getClimbSafe().addAssignment(assignment);
               weeksTaken += member.getNrWeeks();
             } else {
               if (ClimbSafeApplication.getClimbSafe().getGuides()
@@ -39,6 +40,7 @@ public class AssignmentController {
       }
 
     }
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
   /**
@@ -63,6 +65,7 @@ public class AssignmentController {
 
       try {
         member.getAssignment().pay(authorizationCode);
+        ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
       } catch (RuntimeException e) {
         throw new InvalidInputException(e.getMessage());
       }
@@ -88,6 +91,7 @@ public class AssignmentController {
         } else {
           try {
             assignment.start();
+            ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
           } catch (RuntimeException e) {
             throw new InvalidInputException(e.getMessage());
           }
@@ -119,6 +123,7 @@ public class AssignmentController {
 
       try {
         member.getAssignment().finish();
+        ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
       } catch (RuntimeException e) {
         throw new InvalidInputException(e.getMessage());
       }
@@ -138,13 +143,14 @@ public class AssignmentController {
       throw new InvalidInputException(
           "Member with email address " + memberEmail + " does not exist");
     if (member.getMemberStateFullName().equals("Banned")) { // Check if the member is banned
-      
-   // Throw exception that the member is banned from the system
-      throw new InvalidInputException("Cannot cancel the trip due to a ban"); 
+
+      // Throw exception that the member is banned from the system
+      throw new InvalidInputException("Cannot cancel the trip due to a ban");
     } else {
 
       try {
         member.getAssignment().cancel(); // Try to cancel the assignment
+        ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
       } catch (RuntimeException e) {
         throw new InvalidInputException(e.getMessage()); // Raise error if it doesn't work
       }

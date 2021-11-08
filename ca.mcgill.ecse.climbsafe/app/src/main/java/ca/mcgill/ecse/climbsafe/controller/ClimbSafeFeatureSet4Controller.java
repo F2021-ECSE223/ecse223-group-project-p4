@@ -3,6 +3,7 @@ package ca.mcgill.ecse.climbsafe.controller;
 // Imports
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 
 
 public class ClimbSafeFeatureSet4Controller {
@@ -40,6 +41,8 @@ public class ClimbSafeFeatureSet4Controller {
 
     // add the equipment item to the system if it passes all the previous tests
     system.addEquipment(new Equipment(name, weight, pricePerWeek, system));
+    
+    ClimbSafePersistence.save(system);
 
   }
 
@@ -74,6 +77,8 @@ public class ClimbSafeFeatureSet4Controller {
       toChange.setName(newName);
     ((Equipment) toChange).setWeight(newWeight);
     ((Equipment) toChange).setPricePerWeek(newPricePerWeek);
+    
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
 
   }
 

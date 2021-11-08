@@ -6,6 +6,7 @@ import java.util.List;
 // My imports
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 import java.util.ArrayList;
 
 public class ClimbSafeFeatureSet6Controller {
@@ -34,6 +35,9 @@ public class ClimbSafeFeatureSet6Controller {
       // Deleting the piece of equipment
       toDelete.delete();
     }
+
+    // Saving the system
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
   /**
@@ -51,6 +55,8 @@ public class ClimbSafeFeatureSet6Controller {
     if (toDelete != null && toDelete instanceof EquipmentBundle)
       toDelete.delete();
 
+    // Saving the system
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
   /**

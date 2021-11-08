@@ -1,3 +1,4 @@
+use ClimbSafePersistence.ump;
 use AssignmentProcess.ump;
 
 namespace ca.mcgill.ecse.climbsafe.model;

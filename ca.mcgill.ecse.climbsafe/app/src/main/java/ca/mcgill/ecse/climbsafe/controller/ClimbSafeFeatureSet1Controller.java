@@ -6,6 +6,7 @@ import java.util.List;
 // My imports
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 
 
 public class ClimbSafeFeatureSet1Controller {
@@ -50,7 +51,8 @@ public class ClimbSafeFeatureSet1Controller {
     system.setStartDate(startDate);
     system.setNrWeeks(nrWeeks);
     system.setPriceOfGuidePerWeek(priceOfGuidePerWeek);
-
+    
+    ClimbSafePersistence.save(system);
 
   }
 
@@ -75,6 +77,8 @@ public class ClimbSafeFeatureSet1Controller {
 
     if (toBeDeleted != null && toBeDeleted instanceof Member) // If the user exists and is a member
       toBeDeleted.delete(); // Delete the member
+    
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
 
@@ -96,6 +100,8 @@ public class ClimbSafeFeatureSet1Controller {
 
     if (toBeDeleted != null && toBeDeleted instanceof Guide) // If the user exists and is a Guide
       toBeDeleted.delete(); // Delete the guide
+    
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
 
   }
 

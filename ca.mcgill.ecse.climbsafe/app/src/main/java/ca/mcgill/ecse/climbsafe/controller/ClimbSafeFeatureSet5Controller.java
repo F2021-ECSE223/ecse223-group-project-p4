@@ -4,6 +4,7 @@ import java.util.*;
 
 import ca.mcgill.ecse.climbsafe.application.*;
 import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 
 public class ClimbSafeFeatureSet5Controller {
 
@@ -96,6 +97,8 @@ public class ClimbSafeFeatureSet5Controller {
     }
     system.addBundle(newBundle);
     // Added Bundle with name, discount, bundle items and quantities
+    
+    ClimbSafePersistence.save(system);
 
   }
 
@@ -233,6 +236,8 @@ public class ClimbSafeFeatureSet5Controller {
     // Delete items that are not in the new bundle
 
     // Updated Bundle with name, discount, bundle items and quantities
+    
+    ClimbSafePersistence.save(system);
 
   }
 

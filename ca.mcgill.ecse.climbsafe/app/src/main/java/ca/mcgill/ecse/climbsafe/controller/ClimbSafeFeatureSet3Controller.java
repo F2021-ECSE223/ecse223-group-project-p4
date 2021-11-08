@@ -4,6 +4,7 @@ import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.model.Guide;
 import ca.mcgill.ecse.climbsafe.model.Member;
 import ca.mcgill.ecse.climbsafe.model.User;
+import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 
 public class ClimbSafeFeatureSet3Controller {
 
@@ -77,6 +78,8 @@ public class ClimbSafeFeatureSet3Controller {
     // Finally, if no exception is thrown, add a new guide in the system!
     ClimbSafeApplication.getClimbSafe().addGuide(
         new Guide(email, password, name, emergencyContact, ClimbSafeApplication.getClimbSafe()));
+    
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
 
@@ -127,6 +130,8 @@ public class ClimbSafeFeatureSet3Controller {
 
     // set the new Password linked to the input email
     ((Guide) User.getWithEmail(email)).setEmergencyContact(newEmergencyContact);
+    
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
 
   }
 
