@@ -7,7 +7,7 @@ class ClimbSafe {
   	private static final long serialVersionUID = -2683593616927798071L;
   
   	public void reinitialize(){
-  		BookableItem.reinitializeUniqueName(this.getBookableItems);
+  		BookableItem.reinitializeUniqueName(this.getBookableItems());
   		Hotel.reinitializeUniqueName(this.getHotels());
   		User.reinitializeUniqueEmail(this.getUsers());
   	}

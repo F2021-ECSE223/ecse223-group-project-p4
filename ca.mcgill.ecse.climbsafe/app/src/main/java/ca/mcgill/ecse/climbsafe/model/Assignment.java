@@ -2,10 +2,12 @@
 /*This code was generated using the UMPLE 1.31.1.5860.78bb27cc6 modeling language!*/
 
 package ca.mcgill.ecse.climbsafe.model;
+import java.io.Serializable;
 
+// line 79 "../../../../../ClimbSafe.ump"
+// line 46 "../../../../../ClimbSafePersistence.ump"
 // line 1 "../../../../../AssignmentProcess.ump"
-// line 83 "../../../../../ClimbSafe.ump"
-public class Assignment
+public class Assignment implements Serializable
 {
 
   //------------------------
@@ -13,10 +15,10 @@ public class Assignment
   //------------------------
 
   //Assignment Attributes
-  private String authorizationCode;
-  private int refundPercentage;
   private int startWeek;
   private int endWeek;
+  private String authorizationCode;
+  private int refundPercentage;
 
   //Assignment State Machines
   public enum AssignmentState { Assigned, Paid, Started, Finished, Cancelled }
@@ -34,10 +36,10 @@ public class Assignment
 
   public Assignment(int aStartWeek, int aEndWeek, Member aMember, ClimbSafe aClimbSafe)
   {
-    authorizationCode = null;
-    refundPercentage = 0;
     startWeek = aStartWeek;
     endWeek = aEndWeek;
+    authorizationCode = null;
+    refundPercentage = 0;
     boolean didAddMember = setMember(aMember);
     if (!didAddMember)
     {
@@ -55,22 +57,6 @@ public class Assignment
   // INTERFACE
   //------------------------
 
-  public boolean setAuthorizationCode(String aAuthorizationCode)
-  {
-    boolean wasSet = false;
-    authorizationCode = aAuthorizationCode;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setRefundPercentage(int aRefundPercentage)
-  {
-    boolean wasSet = false;
-    refundPercentage = aRefundPercentage;
-    wasSet = true;
-    return wasSet;
-  }
-
   public boolean setStartWeek(int aStartWeek)
   {
     boolean wasSet = false;
@@ -87,14 +73,20 @@ public class Assignment
     return wasSet;
   }
 
-  public String getAuthorizationCode()
+  public boolean setAuthorizationCode(String aAuthorizationCode)
   {
-    return authorizationCode;
+    boolean wasSet = false;
+    authorizationCode = aAuthorizationCode;
+    wasSet = true;
+    return wasSet;
   }
 
-  public int getRefundPercentage()
+  public boolean setRefundPercentage(int aRefundPercentage)
   {
-    return refundPercentage;
+    boolean wasSet = false;
+    refundPercentage = aRefundPercentage;
+    wasSet = true;
+    return wasSet;
   }
 
   public int getStartWeek()
@@ -105,6 +97,16 @@ public class Assignment
   public int getEndWeek()
   {
     return endWeek;
+  }
+
+  public String getAuthorizationCode()
+  {
+    return authorizationCode;
+  }
+
+  public int getRefundPercentage()
+  {
+    return refundPercentage;
   }
 
   public String getAssignmentStateFullName()
@@ -452,13 +454,21 @@ public class Assignment
   public String toString()
   {
     return super.toString() + "["+
-            "authorizationCode" + ":" + getAuthorizationCode()+ "," +
-            "refundPercentage" + ":" + getRefundPercentage()+ "," +
             "startWeek" + ":" + getStartWeek()+ "," +
-            "endWeek" + ":" + getEndWeek()+ "]" + System.getProperties().getProperty("line.separator") +
+            "endWeek" + ":" + getEndWeek()+ "," +
+            "authorizationCode" + ":" + getAuthorizationCode()+ "," +
+            "refundPercentage" + ":" + getRefundPercentage()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "member = "+(getMember()!=null?Integer.toHexString(System.identityHashCode(getMember())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "guide = "+(getGuide()!=null?Integer.toHexString(System.identityHashCode(getGuide())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "hotel = "+(getHotel()!=null?Integer.toHexString(System.identityHashCode(getHotel())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null");
-  }
+  }  
+  //------------------------
+  // DEVELOPER CODE - PROVIDED AS-IS
+  //------------------------
+  
+  // line 49 "../../../../../ClimbSafePersistence.ump"
+  private static final long serialVersionUID = -7403802770753167836L ;
+
+  
 }
