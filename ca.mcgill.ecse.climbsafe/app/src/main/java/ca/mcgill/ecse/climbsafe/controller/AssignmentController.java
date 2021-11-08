@@ -55,18 +55,13 @@ public class AssignmentController {
 
     Member member = checkIfMemberExist(memberEmail);
 
-    if(checkIfMemberBanned(member, "pay for"));
+    checkIfMemberBanned(member, "pay for");
     
-    else {
-
-      try {
-        member.getAssignment().pay(authorizationCode);
-        ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
-      } catch (RuntimeException e) {
-        throw new InvalidInputException(e.getMessage());
-      }
-
-
+    try {
+      member.getAssignment().pay(authorizationCode);
+      ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
+    } catch (RuntimeException e) {
+      throw new InvalidInputException(e.getMessage());
     }
 
   }
@@ -80,17 +75,18 @@ public class AssignmentController {
   public static void startTrips(int weekNr) throws InvalidInputException {
 
     for (Assignment assignment : ClimbSafeApplication.getClimbSafe().getAssignments()) {
-      if (assignment.getStartWeek() == weekNr) {
+      
+        if (assignment.getStartWeek() == weekNr) {
 
-        if(checkIfMemberBanned(assignment.getMember(), "start"));
-        else {
-          try {
-            assignment.start();
-            ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
-          } catch (RuntimeException e) {
-            throw new InvalidInputException(e.getMessage());
-          }
+        checkIfMemberBanned(assignment.getMember(), "start");
+  
+        try {
+          assignment.start();
+          ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
+        } catch (RuntimeException e) {
+          throw new InvalidInputException(e.getMessage());
         }
+        
       }
     }
 
@@ -106,18 +102,15 @@ public class AssignmentController {
 
     Member member = checkIfMemberExist(memberEmail);
 
-    if(checkIfMemberBanned(member, "finish"));
+    checkIfMemberBanned(member, "finish");
     
-    
-    else {
-
-      try {
-        member.getAssignment().finish();
-        ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
-      } catch (RuntimeException e) {
-        throw new InvalidInputException(e.getMessage());
-      }
+    try {
+      member.getAssignment().finish();
+      ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
+    } catch (RuntimeException e) {
+      throw new InvalidInputException(e.getMessage());
     }
+    
   }
 
   /**
@@ -129,17 +122,14 @@ public class AssignmentController {
 
     Member member = checkIfMemberExist(memberEmail);
 
-    if(checkIfMemberBanned(member, "cancel"));
+    checkIfMemberBanned(member, "cancel");
     
-    else {
 
-      try {
-        member.getAssignment().cancel(); // Try to cancel the assignment
-        ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
-      } catch (RuntimeException e) {
-        throw new InvalidInputException(e.getMessage()); // Raise error if it doesn't work
-      }
-
+    try {
+      member.getAssignment().cancel(); // Try to cancel the assignment
+      ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
+    } catch (RuntimeException e) {
+      throw new InvalidInputException(e.getMessage()); // Raise error if it doesn't work
     }
 
   }
@@ -149,8 +139,8 @@ public class AssignmentController {
    * thrown an exception
    * @author Karl Rouhana - Matthieu Hakim - Tinetendo Makata
    * @param memberEmail - The member's email
-   * @return Member
-   * @throws InvalidInputException
+   * @return Member Returns the member with the passed email address
+   * @throws InvalidInputException Thrown if no member with the given email exist
    */
   
   private static Member checkIfMemberExist(String memberEmail) throws InvalidInputException{
@@ -170,21 +160,18 @@ public class AssignmentController {
    * This private helper method checks if the input member is banned from the system, if the
    * member is banned, thrown an exception
    * @author Karl Rouhana - Matthieu Hakim - Tinetendo Makata
-   * @param member - the input member
-   * @return Boolean - false if the member is not banned
-   * @throws InvalidInputException
+   * @param member The member we're hecking is not banned 
+   * @throws InvalidInputException Thrown if the member is banned
    */
   
-  private static Boolean checkIfMemberBanned(Member member, String state) throws InvalidInputException{
- // Check if the member is banned
-    if (member.getMemberStateFullName().equals("Banned")) { 
+  private static void checkIfMemberBanned(Member member, String actionPerformed) throws InvalidInputException{
+
+    // Check if the member is banned
+    if (member.getMemberStateFullName().equals("Banned")) 
 
       // Throw exception that the member is banned from the system
-      throw new InvalidInputException("Cannot "+ state+ " the trip due to a ban");
+      throw new InvalidInputException("Cannot "+ actionPerformed + " the trip due to a ban");
     
-    }
-    return false;
-  
   }
   
   
