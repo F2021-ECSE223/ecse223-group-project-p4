@@ -15,17 +15,17 @@ public class TestingPersistence {
     ClimbSafe climbSafe = ClimbSafeApplication.getClimbSafe();
     
     try {
-      ClimbSafeFeatureSet3Controller.registerGuide("wassim.jabbour@mail.mcgill.ca", "pass", "wassim", "342423423");
+      ClimbSafeFeatureSet3Controller.registerGuide("wassim.jabbour@mail", "pass", "wassim", "342423423");
     } catch (InvalidInputException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
     }
     
-    climbSafe.delete();
+    ClimbSafeApplication.getClimbSafe().delete();
     
     climbSafe = ClimbSafeApplication.getClimbSafe();
     
-    System.out.println(User.hasWithEmail("wassim.jabbour@mail.mcgill.ca"));
+    for(Guide guide : climbSafe.getGuides()) {
+      System.out.println(guide.getEmail());
+    }
     
   }
 }

@@ -1016,9 +1016,9 @@ public class ClimbSafe implements Serializable
 
   // line 10 "../../../../../ClimbSafePersistence.ump"
    public void reinitialize(){
-    BookableItem.reinitializeUniqueName(this.getBookableItems());
+    BookableItem.reinitializeUniqueName(this.getEquipment(), this.getBundles());
   		Hotel.reinitializeUniqueName(this.getHotels());
-  		User.reinitializeUniqueEmail(this.getUsers());
+  		User.reinitializeUniqueEmail(this.getMembers(), this.getGuides(), this.getAdministrator());
   }
 
 

@@ -93,12 +93,19 @@ public abstract class User implements Serializable
     usersByEmail.remove(getEmail());
   }
 
-  // line 83 "../../../../../ClimbSafePersistence.ump"
-   public static  void reinitializeUniqueEmail(List<User> users){
+  // line 84 "../../../../../ClimbSafePersistence.ump"
+   public static  void reinitializeUniqueEmail(List<Member> members, List<Guide> guides, Administrator admin){
     usersByEmail = new HashMap<String, User>();
-	  for (User user : users) {
-	    usersByEmail.put(user.getEmail(), user);
+	  
+	  for (Member member : members) {
+	    usersByEmail.put(member.getEmail(), member);
 	  }
+	  
+	  for (Guide guide : guides) {
+	    usersByEmail.put(guide.getEmail(), guide);
+	  }
+	  
+	  if(admin != null) usersByEmail.put(admin.getEmail(), admin);
   }
 
 

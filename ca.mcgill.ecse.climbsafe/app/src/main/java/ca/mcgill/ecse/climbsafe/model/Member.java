@@ -7,7 +7,7 @@ import java.util.*;
 
 // line 37 "../../../../../ClimbSafe.ump"
 // line 40 "../../../../../ClimbSafePersistence.ump"
-// line 59 "../../../../../AssignmentProcess.ump"
+// line 86 "../../../../../AssignmentProcess.ump"
 public class Member extends NamedUser implements Serializable
 {
 
@@ -321,7 +321,7 @@ public class Member extends NamedUser implements Serializable
     super.delete();
   }
 
-  // line 73 "../../../../../AssignmentProcess.ump"
+  // line 100 "../../../../../AssignmentProcess.ump"
    public void setState(MemberState state){
     setMemberState(state);
   }

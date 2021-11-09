@@ -1,6 +1,7 @@
 package ca.mcgill.ecse.climbsafe.features;
 
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
+import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 import io.cucumber.java.After;
 
 public class CommonStepDefinitions {
@@ -11,6 +12,7 @@ public class CommonStepDefinitions {
   @After
   public void tearDown() {
     ClimbSafeApplication.getClimbSafe().delete();
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
 }

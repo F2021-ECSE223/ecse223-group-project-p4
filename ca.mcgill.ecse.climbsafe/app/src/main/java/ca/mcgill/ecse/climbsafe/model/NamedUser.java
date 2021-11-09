@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.*;
 
 // line 26 "../../../../../ClimbSafe.ump"
-// line 103 "../../../../../ClimbSafePersistence.ump"
+// line 119 "../../../../../ClimbSafePersistence.ump"
 public abstract class NamedUser extends User implements Serializable
 {
 
@@ -75,7 +75,7 @@ public abstract class NamedUser extends User implements Serializable
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 106 "../../../../../ClimbSafePersistence.ump"
+  // line 122 "../../../../../ClimbSafePersistence.ump"
   private static final long serialVersionUID = -7074162876546785436L ;
 
   

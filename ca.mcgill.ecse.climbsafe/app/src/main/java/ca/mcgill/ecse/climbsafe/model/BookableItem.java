@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.*;
 
 // line 50 "../../../../../ClimbSafe.ump"
-// line 90 "../../../../../ClimbSafePersistence.ump"
+// line 99 "../../../../../ClimbSafePersistence.ump"
 public abstract class BookableItem implements Serializable
 {
 
@@ -189,11 +189,16 @@ public abstract class BookableItem implements Serializable
     }
   }
 
-  // line 96 "../../../../../ClimbSafePersistence.ump"
-   public static  void reinitializeUniqueName(List<BookableItem> bookableItems){
+  // line 106 "../../../../../ClimbSafePersistence.ump"
+   public static  void reinitializeUniqueName(List<Equipment> equipmentItems, List<EquipmentBundle> bundles){
     bookableitemsByName = new HashMap<String, BookableItem>();
-	  for (BookableItem bookableItem : bookableItems) {
-	    bookableitemsByName.put(bookableItem.getName(), bookableItem);
+	  
+	  for (Equipment equipmentItem : equipmentItems) {
+	    bookableitemsByName.put(equipmentItem.getName(), equipmentItem);
+	  }
+	  
+	  for (EquipmentBundle bundle : bundles) {
+	    bookableitemsByName.put(bundle.getName(), bundle);
 	  }
   }
 
@@ -207,7 +212,7 @@ public abstract class BookableItem implements Serializable
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 93 "../../../../../ClimbSafePersistence.ump"
+  // line 102 "../../../../../ClimbSafePersistence.ump"
   private static final long serialVersionUID = -7498765376546785436L ;
 
   

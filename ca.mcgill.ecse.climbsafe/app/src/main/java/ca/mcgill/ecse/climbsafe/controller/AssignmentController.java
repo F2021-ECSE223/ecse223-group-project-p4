@@ -53,10 +53,8 @@ public class AssignmentController {
       throws InvalidInputException {
 
 
-    Member member = checkIfMemberExist(memberEmail);
+    Member member = checkIfMemberExists(memberEmail);
 
-    checkIfMemberBanned(member, "pay for");
-    
     try {
       member.getAssignment().pay(authorizationCode);
       ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
@@ -75,23 +73,21 @@ public class AssignmentController {
   public static void startTrips(int weekNr) throws InvalidInputException {
 
     for (Assignment assignment : ClimbSafeApplication.getClimbSafe().getAssignments()) {
-      
-        if (assignment.getStartWeek() == weekNr) {
 
-        checkIfMemberBanned(assignment.getMember(), "start");
-  
+      if (assignment.getStartWeek() == weekNr) {
+
         try {
           assignment.start();
           ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
         } catch (RuntimeException e) {
           throw new InvalidInputException(e.getMessage());
         }
-        
+
       }
     }
 
   }
-   
+
 
   /**
    * @author Matthieu Hakim
@@ -100,17 +96,15 @@ public class AssignmentController {
    */
   public static void finishTrip(String memberEmail) throws InvalidInputException {
 
-    Member member = checkIfMemberExist(memberEmail);
+    Member member = checkIfMemberExists(memberEmail);
 
-    checkIfMemberBanned(member, "finish");
-    
     try {
       member.getAssignment().finish();
       ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
     } catch (RuntimeException e) {
       throw new InvalidInputException(e.getMessage());
     }
-    
+
   }
 
   /**
@@ -120,10 +114,7 @@ public class AssignmentController {
    */
   public static void cancelTrip(String memberEmail) throws InvalidInputException {
 
-    Member member = checkIfMemberExist(memberEmail);
-
-    checkIfMemberBanned(member, "cancel");
-    
+    Member member = checkIfMemberExists(memberEmail);
 
     try {
       member.getAssignment().cancel(); // Try to cancel the assignment
@@ -133,47 +124,27 @@ public class AssignmentController {
     }
 
   }
-  
+
   /**
-   * This private helper method checks if the member with the input email exists, if not
-   * thrown an exception
+   * This private helper method checks if the member with the input email exists, if not thrown an
+   * exception
+   * 
    * @author Karl Rouhana - Matthieu Hakim - Tinetendo Makata
    * @param memberEmail - The member's email
    * @return Member Returns the member with the passed email address
    * @throws InvalidInputException Thrown if no member with the given email exist
    */
-  
-  private static Member checkIfMemberExist(String memberEmail) throws InvalidInputException{
-   
+
+  private static Member checkIfMemberExists(String memberEmail) throws InvalidInputException {
+
     Member member = (Member) Member.getWithEmail(memberEmail);
-    
+
     if (member == null)
       throw new InvalidInputException(
           "Member with email address " + memberEmail + " does not exist");
-    
+
     return member;
-    
-    
-  }
-  
-  /**
-   * This private helper method checks if the input member is banned from the system, if the
-   * member is banned, thrown an exception
-   * @author Karl Rouhana - Matthieu Hakim - Tinetendo Makata
-   * @param member The member we're hecking is not banned 
-   * @throws InvalidInputException Thrown if the member is banned
-   */
-  
-  private static void checkIfMemberBanned(Member member, String actionPerformed) throws InvalidInputException{
 
-    // Check if the member is banned
-    if (member.getMemberStateFullName().equals("Banned")) 
 
-      // Throw exception that the member is banned from the system
-      throw new InvalidInputException("Cannot "+ actionPerformed + " the trip due to a ban");
-    
   }
-  
-  
-  
 }
