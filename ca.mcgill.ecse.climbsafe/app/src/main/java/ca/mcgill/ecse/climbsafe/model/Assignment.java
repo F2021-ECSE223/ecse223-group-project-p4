@@ -130,7 +130,7 @@ public class Assignment implements Serializable
       case Assigned:
         if (isValidCode(authCode)&&memberNotBanned())
         {
-        // line 10 "../../../../../AssignmentProcess.ump"
+        // line 9 "../../../../../AssignmentProcess.ump"
           setAuthorizationCode(authCode.trim());
           setAssignmentState(AssignmentState.Paid);
           wasEventProcessed = true;
@@ -138,7 +138,7 @@ public class Assignment implements Serializable
         }
         if (!(isValidCode(authCode)))
         {
-        // line 11 "../../../../../AssignmentProcess.ump"
+        // line 10 "../../../../../AssignmentProcess.ump"
           throwException("Invalid authorization code");
           setAssignmentState(AssignmentState.Assigned);
           wasEventProcessed = true;
@@ -146,7 +146,7 @@ public class Assignment implements Serializable
         }
         if (!(memberNotBanned()))
         {
-        // line 12 "../../../../../AssignmentProcess.ump"
+        // line 11 "../../../../../AssignmentProcess.ump"
           throwException("Cannot pay for the trip due to a ban");
           setAssignmentState(AssignmentState.Assigned);
           wasEventProcessed = true;
@@ -154,28 +154,76 @@ public class Assignment implements Serializable
         }
         break;
       case Paid:
-        // line 32 "../../../../../AssignmentProcess.ump"
-        throwException("Trip has already been paid for");
-        setAssignmentState(AssignmentState.Paid);
-        wasEventProcessed = true;
+        if (memberNotBanned())
+        {
+        // line 30 "../../../../../AssignmentProcess.ump"
+          throwException("Trip has already been paid for");
+          setAssignmentState(AssignmentState.Paid);
+          wasEventProcessed = true;
+          break;
+        }
+        if (!(memberNotBanned()))
+        {
+        // line 31 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot pay for the trip due to a ban");
+          setAssignmentState(AssignmentState.Paid);
+          wasEventProcessed = true;
+          break;
+        }
         break;
       case Started:
+        if (memberNotBanned())
+        {
+        // line 41 "../../../../../AssignmentProcess.ump"
+          throwException("Trip has already been paid for");
+          setAssignmentState(AssignmentState.Started);
+          wasEventProcessed = true;
+          break;
+        }
+        if (!(memberNotBanned()))
+        {
         // line 42 "../../../../../AssignmentProcess.ump"
-        throwException("Trip has already been paid for");
-        setAssignmentState(AssignmentState.Started);
-        wasEventProcessed = true;
+          throwException("Cannot pay for the trip due to a ban");
+          setAssignmentState(AssignmentState.Started);
+          wasEventProcessed = true;
+          break;
+        }
         break;
       case Finished:
+        if (memberNotBanned())
+        {
         // line 49 "../../../../../AssignmentProcess.ump"
-        throwException("Cannot pay for a trip which has finished");
-        setAssignmentState(AssignmentState.Finished);
-        wasEventProcessed = true;
+          throwException("Cannot pay for a trip which has finished");
+          setAssignmentState(AssignmentState.Finished);
+          wasEventProcessed = true;
+          break;
+        }
+        if (!(memberNotBanned()))
+        {
+        // line 50 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot pay for the trip due to a ban");
+          setAssignmentState(AssignmentState.Finished);
+          wasEventProcessed = true;
+          break;
+        }
         break;
       case Cancelled:
-        // line 57 "../../../../../AssignmentProcess.ump"
-        throwException("Cannot pay for a trip which has been cancelled");
-        setAssignmentState(AssignmentState.Cancelled);
-        wasEventProcessed = true;
+        if (memberNotBanned())
+        {
+        // line 60 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot pay for a trip which has been cancelled");
+          setAssignmentState(AssignmentState.Finished);
+          wasEventProcessed = true;
+          break;
+        }
+        if (!(memberNotBanned()))
+        {
+        // line 61 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot pay for the trip due to a ban");
+          setAssignmentState(AssignmentState.Finished);
+          wasEventProcessed = true;
+          break;
+        }
         break;
       default:
         // Other states do respond to this event
@@ -200,7 +248,7 @@ public class Assignment implements Serializable
         }
         if (!(memberNotBanned()))
         {
-        // line 15 "../../../../../AssignmentProcess.ump"
+        // line 14 "../../../../../AssignmentProcess.ump"
           throwException("Cannot cancel the trip due to a ban");
           setAssignmentState(AssignmentState.Assigned);
           wasEventProcessed = true;
@@ -210,7 +258,7 @@ public class Assignment implements Serializable
       case Paid:
         if (memberNotBanned())
         {
-        // line 26 "../../../../../AssignmentProcess.ump"
+        // line 24 "../../../../../AssignmentProcess.ump"
           setRefundPercentage(50);
           setAssignmentState(AssignmentState.Cancelled);
           wasEventProcessed = true;
@@ -218,7 +266,7 @@ public class Assignment implements Serializable
         }
         if (!(memberNotBanned()))
         {
-        // line 27 "../../../../../AssignmentProcess.ump"
+        // line 25 "../../../../../AssignmentProcess.ump"
           throwException("Cannot cancel the trip due to a ban");
           setAssignmentState(AssignmentState.Paid);
           wasEventProcessed = true;
@@ -228,7 +276,7 @@ public class Assignment implements Serializable
       case Started:
         if (memberNotBanned())
         {
-        // line 39 "../../../../../AssignmentProcess.ump"
+        // line 38 "../../../../../AssignmentProcess.ump"
           setRefundPercentage(10);
           setAssignmentState(AssignmentState.Cancelled);
           wasEventProcessed = true;
@@ -236,7 +284,7 @@ public class Assignment implements Serializable
         }
         if (!(memberNotBanned()))
         {
-        // line 40 "../../../../../AssignmentProcess.ump"
+        // line 39 "../../../../../AssignmentProcess.ump"
           throwException("Cannot cancel the trip due to a ban");
           setAssignmentState(AssignmentState.Started);
           wasEventProcessed = true;
@@ -244,10 +292,22 @@ public class Assignment implements Serializable
         }
         break;
       case Finished:
-        // line 53 "../../../../../AssignmentProcess.ump"
-        throwException("Cannot cancel a trip which has finished");
-        setAssignmentState(AssignmentState.Finished);
-        wasEventProcessed = true;
+        if (memberNotBanned())
+        {
+        // line 55 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot cancel a trip which has finished");
+          setAssignmentState(AssignmentState.Finished);
+          wasEventProcessed = true;
+          break;
+        }
+        if (!(memberNotBanned()))
+        {
+        // line 56 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot cancel the trip due to a ban");
+          setAssignmentState(AssignmentState.Finished);
+          wasEventProcessed = true;
+          break;
+        }
         break;
       default:
         // Other states do respond to this event
@@ -266,7 +326,7 @@ public class Assignment implements Serializable
       case Assigned:
         if (memberNotBanned())
         {
-        // line 17 "../../../../../AssignmentProcess.ump"
+        // line 16 "../../../../../AssignmentProcess.ump"
           banMember();
           setAssignmentState(AssignmentState.Assigned);
           wasEventProcessed = true;
@@ -274,7 +334,7 @@ public class Assignment implements Serializable
         }
         if (!(memberNotBanned()))
         {
-        // line 18 "../../../../../AssignmentProcess.ump"
+        // line 17 "../../../../../AssignmentProcess.ump"
           throwException("Cannot start the trip due to a ban");
           setAssignmentState(AssignmentState.Assigned);
           wasEventProcessed = true;
@@ -290,7 +350,7 @@ public class Assignment implements Serializable
         }
         if (!(memberNotBanned()))
         {
-        // line 35 "../../../../../AssignmentProcess.ump"
+        // line 34 "../../../../../AssignmentProcess.ump"
           throwException("Cannot start the trip due to a ban");
           setAssignmentState(AssignmentState.Paid);
           wasEventProcessed = true;
@@ -298,16 +358,40 @@ public class Assignment implements Serializable
         }
         break;
       case Finished:
-        // line 51 "../../../../../AssignmentProcess.ump"
-        throwException("Cannot start a trip which has finished");
-        setAssignmentState(AssignmentState.Finished);
-        wasEventProcessed = true;
+        if (memberNotBanned())
+        {
+        // line 52 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot start a trip which has finished");
+          setAssignmentState(AssignmentState.Finished);
+          wasEventProcessed = true;
+          break;
+        }
+        if (!(memberNotBanned()))
+        {
+        // line 53 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot start the trip due to a ban");
+          setAssignmentState(AssignmentState.Finished);
+          wasEventProcessed = true;
+          break;
+        }
         break;
       case Cancelled:
-        // line 59 "../../../../../AssignmentProcess.ump"
-        throwException("Cannot start a trip which has been cancelled");
-        setAssignmentState(AssignmentState.Cancelled);
-        wasEventProcessed = true;
+        if (memberNotBanned())
+        {
+        // line 63 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot start a trip which has been cancelled");
+          setAssignmentState(AssignmentState.Cancelled);
+          wasEventProcessed = true;
+          break;
+        }
+        if (!(memberNotBanned()))
+        {
+        // line 64 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot start the trip due to a ban");
+          setAssignmentState(AssignmentState.Cancelled);
+          wasEventProcessed = true;
+          break;
+        }
         break;
       default:
         // Other states do respond to this event
@@ -326,7 +410,7 @@ public class Assignment implements Serializable
       case Assigned:
         if (memberNotBanned())
         {
-        // line 20 "../../../../../AssignmentProcess.ump"
+        // line 19 "../../../../../AssignmentProcess.ump"
           throwException("Cannot finish a trip which has not started");
           setAssignmentState(AssignmentState.Assigned);
           wasEventProcessed = true;
@@ -334,7 +418,7 @@ public class Assignment implements Serializable
         }
         if (!(memberNotBanned()))
         {
-        // line 21 "../../../../../AssignmentProcess.ump"
+        // line 20 "../../../../../AssignmentProcess.ump"
           throwException("Cannot finish the trip due to a ban");
           setAssignmentState(AssignmentState.Assigned);
           wasEventProcessed = true;
@@ -344,7 +428,7 @@ public class Assignment implements Serializable
       case Paid:
         if (memberNotBanned())
         {
-        // line 29 "../../../../../AssignmentProcess.ump"
+        // line 27 "../../../../../AssignmentProcess.ump"
           throwException("Cannot finish a trip which has not started");
           setAssignmentState(AssignmentState.Paid);
           wasEventProcessed = true;
@@ -352,7 +436,7 @@ public class Assignment implements Serializable
         }
         if (!(memberNotBanned()))
         {
-        // line 30 "../../../../../AssignmentProcess.ump"
+        // line 28 "../../../../../AssignmentProcess.ump"
           throwException("Cannot finish the trip due to a ban");
           setAssignmentState(AssignmentState.Paid);
           wasEventProcessed = true;
@@ -376,10 +460,22 @@ public class Assignment implements Serializable
         }
         break;
       case Cancelled:
-        // line 61 "../../../../../AssignmentProcess.ump"
-        throwException("Cannot finish a trip which has been cancelled");
-        setAssignmentState(AssignmentState.Cancelled);
-        wasEventProcessed = true;
+        if (memberNotBanned())
+        {
+        // line 66 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot finish a trip which has been cancelled");
+          setAssignmentState(AssignmentState.Cancelled);
+          wasEventProcessed = true;
+          break;
+        }
+        if (!(memberNotBanned()))
+        {
+        // line 67 "../../../../../AssignmentProcess.ump"
+          throwException("Cannot finish the trip due to a ban");
+          setAssignmentState(AssignmentState.Paid);
+          wasEventProcessed = true;
+          break;
+        }
         break;
       default:
         // Other states do respond to this event
@@ -534,27 +630,27 @@ public class Assignment implements Serializable
     }
   }
 
-  // line 66 "../../../../../AssignmentProcess.ump"
+  // line 72 "../../../../../AssignmentProcess.ump"
    private boolean isValidCode(String authCode){
     return !(authCode == null || authCode.trim().isEmpty());
   }
 
-  // line 70 "../../../../../AssignmentProcess.ump"
+  // line 76 "../../../../../AssignmentProcess.ump"
    private void throwException(String error){
     throw new RuntimeException(error);
   }
 
-  // line 74 "../../../../../AssignmentProcess.ump"
+  // line 80 "../../../../../AssignmentProcess.ump"
    private void banMember(){
     getMember().ban();
   }
 
-  // line 78 "../../../../../AssignmentProcess.ump"
+  // line 84 "../../../../../AssignmentProcess.ump"
    private boolean memberNotBanned(){
     return !getMember().getMemberStateFullName().equals("Banned");
   }
 
-  // line 82 "../../../../../AssignmentProcess.ump"
+  // line 88 "../../../../../AssignmentProcess.ump"
    public void setState(AssignmentState state){
     setAssignmentState(state);
   }

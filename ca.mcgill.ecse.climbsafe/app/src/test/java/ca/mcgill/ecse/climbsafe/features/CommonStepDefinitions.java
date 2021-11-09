@@ -12,7 +12,7 @@ public class CommonStepDefinitions {
   @After
   public void tearDown() {
     ClimbSafeApplication.getClimbSafe().delete();
-    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe()); // In order to reset the persistence layer after every test
   }
 
 }
