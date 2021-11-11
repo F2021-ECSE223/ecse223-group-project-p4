@@ -166,7 +166,7 @@ public class Assignment implements Serializable
       case Cancelled:
         // line 50 "../../../../../AssignmentProcess.ump"
         throwException("Cannot pay for a trip which has been cancelled");
-        setAssignmentState(AssignmentState.Finished);
+        setAssignmentState(AssignmentState.Cancelled);
         wasEventProcessed = true;
         break;
       case Banned:
