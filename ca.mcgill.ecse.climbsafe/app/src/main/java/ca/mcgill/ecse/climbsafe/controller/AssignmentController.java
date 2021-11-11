@@ -63,7 +63,6 @@ public class AssignmentController {
     }
 
   }
-  // If banned throw exception
 
   /**
    * @author Wassim Jabbour
@@ -99,10 +98,10 @@ public class AssignmentController {
     Member member = checkIfMemberExists(memberEmail);
 
     try {
-      member.getAssignment().finish();
-      ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
+      member.getAssignment().finish(); // Try to finish assignment
+      ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe()); // Save in persistence
     } catch (RuntimeException e) {
-      throw new InvalidInputException(e.getMessage());
+      throw new InvalidInputException(e.getMessage()); // Raise error if cannot finsih assignment
     }
 
   }
