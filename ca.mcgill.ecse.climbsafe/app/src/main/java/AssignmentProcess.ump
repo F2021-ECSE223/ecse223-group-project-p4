@@ -9,35 +9,39 @@ class Assignment{
       pay(String authCode)[isValidCode(authCode)] / {setAuthorizationCode(authCode.trim());} -> Paid;
       pay(String authCode)[!isValidCode(authCode)] / {throwException("Invalid authorization code");} -> Assigned; 
       
-      cancel -> Cancelled;
-      
       start -> Banned;
       
       finish / {throwException("Cannot finish a trip which has not started");} -> Assigned;
+      
+      cancel -> Cancelled;
     }
 
     Paid{
-      cancel / {setRefundPercentage(50);} -> Cancelled;
-      
-      finish / {throwException("Cannot finish a trip which has not started");} -> Paid;
-      
       pay(String authCode) / {throwException("Trip has already been paid for");} -> Paid;
       
       start -> Started;
+      
+      finish / {throwException("Cannot finish a trip which has not started");} -> Paid;
+      
+      cancel / {setRefundPercentage(50);} -> Cancelled;
     }
     
     Started{
-      cancel / {setRefundPercentage(10);} -> Cancelled;
-      
       pay(String authCode) / {throwException("Trip has already been paid for");} -> Started;
       
+      start / {throwException("Cannot start a trip which has started");} -> Started;
+      
       finish -> Finished;
+      
+      cancel / {setRefundPercentage(10);} -> Cancelled;
     }
     
     Finished{
       pay(String authCode) / {throwException("Cannot pay for a trip which has finished");} -> Finished;
       
       start / {throwException("Cannot start a trip which has finished");} -> Finished;
+      
+      finish / {throwException("Cannot finish a trip which has finished");} -> Finished;
       
       cancel / {throwException("Cannot cancel a trip which has finished");} -> Finished;
     } 
@@ -48,14 +52,16 @@ class Assignment{
       start / {throwException("Cannot start a trip which has been cancelled");} -> Cancelled;
       
       finish / {throwException("Cannot finish a trip which has been cancelled");} -> Cancelled;
+      
+      cancel / {throwException("Cannot cancel a trip which has been cancelled");} -> Cancelled;
     }
     
     Banned{
       pay(String authCode) / {throwException("Cannot pay for the trip due to a ban");} -> Banned;
       
-      cancel / {throwException("Cannot cancel the trip due to a ban");} -> Banned;
-      
       start / {throwException("Cannot start the trip due to a ban");} -> Banned;
+      
+      cancel / {throwException("Cannot cancel the trip due to a ban");} -> Banned;
       
       finish/ {throwException("Cannot finish the trip due to a ban");} -> Banned;
     }
