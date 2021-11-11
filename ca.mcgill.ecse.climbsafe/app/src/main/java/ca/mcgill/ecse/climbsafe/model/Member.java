@@ -7,7 +7,6 @@ import java.util.*;
 
 // line 37 "../../../../../ClimbSafe.ump"
 // line 40 "../../../../../ClimbSafePersistence.ump"
-// line 92 "../../../../../AssignmentProcess.ump"
 public class Member extends NamedUser implements Serializable
 {
 
@@ -19,10 +18,6 @@ public class Member extends NamedUser implements Serializable
   private int nrWeeks;
   private boolean guideRequired;
   private boolean hotelRequired;
-
-  //Member State Machines
-  public enum MemberState { Authorized, Banned }
-  private MemberState memberState;
 
   //Member Associations
   private ClimbSafe climbSafe;
@@ -45,7 +40,6 @@ public class Member extends NamedUser implements Serializable
       throw new RuntimeException("Unable to create member due to climbSafe. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
     bookedItems = new ArrayList<BookedItem>();
-    setMemberState(MemberState.Authorized);
   }
 
   //------------------------
@@ -99,40 +93,6 @@ public class Member extends NamedUser implements Serializable
   public boolean isHotelRequired()
   {
     return hotelRequired;
-  }
-
-  public String getMemberStateFullName()
-  {
-    String answer = memberState.toString();
-    return answer;
-  }
-
-  public MemberState getMemberState()
-  {
-    return memberState;
-  }
-
-  public boolean ban()
-  {
-    boolean wasEventProcessed = false;
-    
-    MemberState aMemberState = memberState;
-    switch (aMemberState)
-    {
-      case Authorized:
-        setMemberState(MemberState.Banned);
-        wasEventProcessed = true;
-        break;
-      default:
-        // Other states do respond to this event
-    }
-
-    return wasEventProcessed;
-  }
-
-  private void setMemberState(MemberState aMemberState)
-  {
-    memberState = aMemberState;
   }
   /* Code from template association_GetOne */
   public ClimbSafe getClimbSafe()
@@ -319,11 +279,6 @@ public class Member extends NamedUser implements Serializable
       aBookedItem.delete();
     }
     super.delete();
-  }
-
-  // line 106 "../../../../../AssignmentProcess.ump"
-   public void setState(MemberState state){
-    setMemberState(state);
   }
 
 

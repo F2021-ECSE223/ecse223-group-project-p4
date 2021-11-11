@@ -212,7 +212,7 @@ public class ClimbSafeFeatureSet2Controller {
     }
     if (atNum != 1)
       return false;
-    if (dotNumAfterAt != 1)
+    if (dotNumAfterAt < 1)
       return false;
     return true;
   }

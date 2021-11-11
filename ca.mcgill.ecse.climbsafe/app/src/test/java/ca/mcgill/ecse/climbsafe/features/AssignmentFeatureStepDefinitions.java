@@ -1,15 +1,26 @@
 package ca.mcgill.ecse.climbsafe.features;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.AssignmentController;
 import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
-import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.model.Assignment;
 import ca.mcgill.ecse.climbsafe.model.Assignment.AssignmentState;
-import ca.mcgill.ecse.climbsafe.model.Member.MemberState;
+import ca.mcgill.ecse.climbsafe.model.BookableItem;
+import ca.mcgill.ecse.climbsafe.model.BookedItem;
+import ca.mcgill.ecse.climbsafe.model.BundleItem;
+import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
+import ca.mcgill.ecse.climbsafe.model.Equipment;
+import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
+import ca.mcgill.ecse.climbsafe.model.Guide;
+import ca.mcgill.ecse.climbsafe.model.Member;
+import ca.mcgill.ecse.climbsafe.model.User;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -306,17 +317,17 @@ public class AssignmentFeatureStepDefinitions {
   @Given("the member with {string} is banned")
   public void the_member_with_is_banned(String memberEmail) {
     Member member = (Member) User.getWithEmail(memberEmail);
-    member.setState(MemberState.Banned);
+    member.getAssignment().setState(AssignmentState.Banned);
   }
 
   @Then("the member with email {string} shall be {string}")
-  public void the_member_with_email_shall_be(String memberEmail, String memberState) {
+  public void the_member_with_email_shall_be(String memberEmail, String assignmentState) {
 
     User user = User.getWithEmail(memberEmail); // Return the User with the associated email
     assertNotNull(user); // Checking it is not null
     assertTrue(user instanceof Member); // Checking that it is a member
 
-    assertEquals(memberState, ((Member) user).getMemberStateFullName());
+    assertEquals(assignmentState, ((Member) user).getAssignment().getAssignmentStateFullName());
   }
 
   @When("the administrator attempts to start the trips for week {string}")
