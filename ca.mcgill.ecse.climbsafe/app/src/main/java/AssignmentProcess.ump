@@ -47,7 +47,7 @@ class Assignment{
     } 
     
     Cancelled{
-      pay(String authCode) / {throwException("Cannot pay for a trip which has been cancelled");} -> Finished;
+      pay(String authCode) / {throwException("Cannot pay for a trip which has been cancelled");} -> Cancelled;
       
       start / {throwException("Cannot start a trip which has been cancelled");} -> Cancelled;
       
