@@ -6,6 +6,7 @@ class ClimbSafe {
   	isA Serializable;
   	private static final long serialVersionUID = -2683593616927798071L;
   
+  	// To re-initialize the static variables of BookableItem, Hotel, and User properly
   	public void reinitialize(){
   		BookableItem.reinitializeUniqueName(this.getEquipment(), this.getBundles());
   		Hotel.reinitializeUniqueName(this.getHotels());
@@ -54,6 +55,7 @@ class Hotel {
   	isA Serializable;
   	private static final long serialVersionUID = -7403808765254467836L;
   	
+  	// To re-initialize the hotelsByName hashmap properly
   	public static void reinitializeUniqueName(List<Hotel> hotels) {
 	  hotelsByName = new HashMap<String, Hotel>();
 	  for (Hotel hotel : hotels) {
@@ -79,6 +81,7 @@ class User {
   	isA Serializable;
   	private static final long serialVersionUID = -7403802876546785436L;
   	
+  	// To re-initializw the usersByEmail hashmap properly
   	public static void reinitializeUniqueEmail(List<Member> members, List<Guide> guides, Administrator admin) {
 	  
 	  usersByEmail = new HashMap<String, User>();
@@ -101,6 +104,7 @@ class BookableItem {
   	isA Serializable;
   	private static final long serialVersionUID = -7498765376546785436L;
   
+  	// To re-initialize the bookableitemsByName hashmap properly
  	public static void reinitializeUniqueName(List<Equipment> equipmentItems, List<EquipmentBundle> bundles) {
 	  
 	  bookableitemsByName = new HashMap<String, BookableItem>();

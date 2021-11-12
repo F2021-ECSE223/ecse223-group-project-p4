@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.*;
 
 // line 16 "../../../../../ClimbSafe.ump"
-// line 77 "../../../../../ClimbSafePersistence.ump"
+// line 79 "../../../../../ClimbSafePersistence.ump"
 public abstract class User implements Serializable
 {
 
@@ -93,7 +93,11 @@ public abstract class User implements Serializable
     usersByEmail.remove(getEmail());
   }
 
-  // line 84 "../../../../../ClimbSafePersistence.ump"
+
+  /**
+   * To re-initializw the usersByEmail hashmap properly
+   */
+  // line 87 "../../../../../ClimbSafePersistence.ump"
    public static  void reinitializeUniqueEmail(List<Member> members, List<Guide> guides, Administrator admin){
     usersByEmail = new HashMap<String, User>();
 	  
@@ -119,7 +123,7 @@ public abstract class User implements Serializable
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 80 "../../../../../ClimbSafePersistence.ump"
+  // line 82 "../../../../../ClimbSafePersistence.ump"
   private static final long serialVersionUID = -7403802876546785436L ;
 
   

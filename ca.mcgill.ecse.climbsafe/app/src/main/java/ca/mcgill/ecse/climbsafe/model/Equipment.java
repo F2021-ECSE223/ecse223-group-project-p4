@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.*;
 
 // line 55 "../../../../../ClimbSafe.ump"
-// line 16 "../../../../../ClimbSafePersistence.ump"
+// line 17 "../../../../../ClimbSafePersistence.ump"
 public class Equipment extends BookableItem implements Serializable
 {
 
@@ -223,7 +223,7 @@ public class Equipment extends BookableItem implements Serializable
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 19 "../../../../../ClimbSafePersistence.ump"
+  // line 20 "../../../../../ClimbSafePersistence.ump"
   private static final long serialVersionUID = 2315072607928790501L ;
 
   

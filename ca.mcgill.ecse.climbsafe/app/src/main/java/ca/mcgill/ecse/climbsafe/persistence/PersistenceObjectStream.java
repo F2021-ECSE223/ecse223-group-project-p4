@@ -11,6 +11,12 @@ public class PersistenceObjectStream {
 
   private static String filename = "output.txt";
 
+  /**
+   * Serializes an object to memory
+   * 
+   * @author Matthieu Hakim
+   * @param object The object we want to serialize
+   */
   public static void serialize(Object object) {
     try (var oos = new ObjectOutputStream(new FileOutputStream(new File(filename)))) {
       oos.writeObject(object);
@@ -19,6 +25,12 @@ public class PersistenceObjectStream {
     }
   }
 
+  /**
+   * Deserializes an object from memory
+   * 
+   * @author Karl Rouhana
+   * @return The deserialized object
+   */
   public static Object deserialize() {
     try (var ois = new ObjectInputStream(new FileInputStream(new File(filename)))) {
       return ois.readObject();
@@ -28,6 +40,12 @@ public class PersistenceObjectStream {
     return null;
   }
 
+  /**
+   * Setter for the filename static variable
+   * 
+   * @author Adam Kazma
+   * @param newFilename The name we want to set
+   */
   public static void setFilename(String newFilename) {
     filename = newFilename;
   }

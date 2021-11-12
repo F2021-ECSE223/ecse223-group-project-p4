@@ -1014,7 +1014,11 @@ public class ClimbSafe implements Serializable
     
   }
 
-  // line 10 "../../../../../ClimbSafePersistence.ump"
+
+  /**
+   * To re-initialize the static variables of BookableItem, Hotel, and User properly
+   */
+  // line 11 "../../../../../ClimbSafePersistence.ump"
    public void reinitialize(){
     BookableItem.reinitializeUniqueName(this.getEquipment(), this.getBundles());
   		Hotel.reinitializeUniqueName(this.getHotels());
