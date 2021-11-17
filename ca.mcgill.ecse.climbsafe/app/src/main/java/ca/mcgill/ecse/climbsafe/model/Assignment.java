@@ -4,9 +4,9 @@
 package ca.mcgill.ecse.climbsafe.model;
 import java.io.Serializable;
 
-// line 79 "../../../../../ClimbSafe.ump"
-// line 47 "../../../../../ClimbSafePersistence.ump"
+// line 107 "../../../../../ClimbSafePersistence.ump"
 // line 1 "../../../../../AssignmentProcess.ump"
+// line 94 "../../../../../ClimbSafe.ump"
 public class Assignment implements Serializable
 {
 
@@ -15,10 +15,10 @@ public class Assignment implements Serializable
   //------------------------
 
   //Assignment Attributes
-  private int startWeek;
-  private int endWeek;
   private String authorizationCode;
   private int refundPercentage;
+  private int startWeek;
+  private int endWeek;
 
   //Assignment State Machines
   public enum AssignmentState { Assigned, Paid, Started, Finished, Cancelled, Banned }
@@ -36,10 +36,10 @@ public class Assignment implements Serializable
 
   public Assignment(int aStartWeek, int aEndWeek, Member aMember, ClimbSafe aClimbSafe)
   {
-    startWeek = aStartWeek;
-    endWeek = aEndWeek;
     authorizationCode = null;
     refundPercentage = 0;
+    startWeek = aStartWeek;
+    endWeek = aEndWeek;
     boolean didAddMember = setMember(aMember);
     if (!didAddMember)
     {
@@ -57,22 +57,6 @@ public class Assignment implements Serializable
   // INTERFACE
   //------------------------
 
-  public boolean setStartWeek(int aStartWeek)
-  {
-    boolean wasSet = false;
-    startWeek = aStartWeek;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setEndWeek(int aEndWeek)
-  {
-    boolean wasSet = false;
-    endWeek = aEndWeek;
-    wasSet = true;
-    return wasSet;
-  }
-
   public boolean setAuthorizationCode(String aAuthorizationCode)
   {
     boolean wasSet = false;
@@ -89,14 +73,20 @@ public class Assignment implements Serializable
     return wasSet;
   }
 
-  public int getStartWeek()
+  public boolean setStartWeek(int aStartWeek)
   {
-    return startWeek;
+    boolean wasSet = false;
+    startWeek = aStartWeek;
+    wasSet = true;
+    return wasSet;
   }
 
-  public int getEndWeek()
+  public boolean setEndWeek(int aEndWeek)
   {
-    return endWeek;
+    boolean wasSet = false;
+    endWeek = aEndWeek;
+    wasSet = true;
+    return wasSet;
   }
 
   public String getAuthorizationCode()
@@ -107,6 +97,16 @@ public class Assignment implements Serializable
   public int getRefundPercentage()
   {
     return refundPercentage;
+  }
+
+  public int getStartWeek()
+  {
+    return startWeek;
+  }
+
+  public int getEndWeek()
+  {
+    return endWeek;
   }
 
   public String getAssignmentStateFullName()
@@ -489,10 +489,10 @@ public class Assignment implements Serializable
   public String toString()
   {
     return super.toString() + "["+
-            "startWeek" + ":" + getStartWeek()+ "," +
-            "endWeek" + ":" + getEndWeek()+ "," +
             "authorizationCode" + ":" + getAuthorizationCode()+ "," +
-            "refundPercentage" + ":" + getRefundPercentage()+ "]" + System.getProperties().getProperty("line.separator") +
+            "refundPercentage" + ":" + getRefundPercentage()+ "," +
+            "startWeek" + ":" + getStartWeek()+ "," +
+            "endWeek" + ":" + getEndWeek()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "member = "+(getMember()!=null?Integer.toHexString(System.identityHashCode(getMember())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "guide = "+(getGuide()!=null?Integer.toHexString(System.identityHashCode(getGuide())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "hotel = "+(getHotel()!=null?Integer.toHexString(System.identityHashCode(getHotel())):"null") + System.getProperties().getProperty("line.separator") +
@@ -502,8 +502,8 @@ public class Assignment implements Serializable
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 50 "../../../../../ClimbSafePersistence.ump"
-  private static final long serialVersionUID = -7403802770753167836L ;
+  // line 110 "../../../../../ClimbSafePersistence.ump"
+  private static final long serialVersionUID = 11L ;
 
   
 }

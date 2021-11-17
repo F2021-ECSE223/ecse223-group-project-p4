@@ -1,6 +1,0 @@
-namespace ca.mcgill.ecse.climbsafe.model;
-
-// Master file that includes all the other files in the project
-use ClimbSafe.ump;
-use ClimbSafePersistence.ump;
-use AssignmentProcess.ump;

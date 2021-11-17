@@ -116,9 +116,19 @@ public class ClimbSafeFeatureSet6Controller {
       // Calculating the total cost of the booked equipment using a helper method
       int totalCostForEquipment = getTotalCostOfEquipment(assignment);
 
+      // Extracting the assignment state
+      String status = assignment.getAssignmentStateFullName();
+
+      // Extracting the authorization code
+      String authorizationCode = assignment.getAuthorizationCode();
+
+      // Extracting the refund percentage
+      int refund = assignment.getRefundPercentage();
+
       // Adding the corresponding TOAssignment to the list we will be returning
       TOassignments.add(new TOAssignment(memberEmail, memberName, guideEmail, guideName, hotelName,
-          startWeek, endWeek, totalCostForGuide, totalCostForEquipment));
+          startWeek, endWeek, totalCostForGuide, totalCostForEquipment, status, authorizationCode,
+          refund));
     }
 
     return TOassignments; // Returning a list of TOAssignments
