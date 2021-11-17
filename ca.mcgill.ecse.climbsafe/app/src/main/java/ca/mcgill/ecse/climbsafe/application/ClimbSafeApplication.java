@@ -21,7 +21,7 @@ public class ClimbSafeApplication {
     if (climbSafe == null) {
       climbSafe = ClimbSafePersistence.load();
     }
-    
+
     return climbSafe;
   }
 }
