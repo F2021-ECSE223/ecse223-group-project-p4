@@ -4,6 +4,7 @@ external interface Serializable {}
 
 use ClimbSafePersistence.ump;
 use AssignmentProcess.ump;
+use ExtraFeatures.ump;
 
 class ClimbSafe {
   Date startDate;

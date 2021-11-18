@@ -1,0 +1,22 @@
+associationClass Review{
+	0..1 Member member;
+	* Assignment assignment;
+	
+	enum Rating { VeryPoor, Poor, Neutral, Good, VeryGood}
+	
+	Rating rating;
+	String comment;
+}
+
+class ClimbingPath {
+	1..* Assignment assignments;
+	
+	String location;
+	Integer length; // In kilometers
+	enum Difficulty { Easy, Moderate, Hard}
+}
+
+association {
+	1 ClimbSafe <@>- * Review;
+	1 ClimbSafe <@>- * ClimbingPath;
+}
