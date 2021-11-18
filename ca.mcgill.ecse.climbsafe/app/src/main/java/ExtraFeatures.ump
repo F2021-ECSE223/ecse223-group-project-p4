@@ -9,7 +9,7 @@ associationClass Review{
 }
 
 class ClimbingPath {
-	1..* Assignment assignments;
+	1 -- * Assignment assignments;
 	
 	String location;
 	Integer length; // In kilometers

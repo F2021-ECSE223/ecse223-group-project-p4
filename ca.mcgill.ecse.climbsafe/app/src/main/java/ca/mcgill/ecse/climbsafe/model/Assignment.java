@@ -3,10 +3,11 @@
 
 package ca.mcgill.ecse.climbsafe.model;
 import java.io.Serializable;
+import java.util.*;
 
 // line 107 "../../../../../ClimbSafePersistence.ump"
 // line 1 "../../../../../AssignmentProcess.ump"
-// line 94 "../../../../../ClimbSafe.ump"
+// line 95 "../../../../../ClimbSafe.ump"
 public class Assignment implements Serializable
 {
 
@@ -28,13 +29,15 @@ public class Assignment implements Serializable
   private Member member;
   private Guide guide;
   private Hotel hotel;
+  private ClimbingPath climbingPath;
   private ClimbSafe climbSafe;
+  private List<Review> reviews;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Assignment(int aStartWeek, int aEndWeek, Member aMember, ClimbSafe aClimbSafe)
+  public Assignment(int aStartWeek, int aEndWeek, Member aMember, ClimbingPath aClimbingPath, ClimbSafe aClimbSafe)
   {
     authorizationCode = null;
     refundPercentage = 0;
@@ -45,11 +48,17 @@ public class Assignment implements Serializable
     {
       throw new RuntimeException("Unable to create assignment due to member. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
+    boolean didAddClimbingPath = setClimbingPath(aClimbingPath);
+    if (!didAddClimbingPath)
+    {
+      throw new RuntimeException("Unable to create assignment due to climbingPath. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+    }
     boolean didAddClimbSafe = setClimbSafe(aClimbSafe);
     if (!didAddClimbSafe)
     {
       throw new RuntimeException("Unable to create assignment due to climbSafe. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
+    reviews = new ArrayList<Review>();
     setAssignmentState(AssignmentState.Assigned);
   }
 
@@ -356,9 +365,44 @@ public class Assignment implements Serializable
     return has;
   }
   /* Code from template association_GetOne */
+  public ClimbingPath getClimbingPath()
+  {
+    return climbingPath;
+  }
+  /* Code from template association_GetOne */
   public ClimbSafe getClimbSafe()
   {
     return climbSafe;
+  }
+  /* Code from template association_GetMany */
+  public Review getReview(int index)
+  {
+    Review aReview = reviews.get(index);
+    return aReview;
+  }
+
+  public List<Review> getReviews()
+  {
+    List<Review> newReviews = Collections.unmodifiableList(reviews);
+    return newReviews;
+  }
+
+  public int numberOfReviews()
+  {
+    int number = reviews.size();
+    return number;
+  }
+
+  public boolean hasReviews()
+  {
+    boolean has = reviews.size() > 0;
+    return has;
+  }
+
+  public int indexOfReview(Review aReview)
+  {
+    int index = reviews.indexOf(aReview);
+    return index;
   }
   /* Code from template association_SetOneToOptionalOne */
   public boolean setMember(Member aNewMember)
@@ -423,6 +467,25 @@ public class Assignment implements Serializable
     return wasSet;
   }
   /* Code from template association_SetOneToMany */
+  public boolean setClimbingPath(ClimbingPath aClimbingPath)
+  {
+    boolean wasSet = false;
+    if (aClimbingPath == null)
+    {
+      return wasSet;
+    }
+
+    ClimbingPath existingClimbingPath = climbingPath;
+    climbingPath = aClimbingPath;
+    if (existingClimbingPath != null && !existingClimbingPath.equals(aClimbingPath))
+    {
+      existingClimbingPath.removeAssignment(this);
+    }
+    climbingPath.addAssignment(this);
+    wasSet = true;
+    return wasSet;
+  }
+  /* Code from template association_SetOneToMany */
   public boolean setClimbSafe(ClimbSafe aClimbSafe)
   {
     boolean wasSet = false;
@@ -440,6 +503,78 @@ public class Assignment implements Serializable
     climbSafe.addAssignment(this);
     wasSet = true;
     return wasSet;
+  }
+  /* Code from template association_MinimumNumberOfMethod */
+  public static int minimumNumberOfReviews()
+  {
+    return 0;
+  }
+  /* Code from template association_AddManyToOne */
+  public Review addReview(Review.Rating aRating, String aComment, Member aMember, ClimbSafe aClimbSafe)
+  {
+    return new Review(aRating, aComment, aMember, this, aClimbSafe);
+  }
+
+  public boolean addReview(Review aReview)
+  {
+    boolean wasAdded = false;
+    if (reviews.contains(aReview)) { return false; }
+    Assignment existingAssignment = aReview.getAssignment();
+    boolean isNewAssignment = existingAssignment != null && !this.equals(existingAssignment);
+    if (isNewAssignment)
+    {
+      aReview.setAssignment(this);
+    }
+    else
+    {
+      reviews.add(aReview);
+    }
+    wasAdded = true;
+    return wasAdded;
+  }
+
+  public boolean removeReview(Review aReview)
+  {
+    boolean wasRemoved = false;
+    //Unable to remove aReview, as it must always have a assignment
+    if (!this.equals(aReview.getAssignment()))
+    {
+      reviews.remove(aReview);
+      wasRemoved = true;
+    }
+    return wasRemoved;
+  }
+  /* Code from template association_AddIndexControlFunctions */
+  public boolean addReviewAt(Review aReview, int index)
+  {  
+    boolean wasAdded = false;
+    if(addReview(aReview))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfReviews()) { index = numberOfReviews() - 1; }
+      reviews.remove(aReview);
+      reviews.add(index, aReview);
+      wasAdded = true;
+    }
+    return wasAdded;
+  }
+
+  public boolean addOrMoveReviewAt(Review aReview, int index)
+  {
+    boolean wasAdded = false;
+    if(reviews.contains(aReview))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfReviews()) { index = numberOfReviews() - 1; }
+      reviews.remove(aReview);
+      reviews.add(index, aReview);
+      wasAdded = true;
+    } 
+    else 
+    {
+      wasAdded = addReviewAt(aReview, index);
+    }
+    return wasAdded;
   }
 
   public void delete()
@@ -462,11 +597,22 @@ public class Assignment implements Serializable
       this.hotel = null;
       placeholderHotel.removeAssignment(this);
     }
+    ClimbingPath placeholderClimbingPath = climbingPath;
+    this.climbingPath = null;
+    if(placeholderClimbingPath != null)
+    {
+      placeholderClimbingPath.removeAssignment(this);
+    }
     ClimbSafe placeholderClimbSafe = climbSafe;
     this.climbSafe = null;
     if(placeholderClimbSafe != null)
     {
       placeholderClimbSafe.removeAssignment(this);
+    }
+    for(int i=reviews.size(); i > 0; i--)
+    {
+      Review aReview = reviews.get(i - 1);
+      aReview.delete();
     }
   }
 
@@ -496,6 +642,7 @@ public class Assignment implements Serializable
             "  " + "member = "+(getMember()!=null?Integer.toHexString(System.identityHashCode(getMember())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "guide = "+(getGuide()!=null?Integer.toHexString(System.identityHashCode(getGuide())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "hotel = "+(getHotel()!=null?Integer.toHexString(System.identityHashCode(getHotel())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "climbingPath = "+(getClimbingPath()!=null?Integer.toHexString(System.identityHashCode(getClimbingPath())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null");
   }  
   //------------------------

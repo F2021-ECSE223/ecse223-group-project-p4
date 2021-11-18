@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.*;
 
 // line 34 "../../../../../ClimbSafePersistence.ump"
-// line 29 "../../../../../ClimbSafe.ump"
+// line 30 "../../../../../ClimbSafe.ump"
 public class Administrator extends User implements Serializable
 {
 

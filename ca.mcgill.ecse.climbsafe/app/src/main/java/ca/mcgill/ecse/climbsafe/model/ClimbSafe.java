@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.util.*;
 
 // line 3 "../../../../../ClimbSafePersistence.ump"
-// line 8 "../../../../../ClimbSafe.ump"
+// line 9 "../../../../../ClimbSafe.ump"
 public class ClimbSafe implements Serializable
 {
 
@@ -30,6 +30,8 @@ public class ClimbSafe implements Serializable
   private List<BundleItem> bundleItems;
   private List<Hotel> hotels;
   private List<Assignment> assignments;
+  private List<Review> reviews;
+  private List<ClimbingPath> climbingPaths;
 
   //------------------------
   // CONSTRUCTOR
@@ -48,6 +50,8 @@ public class ClimbSafe implements Serializable
     bundleItems = new ArrayList<BundleItem>();
     hotels = new ArrayList<Hotel>();
     assignments = new ArrayList<Assignment>();
+    reviews = new ArrayList<Review>();
+    climbingPaths = new ArrayList<ClimbingPath>();
   }
 
   //------------------------
@@ -341,6 +345,66 @@ public class ClimbSafe implements Serializable
   public int indexOfAssignment(Assignment aAssignment)
   {
     int index = assignments.indexOf(aAssignment);
+    return index;
+  }
+  /* Code from template association_GetMany */
+  public Review getReview(int index)
+  {
+    Review aReview = reviews.get(index);
+    return aReview;
+  }
+
+  public List<Review> getReviews()
+  {
+    List<Review> newReviews = Collections.unmodifiableList(reviews);
+    return newReviews;
+  }
+
+  public int numberOfReviews()
+  {
+    int number = reviews.size();
+    return number;
+  }
+
+  public boolean hasReviews()
+  {
+    boolean has = reviews.size() > 0;
+    return has;
+  }
+
+  public int indexOfReview(Review aReview)
+  {
+    int index = reviews.indexOf(aReview);
+    return index;
+  }
+  /* Code from template association_GetMany */
+  public ClimbingPath getClimbingPath(int index)
+  {
+    ClimbingPath aClimbingPath = climbingPaths.get(index);
+    return aClimbingPath;
+  }
+
+  public List<ClimbingPath> getClimbingPaths()
+  {
+    List<ClimbingPath> newClimbingPaths = Collections.unmodifiableList(climbingPaths);
+    return newClimbingPaths;
+  }
+
+  public int numberOfClimbingPaths()
+  {
+    int number = climbingPaths.size();
+    return number;
+  }
+
+  public boolean hasClimbingPaths()
+  {
+    boolean has = climbingPaths.size() > 0;
+    return has;
+  }
+
+  public int indexOfClimbingPath(ClimbingPath aClimbingPath)
+  {
+    int index = climbingPaths.indexOf(aClimbingPath);
     return index;
   }
   /* Code from template association_SetOptionalOneToOne */
@@ -880,9 +944,9 @@ public class ClimbSafe implements Serializable
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Assignment addAssignment(int aStartWeek, int aEndWeek, Member aMember)
+  public Assignment addAssignment(int aStartWeek, int aEndWeek, Member aMember, ClimbingPath aClimbingPath)
   {
-    return new Assignment(aStartWeek, aEndWeek, aMember, this);
+    return new Assignment(aStartWeek, aEndWeek, aMember, aClimbingPath, this);
   }
 
   public boolean addAssignment(Assignment aAssignment)
@@ -943,6 +1007,150 @@ public class ClimbSafe implements Serializable
     else 
     {
       wasAdded = addAssignmentAt(aAssignment, index);
+    }
+    return wasAdded;
+  }
+  /* Code from template association_MinimumNumberOfMethod */
+  public static int minimumNumberOfReviews()
+  {
+    return 0;
+  }
+  /* Code from template association_AddManyToOne */
+  public Review addReview(Review.Rating aRating, String aComment, Member aMember, Assignment aAssignment)
+  {
+    return new Review(aRating, aComment, aMember, aAssignment, this);
+  }
+
+  public boolean addReview(Review aReview)
+  {
+    boolean wasAdded = false;
+    if (reviews.contains(aReview)) { return false; }
+    ClimbSafe existingClimbSafe = aReview.getClimbSafe();
+    boolean isNewClimbSafe = existingClimbSafe != null && !this.equals(existingClimbSafe);
+    if (isNewClimbSafe)
+    {
+      aReview.setClimbSafe(this);
+    }
+    else
+    {
+      reviews.add(aReview);
+    }
+    wasAdded = true;
+    return wasAdded;
+  }
+
+  public boolean removeReview(Review aReview)
+  {
+    boolean wasRemoved = false;
+    //Unable to remove aReview, as it must always have a climbSafe
+    if (!this.equals(aReview.getClimbSafe()))
+    {
+      reviews.remove(aReview);
+      wasRemoved = true;
+    }
+    return wasRemoved;
+  }
+  /* Code from template association_AddIndexControlFunctions */
+  public boolean addReviewAt(Review aReview, int index)
+  {  
+    boolean wasAdded = false;
+    if(addReview(aReview))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfReviews()) { index = numberOfReviews() - 1; }
+      reviews.remove(aReview);
+      reviews.add(index, aReview);
+      wasAdded = true;
+    }
+    return wasAdded;
+  }
+
+  public boolean addOrMoveReviewAt(Review aReview, int index)
+  {
+    boolean wasAdded = false;
+    if(reviews.contains(aReview))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfReviews()) { index = numberOfReviews() - 1; }
+      reviews.remove(aReview);
+      reviews.add(index, aReview);
+      wasAdded = true;
+    } 
+    else 
+    {
+      wasAdded = addReviewAt(aReview, index);
+    }
+    return wasAdded;
+  }
+  /* Code from template association_MinimumNumberOfMethod */
+  public static int minimumNumberOfClimbingPaths()
+  {
+    return 0;
+  }
+  /* Code from template association_AddManyToOne */
+  public ClimbingPath addClimbingPath(String aLocation, int aLength)
+  {
+    return new ClimbingPath(aLocation, aLength, this);
+  }
+
+  public boolean addClimbingPath(ClimbingPath aClimbingPath)
+  {
+    boolean wasAdded = false;
+    if (climbingPaths.contains(aClimbingPath)) { return false; }
+    ClimbSafe existingClimbSafe = aClimbingPath.getClimbSafe();
+    boolean isNewClimbSafe = existingClimbSafe != null && !this.equals(existingClimbSafe);
+    if (isNewClimbSafe)
+    {
+      aClimbingPath.setClimbSafe(this);
+    }
+    else
+    {
+      climbingPaths.add(aClimbingPath);
+    }
+    wasAdded = true;
+    return wasAdded;
+  }
+
+  public boolean removeClimbingPath(ClimbingPath aClimbingPath)
+  {
+    boolean wasRemoved = false;
+    //Unable to remove aClimbingPath, as it must always have a climbSafe
+    if (!this.equals(aClimbingPath.getClimbSafe()))
+    {
+      climbingPaths.remove(aClimbingPath);
+      wasRemoved = true;
+    }
+    return wasRemoved;
+  }
+  /* Code from template association_AddIndexControlFunctions */
+  public boolean addClimbingPathAt(ClimbingPath aClimbingPath, int index)
+  {  
+    boolean wasAdded = false;
+    if(addClimbingPath(aClimbingPath))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfClimbingPaths()) { index = numberOfClimbingPaths() - 1; }
+      climbingPaths.remove(aClimbingPath);
+      climbingPaths.add(index, aClimbingPath);
+      wasAdded = true;
+    }
+    return wasAdded;
+  }
+
+  public boolean addOrMoveClimbingPathAt(ClimbingPath aClimbingPath, int index)
+  {
+    boolean wasAdded = false;
+    if(climbingPaths.contains(aClimbingPath))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfClimbingPaths()) { index = numberOfClimbingPaths() - 1; }
+      climbingPaths.remove(aClimbingPath);
+      climbingPaths.add(index, aClimbingPath);
+      wasAdded = true;
+    } 
+    else 
+    {
+      wasAdded = addClimbingPathAt(aClimbingPath, index);
     }
     return wasAdded;
   }
@@ -1010,6 +1218,20 @@ public class ClimbSafe implements Serializable
       Assignment aAssignment = assignments.get(assignments.size() - 1);
       aAssignment.delete();
       assignments.remove(aAssignment);
+    }
+    
+    while (reviews.size() > 0)
+    {
+      Review aReview = reviews.get(reviews.size() - 1);
+      aReview.delete();
+      reviews.remove(aReview);
+    }
+    
+    while (climbingPaths.size() > 0)
+    {
+      ClimbingPath aClimbingPath = climbingPaths.get(climbingPaths.size() - 1);
+      aClimbingPath.delete();
+      climbingPaths.remove(aClimbingPath);
     }
     
   }

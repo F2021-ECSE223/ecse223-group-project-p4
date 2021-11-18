@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.*;
 
 // line 52 "../../../../../ClimbSafePersistence.ump"
-// line 44 "../../../../../ClimbSafe.ump"
+// line 45 "../../../../../ClimbSafe.ump"
 public class Member extends NamedUser implements Serializable
 {
 
@@ -22,6 +22,7 @@ public class Member extends NamedUser implements Serializable
   //Member Associations
   private ClimbSafe climbSafe;
   private Assignment assignment;
+  private Review review;
   private List<BookedItem> bookedItems;
 
   //------------------------
@@ -110,6 +111,17 @@ public class Member extends NamedUser implements Serializable
     boolean has = assignment != null;
     return has;
   }
+  /* Code from template association_GetOne */
+  public Review getReview()
+  {
+    return review;
+  }
+
+  public boolean hasReview()
+  {
+    boolean has = review != null;
+    return has;
+  }
   /* Code from template association_GetMany */
   public BookedItem getBookedItem(int index)
   {
@@ -181,6 +193,33 @@ public class Member extends NamedUser implements Serializable
       if (assignment != null)
       {
         assignment.setMember(this);
+      }
+    }
+    wasSet = true;
+    return wasSet;
+  }
+  /* Code from template association_SetOptionalOneToOne */
+  public boolean setReview(Review aNewReview)
+  {
+    boolean wasSet = false;
+    if (review != null && !review.equals(aNewReview) && equals(review.getMember()))
+    {
+      //Unable to setReview, as existing review would become an orphan
+      return wasSet;
+    }
+
+    review = aNewReview;
+    Member anOldMember = aNewReview != null ? aNewReview.getMember() : null;
+
+    if (!this.equals(anOldMember))
+    {
+      if (anOldMember != null)
+      {
+        anOldMember.review = null;
+      }
+      if (review != null)
+      {
+        review.setMember(this);
       }
     }
     wasSet = true;
@@ -273,6 +312,12 @@ public class Member extends NamedUser implements Serializable
     {
       existingAssignment.delete();
     }
+    Review existingReview = review;
+    review = null;
+    if (existingReview != null)
+    {
+      existingReview.delete();
+    }
     for(int i=bookedItems.size(); i > 0; i--)
     {
       BookedItem aBookedItem = bookedItems.get(i - 1);
@@ -289,7 +334,8 @@ public class Member extends NamedUser implements Serializable
             "guideRequired" + ":" + getGuideRequired()+ "," +
             "hotelRequired" + ":" + getHotelRequired()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null") + System.getProperties().getProperty("line.separator") +
-            "  " + "assignment = "+(getAssignment()!=null?Integer.toHexString(System.identityHashCode(getAssignment())):"null");
+            "  " + "assignment = "+(getAssignment()!=null?Integer.toHexString(System.identityHashCode(getAssignment())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "review = "+(getReview()!=null?Integer.toHexString(System.identityHashCode(getReview())):"null");
   }  
   //------------------------
   // DEVELOPER CODE - PROVIDED AS-IS

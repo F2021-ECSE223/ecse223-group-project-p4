@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.*;
 
 // line 84 "../../../../../ClimbSafePersistence.ump"
-// line 72 "../../../../../ClimbSafe.ump"
+// line 73 "../../../../../ClimbSafe.ump"
 public class EquipmentBundle extends BookableItem implements Serializable
 {
 

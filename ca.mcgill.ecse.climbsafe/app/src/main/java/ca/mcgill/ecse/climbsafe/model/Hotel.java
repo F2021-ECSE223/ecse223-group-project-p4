@@ -10,7 +10,7 @@ import java.util.*;
  * due to a bug in Umple (association classes cannot be defined in two files)
  */
 // line 93 "../../../../../ClimbSafePersistence.ump"
-// line 87 "../../../../../ClimbSafe.ump"
+// line 88 "../../../../../ClimbSafe.ump"
 public class Hotel implements Serializable
 {
 

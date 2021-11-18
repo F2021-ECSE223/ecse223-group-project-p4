@@ -2,44 +2,77 @@
 /*This code was generated using the UMPLE 1.31.1.5860.78bb27cc6 modeling language!*/
 
 package ca.mcgill.ecse.climbsafe.model;
-import java.io.Serializable;
 import java.util.*;
 
-// line 46 "../../../../../ClimbSafePersistence.ump"
-// line 41 "../../../../../ClimbSafe.ump"
-public class Guide extends NamedUser implements Serializable
+// line 11 "../../../../../ExtraFeatures.ump"
+public class ClimbingPath
 {
+
+  //------------------------
+  // ENUMERATIONS
+  //------------------------
+
+  public enum Difficulty { Easy, Moderate, Hard }
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
-  //Guide Associations
-  private ClimbSafe climbSafe;
+  //ClimbingPath Attributes
+  private String location;
+  private int length;
+
+  //ClimbingPath Associations
   private List<Assignment> assignments;
+  private ClimbSafe climbSafe;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Guide(String aEmail, String aPassword, String aName, String aEmergencyContact, ClimbSafe aClimbSafe)
+  public ClimbingPath(String aLocation, int aLength, ClimbSafe aClimbSafe)
   {
-    super(aEmail, aPassword, aName, aEmergencyContact);
+    location = aLocation;
+    length = aLength;
+    assignments = new ArrayList<Assignment>();
     boolean didAddClimbSafe = setClimbSafe(aClimbSafe);
     if (!didAddClimbSafe)
     {
-      throw new RuntimeException("Unable to create guide due to climbSafe. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create climbingPath due to climbSafe. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
-    assignments = new ArrayList<Assignment>();
   }
 
   //------------------------
   // INTERFACE
   //------------------------
-  /* Code from template association_GetOne */
-  public ClimbSafe getClimbSafe()
+
+  public boolean setLocation(String aLocation)
   {
-    return climbSafe;
+    boolean wasSet = false;
+    location = aLocation;
+    wasSet = true;
+    return wasSet;
+  }
+
+  public boolean setLength(int aLength)
+  {
+    boolean wasSet = false;
+    length = aLength;
+    wasSet = true;
+    return wasSet;
+  }
+
+  public String getLocation()
+  {
+    return location;
+  }
+
+  /**
+   * In kilometers
+   */
+  public int getLength()
+  {
+    return length;
   }
   /* Code from template association_GetMany */
   public Assignment getAssignment(int index)
@@ -71,44 +104,31 @@ public class Guide extends NamedUser implements Serializable
     int index = assignments.indexOf(aAssignment);
     return index;
   }
-  /* Code from template association_SetOneToMany */
-  public boolean setClimbSafe(ClimbSafe aClimbSafe)
+  /* Code from template association_GetOne */
+  public ClimbSafe getClimbSafe()
   {
-    boolean wasSet = false;
-    if (aClimbSafe == null)
-    {
-      return wasSet;
-    }
-
-    ClimbSafe existingClimbSafe = climbSafe;
-    climbSafe = aClimbSafe;
-    if (existingClimbSafe != null && !existingClimbSafe.equals(aClimbSafe))
-    {
-      existingClimbSafe.removeGuide(this);
-    }
-    climbSafe.addGuide(this);
-    wasSet = true;
-    return wasSet;
+    return climbSafe;
   }
   /* Code from template association_MinimumNumberOfMethod */
   public static int minimumNumberOfAssignments()
   {
     return 0;
   }
-  /* Code from template association_AddManyToOptionalOne */
+  /* Code from template association_AddManyToOne */
+  public Assignment addAssignment(int aStartWeek, int aEndWeek, Member aMember, ClimbSafe aClimbSafe)
+  {
+    return new Assignment(aStartWeek, aEndWeek, aMember, this, aClimbSafe);
+  }
+
   public boolean addAssignment(Assignment aAssignment)
   {
     boolean wasAdded = false;
     if (assignments.contains(aAssignment)) { return false; }
-    Guide existingGuide = aAssignment.getGuide();
-    if (existingGuide == null)
+    ClimbingPath existingClimbingPath = aAssignment.getClimbingPath();
+    boolean isNewClimbingPath = existingClimbingPath != null && !this.equals(existingClimbingPath);
+    if (isNewClimbingPath)
     {
-      aAssignment.setGuide(this);
-    }
-    else if (!this.equals(existingGuide))
-    {
-      existingGuide.removeAssignment(aAssignment);
-      addAssignment(aAssignment);
+      aAssignment.setClimbingPath(this);
     }
     else
     {
@@ -121,10 +141,10 @@ public class Guide extends NamedUser implements Serializable
   public boolean removeAssignment(Assignment aAssignment)
   {
     boolean wasRemoved = false;
-    if (assignments.contains(aAssignment))
+    //Unable to remove aAssignment, as it must always have a climbingPath
+    if (!this.equals(aAssignment.getClimbingPath()))
     {
       assignments.remove(aAssignment);
-      aAssignment.setGuide(null);
       wasRemoved = true;
     }
     return wasRemoved;
@@ -161,28 +181,47 @@ public class Guide extends NamedUser implements Serializable
     }
     return wasAdded;
   }
+  /* Code from template association_SetOneToMany */
+  public boolean setClimbSafe(ClimbSafe aClimbSafe)
+  {
+    boolean wasSet = false;
+    if (aClimbSafe == null)
+    {
+      return wasSet;
+    }
+
+    ClimbSafe existingClimbSafe = climbSafe;
+    climbSafe = aClimbSafe;
+    if (existingClimbSafe != null && !existingClimbSafe.equals(aClimbSafe))
+    {
+      existingClimbSafe.removeClimbingPath(this);
+    }
+    climbSafe.addClimbingPath(this);
+    wasSet = true;
+    return wasSet;
+  }
 
   public void delete()
   {
+    for(int i=assignments.size(); i > 0; i--)
+    {
+      Assignment aAssignment = assignments.get(i - 1);
+      aAssignment.delete();
+    }
     ClimbSafe placeholderClimbSafe = climbSafe;
     this.climbSafe = null;
     if(placeholderClimbSafe != null)
     {
-      placeholderClimbSafe.removeGuide(this);
+      placeholderClimbSafe.removeClimbingPath(this);
     }
-    while( !assignments.isEmpty() )
-    {
-      assignments.get(0).setGuide(null);
-    }
-    super.delete();
   }
-  
-  //------------------------
-  // DEVELOPER CODE - PROVIDED AS-IS
-  //------------------------
-  
-  // line 49 "../../../../../ClimbSafePersistence.ump"
-  private static final long serialVersionUID = 5L ;
 
-  
+
+  public String toString()
+  {
+    return super.toString() + "["+
+            "location" + ":" + getLocation()+ "," +
+            "length" + ":" + getLength()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null");
+  }
 }
