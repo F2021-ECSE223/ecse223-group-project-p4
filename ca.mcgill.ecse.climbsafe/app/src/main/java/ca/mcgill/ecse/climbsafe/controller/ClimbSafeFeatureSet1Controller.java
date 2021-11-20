@@ -105,7 +105,15 @@ public class ClimbSafeFeatureSet1Controller {
 
   }
 
-  // We did not implement this method since we have 6 members on the team
-  public static void deleteHotel(String name) {}
+  
+  public static void deleteHotel(String name) {
+    
+    Hotel toBeDeleted = Hotel.getWithName(name); 
+
+    if (toBeDeleted != null) 
+      toBeDeleted.delete(); 
+    
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
+  }
 
 }

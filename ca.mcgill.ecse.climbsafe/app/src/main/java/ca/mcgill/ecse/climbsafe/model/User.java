@@ -96,7 +96,7 @@ public abstract class User implements Serializable
   // line 23 "../../../../../ClimbSafePersistence.ump"
    public static  void reinitializeUniqueEmail(Administrator admin, List<Guide> guides, List<Member> members){
     usersByEmail = new HashMap<String, User>();
-    usersByEmail.put(admin.getEmail(), admin);
+    if(admin != null) usersByEmail.put(admin.getEmail(), admin);
     for (Guide guide : guides) {
       usersByEmail.put(guide.getEmail(), guide);
     }
