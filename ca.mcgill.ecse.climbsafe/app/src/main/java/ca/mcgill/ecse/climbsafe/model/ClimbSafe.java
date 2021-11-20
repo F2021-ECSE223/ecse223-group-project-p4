@@ -1120,9 +1120,9 @@ public class ClimbSafe implements Serializable
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public ClimbingPath addClimbingPath(String aLocation, int aLength)
+  public ClimbingPath addClimbingPath(String aLocation, int aLength, ClimbingPath.Difficulty aDifficulty)
   {
-    return new ClimbingPath(aLocation, aLength, this);
+    return new ClimbingPath(aLocation, aLength, aDifficulty, this);
   }
 
   public boolean addClimbingPath(ClimbingPath aClimbingPath)

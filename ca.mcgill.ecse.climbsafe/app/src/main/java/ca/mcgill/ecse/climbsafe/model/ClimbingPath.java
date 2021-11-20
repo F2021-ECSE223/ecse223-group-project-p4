@@ -28,6 +28,7 @@ public class ClimbingPath implements Serializable
   //ClimbingPath Attributes
   private String location;
   private int length;
+  private Difficulty difficulty;
 
   //ClimbingPath Associations
   private List<Assignment> assignments;
@@ -37,9 +38,10 @@ public class ClimbingPath implements Serializable
   // CONSTRUCTOR
   //------------------------
 
-  public ClimbingPath(String aLocation, int aLength, ClimbSafe aClimbSafe)
+  public ClimbingPath(String aLocation, int aLength, Difficulty aDifficulty, ClimbSafe aClimbSafe)
   {
     length = aLength;
+    difficulty = aDifficulty;
     if (!setLocation(aLocation))
     {
       throw new RuntimeException("Cannot create due to duplicate location. See http://manual.umple.org?RE003ViolationofUniqueness.html");
@@ -83,6 +85,14 @@ public class ClimbingPath implements Serializable
     return wasSet;
   }
 
+  public boolean setDifficulty(Difficulty aDifficulty)
+  {
+    boolean wasSet = false;
+    difficulty = aDifficulty;
+    wasSet = true;
+    return wasSet;
+  }
+
   public String getLocation()
   {
     return location;
@@ -104,6 +114,11 @@ public class ClimbingPath implements Serializable
   public int getLength()
   {
     return length;
+  }
+
+  public Difficulty getDifficulty()
+  {
+    return difficulty;
   }
   /* Code from template association_GetMany */
   public Assignment getAssignment(int index)
@@ -249,7 +264,7 @@ public class ClimbingPath implements Serializable
     }
   }
 
-  // line 33 "../../../../../ExtraFeatures.ump"
+  // line 36 "../../../../../ExtraFeatures.ump"
    public static  void reinitializeUniquePath(List<ClimbingPath> climbingPaths){
     climbingpathsByLocation = new HashMap<String, ClimbingPath>();
 
@@ -264,13 +279,14 @@ public class ClimbingPath implements Serializable
     return super.toString() + "["+
             "location" + ":" + getLocation()+ "," +
             "length" + ":" + getLength()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "difficulty" + "=" + (getDifficulty() != null ? !getDifficulty().equals(this)  ? getDifficulty().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null");
   }  
   //------------------------
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 29 "../../../../../ExtraFeatures.ump"
+  // line 32 "../../../../../ExtraFeatures.ump"
   private static final long serialVersionUID = 15L ;
 
   

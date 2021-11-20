@@ -21,7 +21,10 @@ class ClimbingPath {
 	
 	unique String location;
 	Integer length; // In kilometers
+	
 	enum Difficulty { Easy, Moderate, Hard}
+	
+	Difficulty difficulty;
 	
 	// Persistence
 	depend java.io.Serializable;
