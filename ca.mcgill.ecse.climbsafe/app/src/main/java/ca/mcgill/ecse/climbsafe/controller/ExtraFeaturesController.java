@@ -15,6 +15,8 @@ public class ExtraFeaturesController {
 
     member.setReview(new Review(stringToRating(rating), comment, member, member.getAssignment(),
         ClimbSafeApplication.getClimbSafe()));
+    
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
   public static void setClimbingPath(String memberEmail, String location)
@@ -25,6 +27,8 @@ public class ExtraFeaturesController {
     ClimbingPath climbingPath = checkClimbingPathExists(location);
 
     member.getAssignment().setClimbingPath(climbingPath);
+    
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
   
   public static void addClimbingPath(String location, int length, String difficulty)
@@ -56,7 +60,6 @@ public class ExtraFeaturesController {
     system.addClimbingPath(new ClimbingPath(location, length, stringToDifficulty(difficulty), system));
 
     ClimbSafePersistence.save(system);
-
   }
 
   private static Difficulty stringToDifficulty(String difficulty) throws InvalidInputException {

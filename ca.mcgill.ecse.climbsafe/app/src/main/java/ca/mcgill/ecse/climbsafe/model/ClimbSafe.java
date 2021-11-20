@@ -1352,7 +1352,7 @@ public class ClimbSafe implements Serializable
     User.reinitializeUniqueEmail(this.getAdministrator(), this.getGuides(), this.getMembers());
     BookableItem.reinitializeUniqueName(this.getEquipment(), this.getBundles());
     Hotel.reinitializeUniqueName(this.getHotels());
-    ClimbingPath.reinitizalizeUniquePath(this.getClimbingPaths);
+    ClimbingPath.reinitializeUniquePath(this.getClimbingPaths());
   }
 
 
