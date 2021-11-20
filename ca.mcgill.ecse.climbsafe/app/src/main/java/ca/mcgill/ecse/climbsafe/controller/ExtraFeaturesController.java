@@ -15,7 +15,7 @@ public class ExtraFeaturesController {
 
     member.setReview(new Review(stringToRating(rating), comment, member, member.getAssignment(),
         ClimbSafeApplication.getClimbSafe()));
-    
+
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
@@ -27,10 +27,10 @@ public class ExtraFeaturesController {
     ClimbingPath climbingPath = checkClimbingPathExists(location);
 
     member.getAssignment().setClimbingPath(climbingPath);
-    
+
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
-  
+
   public static void addClimbingPath(String location, int length, String difficulty)
       throws InvalidInputException {
 
@@ -57,10 +57,48 @@ public class ExtraFeaturesController {
     ClimbSafe system = ClimbSafeApplication.getClimbSafe();
 
     // Add the climbing path to the system
-    system.addClimbingPath(new ClimbingPath(location, length, stringToDifficulty(difficulty), system));
+    system.addClimbingPath(
+        new ClimbingPath(location, length, stringToDifficulty(difficulty), system));
 
     ClimbSafePersistence.save(system);
   }
+
+  public static void updateClimbingPath(String oldLocation, String newLocation, int newLength,
+      String newDifficulty) throws InvalidInputException {
+
+    ClimbingPath climbingPathToChange = checkClimbingPathExists(oldLocation);
+
+    ClimbingPath newClimbingPath = ClimbingPath.getWithLocation(newLocation);
+
+    if (newClimbingPath != null)
+      throw new InvalidInputException("A location with the same name already exists");
+
+    if (newLength <= 0)
+      throw new InvalidInputException("The length must be greater than 0");
+
+    if (!oldLocation.equals(newLocation))
+      climbingPathToChange.setLocation(newLocation);
+
+    climbingPathToChange.setLength(newLength);
+
+    climbingPathToChange.setDifficulty(stringToDifficulty(newDifficulty));
+
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
+  }
+
+  public static void deleteClimbingPath(String location) throws InvalidInputException {
+
+    ClimbingPath path = ClimbingPath.getWithLocation(location);
+
+    if (path == null) {
+      throw new InvalidInputException("No Climbing Path exists at this location");
+    } else {
+      path.delete();
+    }
+
+    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
+  }
+
 
   private static Difficulty stringToDifficulty(String difficulty) throws InvalidInputException {
 
