@@ -2,10 +2,11 @@
 /*This code was generated using the UMPLE 1.31.1.5860.78bb27cc6 modeling language!*/
 
 package ca.mcgill.ecse.climbsafe.model;
+import java.io.Serializable;
 import java.util.*;
 
-// line 11 "../../../../../ExtraFeatures.ump"
-public class ClimbingPath
+// line 19 "../../../../../ExtraFeatures.ump"
+public class ClimbingPath implements Serializable
 {
 
   //------------------------
@@ -13,6 +14,12 @@ public class ClimbingPath
   //------------------------
 
   public enum Difficulty { Easy, Moderate, Hard }
+
+  //------------------------
+  // STATIC VARIABLES
+  //------------------------
+
+  private static Map<String, ClimbingPath> climbingpathsByLocation = new HashMap<String, ClimbingPath>();
 
   //------------------------
   // MEMBER VARIABLES
@@ -32,8 +39,11 @@ public class ClimbingPath
 
   public ClimbingPath(String aLocation, int aLength, ClimbSafe aClimbSafe)
   {
-    location = aLocation;
     length = aLength;
+    if (!setLocation(aLocation))
+    {
+      throw new RuntimeException("Cannot create due to duplicate location. See http://manual.umple.org?RE003ViolationofUniqueness.html");
+    }
     assignments = new ArrayList<Assignment>();
     boolean didAddClimbSafe = setClimbSafe(aClimbSafe);
     if (!didAddClimbSafe)
@@ -49,8 +59,19 @@ public class ClimbingPath
   public boolean setLocation(String aLocation)
   {
     boolean wasSet = false;
+    String anOldLocation = getLocation();
+    if (anOldLocation != null && anOldLocation.equals(aLocation)) {
+      return true;
+    }
+    if (hasWithLocation(aLocation)) {
+      return wasSet;
+    }
     location = aLocation;
     wasSet = true;
+    if (anOldLocation != null) {
+      climbingpathsByLocation.remove(anOldLocation);
+    }
+    climbingpathsByLocation.put(aLocation, this);
     return wasSet;
   }
 
@@ -65,6 +86,16 @@ public class ClimbingPath
   public String getLocation()
   {
     return location;
+  }
+  /* Code from template attribute_GetUnique */
+  public static ClimbingPath getWithLocation(String aLocation)
+  {
+    return climbingpathsByLocation.get(aLocation);
+  }
+  /* Code from template attribute_HasUnique */
+  public static boolean hasWithLocation(String aLocation)
+  {
+    return getWithLocation(aLocation) != null;
   }
 
   /**
@@ -81,6 +112,9 @@ public class ClimbingPath
     return aAssignment;
   }
 
+  /**
+   * 0..1 to avoid changing the constructor of assignment which would mess up the step defintions
+   */
   public List<Assignment> getAssignments()
   {
     List<Assignment> newAssignments = Collections.unmodifiableList(assignments);
@@ -114,21 +148,20 @@ public class ClimbingPath
   {
     return 0;
   }
-  /* Code from template association_AddManyToOne */
-  public Assignment addAssignment(int aStartWeek, int aEndWeek, Member aMember, ClimbSafe aClimbSafe)
-  {
-    return new Assignment(aStartWeek, aEndWeek, aMember, this, aClimbSafe);
-  }
-
+  /* Code from template association_AddManyToOptionalOne */
   public boolean addAssignment(Assignment aAssignment)
   {
     boolean wasAdded = false;
     if (assignments.contains(aAssignment)) { return false; }
     ClimbingPath existingClimbingPath = aAssignment.getClimbingPath();
-    boolean isNewClimbingPath = existingClimbingPath != null && !this.equals(existingClimbingPath);
-    if (isNewClimbingPath)
+    if (existingClimbingPath == null)
     {
       aAssignment.setClimbingPath(this);
+    }
+    else if (!this.equals(existingClimbingPath))
+    {
+      existingClimbingPath.removeAssignment(aAssignment);
+      addAssignment(aAssignment);
     }
     else
     {
@@ -141,10 +174,10 @@ public class ClimbingPath
   public boolean removeAssignment(Assignment aAssignment)
   {
     boolean wasRemoved = false;
-    //Unable to remove aAssignment, as it must always have a climbingPath
-    if (!this.equals(aAssignment.getClimbingPath()))
+    if (assignments.contains(aAssignment))
     {
       assignments.remove(aAssignment);
+      aAssignment.setClimbingPath(null);
       wasRemoved = true;
     }
     return wasRemoved;
@@ -203,16 +236,25 @@ public class ClimbingPath
 
   public void delete()
   {
-    for(int i=assignments.size(); i > 0; i--)
+    climbingpathsByLocation.remove(getLocation());
+    while( !assignments.isEmpty() )
     {
-      Assignment aAssignment = assignments.get(i - 1);
-      aAssignment.delete();
+      assignments.get(0).setClimbingPath(null);
     }
     ClimbSafe placeholderClimbSafe = climbSafe;
     this.climbSafe = null;
     if(placeholderClimbSafe != null)
     {
       placeholderClimbSafe.removeClimbingPath(this);
+    }
+  }
+
+  // line 33 "../../../../../ExtraFeatures.ump"
+   public static  void reinitializeUniquePath(List<ClimbingPath> climbingPaths){
+    climbingpathsByLocation = new HashMap<String, ClimbingPath>();
+
+    for (ClimbingPath climbingPath : climbingPaths) {
+      climbingpathsByLocation.put(climbingPath.getLocation(), climbingPath);
     }
   }
 
@@ -223,5 +265,13 @@ public class ClimbingPath
             "location" + ":" + getLocation()+ "," +
             "length" + ":" + getLength()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null");
-  }
+  }  
+  //------------------------
+  // DEVELOPER CODE - PROVIDED AS-IS
+  //------------------------
+  
+  // line 29 "../../../../../ExtraFeatures.ump"
+  private static final long serialVersionUID = 15L ;
+
+  
 }

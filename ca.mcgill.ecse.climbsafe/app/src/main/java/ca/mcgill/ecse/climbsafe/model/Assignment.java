@@ -3,9 +3,8 @@
 
 package ca.mcgill.ecse.climbsafe.model;
 import java.io.Serializable;
-import java.util.*;
 
-// line 107 "../../../../../ClimbSafePersistence.ump"
+// line 108 "../../../../../ClimbSafePersistence.ump"
 // line 1 "../../../../../AssignmentProcess.ump"
 // line 95 "../../../../../ClimbSafe.ump"
 public class Assignment implements Serializable
@@ -30,14 +29,15 @@ public class Assignment implements Serializable
   private Guide guide;
   private Hotel hotel;
   private ClimbingPath climbingPath;
+  private ClimbingGroup climbingGroup;
   private ClimbSafe climbSafe;
-  private List<Review> reviews;
+  private Review review;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Assignment(int aStartWeek, int aEndWeek, Member aMember, ClimbingPath aClimbingPath, ClimbSafe aClimbSafe)
+  public Assignment(int aStartWeek, int aEndWeek, Member aMember, ClimbSafe aClimbSafe)
   {
     authorizationCode = null;
     refundPercentage = 0;
@@ -48,17 +48,11 @@ public class Assignment implements Serializable
     {
       throw new RuntimeException("Unable to create assignment due to member. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
-    boolean didAddClimbingPath = setClimbingPath(aClimbingPath);
-    if (!didAddClimbingPath)
-    {
-      throw new RuntimeException("Unable to create assignment due to climbingPath. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-    }
     boolean didAddClimbSafe = setClimbSafe(aClimbSafe);
     if (!didAddClimbSafe)
     {
       throw new RuntimeException("Unable to create assignment due to climbSafe. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
-    reviews = new ArrayList<Review>();
     setAssignmentState(AssignmentState.Assigned);
   }
 
@@ -369,40 +363,38 @@ public class Assignment implements Serializable
   {
     return climbingPath;
   }
+
+  public boolean hasClimbingPath()
+  {
+    boolean has = climbingPath != null;
+    return has;
+  }
+  /* Code from template association_GetOne */
+  public ClimbingGroup getClimbingGroup()
+  {
+    return climbingGroup;
+  }
+
+  public boolean hasClimbingGroup()
+  {
+    boolean has = climbingGroup != null;
+    return has;
+  }
   /* Code from template association_GetOne */
   public ClimbSafe getClimbSafe()
   {
     return climbSafe;
   }
-  /* Code from template association_GetMany */
-  public Review getReview(int index)
+  /* Code from template association_GetOne */
+  public Review getReview()
   {
-    Review aReview = reviews.get(index);
-    return aReview;
+    return review;
   }
 
-  public List<Review> getReviews()
+  public boolean hasReview()
   {
-    List<Review> newReviews = Collections.unmodifiableList(reviews);
-    return newReviews;
-  }
-
-  public int numberOfReviews()
-  {
-    int number = reviews.size();
-    return number;
-  }
-
-  public boolean hasReviews()
-  {
-    boolean has = reviews.size() > 0;
+    boolean has = review != null;
     return has;
-  }
-
-  public int indexOfReview(Review aReview)
-  {
-    int index = reviews.indexOf(aReview);
-    return index;
   }
   /* Code from template association_SetOneToOptionalOne */
   public boolean setMember(Member aNewMember)
@@ -466,26 +458,74 @@ public class Assignment implements Serializable
     wasSet = true;
     return wasSet;
   }
-  /* Code from template association_SetOneToMany */
+  /* Code from template association_SetOptionalOneToMany */
   public boolean setClimbingPath(ClimbingPath aClimbingPath)
   {
     boolean wasSet = false;
-    if (aClimbingPath == null)
-    {
-      return wasSet;
-    }
-
     ClimbingPath existingClimbingPath = climbingPath;
     climbingPath = aClimbingPath;
     if (existingClimbingPath != null && !existingClimbingPath.equals(aClimbingPath))
     {
       existingClimbingPath.removeAssignment(this);
     }
-    climbingPath.addAssignment(this);
+    if (aClimbingPath != null)
+    {
+      aClimbingPath.addAssignment(this);
+    }
     wasSet = true;
     return wasSet;
   }
-  /* Code from template association_SetOneToMany */
+  /* Code from template association_SetOptionalOneToMandatoryMany */
+  public boolean setClimbingGroup(ClimbingGroup aClimbingGroup)
+  {
+    //
+    // This source of this source generation is association_SetOptionalOneToMandatoryMany.jet
+    // This set file assumes the generation of a maximumNumberOfXXX method does not exist because 
+    // it's not required (No upper bound)
+    //   
+    boolean wasSet = false;
+    ClimbingGroup existingClimbingGroup = climbingGroup;
+
+    if (existingClimbingGroup == null)
+    {
+      if (aClimbingGroup != null)
+      {
+        if (aClimbingGroup.addAssignment(this))
+        {
+          existingClimbingGroup = aClimbingGroup;
+          wasSet = true;
+        }
+      }
+    } 
+    else if (existingClimbingGroup != null)
+    {
+      if (aClimbingGroup == null)
+      {
+        if (existingClimbingGroup.minimumNumberOfAssignments() < existingClimbingGroup.numberOfAssignments())
+        {
+          existingClimbingGroup.removeAssignment(this);
+          existingClimbingGroup = aClimbingGroup;  // aClimbingGroup == null
+          wasSet = true;
+        }
+      } 
+      else
+      {
+        if (existingClimbingGroup.minimumNumberOfAssignments() < existingClimbingGroup.numberOfAssignments())
+        {
+          existingClimbingGroup.removeAssignment(this);
+          aClimbingGroup.addAssignment(this);
+          existingClimbingGroup = aClimbingGroup;
+          wasSet = true;
+        }
+      }
+    }
+    if (wasSet)
+    {
+      climbingGroup = existingClimbingGroup;
+    }
+    return wasSet;
+  }
+    /* Code from template association_SetOneToMany */
   public boolean setClimbSafe(ClimbSafe aClimbSafe)
   {
     boolean wasSet = false;
@@ -504,77 +544,32 @@ public class Assignment implements Serializable
     wasSet = true;
     return wasSet;
   }
-  /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfReviews()
+  /* Code from template association_SetOptionalOneToOne */
+  public boolean setReview(Review aNewReview)
   {
-    return 0;
-  }
-  /* Code from template association_AddManyToOne */
-  public Review addReview(Review.Rating aRating, String aComment, Member aMember, ClimbSafe aClimbSafe)
-  {
-    return new Review(aRating, aComment, aMember, this, aClimbSafe);
-  }
+    boolean wasSet = false;
+    if (review != null && !review.equals(aNewReview) && equals(review.getAssignment()))
+    {
+      //Unable to setReview, as existing review would become an orphan
+      return wasSet;
+    }
 
-  public boolean addReview(Review aReview)
-  {
-    boolean wasAdded = false;
-    if (reviews.contains(aReview)) { return false; }
-    Assignment existingAssignment = aReview.getAssignment();
-    boolean isNewAssignment = existingAssignment != null && !this.equals(existingAssignment);
-    if (isNewAssignment)
-    {
-      aReview.setAssignment(this);
-    }
-    else
-    {
-      reviews.add(aReview);
-    }
-    wasAdded = true;
-    return wasAdded;
-  }
+    review = aNewReview;
+    Assignment anOldAssignment = aNewReview != null ? aNewReview.getAssignment() : null;
 
-  public boolean removeReview(Review aReview)
-  {
-    boolean wasRemoved = false;
-    //Unable to remove aReview, as it must always have a assignment
-    if (!this.equals(aReview.getAssignment()))
+    if (!this.equals(anOldAssignment))
     {
-      reviews.remove(aReview);
-      wasRemoved = true;
+      if (anOldAssignment != null)
+      {
+        anOldAssignment.review = null;
+      }
+      if (review != null)
+      {
+        review.setAssignment(this);
+      }
     }
-    return wasRemoved;
-  }
-  /* Code from template association_AddIndexControlFunctions */
-  public boolean addReviewAt(Review aReview, int index)
-  {  
-    boolean wasAdded = false;
-    if(addReview(aReview))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfReviews()) { index = numberOfReviews() - 1; }
-      reviews.remove(aReview);
-      reviews.add(index, aReview);
-      wasAdded = true;
-    }
-    return wasAdded;
-  }
-
-  public boolean addOrMoveReviewAt(Review aReview, int index)
-  {
-    boolean wasAdded = false;
-    if(reviews.contains(aReview))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfReviews()) { index = numberOfReviews() - 1; }
-      reviews.remove(aReview);
-      reviews.add(index, aReview);
-      wasAdded = true;
-    } 
-    else 
-    {
-      wasAdded = addReviewAt(aReview, index);
-    }
-    return wasAdded;
+    wasSet = true;
+    return wasSet;
   }
 
   public void delete()
@@ -597,11 +592,24 @@ public class Assignment implements Serializable
       this.hotel = null;
       placeholderHotel.removeAssignment(this);
     }
-    ClimbingPath placeholderClimbingPath = climbingPath;
-    this.climbingPath = null;
-    if(placeholderClimbingPath != null)
+    if (climbingPath != null)
     {
+      ClimbingPath placeholderClimbingPath = climbingPath;
+      this.climbingPath = null;
       placeholderClimbingPath.removeAssignment(this);
+    }
+    if (climbingGroup != null)
+    {
+      if (climbingGroup.numberOfAssignments() <= 2)
+      {
+        climbingGroup.delete();
+      }
+      else
+      {
+        ClimbingGroup placeholderClimbingGroup = climbingGroup;
+        this.climbingGroup = null;
+        placeholderClimbingGroup.removeAssignment(this);
+      }
     }
     ClimbSafe placeholderClimbSafe = climbSafe;
     this.climbSafe = null;
@@ -609,10 +617,11 @@ public class Assignment implements Serializable
     {
       placeholderClimbSafe.removeAssignment(this);
     }
-    for(int i=reviews.size(); i > 0; i--)
+    Review existingReview = review;
+    review = null;
+    if (existingReview != null)
     {
-      Review aReview = reviews.get(i - 1);
-      aReview.delete();
+      existingReview.delete();
     }
   }
 
@@ -643,13 +652,15 @@ public class Assignment implements Serializable
             "  " + "guide = "+(getGuide()!=null?Integer.toHexString(System.identityHashCode(getGuide())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "hotel = "+(getHotel()!=null?Integer.toHexString(System.identityHashCode(getHotel())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "climbingPath = "+(getClimbingPath()!=null?Integer.toHexString(System.identityHashCode(getClimbingPath())):"null") + System.getProperties().getProperty("line.separator") +
-            "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null");
+            "  " + "climbingGroup = "+(getClimbingGroup()!=null?Integer.toHexString(System.identityHashCode(getClimbingGroup())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "review = "+(getReview()!=null?Integer.toHexString(System.identityHashCode(getReview())):"null");
   }  
   //------------------------
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 110 "../../../../../ClimbSafePersistence.ump"
+  // line 111 "../../../../../ClimbSafePersistence.ump"
   private static final long serialVersionUID = 11L ;
 
   

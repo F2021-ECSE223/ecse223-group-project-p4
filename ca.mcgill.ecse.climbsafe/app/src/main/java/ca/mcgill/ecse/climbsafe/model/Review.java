@@ -2,9 +2,10 @@
 /*This code was generated using the UMPLE 1.31.1.5860.78bb27cc6 modeling language!*/
 
 package ca.mcgill.ecse.climbsafe.model;
+import java.io.Serializable;
 
-// line 1 "../../../../../ExtraFeatures.ump"
-public class Review
+// line 3 "../../../../../ExtraFeatures.ump"
+public class Review implements Serializable
 {
 
   //------------------------
@@ -132,31 +133,33 @@ public class Review
     wasSet = true;
     return wasSet;
   }
-  /* Code from template association_SetOneToManyAssociationClass */
-  public boolean setAssignment(Assignment aAssignment)
+  /* Code from template association_SetOneToOptionalOne */
+  public boolean setAssignment(Assignment aNewAssignment)
   {
     boolean wasSet = false;
     if (!canSetAssignment) { return false; }
-    if (aAssignment == null)
+    if (aNewAssignment == null)
     {
+      //Unable to setAssignment to null, as review must always be associated to a assignment
       return wasSet;
     }
+    
+    Review existingReview = aNewAssignment.getReview();
+    if (existingReview != null && !equals(existingReview))
+    {
+      //Unable to setAssignment, the current assignment already has a review, which would be orphaned if it were re-assigned
+      return wasSet;
+    }
+    
+    Assignment anOldAssignment = assignment;
+    assignment = aNewAssignment;
+    assignment.setReview(this);
 
-    Assignment existingAssignment = assignment;
-    assignment = aAssignment;
-    if (existingAssignment != null && !existingAssignment.equals(aAssignment))
+    if (anOldAssignment != null)
     {
-      existingAssignment.removeReview(this);
+      anOldAssignment.setReview(null);
     }
-    if (!assignment.addReview(this))
-    {
-      assignment = existingAssignment;
-      wasSet = false;
-    }
-    else
-    {
-      wasSet = true;
-    }
+    wasSet = true;
     return wasSet;
   }
   /* Code from template association_SetOneToManyAssociationClass */
@@ -251,11 +254,11 @@ public class Review
     {
       existingMember.setReview(null);
     }
-    Assignment placeholderAssignment = assignment;
-    this.assignment = null;
-    if(placeholderAssignment != null)
+    Assignment existingAssignment = assignment;
+    assignment = null;
+    if (existingAssignment != null)
     {
-      placeholderAssignment.removeReview(this);
+      existingAssignment.setReview(null);
     }
     ClimbSafe placeholderClimbSafe = climbSafe;
     this.climbSafe = null;
@@ -274,5 +277,12 @@ public class Review
             "  " + "member = "+(getMember()!=null?Integer.toHexString(System.identityHashCode(getMember())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "assignment = "+(getAssignment()!=null?Integer.toHexString(System.identityHashCode(getAssignment())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null");
-  }
+  }  
+  //------------------------
+  // DEVELOPER CODE - PROVIDED AS-IS
+  //------------------------
+  
+  // line 15 ../../../../../ExtraFeatures.ump
+  private static final long serialVersionUID = 14L;
+  
 }

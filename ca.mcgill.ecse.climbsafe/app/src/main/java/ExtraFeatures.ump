@@ -1,22 +1,55 @@
+external interface Serializable {}
+
 associationClass Review{
 	0..1 Member member;
-	* Assignment assignment;
+	0..1 Assignment assignment;
 	
 	enum Rating { VeryPoor, Poor, Neutral, Good, VeryGood}
 	
 	Rating rating;
 	String comment;
+	
+	// Persistence
+	depend java.io.Serializable;
+  	isA Serializable;
+  	private static final long serialVersionUID = 14L;
+ 
 }
 
 class ClimbingPath {
-	1 -- * Assignment assignments;
+	0..1 -- * Assignment assignments; // 0..1 to avoid changing the constructor of assignment which would mess up the step defintions
 	
-	String location;
+	unique String location;
 	Integer length; // In kilometers
 	enum Difficulty { Easy, Moderate, Hard}
+	
+	// Persistence
+	depend java.io.Serializable;
+  	isA Serializable;
+  	private static final long serialVersionUID = 15L;
+  	
+  	public static void reinitializeUniquePath(List<ClimbingPath> climbingPaths) {
+    
+    climbingpathsByLocation = new HashMap<String, ClimbingPath>();
+
+    for (ClimbingPath climbingPath : climbingPaths) {
+      climbingpathsByLocation.put(climbingPath.getLocation(), climbingPath);
+    }
+    
+  }
+}
+
+class ClimbingGroup {
+	0..1 -- 2..* Assignment assignments;
+	
+	// Persistence
+	depend java.io.Serializable;
+  	isA Serializable;
+  	private static final long serialVersionUID = 16L;
 }
 
 association {
 	1 ClimbSafe <@>- * Review;
 	1 ClimbSafe <@>- * ClimbingPath;
+	1 ClimbSafe <@>- * ClimbingGroup;
 }
