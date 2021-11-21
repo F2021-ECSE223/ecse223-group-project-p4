@@ -1,0 +1,5 @@
+namespace ca.mcgill.ecse.climbsafe.model;
+use ClimbSafe.ump;
+use ClimbSafePersistence.ump;
+use ExtraFeatures.ump;
+use AssignmentProcess.ump;

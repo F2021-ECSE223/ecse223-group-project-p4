@@ -9,8 +9,8 @@ import java.util.*;
  * persistence for BundleItem needs to be specified in ClimbSafe.ump
  * due to a bug in Umple (association classes cannot be defined in two files)
  */
+// line 82 "../../../../../ClimbSafe.ump"
 // line 94 "../../../../../ClimbSafePersistence.ump"
-// line 88 "../../../../../ClimbSafe.ump"
 public class Hotel implements Serializable
 {
 

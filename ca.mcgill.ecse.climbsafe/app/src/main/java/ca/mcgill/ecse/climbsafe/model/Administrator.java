@@ -5,8 +5,8 @@ package ca.mcgill.ecse.climbsafe.model;
 import java.io.Serializable;
 import java.util.*;
 
+// line 24 "../../../../../ClimbSafe.ump"
 // line 35 "../../../../../ClimbSafePersistence.ump"
-// line 30 "../../../../../ClimbSafe.ump"
 public class Administrator extends User implements Serializable
 {
 

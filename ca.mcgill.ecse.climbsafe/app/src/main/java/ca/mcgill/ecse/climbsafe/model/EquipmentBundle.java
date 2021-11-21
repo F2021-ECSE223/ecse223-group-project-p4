@@ -5,8 +5,8 @@ package ca.mcgill.ecse.climbsafe.model;
 import java.io.Serializable;
 import java.util.*;
 
+// line 67 "../../../../../ClimbSafe.ump"
 // line 85 "../../../../../ClimbSafePersistence.ump"
-// line 73 "../../../../../ClimbSafe.ump"
 public class EquipmentBundle extends BookableItem implements Serializable
 {
 

@@ -5,8 +5,8 @@ package ca.mcgill.ecse.climbsafe.model;
 import java.io.Serializable;
 import java.util.*;
 
+// line 39 "../../../../../ClimbSafe.ump"
 // line 53 "../../../../../ClimbSafePersistence.ump"
-// line 45 "../../../../../ClimbSafe.ump"
 public class Member extends NamedUser implements Serializable
 {
 
@@ -22,8 +22,8 @@ public class Member extends NamedUser implements Serializable
   //Member Associations
   private ClimbSafe climbSafe;
   private Assignment assignment;
-  private Review review;
   private List<BookedItem> bookedItems;
+  private Review review;
 
   //------------------------
   // CONSTRUCTOR
@@ -111,17 +111,6 @@ public class Member extends NamedUser implements Serializable
     boolean has = assignment != null;
     return has;
   }
-  /* Code from template association_GetOne */
-  public Review getReview()
-  {
-    return review;
-  }
-
-  public boolean hasReview()
-  {
-    boolean has = review != null;
-    return has;
-  }
   /* Code from template association_GetMany */
   public BookedItem getBookedItem(int index)
   {
@@ -151,6 +140,17 @@ public class Member extends NamedUser implements Serializable
   {
     int index = bookedItems.indexOf(aBookedItem);
     return index;
+  }
+  /* Code from template association_GetOne */
+  public Review getReview()
+  {
+    return review;
+  }
+
+  public boolean hasReview()
+  {
+    boolean has = review != null;
+    return has;
   }
   /* Code from template association_SetOneToMany */
   public boolean setClimbSafe(ClimbSafe aClimbSafe)
@@ -193,33 +193,6 @@ public class Member extends NamedUser implements Serializable
       if (assignment != null)
       {
         assignment.setMember(this);
-      }
-    }
-    wasSet = true;
-    return wasSet;
-  }
-  /* Code from template association_SetOptionalOneToOne */
-  public boolean setReview(Review aNewReview)
-  {
-    boolean wasSet = false;
-    if (review != null && !review.equals(aNewReview) && equals(review.getMember()))
-    {
-      //Unable to setReview, as existing review would become an orphan
-      return wasSet;
-    }
-
-    review = aNewReview;
-    Member anOldMember = aNewReview != null ? aNewReview.getMember() : null;
-
-    if (!this.equals(anOldMember))
-    {
-      if (anOldMember != null)
-      {
-        anOldMember.review = null;
-      }
-      if (review != null)
-      {
-        review.setMember(this);
       }
     }
     wasSet = true;
@@ -297,6 +270,33 @@ public class Member extends NamedUser implements Serializable
     }
     return wasAdded;
   }
+  /* Code from template association_SetOptionalOneToOne */
+  public boolean setReview(Review aNewReview)
+  {
+    boolean wasSet = false;
+    if (review != null && !review.equals(aNewReview) && equals(review.getMember()))
+    {
+      //Unable to setReview, as existing review would become an orphan
+      return wasSet;
+    }
+
+    review = aNewReview;
+    Member anOldMember = aNewReview != null ? aNewReview.getMember() : null;
+
+    if (!this.equals(anOldMember))
+    {
+      if (anOldMember != null)
+      {
+        anOldMember.review = null;
+      }
+      if (review != null)
+      {
+        review.setMember(this);
+      }
+    }
+    wasSet = true;
+    return wasSet;
+  }
 
   public void delete()
   {
@@ -312,16 +312,16 @@ public class Member extends NamedUser implements Serializable
     {
       existingAssignment.delete();
     }
+    for(int i=bookedItems.size(); i > 0; i--)
+    {
+      BookedItem aBookedItem = bookedItems.get(i - 1);
+      aBookedItem.delete();
+    }
     Review existingReview = review;
     review = null;
     if (existingReview != null)
     {
       existingReview.delete();
-    }
-    for(int i=bookedItems.size(); i > 0; i--)
-    {
-      BookedItem aBookedItem = bookedItems.get(i - 1);
-      aBookedItem.delete();
     }
     super.delete();
   }

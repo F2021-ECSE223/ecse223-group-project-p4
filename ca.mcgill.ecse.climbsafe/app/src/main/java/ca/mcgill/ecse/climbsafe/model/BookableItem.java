@@ -9,8 +9,8 @@ import java.util.*;
  * persistence for BookedItem needs to be specified in ClimbSafe.ump
  * due to a bug in Umple (association classes cannot be defined in two files)
  */
+// line 56 "../../../../../ClimbSafe.ump"
 // line 62 "../../../../../ClimbSafePersistence.ump"
-// line 62 "../../../../../ClimbSafe.ump"
 public abstract class BookableItem implements Serializable
 {
 

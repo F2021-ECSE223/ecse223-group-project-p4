@@ -4,9 +4,9 @@
 package ca.mcgill.ecse.climbsafe.model;
 import java.io.Serializable;
 
+// line 89 "../../../../../ClimbSafe.ump"
 // line 108 "../../../../../ClimbSafePersistence.ump"
 // line 1 "../../../../../AssignmentProcess.ump"
-// line 95 "../../../../../ClimbSafe.ump"
 public class Assignment implements Serializable
 {
 
@@ -15,10 +15,10 @@ public class Assignment implements Serializable
   //------------------------
 
   //Assignment Attributes
-  private String authorizationCode;
-  private int refundPercentage;
   private int startWeek;
   private int endWeek;
+  private String authorizationCode;
+  private int refundPercentage;
 
   //Assignment State Machines
   public enum AssignmentState { Assigned, Paid, Started, Finished, Cancelled, Banned }
@@ -28,9 +28,9 @@ public class Assignment implements Serializable
   private Member member;
   private Guide guide;
   private Hotel hotel;
+  private ClimbSafe climbSafe;
   private ClimbingPath climbingPath;
   private ClimbingGroup climbingGroup;
-  private ClimbSafe climbSafe;
   private Review review;
 
   //------------------------
@@ -39,10 +39,10 @@ public class Assignment implements Serializable
 
   public Assignment(int aStartWeek, int aEndWeek, Member aMember, ClimbSafe aClimbSafe)
   {
-    authorizationCode = null;
-    refundPercentage = 0;
     startWeek = aStartWeek;
     endWeek = aEndWeek;
+    authorizationCode = null;
+    refundPercentage = 0;
     boolean didAddMember = setMember(aMember);
     if (!didAddMember)
     {
@@ -60,22 +60,6 @@ public class Assignment implements Serializable
   // INTERFACE
   //------------------------
 
-  public boolean setAuthorizationCode(String aAuthorizationCode)
-  {
-    boolean wasSet = false;
-    authorizationCode = aAuthorizationCode;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setRefundPercentage(int aRefundPercentage)
-  {
-    boolean wasSet = false;
-    refundPercentage = aRefundPercentage;
-    wasSet = true;
-    return wasSet;
-  }
-
   public boolean setStartWeek(int aStartWeek)
   {
     boolean wasSet = false;
@@ -92,14 +76,20 @@ public class Assignment implements Serializable
     return wasSet;
   }
 
-  public String getAuthorizationCode()
+  public boolean setAuthorizationCode(String aAuthorizationCode)
   {
-    return authorizationCode;
+    boolean wasSet = false;
+    authorizationCode = aAuthorizationCode;
+    wasSet = true;
+    return wasSet;
   }
 
-  public int getRefundPercentage()
+  public boolean setRefundPercentage(int aRefundPercentage)
   {
-    return refundPercentage;
+    boolean wasSet = false;
+    refundPercentage = aRefundPercentage;
+    wasSet = true;
+    return wasSet;
   }
 
   public int getStartWeek()
@@ -110,6 +100,16 @@ public class Assignment implements Serializable
   public int getEndWeek()
   {
     return endWeek;
+  }
+
+  public String getAuthorizationCode()
+  {
+    return authorizationCode;
+  }
+
+  public int getRefundPercentage()
+  {
+    return refundPercentage;
   }
 
   public String getAssignmentStateFullName()
@@ -359,6 +359,11 @@ public class Assignment implements Serializable
     return has;
   }
   /* Code from template association_GetOne */
+  public ClimbSafe getClimbSafe()
+  {
+    return climbSafe;
+  }
+  /* Code from template association_GetOne */
   public ClimbingPath getClimbingPath()
   {
     return climbingPath;
@@ -379,11 +384,6 @@ public class Assignment implements Serializable
   {
     boolean has = climbingGroup != null;
     return has;
-  }
-  /* Code from template association_GetOne */
-  public ClimbSafe getClimbSafe()
-  {
-    return climbSafe;
   }
   /* Code from template association_GetOne */
   public Review getReview()
@@ -458,6 +458,25 @@ public class Assignment implements Serializable
     wasSet = true;
     return wasSet;
   }
+  /* Code from template association_SetOneToMany */
+  public boolean setClimbSafe(ClimbSafe aClimbSafe)
+  {
+    boolean wasSet = false;
+    if (aClimbSafe == null)
+    {
+      return wasSet;
+    }
+
+    ClimbSafe existingClimbSafe = climbSafe;
+    climbSafe = aClimbSafe;
+    if (existingClimbSafe != null && !existingClimbSafe.equals(aClimbSafe))
+    {
+      existingClimbSafe.removeAssignment(this);
+    }
+    climbSafe.addAssignment(this);
+    wasSet = true;
+    return wasSet;
+  }
   /* Code from template association_SetOptionalOneToMany */
   public boolean setClimbingPath(ClimbingPath aClimbingPath)
   {
@@ -525,26 +544,7 @@ public class Assignment implements Serializable
     }
     return wasSet;
   }
-    /* Code from template association_SetOneToMany */
-  public boolean setClimbSafe(ClimbSafe aClimbSafe)
-  {
-    boolean wasSet = false;
-    if (aClimbSafe == null)
-    {
-      return wasSet;
-    }
-
-    ClimbSafe existingClimbSafe = climbSafe;
-    climbSafe = aClimbSafe;
-    if (existingClimbSafe != null && !existingClimbSafe.equals(aClimbSafe))
-    {
-      existingClimbSafe.removeAssignment(this);
-    }
-    climbSafe.addAssignment(this);
-    wasSet = true;
-    return wasSet;
-  }
-  /* Code from template association_SetOptionalOneToOne */
+    /* Code from template association_SetOptionalOneToOne */
   public boolean setReview(Review aNewReview)
   {
     boolean wasSet = false;
@@ -592,6 +592,12 @@ public class Assignment implements Serializable
       this.hotel = null;
       placeholderHotel.removeAssignment(this);
     }
+    ClimbSafe placeholderClimbSafe = climbSafe;
+    this.climbSafe = null;
+    if(placeholderClimbSafe != null)
+    {
+      placeholderClimbSafe.removeAssignment(this);
+    }
     if (climbingPath != null)
     {
       ClimbingPath placeholderClimbingPath = climbingPath;
@@ -610,12 +616,6 @@ public class Assignment implements Serializable
         this.climbingGroup = null;
         placeholderClimbingGroup.removeAssignment(this);
       }
-    }
-    ClimbSafe placeholderClimbSafe = climbSafe;
-    this.climbSafe = null;
-    if(placeholderClimbSafe != null)
-    {
-      placeholderClimbSafe.removeAssignment(this);
     }
     Review existingReview = review;
     review = null;
@@ -644,16 +644,16 @@ public class Assignment implements Serializable
   public String toString()
   {
     return super.toString() + "["+
-            "authorizationCode" + ":" + getAuthorizationCode()+ "," +
-            "refundPercentage" + ":" + getRefundPercentage()+ "," +
             "startWeek" + ":" + getStartWeek()+ "," +
-            "endWeek" + ":" + getEndWeek()+ "]" + System.getProperties().getProperty("line.separator") +
+            "endWeek" + ":" + getEndWeek()+ "," +
+            "authorizationCode" + ":" + getAuthorizationCode()+ "," +
+            "refundPercentage" + ":" + getRefundPercentage()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "member = "+(getMember()!=null?Integer.toHexString(System.identityHashCode(getMember())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "guide = "+(getGuide()!=null?Integer.toHexString(System.identityHashCode(getGuide())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "hotel = "+(getHotel()!=null?Integer.toHexString(System.identityHashCode(getHotel())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "climbingPath = "+(getClimbingPath()!=null?Integer.toHexString(System.identityHashCode(getClimbingPath())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "climbingGroup = "+(getClimbingGroup()!=null?Integer.toHexString(System.identityHashCode(getClimbingGroup())):"null") + System.getProperties().getProperty("line.separator") +
-            "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "review = "+(getReview()!=null?Integer.toHexString(System.identityHashCode(getReview())):"null");
   }  
   //------------------------
