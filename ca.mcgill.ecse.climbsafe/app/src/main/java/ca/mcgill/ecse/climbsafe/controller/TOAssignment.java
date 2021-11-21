@@ -24,12 +24,15 @@ public class TOAssignment
   private String status;
   private String authorizationCode;
   private int refundedPercentageAmount;
+  private String climbRating;
+  private String climbComment;
+  private int climbLength;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public TOAssignment(String aMemberEmail, String aMemberName, String aGuideEmail, String aGuideName, String aHotelName, int aStartWeek, int aEndWeek, int aTotalCostForGuide, int aTotalCostForEquipment, String aStatus, String aAuthorizationCode, int aRefundedPercentageAmount)
+  public TOAssignment(String aMemberEmail, String aMemberName, String aGuideEmail, String aGuideName, String aHotelName, int aStartWeek, int aEndWeek, int aTotalCostForGuide, int aTotalCostForEquipment, String aStatus, String aAuthorizationCode, int aRefundedPercentageAmount, String aClimbRating, String aClimbComment, int aClimbLength)
   {
     memberEmail = aMemberEmail;
     memberName = aMemberName;
@@ -43,6 +46,9 @@ public class TOAssignment
     status = aStatus;
     authorizationCode = aAuthorizationCode;
     refundedPercentageAmount = aRefundedPercentageAmount;
+    climbRating = aClimbRating;
+    climbComment = aClimbComment;
+    climbLength = aClimbLength;
   }
 
   //------------------------
@@ -145,6 +151,30 @@ public class TOAssignment
     return wasSet;
   }
 
+  public boolean setClimbRating(String aClimbRating)
+  {
+    boolean wasSet = false;
+    climbRating = aClimbRating;
+    wasSet = true;
+    return wasSet;
+  }
+
+  public boolean setClimbComment(String aClimbComment)
+  {
+    boolean wasSet = false;
+    climbComment = aClimbComment;
+    wasSet = true;
+    return wasSet;
+  }
+
+  public boolean setClimbLength(int aClimbLength)
+  {
+    boolean wasSet = false;
+    climbLength = aClimbLength;
+    wasSet = true;
+    return wasSet;
+  }
+
   public String getMemberEmail()
   {
     return memberEmail;
@@ -205,6 +235,21 @@ public class TOAssignment
     return refundedPercentageAmount;
   }
 
+  public String getClimbRating()
+  {
+    return climbRating;
+  }
+
+  public String getClimbComment()
+  {
+    return climbComment;
+  }
+
+  public int getClimbLength()
+  {
+    return climbLength;
+  }
+
   public void delete()
   {}
 
@@ -223,6 +268,9 @@ public class TOAssignment
             "totalCostForEquipment" + ":" + getTotalCostForEquipment()+ "," +
             "status" + ":" + getStatus()+ "," +
             "authorizationCode" + ":" + getAuthorizationCode()+ "," +
-            "refundedPercentageAmount" + ":" + getRefundedPercentageAmount()+ "]";
+            "refundedPercentageAmount" + ":" + getRefundedPercentageAmount()+ "," +
+            "climbRating" + ":" + getClimbRating()+ "," +
+            "climbComment" + ":" + getClimbComment()+ "," +
+            "climbLength" + ":" + getClimbLength()+ "]";
   }
 }

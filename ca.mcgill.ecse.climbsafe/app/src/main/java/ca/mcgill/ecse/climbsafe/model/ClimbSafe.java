@@ -32,7 +32,6 @@ public class ClimbSafe implements Serializable
   private List<Assignment> assignments;
   private List<Review> reviews;
   private List<ClimbingPath> climbingPaths;
-  private List<ClimbingGroup> climbingGroups;
 
   //------------------------
   // CONSTRUCTOR
@@ -53,7 +52,6 @@ public class ClimbSafe implements Serializable
     assignments = new ArrayList<Assignment>();
     reviews = new ArrayList<Review>();
     climbingPaths = new ArrayList<ClimbingPath>();
-    climbingGroups = new ArrayList<ClimbingGroup>();
   }
 
   //------------------------
@@ -407,36 +405,6 @@ public class ClimbSafe implements Serializable
   public int indexOfClimbingPath(ClimbingPath aClimbingPath)
   {
     int index = climbingPaths.indexOf(aClimbingPath);
-    return index;
-  }
-  /* Code from template association_GetMany */
-  public ClimbingGroup getClimbingGroup(int index)
-  {
-    ClimbingGroup aClimbingGroup = climbingGroups.get(index);
-    return aClimbingGroup;
-  }
-
-  public List<ClimbingGroup> getClimbingGroups()
-  {
-    List<ClimbingGroup> newClimbingGroups = Collections.unmodifiableList(climbingGroups);
-    return newClimbingGroups;
-  }
-
-  public int numberOfClimbingGroups()
-  {
-    int number = climbingGroups.size();
-    return number;
-  }
-
-  public boolean hasClimbingGroups()
-  {
-    boolean has = climbingGroups.size() > 0;
-    return has;
-  }
-
-  public int indexOfClimbingGroup(ClimbingGroup aClimbingGroup)
-  {
-    int index = climbingGroups.indexOf(aClimbingGroup);
     return index;
   }
   /* Code from template association_SetOptionalOneToOne */
@@ -1186,78 +1154,6 @@ public class ClimbSafe implements Serializable
     }
     return wasAdded;
   }
-  /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfClimbingGroups()
-  {
-    return 0;
-  }
-  /* Code from template association_AddManyToOne */
-  public ClimbingGroup addClimbingGroup(Assignment... allAssignments)
-  {
-    return new ClimbingGroup(this, allAssignments);
-  }
-
-  public boolean addClimbingGroup(ClimbingGroup aClimbingGroup)
-  {
-    boolean wasAdded = false;
-    if (climbingGroups.contains(aClimbingGroup)) { return false; }
-    ClimbSafe existingClimbSafe = aClimbingGroup.getClimbSafe();
-    boolean isNewClimbSafe = existingClimbSafe != null && !this.equals(existingClimbSafe);
-    if (isNewClimbSafe)
-    {
-      aClimbingGroup.setClimbSafe(this);
-    }
-    else
-    {
-      climbingGroups.add(aClimbingGroup);
-    }
-    wasAdded = true;
-    return wasAdded;
-  }
-
-  public boolean removeClimbingGroup(ClimbingGroup aClimbingGroup)
-  {
-    boolean wasRemoved = false;
-    //Unable to remove aClimbingGroup, as it must always have a climbSafe
-    if (!this.equals(aClimbingGroup.getClimbSafe()))
-    {
-      climbingGroups.remove(aClimbingGroup);
-      wasRemoved = true;
-    }
-    return wasRemoved;
-  }
-  /* Code from template association_AddIndexControlFunctions */
-  public boolean addClimbingGroupAt(ClimbingGroup aClimbingGroup, int index)
-  {  
-    boolean wasAdded = false;
-    if(addClimbingGroup(aClimbingGroup))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfClimbingGroups()) { index = numberOfClimbingGroups() - 1; }
-      climbingGroups.remove(aClimbingGroup);
-      climbingGroups.add(index, aClimbingGroup);
-      wasAdded = true;
-    }
-    return wasAdded;
-  }
-
-  public boolean addOrMoveClimbingGroupAt(ClimbingGroup aClimbingGroup, int index)
-  {
-    boolean wasAdded = false;
-    if(climbingGroups.contains(aClimbingGroup))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfClimbingGroups()) { index = numberOfClimbingGroups() - 1; }
-      climbingGroups.remove(aClimbingGroup);
-      climbingGroups.add(index, aClimbingGroup);
-      wasAdded = true;
-    } 
-    else 
-    {
-      wasAdded = addClimbingGroupAt(aClimbingGroup, index);
-    }
-    return wasAdded;
-  }
 
   public void delete()
   {
@@ -1336,13 +1232,6 @@ public class ClimbSafe implements Serializable
       ClimbingPath aClimbingPath = climbingPaths.get(climbingPaths.size() - 1);
       aClimbingPath.delete();
       climbingPaths.remove(aClimbingPath);
-    }
-    
-    while (climbingGroups.size() > 0)
-    {
-      ClimbingGroup aClimbingGroup = climbingGroups.get(climbingGroups.size() - 1);
-      aClimbingGroup.delete();
-      climbingGroups.remove(aClimbingGroup);
     }
     
   }

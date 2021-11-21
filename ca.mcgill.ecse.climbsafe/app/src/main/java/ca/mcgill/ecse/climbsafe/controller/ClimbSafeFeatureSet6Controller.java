@@ -84,21 +84,16 @@ public class ClimbSafeFeatureSet6Controller {
       String memberName = assignment.getMember().getName();
 
       // Extracting the guide name and email
-      String guideEmail, guideName;
+      String guideEmail = null, guideName = null;
       if (assignment.getGuide() != null) {
         guideEmail = assignment.getGuide().getEmail();
         guideName = assignment.getGuide().getName();
-      } else {
-        guideEmail = null;
-        guideName = null;
       }
 
       // Extracting the hotel name
-      String hotelName;
+      String hotelName = null;
       if (assignment.getHotel() != null)
         hotelName = assignment.getHotel().getName();
-      else
-        hotelName = null;
 
       // Extracting the assignment start week
       int startWeek = assignment.getStartWeek();
@@ -107,11 +102,9 @@ public class ClimbSafeFeatureSet6Controller {
       int endWeek = assignment.getEndWeek();
 
       // Calculating the total cost for the guide
-      int totalCostForGuide;
+      int totalCostForGuide = 0;
       if (guideEmail != null)
         totalCostForGuide = (endWeek - startWeek + 1) * system.getPriceOfGuidePerWeek();
-      else
-        totalCostForGuide = 0;
 
       // Calculating the total cost of the booked equipment using a helper method
       int totalCostForEquipment = getTotalCostOfEquipment(assignment);
@@ -125,10 +118,22 @@ public class ClimbSafeFeatureSet6Controller {
       // Extracting the refund percentage
       int refund = assignment.getRefundPercentage();
 
+      // Extracting the climb comment and rating
+      String rating = null, comment = null;
+      if (assignment.hasReview()) {
+        rating = assignment.getReview().getRating().name();
+        comment = assignment.getReview().getComment();
+      }
+
+      // Extracting the climb length
+      int length = 0;
+      if (assignment.hasClimbingPath())
+        length = assignment.getClimbingPath().getLength();
+
       // Adding the corresponding TOAssignment to the list we will be returning
       TOassignments.add(new TOAssignment(memberEmail, memberName, guideEmail, guideName, hotelName,
           startWeek, endWeek, totalCostForGuide, totalCostForEquipment, status, authorizationCode,
-          refund));
+          refund, rating, comment, length));
     }
 
     return TOassignments; // Returning a list of TOAssignments

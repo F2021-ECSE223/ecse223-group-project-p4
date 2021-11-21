@@ -42,17 +42,7 @@ class ClimbingPath {
   }
 }
 
-class ClimbingGroup {
-	0..1 -- 2..* Assignment assignments;
-	
-	// Persistence
-	depend java.io.Serializable;
-  	isA Serializable;
-  	private static final long serialVersionUID = 16L;
-}
-
 association {
 	1 ClimbSafe <@>- * Review;
 	1 ClimbSafe <@>- * ClimbingPath;
-	1 ClimbSafe <@>- * ClimbingGroup;
 }

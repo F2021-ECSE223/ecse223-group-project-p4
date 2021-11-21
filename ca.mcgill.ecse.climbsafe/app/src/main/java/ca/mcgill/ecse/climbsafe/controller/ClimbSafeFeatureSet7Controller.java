@@ -27,7 +27,7 @@ public class ClimbSafeFeatureSet7Controller {
 
     if (existingHotel != null) {
 
-      throw new InvalidInputException("Hotel already exists in the system ");
+      throw new InvalidInputException("Hotel already exists in the system");
 
     }
     // Putting the system we're working on in a local variable
@@ -42,26 +42,25 @@ public class ClimbSafeFeatureSet7Controller {
 
   public static void updateHotel(String oldName, String newName, String newAddress, int newNrStars)
       throws InvalidInputException {
+
     Hotel toBeUpdated = Hotel.getWithName(oldName);
+
     if (toBeUpdated == null) {
       throw new InvalidInputException("Hotel does not exist in the system");
-    } else {
-      if (newName.isEmpty()) {
-        throw new InvalidInputException("Name cannot be empty ");
-      }
-      if (newAddress.isEmpty()) {
-        throw new InvalidInputException("Address cannot be empty");
-      }
-      if (Hotel.getWithName(newName) != null) {
-        throw new InvalidInputException("New name already linked to another hotel");
-      }
-      if (newNrStars < 1 || newNrStars > 5) {
-        throw new InvalidInputException("Number of stars must be between 1 and 5");
-      }
-      toBeUpdated.setName(newName);
-      toBeUpdated.setAddress(newAddress);
-      toBeUpdated.setRating(intToRating(newNrStars));
+    } else if (newName.isEmpty()) {
+      throw new InvalidInputException("Name cannot be empty");
+    } else if (newAddress.isEmpty()) {
+      throw new InvalidInputException("Address cannot be empty");
+    } else if (newNrStars < 1 || newNrStars > 5) {
+      throw new InvalidInputException("Number of stars must be between 1 and 5");
+    } else if (Hotel.getWithName(newName) != null) {
+      throw new InvalidInputException("New name already linked to another hotel");
     }
+
+    toBeUpdated.setName(newName);
+    toBeUpdated.setAddress(newAddress);
+    toBeUpdated.setRating(intToRating(newNrStars));
+
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 

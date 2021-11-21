@@ -13,4 +13,7 @@ class TOAssignment {
   status;
   authorizationCode;
   Integer refundedPercentageAmount;
+  climbRating;
+  climbComment;
+  Integer climbLength;
 }

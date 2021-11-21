@@ -41,7 +41,7 @@ public class ClimbSafeFeatureSet4Controller {
 
     // add the equipment item to the system if it passes all the previous tests
     system.addEquipment(new Equipment(name, weight, pricePerWeek, system));
-    
+
     ClimbSafePersistence.save(system);
 
   }
@@ -77,7 +77,7 @@ public class ClimbSafeFeatureSet4Controller {
       toChange.setName(newName);
     ((Equipment) toChange).setWeight(newWeight);
     ((Equipment) toChange).setPricePerWeek(newPricePerWeek);
-    
+
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
 
   }
@@ -87,9 +87,9 @@ public class ClimbSafeFeatureSet4Controller {
    * @param name name inputed by the admin for a new or updated equipment
    * @param weight weight of the equipment inputed by the admin
    * @param pricePerWeek weekly cost of the equipment for the equipment specified by the admin
-   * @throws InvalidInputException when the values for weight are less or equal to than 0, the name is already
-   *         in the system and the price per week is less than 0 This is a helper method which
-   *         checks for the common invalid input exceptions
+   * @throws InvalidInputException when the values for weight are less or equal to than 0, the name
+   *         is already in the system and the price per week is less than 0 This is a helper method
+   *         which checks for the common invalid input exceptions
    */
 
 

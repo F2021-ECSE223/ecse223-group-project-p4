@@ -30,7 +30,6 @@ public class Assignment implements Serializable
   private Hotel hotel;
   private ClimbSafe climbSafe;
   private ClimbingPath climbingPath;
-  private ClimbingGroup climbingGroup;
   private Review review;
 
   //------------------------
@@ -375,17 +374,6 @@ public class Assignment implements Serializable
     return has;
   }
   /* Code from template association_GetOne */
-  public ClimbingGroup getClimbingGroup()
-  {
-    return climbingGroup;
-  }
-
-  public boolean hasClimbingGroup()
-  {
-    boolean has = climbingGroup != null;
-    return has;
-  }
-  /* Code from template association_GetOne */
   public Review getReview()
   {
     return review;
@@ -494,57 +482,7 @@ public class Assignment implements Serializable
     wasSet = true;
     return wasSet;
   }
-  /* Code from template association_SetOptionalOneToMandatoryMany */
-  public boolean setClimbingGroup(ClimbingGroup aClimbingGroup)
-  {
-    //
-    // This source of this source generation is association_SetOptionalOneToMandatoryMany.jet
-    // This set file assumes the generation of a maximumNumberOfXXX method does not exist because 
-    // it's not required (No upper bound)
-    //   
-    boolean wasSet = false;
-    ClimbingGroup existingClimbingGroup = climbingGroup;
-
-    if (existingClimbingGroup == null)
-    {
-      if (aClimbingGroup != null)
-      {
-        if (aClimbingGroup.addAssignment(this))
-        {
-          existingClimbingGroup = aClimbingGroup;
-          wasSet = true;
-        }
-      }
-    } 
-    else if (existingClimbingGroup != null)
-    {
-      if (aClimbingGroup == null)
-      {
-        if (existingClimbingGroup.minimumNumberOfAssignments() < existingClimbingGroup.numberOfAssignments())
-        {
-          existingClimbingGroup.removeAssignment(this);
-          existingClimbingGroup = aClimbingGroup;  // aClimbingGroup == null
-          wasSet = true;
-        }
-      } 
-      else
-      {
-        if (existingClimbingGroup.minimumNumberOfAssignments() < existingClimbingGroup.numberOfAssignments())
-        {
-          existingClimbingGroup.removeAssignment(this);
-          aClimbingGroup.addAssignment(this);
-          existingClimbingGroup = aClimbingGroup;
-          wasSet = true;
-        }
-      }
-    }
-    if (wasSet)
-    {
-      climbingGroup = existingClimbingGroup;
-    }
-    return wasSet;
-  }
-    /* Code from template association_SetOptionalOneToOne */
+  /* Code from template association_SetOptionalOneToOne */
   public boolean setReview(Review aNewReview)
   {
     boolean wasSet = false;
@@ -604,19 +542,6 @@ public class Assignment implements Serializable
       this.climbingPath = null;
       placeholderClimbingPath.removeAssignment(this);
     }
-    if (climbingGroup != null)
-    {
-      if (climbingGroup.numberOfAssignments() <= 2)
-      {
-        climbingGroup.delete();
-      }
-      else
-      {
-        ClimbingGroup placeholderClimbingGroup = climbingGroup;
-        this.climbingGroup = null;
-        placeholderClimbingGroup.removeAssignment(this);
-      }
-    }
     Review existingReview = review;
     review = null;
     if (existingReview != null)
@@ -653,7 +578,6 @@ public class Assignment implements Serializable
             "  " + "hotel = "+(getHotel()!=null?Integer.toHexString(System.identityHashCode(getHotel())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "climbingPath = "+(getClimbingPath()!=null?Integer.toHexString(System.identityHashCode(getClimbingPath())):"null") + System.getProperties().getProperty("line.separator") +
-            "  " + "climbingGroup = "+(getClimbingGroup()!=null?Integer.toHexString(System.identityHashCode(getClimbingGroup())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "review = "+(getReview()!=null?Integer.toHexString(System.identityHashCode(getReview())):"null");
   }  
   //------------------------
