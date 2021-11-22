@@ -12,13 +12,12 @@ public class AssignmentController {
    * @throws InvalidInputException
    */
   public static void initiateAssignment() throws InvalidInputException {
-    //Clear previous assignments
-    for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
-      if (member.getAssignment() != null) {
-        member.getAssignment().delete();
-      }
-    }
-    //Now, re-initialize assignments
+
+    // If the assignments were already initialized, throw an exception
+    if (ClimbSafeApplication.getClimbSafe().getAssignments().size() > 0)
+      throw new InvalidInputException("Assignments were already initiated for the current season");
+    
+    // Else initiate all assignments
     for (Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
       int weeksTaken = 0;
       for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
