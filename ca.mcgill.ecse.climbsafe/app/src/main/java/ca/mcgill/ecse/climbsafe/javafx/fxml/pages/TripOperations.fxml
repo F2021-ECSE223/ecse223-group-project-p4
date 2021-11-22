@@ -3,28 +3,28 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="758.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="607.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
 	<columnConstraints>
-		<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-		<ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="155.199951171875" />
-		<ColumnConstraints hgrow="SOMETIMES" maxWidth="148.800048828125" minWidth="10.0" prefWidth="148.800048828125" />
-		<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-		<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+		<ColumnConstraints hgrow="SOMETIMES" maxWidth="212.8951873779297" minWidth="10.0" prefWidth="212.8951873779297" />
+		<ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="221.1048126220703" />
+		<ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0392761230469" minWidth="10.0" prefWidth="276.6462707519531" />
 	</columnConstraints>
 	<rowConstraints>
 		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="90.57855224609375" minHeight="10.0" prefHeight="71.42320251464844" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="125.00175476074219" minHeight="10.0" prefHeight="95.57679748535156" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="152.66424560546875" minHeight="10.0" prefHeight="76.37860107421875" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="165.466064453125" minHeight="10.0" prefHeight="62.33575439453125" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="120.56427001953125" minHeight="10.0" prefHeight="53.294647216796875" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
 		<Label alignment="CENTER" text="Start trips" textFill="WHITE" GridPane.rowIndex="1">
@@ -34,78 +34,78 @@
 			<opaqueInsets>
 				<Insets />
 			</opaqueInsets>
-			<padding>
-				<Insets left="20.0" />
-			</padding>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
 		</Label>
-		<Label alignment="CENTER" text="Climbsafe" textFill="WHITE" GridPane.columnIndex="2">
+		<Label alignment="CENTER" text="Climbsafe" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
 			<font>
 				<Font size="26.0" />
 			</font>
 			<opaqueInsets>
 				<Insets />
 			</opaqueInsets>
-			<padding>
-				<Insets left="20.0" />
-			</padding>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
 		</Label>
-		<Label alignment="CENTER" text="Week number:" textFill="WHITE" GridPane.rowIndex="2">
+		<Label alignment="CENTER" text="Week number:" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
 			<font>
 				<Font size="16.0" />
 			</font>
 			<opaqueInsets>
 				<Insets />
 			</opaqueInsets>
-			<padding>
-				<Insets left="20.0" />
-			</padding>
 		</Label>
-		<Button fx:id="startTripButton" mnemonicParsing="false" onAction="#startTrips" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Start trips" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
+		<Button fx:id="startTripButton" mnemonicParsing="false" onAction="#startTrips" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Start trips" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
 			<font>
-				<Font name="Cambria Bold" size="14.0" />
+				<Font size="14.0" />
 			</font>
 		</Button>
-		<Button fx:id="finishTripButton" mnemonicParsing="false" onAction="#finishTrip" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Finish trip" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4">
+		<Button fx:id="finishTripButton" mnemonicParsing="false" onAction="#finishTrip" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Finish trip" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
 			<font>
-				<Font name="Cambria Bold" size="14.0" />
+				<Font size="14.0" />
 			</font>
 		</Button>
-		<Button fx:id="cancelTripButton" mnemonicParsing="false" onAction="#cancelTrip" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Cancel trip" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="5">
+		<Button fx:id="cancelTripButton" mnemonicParsing="false" onAction="#cancelTrip" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Cancel trip" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5">
 			<font>
-				<Font name="Cambria Bold" size="14.0" />
+				<Font size="14.0" />
 			</font>
 		</Button>
-		<Label alignment="CENTER" text="Process Trip" textFill="WHITE" GridPane.rowIndex="3">
+		<Label alignment="CENTER" text="Process Trip" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="3">
 			<font>
 				<Font size="20.0" />
 			</font>
 			<opaqueInsets>
 				<Insets />
 			</opaqueInsets>
-			<padding>
-				<Insets left="20.0" />
-			</padding>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
 		</Label>
-		<Label alignment="CENTER" text="Member email:" textFill="WHITE" GridPane.rowIndex="4">
+		<Label alignment="CENTER" text="Member email:" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4">
 			<font>
 				<Font size="16.0" />
 			</font>
 			<opaqueInsets>
 				<Insets />
 			</opaqueInsets>
-			<padding>
-				<Insets left="20.0" />
-			</padding>
 		</Label>
-		<TextField fx:id="memberEmailTextField" prefHeight="26.0" prefWidth="286.0" promptText="example@mail.com" GridPane.columnIndex="1" GridPane.rowIndex="4">
+		<TextField fx:id="memberEmailTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="180.0" promptText="example@mail.com" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
 			<font>
-				<Font name="System Italic" size="12.0" />
+				<Font name="System Italic" size="14.0" />
 			</font>
 		</TextField>
-		<TextField fx:id="weeknrTextField" prefHeight="26.0" prefWidth="286.0" promptText="Insert week number here" GridPane.columnIndex="1" GridPane.rowIndex="2">
+		<TextField fx:id="weeknrTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="180.0" promptText="Insert week number here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
 			<font>
-				<Font name="System Italic" size="12.0" />
+				<Font name="System Italic" size="14.0" />
 			</font>
 		</TextField>
+      <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+         <image>
+            <Image url="@../../../../../../../../../../../logo.png" />
+         </image>
+      </ImageView>
+      <Separator prefWidth="200.0" GridPane.columnSpan="5" GridPane.valignment="BOTTOM" />
 	</children>
 </GridPane>
