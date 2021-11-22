@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -9,51 +14,699 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="758.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="155.199951171875" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.800048828125" minWidth="10.0" prefWidth="148.800048828125" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-   </rowConstraints>
-   <children>
-      <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Template Button" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <font>
-            <Font name="Cambria Bold" size="14.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="10.0" right="10.0" />
-         </GridPane.margin>
-      </Button>
-      <TextField prefHeight="26.0" prefWidth="286.0" promptText="Template TextField" GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="10.0" right="10.0" />
-         </GridPane.margin>
-      </TextField>
-      <Label alignment="CENTER" text="Template Label :" textFill="WHITE" GridPane.rowIndex="3">
-         <font>
-            <Font name="Cambria" size="16.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <padding>
-            <Insets left="20.0" />
-         </padding>
-      </Label>
-   </children>
-</GridPane>
+<TabPane prefHeight="773.0" prefWidth="1144.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <tabs>
+      <Tab id="EqTab1" fx:id="registerMemberTab" text="Register Member">
+         <content>
+            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1143.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
+               <children>
+                  <TextField fx:id="addEmail" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="john@doe.me" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label alignment="CENTER" text="Email:" textFill="WHITE" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="registerMemberButton" mnemonicParsing="false" onAction="#registerMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Register" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <TextField fx:id="addFirstName" alignment="CENTER" maxWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="John" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" text="First Name:" textFill="WHITE" wrapText="true" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" text="Emergency Contact:" textFill="WHITE" wrapText="true" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="92.0" text="Register:" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Cambria" size="21.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="99.0" text="Last Name:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="addLastName" alignment="CENTER" layoutX="115.0" layoutY="96.0" maxWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Doe" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="190.0" text="Password:" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="AddCheckedPassword" alignment="CENTER" layoutX="247.0" layoutY="276.0" maxWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Re-Enter password" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="addPassword" alignment="CENTER" centerShape="false" layoutX="247.0" layoutY="276.0" maxWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Enter password" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="addEmergencyPhone" alignment="CENTER" layoutX="115.0" layoutY="271.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="(XXX) XXX-XXXX" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="256.0" layoutY="196.0" text="Number of weeks:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="addNumberWeeks" alignment="CENTER" layoutX="381.0" layoutY="126.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="55.0" promptText="Weeks" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="264.0" text="Guide required?" textFill="WHITE" wrapText="true" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="352.0" text="Hotel required?" textFill="WHITE" wrapText="true" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <CheckBox fx:id="guideRequiredCheck" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" />
+                     </GridPane.margin></CheckBox>
+                  <CheckBox fx:id="hotelRequiredCheck" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin></CheckBox>
+                  <Label alignment="CENTER" layoutX="255.0" layoutY="111.0" text="Add items:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="501.0" layoutY="182.0" text="Add bundles:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="showTotalPrice" alignment="CENTER" layoutX="427.0" layoutY="243.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="55.0" promptText="s" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="showTotalWeight" alignment="CENTER" layoutX="693.0" layoutY="416.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="55.0" promptText="lb" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="553.0" layoutY="103.0" text="Added items:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="553.0" layoutY="248.0" text="Added bundles:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="addItemButton" layoutX="308.0" layoutY="502.0" mnemonicParsing="false" onAction="#addItem" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="addBundleButton" layoutX="717.0" layoutY="119.0" mnemonicParsing="false" onAction="#addBundle" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="553.0" layoutY="103.0" text="Weight:" textFill="WHITE" wrapText="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="796.0" layoutY="77.0" text="Weight:" textFill="WHITE" wrapText="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="981.0" layoutY="107.0" text="Price per week:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="itemWeight" alignment="CENTER" layoutX="689.0" layoutY="559.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="55.0" promptText="lb" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="itemPricePerWeek" alignment="CENTER" layoutX="967.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="55.0" promptText="s" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="bundleWeight" alignment="CENTER" layoutX="967.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="55.0" promptText="lb" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="bundlePricePerWeek" alignment="CENTER" layoutX="967.0" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="55.0" promptText="s" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="1067.0" layoutY="107.0" text="Price per week:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="bundleToBeAddedName" alignment="CENTER" layoutX="352.0" layoutY="275.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Bundle name" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="itemToBeAddedName" alignment="CENTER" centerShape="false" layoutX="352.0" layoutY="209.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Item name" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <ChoiceBox fx:id="addedItemsList" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <ChoiceBox fx:id="addedBundlesList" layoutX="689.0" layoutY="242.0" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                  <TextField fx:id="addedItemsQuantities" alignment="CENTER" layoutX="990.0" layoutY="183.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="59.0" promptText="Quantity" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="addedBundlesQuantities" alignment="CENTER" layoutX="912.0" layoutY="242.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="59.0" promptText="Quantity" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" text="Total price:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="557.0" layoutY="564.0" text="Total price:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="116.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="119.8436279296875" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.65655517578125" minWidth="10.0" prefWidth="103.09329223632812" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.24069213867188" minWidth="0.0" prefWidth="157.90670776367188" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.4111328125" minWidth="0.0" prefWidth="183.37451171875" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.31219482421875" minWidth="10.0" prefWidth="209.50701904296875" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.49298095703125" minWidth="10.0" prefWidth="168.49298095703125" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="75.54571533203125" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints maxHeight="5.600004017353058" minHeight="0.0" prefHeight="0.0" />
+                  <RowConstraints maxHeight="178.80616760253906" minHeight="10.0" prefHeight="151.14120483398438" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="151.2293243408203" minHeight="10.0" prefHeight="98.58023071289062" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="171.9999755859375" minHeight="10.0" prefHeight="66.41976928710938" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="134.2000244140625" minHeight="10.0" prefHeight="95.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="149.60004882812495" minHeight="10.0" prefHeight="106.49481201171875" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="140.7254638671875" minHeight="10.0" prefHeight="114.50518798828125" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="160.74969482421875" minHeight="10.0" prefHeight="99.37347412109375" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </Tab>
+      <Tab id="EqTab2" fx:id="updateMemberTab" text="Update Member">
+         <content>
+            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1143.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
+               <children>
+                  <TextField fx:id="updatePassword" maxWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Enter new Password" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label alignment="CENTER" text="New Password:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Button id="updateEquipmentButton" fx:id="updateMemberButton" mnemonicParsing="false" onAction="#updateMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Member" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="9">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <TextField fx:id="updateLastName" alignment="CENTER" maxWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" promptText="Last name" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" text="New Name:" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" text="New Number of Weeks:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="118.0" text="Update:" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Cambria" size="21.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" text=" Email:" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="memberEmail" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="john@doe.me" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="updateCheckedPassword" layoutX="109.0" layoutY="272.0" maxWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Re-Enter  Password" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="updateFirstName" alignment="CENTER" layoutX="109.0" layoutY="189.0" maxWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" promptText="First name" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="335.0" text="New Emergency Contact:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="updateEmergencyPhone" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="(XXX) XXX-XXXX" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="updateNumberWeeks" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="55.0" promptText="Weeks" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="215.0" text="New Item:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="275.0" layoutY="215.0" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="updateItemName" alignment="CENTER" layoutX="109.0" layoutY="192.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Item name" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="updateItemQuantity" layoutX="486.0" layoutY="275.0" maxWidth="-Infinity" prefHeight="26.0" prefWidth="60.0" promptText="Quantity" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="498.0" text="Hotel required?" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="269.0" layoutY="498.0" text="Guide required?" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <CheckBox fx:id="updateHotelRequiredCheck" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="35.0" />
+                     </GridPane.margin></CheckBox>
+                  <CheckBox fx:id="updateGuideRequiredCheck" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="35.0" />
+                     </GridPane.margin></CheckBox>
+                  <Button fx:id="updateAddItemButton" mnemonicParsing="false" onAction="#updateItem" prefHeight="30.0" prefWidth="72.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="321.0" text="New Bundle:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="updateAddItemButton1" layoutX="184.0" layoutY="352.0" mnemonicParsing="false" onAction="#updateItem" prefHeight="30.0" prefWidth="72.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <TextField fx:id="updateItemName1" alignment="CENTER" layoutX="160.0" layoutY="290.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Item name" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="updateItemQuantity1" layoutX="310.0" layoutY="290.0" maxWidth="-Infinity" prefHeight="26.0" prefWidth="60.0" promptText="Quantity" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.03128051757812" minWidth="10.0" prefWidth="137.02737426757812" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="136.69149780273438" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.68511962890625" minWidth="10.0" prefWidth="116.6143798828125" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="407.57391357421875" minWidth="10.0" prefWidth="162.3856201171875" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.3979797363281" minWidth="10.0" prefWidth="110.992431640625" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="348.37603759765625" minWidth="10.0" prefWidth="63.007568359375" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="356.31842041015625" minWidth="10.0" prefWidth="77.32904052734375" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.00909423828125" minWidth="10.0" prefWidth="335.67095947265625" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints maxHeight="215.95355987548828" minHeight="0.0" prefHeight="4.356616973876953" />
+                  <RowConstraints maxHeight="286.64338302612305" minHeight="10.0" prefHeight="71.04641723632812" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="370.87486267089844" minHeight="10.0" prefHeight="109.62974548339844" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.3887481689453" minHeight="10.0" prefHeight="65.65377807617188" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="254.08200073242188" minHeight="0.0" prefHeight="85.27444458007812" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="341.1426696777344" minHeight="10.0" prefHeight="116.23907470703125" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="287.6622619628906" minHeight="10.0" prefHeight="130.44476318359375" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="165.55523681640625" minHeight="10.0" prefHeight="146.07916259765625" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="103.522705078125" minHeight="10.0" prefHeight="85.92083740234375" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </Tab>
+      <Tab id="EqTab3" fx:id="deleteMemberTab" text="Delete Member">
+         <content>
+            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739.0" prefWidth="999.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
+               <children>
+                  <Button id="deleteEquipmentButton" fx:id="deleteMemberButton" mnemonicParsing="false" onAction="#deleteMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete Member" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <TextField id="rmEquipmentName" fx:id="toBedeletedMemberEmail" alignment="CENTER" maxWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="john@doe.me" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" text="Email:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" text="Delete Member:" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Cambria" size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.4765625" minWidth="10.0" prefWidth="263.24481201171875" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="82.75518798828125" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.2447814941406" minWidth="10.0" prefWidth="259.8971252441406" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.2000122070312" minWidth="10.0" prefWidth="81.80004882812494" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.00002441406252" minWidth="10.0" prefWidth="178.40004882812502" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.199951171875" minWidth="10.0" prefWidth="46.999951171874955" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints maxHeight="138.39999389648438" minHeight="10.0" prefHeight="74.59998779296873" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="201.6000274658203" minHeight="10.0" prefHeight="131.60000000000002" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="171.9999755859375" minHeight="10.0" prefHeight="98.19996337890626" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="175.00002441406252" minHeight="10.0" prefHeight="171.80003662109374" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>
