@@ -26,11 +26,24 @@ public class TripOperationsController {
   // Event Listener on Button[#startTripButton].onAction
   @FXML
   public void startTrips(ActionEvent event) {
+
+    int nrWeeks = -1;
     try {
-      AssignmentController.startTrips(Integer.parseInt(weeknrTextField.getText()));
+      nrWeeks = Integer.parseInt(weeknrTextField.getText());
+
+    } catch (Exception e) {
+      ViewUtils.showError("The number of weeks must be an integer.");
+      return;
+    }
+
+    try {
+      AssignmentController.startTrips(nrWeeks);
+      ViewUtils.showSuccess("All trips for week " + nrWeeks + " have started.");
+
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
+    weeknrTextField.clear();
   }
 
   // Event Listener on Button[#finishTripButton].onAction
@@ -38,9 +51,13 @@ public class TripOperationsController {
   public void finishTrip(ActionEvent event) {
     try {
       AssignmentController.finishTrip(memberEmailTextField.getText());
+      ViewUtils.showSuccess(
+          "The trip was successfully finished for member " + memberEmailTextField.getText());
+
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
+    memberEmailTextField.clear();
   }
 
   // Event Listener on Button[#cancelTripButton].onAction
@@ -48,8 +65,12 @@ public class TripOperationsController {
   public void cancelTrip(ActionEvent event) {
     try {
       AssignmentController.cancelTrip(memberEmailTextField.getText());
+      ViewUtils.showSuccess(
+          "The trip was successfully cancelled for member " + memberEmailTextField.getText());
+
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
+    memberEmailTextField.clear();
   }
 }

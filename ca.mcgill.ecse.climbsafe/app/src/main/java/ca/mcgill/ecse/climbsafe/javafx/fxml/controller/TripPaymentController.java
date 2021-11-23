@@ -24,8 +24,17 @@ public class TripPaymentController {
 
     try {
       AssignmentController.payForTrip(memberEmailTextField.getText(), authCodeTextField.getText());
+
+      ViewUtils
+          .showSuccess("Payment successfully processed for member " + memberEmailTextField.getText()
+              + '\n' + "Authorization code: " + authCodeTextField.getText());
+
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
+
+    authCodeTextField.clear();
+    memberEmailTextField.clear();
+
   }
 }

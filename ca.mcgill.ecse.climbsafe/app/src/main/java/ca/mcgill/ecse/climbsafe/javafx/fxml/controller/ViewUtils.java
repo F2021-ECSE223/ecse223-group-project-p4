@@ -37,7 +37,7 @@ public class ViewUtils {
   public static void showSuccess(String message) {
    makePopupWindow("Successful Operation", message);
   }
-  public boolean isAlpha(String name) {
+  public static boolean isAlpha(String name) {
     return name.matches("[a-zA-Z]+");
 }
 }
