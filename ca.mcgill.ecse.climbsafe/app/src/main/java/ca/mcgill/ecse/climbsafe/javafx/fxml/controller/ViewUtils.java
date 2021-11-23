@@ -1,4 +1,5 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -31,13 +32,21 @@ public class ViewUtils {
     dialog.setTitle(title);
     dialog.show();
   }
+
   public static void showError(String message) {
     makePopupWindow("Error", message);
   }
+
   public static void showSuccess(String message) {
-   makePopupWindow("Successful Operation", message);
+    makePopupWindow("Successful Operation", message);
   }
+
   public static boolean isAlpha(String name) {
-    return name.matches("[a-zA-Z]+");
-}
+    for (Character ch : name.toCharArray()) {
+      if (!Character.isLetter(ch) && !Character.isWhitespace(ch)) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
