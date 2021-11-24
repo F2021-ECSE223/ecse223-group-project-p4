@@ -96,7 +96,7 @@
             <Insets />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="commentTripReview" prefHeight="28.0" prefWidth="172.0" promptText="Enter comment" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField fx:id="commentTripReview" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Enter comment" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
