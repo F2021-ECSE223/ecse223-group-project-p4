@@ -171,8 +171,7 @@ public class MemberOperationsController {
 
 
     // Check if information entered is alphanumeric
-    if (!ViewUtils.isAlpha(name) || !ViewUtils.isAlpha(email) || !ViewUtils.isAlpha(password)
-        || !ViewUtils.isAlpha(emergency)) {
+    if (!ViewUtils.isAlpha(name) || !ViewUtils.isAlpha(email) || !ViewUtils.isAlpha(password)) {
       ViewUtils.showError("The input must only contain letters.");
       return;
     }
@@ -353,8 +352,7 @@ public class MemberOperationsController {
     boolean guide = updateGuideRequiredCheck.isSelected();
 
     // Check if information entered is alphanumeric
-    if (!ViewUtils.isAlpha(name) || !ViewUtils.isAlpha(email) || !ViewUtils.isAlpha(password)
-        || !ViewUtils.isAlpha(emergency)) {
+    if (!ViewUtils.isAlpha(name) || !ViewUtils.isAlpha(email) || !ViewUtils.isAlpha(password)) {
       ViewUtils.showError("The input must only contain letters.");
       return;
     }

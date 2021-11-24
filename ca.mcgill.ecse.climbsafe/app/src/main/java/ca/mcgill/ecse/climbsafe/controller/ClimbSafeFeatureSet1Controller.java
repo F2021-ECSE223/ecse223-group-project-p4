@@ -105,7 +105,12 @@ public class ClimbSafeFeatureSet1Controller {
 
   }
 
-  
+  /**
+   * The deleteHotel method will delete a hotel with the associated name in the system if it
+   * exists in it.
+   * @author Karl Rouhana
+   * @param name - the input name of the hotel
+   */
   public static void deleteHotel(String name) {
     
     Hotel toBeDeleted = Hotel.getWithName(name); 

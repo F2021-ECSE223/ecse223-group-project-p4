@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -14,7 +20,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<TabPane prefHeight="521.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane prefHeight="521.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
       <Tab id="EqTab1" text="Register Guide">
          <content>
@@ -22,9 +28,11 @@
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.5999755859375" minWidth="10.0" prefWidth="105.79998779296875" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="192.0000244140625" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.40001220703124" minWidth="10.0" prefWidth="186.40001220703124" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.2000122070312" minWidth="10.0" prefWidth="42.399987792968716" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="236.00001220703132" minWidth="10.0" prefWidth="215.19996337890632" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="184.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="130.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="236.00001220703132" minWidth="10.0" prefWidth="138.0" />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints />
@@ -40,7 +48,7 @@
                </rowConstraints>
                <children>
                   <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                  <TextField fx:id="guidePassword" prefHeight="26.0" prefWidth="286.0" promptText="Enter a new password" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                  <TextField fx:id="guidePassword" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Enter password" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
@@ -48,7 +56,7 @@
                         <Insets />
                      </GridPane.margin>
                   </TextField>
-                  <Label alignment="CENTER" text="Password:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                  <Label alignment="CENTER" text="Password:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                      <font>
                         <Font name="Cambria" size="16.0" />
                      </font>
@@ -56,7 +64,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <Button fx:id="registerGuideButton" mnemonicParsing="false" onAction="#registerGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Register Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                  <Button fx:id="registerGuideButton" mnemonicParsing="false" onAction="#registerGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Register Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -64,12 +72,12 @@
                         <Insets />
                      </GridPane.margin>
                   </Button>
-                  <TextField fx:id="guideEmail" prefHeight="26.0" prefWidth="286.0" promptText="guide@email.com" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <TextField fx:id="guideEmail" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="guide@email.me" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
                   </TextField>
-                  <Label alignment="CENTER" text="E-mail:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                  <Label alignment="CENTER" text="E-mail:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                      <font>
                         <Font name="Cambria" size="16.0" />
                      </font>
@@ -77,7 +85,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <Label alignment="CENTER" text="Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                  <Label text="First Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <font>
                         <Font name="Cambria" size="16.0" />
                      </font>
@@ -85,10 +93,13 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <TextField fx:id="guideName" prefHeight="26.0" prefWidth="286.0" promptText="John Doe" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                  <TextField fx:id="guideFirstName" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="John" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets right="100.0" />
+                     </GridPane.margin>
                   </TextField>
                   <Label alignment="CENTER" text="Create Guide:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <font>
@@ -109,10 +120,13 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <ImageView fitHeight="67.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <ImageView fitHeight="67.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <image>
                         <Image url="@../../../../../../../../../../../logo.png" />
                      </image>
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
                   </ImageView>
                   <Label alignment="CENTER" text="Emergency Contact:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                      <font>
@@ -122,10 +136,29 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <TextField fx:id="guideContact" prefHeight="26.0" prefWidth="286.0" promptText="+1 (XXX) CONTACT" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                  <TextField fx:id="guideContact" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="(XXX) XXX-XXXX" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
+                  </TextField>
+                  <Label layoutX="118.0" layoutY="133.0" text="Last Name:" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <TextField fx:id="guideLastName" alignment="CENTER" layoutX="249.0" layoutY="130.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Doe" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="120.0" />
+                     </GridPane.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                   </TextField>
                </children>
             </GridPane>
@@ -135,11 +168,11 @@
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="753.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="201.5999755859375" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.39998779296877" minWidth="10.0" prefWidth="206.39998779296877" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.2000122070312" minWidth="10.0" prefWidth="22.000012207031205" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.5999877929687" minWidth="10.0" prefWidth="218.39997558593745" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.0" minWidth="10.0" prefWidth="83.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="205.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" prefWidth="239.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.2000122070312" minWidth="10.0" prefWidth="31.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.5999877929687" minWidth="10.0" prefWidth="195.0" />
                   <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
@@ -155,23 +188,7 @@
                   <RowConstraints maxHeight="98.59995117187498" minHeight="10.0" prefHeight="49.00002441406252" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="newGuideName" prefHeight="26.0" prefWidth="286.0" promptText="John Doe " GridPane.columnIndex="2" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label alignment="CENTER" text="New Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <Button id="updateEquipmentButton" fx:id="updateGuideButton" mnemonicParsing="false" onAction="#updateGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                  <Button id="updateEquipmentButton" fx:id="updateGuideButton" mnemonicParsing="false" onAction="#updateGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -179,7 +196,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <TextField fx:id="newGuidePassword" prefHeight="26.0" prefWidth="286.0" promptText="Enter a new password" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                  <TextField fx:id="newGuidePassword" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Enter password" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
@@ -200,7 +217,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <TextField fx:id="newGuideContact" prefHeight="26.0" prefWidth="286.0" promptText="+1 (XXX) CONTACT" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                  <TextField fx:id="newGuideContact" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="(XXX) XXX-XXXX" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
@@ -221,7 +238,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <TextField fx:id="updtGuideEmail" prefHeight="26.0" prefWidth="286.0" promptText="guide@email.com" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <TextField fx:id="updtateGuideEmail" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="guide@email.me" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
@@ -235,11 +252,29 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <image>
                         <Image url="@../../../../../../../../../../../logo.png" />
                      </image>
                   </ImageView>
+                  <TextField fx:id="updateGuideFirstName" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="First Name" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="updateGuideLastName" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Last Name" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label text="New Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
                </children>
             </GridPane>
          </content>
@@ -252,6 +287,8 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="190.99997558593748" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.20003662109372" minWidth="10.0" prefWidth="255.20003662109372" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.5999755859375" minWidth="10.0" prefWidth="213.5999755859375" />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints />
@@ -262,7 +299,7 @@
                   <RowConstraints maxHeight="175.00002441406252" minHeight="10.0" prefHeight="171.80003662109374" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="deleteEquipmentButton" fx:id="deleteGuideButton" mnemonicParsing="false" onAction="#deleteGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                  <Button id="deleteEquipmentButton" fx:id="deleteGuideButton" mnemonicParsing="false" onAction="#deleteGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -270,7 +307,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <TextField id="rmEquipmentName" fx:id="rmGuideEmail" prefHeight="26.0" prefWidth="286.0" promptText="guide@email.com" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <TextField id="rmEquipmentName" fx:id="rmGuideEmail" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="guide@email.me" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
