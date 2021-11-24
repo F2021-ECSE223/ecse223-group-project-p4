@@ -19,7 +19,7 @@ import ca.mcgill.ecse.climbsafe.model.Equipment;
 import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-
+import javafx.event.Event;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.ComboBox;
@@ -63,14 +63,14 @@ public class MemberOperationsController {
   @FXML
   private TextField addBundlesQuantities;
   @FXML
-  private ComboBox<Equipment> addedItemsList =
-      new ComboBox<Equipment>(FXCollections.observableList(system.getEquipment())); // Get all
+  private ComboBox<String> addedItemsList ;
+       // Get all
                                                                                     // available
                                                                                     // equipment
                                                                                     // from system
   @FXML
-  private ComboBox<EquipmentBundle> addedBundlesList =
-      new ComboBox<EquipmentBundle>(FXCollections.observableList(system.getBundles())); // Get all
+  private ComboBox<String> addedBundlesList;
+       // Get all
                                                                                         // available
                                                                                         // equipmentBundle
                                                                                         // from
@@ -108,14 +108,14 @@ public class MemberOperationsController {
   @FXML
   private TextField updateBundleQuantity;
   @FXML
-  private ComboBox<Equipment> updateItemName =
-      new ComboBox<Equipment>(FXCollections.observableList(system.getEquipment())); // Get all
+  private ComboBox<String> updateItemName;
+       // Get all
                                                                                     // available
                                                                                     // equipment
                                                                                     // from system
   @FXML
-  private ComboBox<EquipmentBundle> updateBundleName =
-      new ComboBox<EquipmentBundle>(FXCollections.observableList(system.getBundles())); // Get all
+  private ComboBox<String> updateBundleName;
+       // Get all
                                                                                         // available
                                                                                         // equipmentBundle
                                                                                         // from
@@ -171,7 +171,7 @@ public class MemberOperationsController {
 
 
     // Check if information entered is alphanumeric
-    if (!ViewUtils.isAlpha(name) || !ViewUtils.isAlpha(email) || !ViewUtils.isAlpha(password)) {
+    if (!ViewUtils.isAlpha(name)) {
       ViewUtils.showError("The input must only contain letters.");
       return;
     }
@@ -210,27 +210,33 @@ public class MemberOperationsController {
       totalWeight = computeTotalWeight(allBookedItemsList, numberOfItemsToAdd);
 
 
-      if (!guide)
+      if (!guide) {
         // Output the price and weight without taking into account the guide since the member does
         // not want it
         ViewUtils.showSuccess("Registration successfully processed for member " + name + '\n'
             + "Total Price of equipment is " + totalPrice + " s and the the total weight is "
             + totalWeight + " lb.");
 
+      // Set the price and weight on the screen
+      showTotalWeight.setText(totalPrice + " lb");
+      showTotalPrice.setText(totalWeight + " s");
+      }
       else {
         // Output the price and weight taking into account the guide since the member wants it
 
         int totalCostForGuide = system.getPriceOfGuidePerWeek() * numberOfWeeksWanted;
 
+       int totalPriceWithGuide = totalCostForGuide + totalPrice;
 
         ViewUtils.showSuccess("Registration successfully processed for member " + name + '\n'
             + "Total Price of equipment is: " + totalPrice + " s, Total price of the guide is: "
             + totalCostForGuide + " s and the the total weight is " + totalWeight + " lb.");
 
+        // Set the price and weight on the screen
+        showTotalWeight.setText(totalPriceWithGuide + " lb");
+        showTotalPrice.setText(totalWeight + " s");
       }
-      // Set the price and weight on the screen
-      showTotalWeight.setText(totalPrice + " lb");
-      showTotalPrice.setText(totalWeight + " s");
+
 
       // Clear the temporary lists for the next customer
       bookedItemsToAdd.clear();
@@ -270,13 +276,13 @@ public class MemberOperationsController {
     }
 
 
-    String nameOfItem = addedItemsList.getValue().getName(); // Get the name of the item chosen
+    BookableItem item = BookableItem.getWithName(addedItemsList.getValue()); // Get the name of the item chosen
 
-    if (!nameOfItem.equals("")) { // Check thats the member chose an item.
+    if (!(item == null)) { // Check thats the member chose an item.
 
-      bookedItemsToAdd.add(nameOfItem); // Add the name of the item to the list
+      bookedItemsToAdd.add(item.getName()); // Add the name of the item to the list
 
-      allBookedItemsList.add((Equipment) addedItemsList.getValue()); // Add the equipment to the
+      allBookedItemsList.add((Equipment) item); // Add the equipment to the
                                                                      // list
       numberOfItemsToAdd.add(numberOfItemWanted); // Add the number of equipment requested by the
                                                   // member
@@ -309,13 +315,13 @@ public class MemberOperationsController {
       return;
     }
 
-    String nameOfBundle = addedBundlesList.getValue().getName(); // Get the name of the item chosen
+    BookableItem bundle = BookableItem.getWithName(addedBundlesList.getValue()); // Get the name of the item chosen
 
-    if (!nameOfBundle.equals("")) { // Check thats the member chose a bundle.
+    if (!(bundle == null)) { // Check thats the member chose a bundle.
 
-      bookedItemsToAdd.add(nameOfBundle); // Add the name of the item to the list
+      bookedItemsToAdd.add(bundle.getName()); // Add the name of the item to the list
 
-      allBookedItemsList.add((EquipmentBundle) addedBundlesList.getValue()); // Add the equipment
+      allBookedItemsList.add((EquipmentBundle) bundle); // Add the equipment
                                                                              // bundle to the list
 
       numberOfItemsToAdd.add(numberOfBundleWanted); // Add the number of equipment requested by the
@@ -352,7 +358,7 @@ public class MemberOperationsController {
     boolean guide = updateGuideRequiredCheck.isSelected();
 
     // Check if information entered is alphanumeric
-    if (!ViewUtils.isAlpha(name) || !ViewUtils.isAlpha(email) || !ViewUtils.isAlpha(password)) {
+    if (!ViewUtils.isAlpha(name)) {
       ViewUtils.showError("The input must only contain letters.");
       return;
     }
@@ -445,16 +451,16 @@ public class MemberOperationsController {
     }
 
 
-    String nameOfItem = updateItemName.getValue().getName();
+    BookableItem item = BookableItem.getWithName(updateItemName.getValue());
 
-    if (!nameOfItem.equals("")) { // Check thats the member chose an item.
+    if (!(item == null)) { // Check thats the member chose an item.
 
-      bookedItemsToUpdate.add(nameOfItem); // Add the name of the item to the list
+      bookedItemsToUpdate.add(item.getName()); // Add the name of the item to the list
 
       numberOfItemsToUpdate.add(numberOfItemWanted); // Add the number of equipment requested by the
                                                      // member
 
-      updateAllBookedItemsList.add((Equipment) updateItemName.getValue()); // Add the equipment to
+      updateAllBookedItemsList.add((Equipment) item); // Add the equipment to
                                                                            // the list
 
     }
@@ -486,17 +492,17 @@ public class MemberOperationsController {
       return;
     }
 
-    String nameOfBundle = updateBundleName.getValue().getName();
+    BookableItem bundle = BookableItem.getWithName(updateBundleName.getValue());
 
 
-    if (!nameOfBundle.equals("")) { // Check thats the member chose a bundle.
+    if (!(bundle == null)) { // Check thats the member chose a bundle.
 
-      bookedItemsToUpdate.add(nameOfBundle); // Add the name of the bundle to the list
+      bookedItemsToUpdate.add(bundle.getName()); // Add the name of the bundle to the list
 
       numberOfItemsToUpdate.add(numberOfBundleWanted); // Add the number of equipment requested by
                                                        // the member
 
-      updateAllBookedItemsList.add((EquipmentBundle) updateBundleName.getValue()); // Add the
+      updateAllBookedItemsList.add((EquipmentBundle) bundle); // Add the
                                                                                    // equipment
                                                                                    // bundle to the
                                                                                    // list
@@ -524,11 +530,7 @@ public class MemberOperationsController {
     // Get the required parameters from the UI
     String email = toBedeletedMemberEmail.getText();
 
-    // Check if information entered is alphanumeric
-    if (!ViewUtils.isAlpha(email)) {
-      ViewUtils.showError("The input must only contain letters.");
-      return;
-    }
+
 
     // Check if information entered is not empty
     if (email.equals("")) {
@@ -640,5 +642,72 @@ public class MemberOperationsController {
   }
 
 
+  
+  private List<String> getNameOfItems(){
+   
+    system = ClimbSafeApplication.getClimbSafe();
+    
+    List<String> list = new ArrayList<>();
+    
+    for(Equipment item : system.getEquipment()) {
+      
+      list.add(item.getName());
+      
+    }
+    return list;
+  }
+  
+  private List<String> getNameOfBundles(){
+    
+    system = ClimbSafeApplication.getClimbSafe();
+    
+    List<String> list = new ArrayList<>();
+    
+    for(EquipmentBundle bundle : system.getBundles()) {
+      
+      list.add(bundle.getName());
+      
+    }
+    return list;
+  }
+  
+  
+  
+  public void RefreshMemberRegister(Event event) {
+   
+    
+    addedItemsList.setItems(FXCollections.observableList(getNameOfItems()));
+
+    addedBundlesList.setItems(FXCollections.observableList(getNameOfBundles()));
+        
+    updateItemName.setItems(FXCollections.observableList(getNameOfItems()));
+      
+    updateBundleName.setItems(FXCollections.observableList(getNameOfBundles()));
+       
+    
+}
+  public void RefreshMemberUpdate(Event event) {
+ 
+    addedItemsList.setItems(FXCollections.observableList(getNameOfItems()));
+
+    addedBundlesList.setItems(FXCollections.observableList(getNameOfBundles()));
+        
+    updateItemName.setItems(FXCollections.observableList(getNameOfItems()));
+      
+    updateBundleName.setItems(FXCollections.observableList(getNameOfBundles()));
+}
+  public void RefreshMemberDelete(Event event) {
+    
+    addedItemsList.setItems(FXCollections.observableList(getNameOfItems()));
+
+    addedBundlesList.setItems(FXCollections.observableList(getNameOfBundles()));
+        
+    updateItemName.setItems(FXCollections.observableList(getNameOfItems()));
+      
+    updateBundleName.setItems(FXCollections.observableList(getNameOfBundles()));
+}
+  
+  
+  
 
 }

@@ -22,9 +22,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<TabPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.MemberOperationsController">
    <tabs>
-      <Tab id="EqTab1" fx:id="registerMemberTab" text="Register Member">
+      <Tab id="EqTab1" fx:id="registerMemberTab" onSelectionChanged="#RefreshMemberRegister" text="Register Member">
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="1138.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <children>
@@ -327,7 +327,7 @@
             </GridPane>
          </content>
       </Tab>
-      <Tab id="EqTab2" fx:id="updateMemberTab" text="Update Member">
+      <Tab id="EqTab2" fx:id="updateMemberTab" onSelectionChanged="#RefreshMemberUpdate" text="Update Member">
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1143.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <children>
@@ -590,7 +590,7 @@
             </GridPane>
          </content>
       </Tab>
-      <Tab id="EqTab3" fx:id="deleteMemberTab" text="Delete Member">
+      <Tab id="EqTab3" fx:id="deleteMemberTab" onSelectionChanged="#RefreshMemberDelete" text="Delete Member">
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="517.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <children>

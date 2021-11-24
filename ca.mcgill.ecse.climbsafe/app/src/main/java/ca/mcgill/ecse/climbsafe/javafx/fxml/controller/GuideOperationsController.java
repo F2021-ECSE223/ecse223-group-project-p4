@@ -54,7 +54,7 @@ public class GuideOperationsController {
 	  String emergency = guideContact.getText();
 	  
 	  // Check if information entered is alphanumeric
-	  if (!ViewUtils.isAlpha(name)|| !ViewUtils.isAlpha(email) || !ViewUtils.isAlpha(password)) {
+	  if (!ViewUtils.isAlpha(name)) {
 	      ViewUtils.showError("The input must only contain letters.");
 	      return;
 	    }
@@ -90,7 +90,7 @@ public class GuideOperationsController {
       String emergency = newGuideContact.getText();
 
       // Check if information entered is alphanumeric      
-      if (!ViewUtils.isAlpha(name)|| !ViewUtils.isAlpha(email) || !ViewUtils.isAlpha(password)) {
+      if (!ViewUtils.isAlpha(name)) {
           ViewUtils.showError("The input must only contain letters.");
           return;
         }
