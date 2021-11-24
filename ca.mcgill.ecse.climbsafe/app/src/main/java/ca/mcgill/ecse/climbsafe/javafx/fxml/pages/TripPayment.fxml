@@ -12,10 +12,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="409.0" prefWidth="477.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
 	<columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.105224609375" minWidth="10.0" prefWidth="256.82891845703125" />
 		<ColumnConstraints hgrow="SOMETIMES" maxWidth="258.105224609375" minWidth="10.0" prefWidth="256.82891845703125" />
 		<ColumnConstraints hgrow="SOMETIMES" maxWidth="252.9075927734375" minWidth="10.0" prefWidth="217.17108154296875" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.9075927734375" minWidth="10.0" prefWidth="217.17108154296875" />
 	</columnConstraints>
 	<rowConstraints>
 		<RowConstraints maxHeight="98.89478302001953" minHeight="10.0" prefHeight="60.763038635253906" vgrow="SOMETIMES" />
@@ -25,7 +27,7 @@
 		<RowConstraints maxHeight="188.18301391601562" minHeight="10.0" prefHeight="122.14456176757812" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<Button fx:id="payButtton" mnemonicParsing="false" onAction="#payForTrip" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Process payment" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+		<Button fx:id="payButtton" mnemonicParsing="false" onAction="#payForTrip" prefHeight="46.0" prefWidth="238.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Process payment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
 			<font>
 				<Font size="20.0" />
 			</font>
@@ -33,7 +35,7 @@
 				<Insets />
 			</GridPane.margin>
 		</Button>
-		<Label alignment="CENTER" text="     Climbsafe" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="RIGHT">
+		<Label alignment="CENTER" text="     Climbsafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
 			<font>
 				<Font size="30.0" />
 			</font>
@@ -44,7 +46,7 @@
 				<Insets left="20.0" />
 			</padding>
 		</Label>
-		<Label alignment="CENTER" text="Pay for trip" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+		<Label alignment="CENTER" text="Pay for trip" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
 			<font>
 				<Font size="24.0" />
 			</font>
@@ -71,21 +73,21 @@
 				<Insets />
 			</opaqueInsets>
 		</Label>
-		<TextField fx:id="authCodeTextField" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="170.0" promptText="authorization code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+		<TextField fx:id="authCodeTextField" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="420.0" promptText="authorization code" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
 			<font>
 				<Font name="System Italic" size="17.0" />
 			</font>
 		</TextField>
-		<TextField fx:id="memberEmailTextField" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="170.0" promptText="example@mail.com" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+		<TextField fx:id="memberEmailTextField" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="418.0" promptText="example@mail.com" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
 			<font>
 				<Font name="System Italic" size="16.0" />
 			</font>
 		</TextField>
-      <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+      <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
          <image>
             <Image url="@../../../../../../../../../../../logo.png" />
          </image>
       </ImageView>
-      <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.valignment="BOTTOM" />
+      <Separator prefWidth="200.0" GridPane.columnSpan="4" GridPane.valignment="BOTTOM" />
 	</children>
 </GridPane>

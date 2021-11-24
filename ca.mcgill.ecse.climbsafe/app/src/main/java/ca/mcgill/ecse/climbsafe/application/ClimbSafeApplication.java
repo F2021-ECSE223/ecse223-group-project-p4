@@ -10,10 +10,6 @@ import javafx.application.Application;
 public class ClimbSafeApplication {
   private static ClimbSafe climbSafe;
 
-  public String getGreeting() {
-    return "Hello World!";
-  }
-
   public static void main(String[] args) {
     Application.launch(ClimbSafeFxmlView.class, args);
   }

@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: rgb(84,82,82);" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.EquipmentOperationsController">
+<TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82);" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.EquipmentOperationsController">
    <tabs>
       <Tab id="EqTab1" fx:id="EqTab1" onSelectionChanged="#RefreshSystemEquipment" text="Add Equipment">
          <content>
-            <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: rgb(84,82,82); -fx-max-height: 100%;">
+            <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-max-height: 100%;">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.5999755859375" minWidth="10.0" prefWidth="105.79998779296875" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="192.0000244140625" />
@@ -145,7 +145,7 @@
       </Tab>
       <Tab id="EqTab2" fx:id="EqTab2" onSelectionChanged="#RefreshSystemEquipment2" text="Update Equipment">
          <content>
-            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
+            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="201.5999755859375" />
@@ -287,7 +287,7 @@
       </Tab>
       <Tab id="EqTab3" fx:id="EqTab3" onSelectionChanged="#RefreshSystemEquipment3" text="Delete Equipment">
          <content>
-            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
+            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.19998168945312" minWidth="10.0" prefWidth="77.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="209.8" />
