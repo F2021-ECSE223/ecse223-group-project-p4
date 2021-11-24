@@ -1,5 +1,26 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml;
 
-public class ClimbSafeFxmlView {
+import java.io.IOException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
+public class ClimbSafeFxmlView extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+      try {
+        var root = (Pane) FXMLLoader.load(getClass().getResource("MainPage.fxml"));
+        var scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setMinWidth(800);
+        primaryStage.setMinHeight(600);
+        primaryStage.setTitle("ClimbSafe");
+        primaryStage.show();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
 }

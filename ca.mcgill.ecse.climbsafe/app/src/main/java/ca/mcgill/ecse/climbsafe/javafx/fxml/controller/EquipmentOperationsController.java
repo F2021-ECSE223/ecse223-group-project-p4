@@ -83,6 +83,7 @@ public class EquipmentOperationsController {
     }
     try {
       ClimbSafeFeatureSet4Controller.addEquipment(name, weight, price);
+      refreshEquipmentList(SystemEquipment);
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
@@ -123,6 +124,7 @@ public class EquipmentOperationsController {
     }
     try {
       ClimbSafeFeatureSet4Controller.updateEquipment(oldName, newName, weight, price);
+      refreshEquipmentList(SystemEquipment1);
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
@@ -139,18 +141,19 @@ public class EquipmentOperationsController {
   public void deleteEquipmentAction(ActionEvent event) {
     String toBeDeleted = rmEquipmentName.getText();
     if (!ViewUtils.isAlpha(toBeDeleted)) {
-      ViewUtils.showError("Equipment Name must obly contain letters.");
+      ViewUtils.showError("Equipment Name must only contain letters.");
       return;
     }
     try {
       ClimbSafeFeatureSet6Controller.deleteEquipment(toBeDeleted);
+      refreshEquipmentList(equipmentList);
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
   }
 
   private void refreshEquipmentList(ListView<Label> eqList) {
-    eqList.setItems(null);
+    eqList.getItems().clear();
     for (BookableItem eqItem : ClimbSafeApplication.getClimbSafe().getEquipment()) {
       eqList.getItems().add(new Label(eqItem.getName()));
     }
