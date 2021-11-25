@@ -53,20 +53,17 @@
 				</Tab>
 				<Tab text="Bundles">
 					<content>
-						<AnchorPane minHeight="0.0" minWidth="0.0"
-							prefHeight="180.0" prefWidth="200.0" />
+						<fx:include source="pages/BundleOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Climbing Paths">
 					<content>
-						<AnchorPane minHeight="0.0" minWidth="0.0"
-							prefHeight="180.0" prefWidth="200.0" />
+						<fx:include source="pages/ClimbingPathOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Hotels">
 					<content>
-						<AnchorPane minHeight="0.0" minWidth="0.0"
-							prefHeight="326.0" prefWidth="687.0" />
+						<fx:include source="pages/HotelOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Assignments">
@@ -76,14 +73,12 @@
 				</Tab>
 				<Tab text="Payment">
 					<content>
-						<AnchorPane minHeight="0.0" minWidth="0.0"
-							prefHeight="180.0" prefWidth="200.0" />
+						<fx:include source="pages/TripPayment.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Trip Management">
 					<content>
-						<AnchorPane minHeight="0.0" minWidth="0.0"
-							prefHeight="180.0" prefWidth="200.0" />
+						<fx:include source="pages/TripOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Review Trips">
