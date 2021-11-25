@@ -544,6 +544,7 @@ public class MemberOperationsController {
     // Delete the member with the select email
     ClimbSafeFeatureSet1Controller.deleteMember(email);
 
+    ViewUtils.showSuccess("The account with email "+email+" was successfully deleted.");
 
   }
 
@@ -673,38 +674,37 @@ public class MemberOperationsController {
   
   
   
+  public void initialize() {
+    
+    List<String> itemsList = getNameOfItems();
+    List<String> bundlesList = getNameOfBundles();
+    
+    if(itemsList.size() > 0) {
+      addedItemsList.setItems(FXCollections.observableList(itemsList));
+      updateItemName.setItems(FXCollections.observableList(itemsList));
+
+    }
+    if(bundlesList.size() > 0) {
+      addedBundlesList.setItems(FXCollections.observableList(bundlesList));
+      updateBundleName.setItems(FXCollections.observableList(bundlesList));
+    }
+  }
+  
   public void RefreshMemberRegister(Event event) {
    
     
-    addedItemsList.setItems(FXCollections.observableList(getNameOfItems()));
-
-    addedBundlesList.setItems(FXCollections.observableList(getNameOfBundles()));
-        
-    updateItemName.setItems(FXCollections.observableList(getNameOfItems()));
-      
-    updateBundleName.setItems(FXCollections.observableList(getNameOfBundles()));
-       
+    initialize();
     
 }
   public void RefreshMemberUpdate(Event event) {
  
-    addedItemsList.setItems(FXCollections.observableList(getNameOfItems()));
+    initialize();
 
-    addedBundlesList.setItems(FXCollections.observableList(getNameOfBundles()));
-        
-    updateItemName.setItems(FXCollections.observableList(getNameOfItems()));
-      
-    updateBundleName.setItems(FXCollections.observableList(getNameOfBundles()));
 }
   public void RefreshMemberDelete(Event event) {
     
-    addedItemsList.setItems(FXCollections.observableList(getNameOfItems()));
+    initialize();
 
-    addedBundlesList.setItems(FXCollections.observableList(getNameOfBundles()));
-        
-    updateItemName.setItems(FXCollections.observableList(getNameOfItems()));
-      
-    updateBundleName.setItems(FXCollections.observableList(getNameOfBundles()));
 }
   
   
