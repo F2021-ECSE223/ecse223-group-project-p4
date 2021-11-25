@@ -1,35 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="1.7976931348623157E308"
-	maxWidth="1.7976931348623157E308" prefHeight="710.0" prefWidth="870.0"
-	xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="710.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.MainPageController">
 	<children>
-		<TabPane maxHeight="1.7976931348623157E308"
-			maxWidth="1.7976931348623157E308" prefHeight="710.0"
-			prefWidth="870.0" tabClosingPolicy="UNAVAILABLE">
+		<TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="710.0" prefWidth="870.0" tabClosingPolicy="UNAVAILABLE">
 			<tabs>
 				<Tab text="Setup NMC Program">
 					<content>
@@ -51,9 +29,9 @@
 						<fx:include source="pages/EquipmentOperations.fxml" />
 					</content>
 				</Tab>
-				<Tab text="Bundles">
+				<Tab onSelectionChanged="#refreshBundleTab" text="Bundles">
 					<content>
-						<fx:include source="pages/BundleOperations.fxml" />
+						<fx:include source="pages/BundleOperations.fxml" fx:id="bundleTab"/>
 					</content>
 				</Tab>
 				<Tab text="Climbing Paths">
@@ -83,8 +61,7 @@
 				</Tab>
 				<Tab text="Review Trips">
 					<content>
-						<AnchorPane minHeight="0.0" minWidth="0.0"
-							prefHeight="180.0" prefWidth="200.0" />
+						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
 					</content>
 				</Tab>
 			</tabs>
