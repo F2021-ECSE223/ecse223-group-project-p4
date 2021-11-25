@@ -20,19 +20,19 @@
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="155.199951171875" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="155.199951171875" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.800048828125" minWidth="10.0" prefWidth="82.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="10.0" prefWidth="205.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="205.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="45.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="65.0" minHeight="0.0" prefHeight="65.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="buttonAddHotel" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionAddHotel" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Button fx:id="buttonAddHotel" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionAddHotel" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -106,7 +106,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT">
                      <image>
                         <Image url="@../../../../../../../../../../../logo.png" />
                      </image>
@@ -125,9 +125,9 @@
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="155.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="155.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="82.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="10.0" prefWidth="205.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="205.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="45.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
@@ -135,10 +135,10 @@
                   <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="buttonUpdateHotel" mnemonicParsing="false" onAction="#actionUpdateHotel" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Button fx:id="buttonUpdateHotel" mnemonicParsing="false" onAction="#actionUpdateHotel" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -231,7 +231,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT">
                      <image>
                         <Image url="@../../../../../../../../../../../logo.png" />
                      </image>
@@ -250,17 +250,17 @@
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="155.199951171875" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="155.199951171875" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="148.800048828125" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="buttonDeleteHotel" mnemonicParsing="false" onAction="#actionDeleteHotel" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="buttonDeleteHotel" mnemonicParsing="false" onAction="#actionDeleteHotel" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -268,12 +268,12 @@
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <TextField fx:id="nameDeleteHotel" prefHeight="26.0" prefWidth="286.0" promptText="Enter Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="nameDeleteHotel" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="26.0" prefWidth="148.0" promptText="Enter Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
+                        <Insets />
                      </GridPane.margin>
                   </TextField>
                   <Label alignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
@@ -312,7 +312,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT">
+                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT">
                      <image>
                         <Image url="@../../../../../../../../../../../logo.png" />
                      </image>
