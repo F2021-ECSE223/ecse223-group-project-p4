@@ -7,6 +7,7 @@ import java.util.*;
 
 // line 39 "../../../../../ClimbSafe.ump"
 // line 53 "../../../../../ClimbSafePersistence.ump"
+// line 45 "../../../../../ExtraFeatures.ump"
 public class Member extends NamedUser implements Serializable
 {
 
@@ -18,6 +19,7 @@ public class Member extends NamedUser implements Serializable
   private int nrWeeks;
   private boolean guideRequired;
   private boolean hotelRequired;
+  private String selectedClimbingLocation;
 
   //Member Associations
   private ClimbSafe climbSafe;
@@ -35,6 +37,7 @@ public class Member extends NamedUser implements Serializable
     nrWeeks = aNrWeeks;
     guideRequired = aGuideRequired;
     hotelRequired = aHotelRequired;
+    selectedClimbingLocation = null;
     boolean didAddClimbSafe = setClimbSafe(aClimbSafe);
     if (!didAddClimbSafe)
     {
@@ -71,6 +74,14 @@ public class Member extends NamedUser implements Serializable
     return wasSet;
   }
 
+  public boolean setSelectedClimbingLocation(String aSelectedClimbingLocation)
+  {
+    boolean wasSet = false;
+    selectedClimbingLocation = aSelectedClimbingLocation;
+    wasSet = true;
+    return wasSet;
+  }
+
   public int getNrWeeks()
   {
     return nrWeeks;
@@ -84,6 +95,11 @@ public class Member extends NamedUser implements Serializable
   public boolean getHotelRequired()
   {
     return hotelRequired;
+  }
+
+  public String getSelectedClimbingLocation()
+  {
+    return selectedClimbingLocation;
   }
   /* Code from template attribute_IsBoolean */
   public boolean isGuideRequired()
@@ -332,7 +348,8 @@ public class Member extends NamedUser implements Serializable
     return super.toString() + "["+
             "nrWeeks" + ":" + getNrWeeks()+ "," +
             "guideRequired" + ":" + getGuideRequired()+ "," +
-            "hotelRequired" + ":" + getHotelRequired()+ "]" + System.getProperties().getProperty("line.separator") +
+            "hotelRequired" + ":" + getHotelRequired()+ "," +
+            "selectedClimbingLocation" + ":" + getSelectedClimbingLocation()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "climbSafe = "+(getClimbSafe()!=null?Integer.toHexString(System.identityHashCode(getClimbSafe())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "assignment = "+(getAssignment()!=null?Integer.toHexString(System.identityHashCode(getAssignment())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "review = "+(getReview()!=null?Integer.toHexString(System.identityHashCode(getReview())):"null");

@@ -15,5 +15,6 @@ class TOAssignment {
   Integer refundedPercentageAmount;
   climbRating;
   climbComment;
+  String climbLocation;
   Integer climbLength;
 }

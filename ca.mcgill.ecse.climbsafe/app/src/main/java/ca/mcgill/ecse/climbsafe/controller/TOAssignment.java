@@ -26,13 +26,14 @@ public class TOAssignment
   private int refundedPercentageAmount;
   private String climbRating;
   private String climbComment;
+  private String climbLocation;
   private int climbLength;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public TOAssignment(String aMemberEmail, String aMemberName, String aGuideEmail, String aGuideName, String aHotelName, int aStartWeek, int aEndWeek, int aTotalCostForGuide, int aTotalCostForEquipment, String aStatus, String aAuthorizationCode, int aRefundedPercentageAmount, String aClimbRating, String aClimbComment, int aClimbLength)
+  public TOAssignment(String aMemberEmail, String aMemberName, String aGuideEmail, String aGuideName, String aHotelName, int aStartWeek, int aEndWeek, int aTotalCostForGuide, int aTotalCostForEquipment, String aStatus, String aAuthorizationCode, int aRefundedPercentageAmount, String aClimbRating, String aClimbComment, String aClimbLocation, int aClimbLength)
   {
     memberEmail = aMemberEmail;
     memberName = aMemberName;
@@ -48,6 +49,7 @@ public class TOAssignment
     refundedPercentageAmount = aRefundedPercentageAmount;
     climbRating = aClimbRating;
     climbComment = aClimbComment;
+    climbLocation = aClimbLocation;
     climbLength = aClimbLength;
   }
 
@@ -167,6 +169,14 @@ public class TOAssignment
     return wasSet;
   }
 
+  public boolean setClimbLocation(String aClimbLocation)
+  {
+    boolean wasSet = false;
+    climbLocation = aClimbLocation;
+    wasSet = true;
+    return wasSet;
+  }
+
   public boolean setClimbLength(int aClimbLength)
   {
     boolean wasSet = false;
@@ -245,6 +255,11 @@ public class TOAssignment
     return climbComment;
   }
 
+  public String getClimbLocation()
+  {
+    return climbLocation;
+  }
+
   public int getClimbLength()
   {
     return climbLength;
@@ -271,6 +286,7 @@ public class TOAssignment
             "refundedPercentageAmount" + ":" + getRefundedPercentageAmount()+ "," +
             "climbRating" + ":" + getClimbRating()+ "," +
             "climbComment" + ":" + getClimbComment()+ "," +
+            "climbLocation" + ":" + getClimbLocation()+ "," +
             "climbLength" + ":" + getClimbLength()+ "]";
   }
 }

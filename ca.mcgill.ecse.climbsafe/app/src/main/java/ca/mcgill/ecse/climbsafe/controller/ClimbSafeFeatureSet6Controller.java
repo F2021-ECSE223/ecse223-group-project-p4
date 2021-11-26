@@ -125,15 +125,19 @@ public class ClimbSafeFeatureSet6Controller {
         comment = assignment.getReview().getComment();
       }
 
-      // Extracting the climb length
+      // Extracting the climb length and location
       int length = 0;
-      if (assignment.hasClimbingPath())
+      String location = null;
+      if (assignment.hasClimbingPath()) {
         length = assignment.getClimbingPath().getLength();
+        location = assignment.getClimbingPath().getLocation();
+      }
+      
 
       // Adding the corresponding TOAssignment to the list we will be returning
       TOassignments.add(new TOAssignment(memberEmail, memberName, guideEmail, guideName, hotelName,
           startWeek, endWeek, totalCostForGuide, totalCostForEquipment, status, authorizationCode,
-          refund, rating, comment, length));
+          refund, rating, comment, location, length));
     }
 
     return TOassignments; // Returning a list of TOAssignments
