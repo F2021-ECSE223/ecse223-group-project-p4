@@ -5,22 +5,27 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet1Controller;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet2Controller;
+import ca.mcgill.ecse.climbsafe.controller.ExtraFeaturesController;
 import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
 import ca.mcgill.ecse.climbsafe.model.BookableItem;
 import ca.mcgill.ecse.climbsafe.model.BundleItem;
 import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
-
+import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
 import ca.mcgill.ecse.climbsafe.model.Equipment;
 import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
+import ca.mcgill.ecse.climbsafe.model.Member;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
+
 import javafx.scene.control.Label;
+
+import javafx.scene.control.ListView;
 
 import javafx.scene.control.ComboBox;
 
@@ -28,527 +33,678 @@ import javafx.scene.control.Tab;
 
 import javafx.scene.control.CheckBox;
 
-
+import javafx.event.Event;
 
 public class MemberOperationsController {
+	@FXML
+	private Tab registerMemberTab;
+	@FXML
+	private TextField addEmail;
+	@FXML
+	private Button registerMemberButton;
+	@FXML
+	private TextField addFirstName;
+	@FXML
+	private TextField addLastName;
+	@FXML
+	private TextField addPassword;
+	@FXML
+	private TextField addEmergencyPhone;
+	@FXML
+	private TextField addNumberWeeks;
+	@FXML
+	private CheckBox guideRequiredCheck;
+	@FXML
+	private CheckBox hotelRequiredCheck;
+	@FXML
+	private Button addItemButton;
+	@FXML
+	private Button addBundleButton;
+	@FXML
+	private TextField addItemsQuantities;
+	@FXML
+	private TextField addBundlesQuantities;
+	@FXML
+	private ComboBox<String> addedItemsList;
+	@FXML
+	private ComboBox<String> addedBundlesList;
+	@FXML
+	private Label showTotalWeight;
+	@FXML
+	private Label showTotalPrice;
+	@FXML
+	private ListView listOfItemsChosen;
+	@FXML
+	private ListView listOfNumberOfItemsChosen;
+	@FXML
+	private Button removeItems;
+	@FXML
+	private Button addPathButton;
+	@FXML
+	private ListView listOfClimbingPaths;
+	@FXML
+	private Label registrationSucessfulMessage;
+	@FXML
+	private Tab updateMemberTab;
+	@FXML
+	private TextField updatePassword;
+	@FXML
+	private Button updateMemberButton;
+	@FXML
+	private TextField updateLastName;
+	@FXML
+	private TextField memberEmail;
+	@FXML
+	private TextField updateFirstName;
+	@FXML
+	private TextField updateEmergencyPhone;
+	@FXML
+	private TextField updateNumberWeeks;
+	@FXML
+	private TextField updateItemQuantity;
+	@FXML
+	private CheckBox updateHotelRequiredCheck;
+	@FXML
+	private CheckBox updateGuideRequiredCheck;
+	@FXML
+	private Button updateAddItemButton;
+	@FXML
+	private Button updateAddIBundleBuntton;
+	@FXML
+	private TextField updateBundleQuantity;
+	@FXML
+	private ComboBox<String> updateItemName;
+	@FXML
+	private ComboBox<String> updateBundleName;
+	@FXML
+	private ListView listOfClimbingPathsUpdate;
+	@FXML
+	private Button updatePathButton;
+	@FXML
+	private Button removeItemsUpdate;
+	@FXML
+	private ListView listOfItemsChosenUpdate;
+	@FXML
+	private ListView listOfINumberOftemsChosenUpdate;
+	@FXML
+	private Label registrationSucessfulMessage1;
+	@FXML
+	private Label showTotalPrice1;
+	@FXML
+	private Label showTotalWeight1;
+	@FXML
+	private Tab deleteMemberTab;
+	@FXML
+	private Button deleteMemberButton;
+	@FXML
+	private TextField toBedeletedMemberEmail;
+	
+	private static ClimbSafe system = ClimbSafeApplication.getClimbSafe(); // The system instance
+	
+	   
+    // For Registering
+    private List<String> bookedItemsToAdd = new ArrayList<>();
+    private List<Integer> numberOfItemsToAdd = new ArrayList<>();
+    private List<BookableItem> allBookedItemsList = new ArrayList<>();
 
-  private static ClimbSafe system = ClimbSafeApplication.getClimbSafe(); // The system instance
-
-  @FXML
-  private Tab registerMemberTab;
-  @FXML
-  private TextField addEmail;
-  @FXML
-  private Button registerMemberButton;
-  @FXML
-  private TextField addFirstName;
-  @FXML
-  private TextField addLastName;
-  @FXML
-  private TextField addPassword;
-  @FXML
-  private TextField addEmergencyPhone;
-  @FXML
-  private TextField addNumberWeeks;
-  @FXML
-  private CheckBox guideRequiredCheck;
-  @FXML
-  private CheckBox hotelRequiredCheck;
-  @FXML
-  private Button addItemButton;
-  @FXML
-  private Button addBundleButton;
-  @FXML
-  private TextField addItemsQuantities;
-  @FXML
-  private TextField addBundlesQuantities;
-  @FXML
-  private ComboBox<String> addedItemsList ;
-       // Get all
-                                                                                    // available
-                                                                                    // equipment
-                                                                                    // from system
-  @FXML
-  private ComboBox<String> addedBundlesList;
-       // Get all
-                                                                                        // available
-                                                                                        // equipmentBundle
-                                                                                        // from
-                                                                                        // system
-  @FXML
-  private Label showTotalWeight;
-  @FXML
-  private Label showTotalPrice;
-  @FXML
-  private Tab updateMemberTab;
-  @FXML
-  private TextField updatePassword;
-  @FXML
-  private Button updateMemberButton;
-  @FXML
-  private TextField updateLastName;
-  @FXML
-  private TextField memberEmail;
-  @FXML
-  private TextField updateFirstName;
-  @FXML
-  private TextField updateEmergencyPhone;
-  @FXML
-  private TextField updateNumberWeeks;
-  @FXML
-  private TextField updateItemQuantity;
-  @FXML
-  private CheckBox updateHotelRequiredCheck;
-  @FXML
-  private CheckBox updateGuideRequiredCheck;
-  @FXML
-  private Button updateAddItemButton;
-  @FXML
-  private Button updateAddIBundleBuntton;
-  @FXML
-  private TextField updateBundleQuantity;
-  @FXML
-  private ComboBox<String> updateItemName;
-       // Get all
-                                                                                    // available
-                                                                                    // equipment
-                                                                                    // from system
-  @FXML
-  private ComboBox<String> updateBundleName;
-       // Get all
-                                                                                        // available
-                                                                                        // equipmentBundle
-                                                                                        // from
-                                                                                        // system
-  @FXML
-  private Tab deleteMemberTab;
-  @FXML
-  private Button deleteMemberButton;
-  @FXML
-  private TextField toBedeletedMemberEmail;
-
-  // Initialize lists for the member adding his items for the climb
-
-  // For Registering
-  private List<String> bookedItemsToAdd = new ArrayList<>();
-  private List<Integer> numberOfItemsToAdd = new ArrayList<>();
-  private List<BookableItem> allBookedItemsList = new ArrayList<>();
-
-  // For Updating
-  private List<String> bookedItemsToUpdate = new ArrayList<>();
-  private List<Integer> numberOfItemsToUpdate = new ArrayList<>();
-  private List<BookableItem> updateAllBookedItemsList = new ArrayList<>();
-
-
-
-  // Integer for various calculations
-  private Integer totalWeight = 0;
-  private Integer totalPrice = 0;
-
-  private Integer totalPriceForUpdate = 0;
-  private Integer totalWeightForUpdate = 0;
-
-
-
-  // Event Listener on Button[#registerMemberButton].onAction
-  @FXML
-  /**
-   * This method will register the info of a member by calling the controller when the user presses
-   * the button
-   * 
-   * @param event - press of the register button
-   */
-  public void registerMemberUI(ActionEvent event) {
-
-    // Get the required parameters from the UI
-
-    String name = addFirstName.getText() + addLastName.getText();
-    String email = addEmail.getText();
-    String password = addPassword.getText();
-    String emergency = addEmergencyPhone.getText();
-    boolean hotel = hotelRequiredCheck.isSelected();
-    boolean guide = guideRequiredCheck.isSelected();
-
-
-    // Check if information entered is alphanumeric
-    if (!ViewUtils.isAlpha(name)) {
-      ViewUtils.showError("The input must only contain letters.");
-      return;
-    }
-
-    int numberOfWeeksWanted;
-
-    // Check if information entered is an integer
-    try {
-      numberOfWeeksWanted = Integer.parseInt(this.addNumberWeeks.getText());
-    } catch (Exception e) {
-      ViewUtils.showError("The number of weeks wanted must be an integer");
-      return;
-    }
+    // For Updating
+    private List<String> bookedItemsToUpdate = new ArrayList<>();
+    private List<Integer> numberOfItemsToUpdate = new ArrayList<>();
+    private List<BookableItem> updateAllBookedItemsList = new ArrayList<>();
 
 
 
-    // Check if information entered is not empty
-    if (name.equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+    // Integer for various calculations
+    private Integer totalWeight = 0;
+    private Integer totalPrice = 0;
 
-      ViewUtils.showError("The input must not be empty.");
-      return;
-
-    }
-
-
-    try {
-      ClimbSafeFeatureSet2Controller.registerMember(email, password, name, emergency,
-          numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd); // Try to
-                                                                                    // register
-                                                                                    // member
-
-      // Compute the total price and weight of the item chosen by the member and if the member
-      // desires a guide
-      totalPrice =
-          computeTotalCost(numberOfWeeksWanted, guide, allBookedItemsList, numberOfItemsToAdd);
-      totalWeight = computeTotalWeight(allBookedItemsList, numberOfItemsToAdd);
+    private Integer totalPriceForUpdate = 0;
+    private Integer totalWeightForUpdate = 0;
 
 
-      if (!guide) {
-        // Output the price and weight without taking into account the guide since the member does
-        // not want it
-        ViewUtils.showSuccess("Registration successfully processed for member " + name + '\n'
-            + "Total Price of equipment is " + totalPrice + " s and the the total weight is "
-            + totalWeight + " lb.");
+    // Event Listener on Button[#registerMemberButton].onAction
+    @FXML
+    /**
+     * This method will register the info of a member by calling the controller when the user presses
+     * the button
+     * 
+     * @param event - press of the register button
+     */
+    public void registerMemberUI(ActionEvent event) {
 
-      // Set the price and weight on the screen
-      showTotalWeight.setText(totalPrice + " lb");
-      showTotalPrice.setText(totalWeight + " s");
+      // Get the required parameters from the UI
+
+      String name = addFirstName.getText() + addLastName.getText();
+      String email = addEmail.getText();
+      String password = addPassword.getText();
+      String emergency = addEmergencyPhone.getText();
+      String location = ClimbingPaths.getValue();
+      boolean hotel = hotelRequiredCheck.isSelected();
+      boolean guide = guideRequiredCheck.isSelected();
+
+
+      // Check if information entered is alphanumeric
+      if (!ViewUtils.isAlpha(name)) {
+        ViewUtils.showError("The input must only contain letters.");
+        return;
       }
-      else {
-        // Output the price and weight taking into account the guide since the member wants it
 
-        int totalCostForGuide = system.getPriceOfGuidePerWeek() * numberOfWeeksWanted;
+      int numberOfWeeksWanted;
 
-       int totalPriceWithGuide = totalCostForGuide + totalPrice;
+      // Check if information entered is an integer
+      try {
+        numberOfWeeksWanted = Integer.parseInt(this.addNumberWeeks.getText());
+      } catch (Exception e) {
+        ViewUtils.showError("The number of weeks wanted must be an integer");
+        return;
+      }
 
-        ViewUtils.showSuccess("Registration successfully processed for member " + name + '\n'
-            + "Total Price of equipment is: " + totalPrice + " s, Total price of the guide is: "
-            + totalCostForGuide + " s and the the total weight is " + totalWeight + " lb.");
+
+
+      // Check if information entered is not empty
+      if (name.equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+
+        ViewUtils.showError("The input must not be empty.");
+        return;
+
+      }
+
+
+      try {
+        ClimbSafeFeatureSet2Controller.registerMember(email, password, name, emergency,
+            numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd); // Try to
+                                                                                      // register
+                                                                                      // member
+
+        // Compute the total price and weight of the item chosen by the member and if the member
+        // desires a guide
+        totalPrice =
+            computeTotalCost(numberOfWeeksWanted, guide, allBookedItemsList, numberOfItemsToAdd);
+        totalWeight = computeTotalWeight(allBookedItemsList, numberOfItemsToAdd);
+
+
+        if (!guide) {
+          // Output the price and weight without taking into account the guide since the member does
+          // not want it
+          ViewUtils.showSuccess("Registration successfully processed for member " + name + '\n'
+              + "Total Price of equipment is " + totalPrice + " s and the the total weight is "
+              + totalWeight + " lb.");
 
         // Set the price and weight on the screen
-        showTotalWeight.setText(totalPriceWithGuide + " lb");
+        showTotalWeight.setText(totalPrice + " lb");
         showTotalPrice.setText(totalWeight + " s");
+        }
+        else {
+          // Output the price and weight taking into account the guide since the member wants it
+
+          int totalCostForGuide = system.getPriceOfGuidePerWeek() * numberOfWeeksWanted;
+
+         int totalPriceWithGuide = totalCostForGuide + totalPrice;
+
+          ViewUtils.showSuccess("Registration successfully processed for member " + name + '\n'
+              + "Total Price of equipment is: " + totalPrice + " s, Total price of the guide is: "
+              + totalCostForGuide + " s and the the total weight is " + totalWeight + " lb.");
+
+          // Set the price and weight on the screen
+          showTotalWeight.setText(totalPriceWithGuide + " lb");
+          showTotalPrice.setText(totalWeight + " s");
+        }
+
+
+        // Clear the temporary lists for the next customer
+        bookedItemsToAdd.clear();
+        numberOfItemsToAdd.clear();
+        // Clear the price and weight
+        totalPrice = 0;
+        totalWeight = 0;
+        
+        ExtraFeaturesController.setClimbingPath(email, location);
+
+        // Catch and output the error if there's one
+      } catch (InvalidInputException e) {
+        ViewUtils.showError(e.getMessage());
+        return;
       }
 
 
-      // Clear the temporary lists for the next customer
-      bookedItemsToAdd.clear();
-      numberOfItemsToAdd.clear();
-      // Clear the price and weight
-      totalPrice = 0;
-      totalWeight = 0;
-
-      // Catch and output the error if there's one
-    } catch (InvalidInputException e) {
-      ViewUtils.showError(e.getMessage());
-      return;
-    }
-
-
-
-  }
-
-  // Event Listener on Button[#addItemButton].onAction
-  @FXML
-  /**
-   * This method will add the item to a member by adding it to a temp list when the user presses the
-   * button
-   * 
-   * @param event - press of the add button
-   */
-  public void addItem(ActionEvent event) {
-
-    int numberOfItemWanted;
-
-    // Check if information entered is an integer
-    try {
-      numberOfItemWanted = Integer.parseInt(this.addItemsQuantities.getText());
-    } catch (Exception e) {
-      ViewUtils.showError("The number of items wanted must be an integer");
-      return;
-    }
-
-
-    BookableItem item = BookableItem.getWithName(addedItemsList.getValue()); // Get the name of the item chosen
-
-    if (!(item == null)) { // Check thats the member chose an item.
-
-      bookedItemsToAdd.add(item.getName()); // Add the name of the item to the list
-
-      allBookedItemsList.add((Equipment) item); // Add the equipment to the
-                                                                     // list
-      numberOfItemsToAdd.add(numberOfItemWanted); // Add the number of equipment requested by the
-                                                  // member
-
-    } else { // The member clicked on add without selecting any item
-      ViewUtils.showError("You have to select an item to add");
-      return;
 
     }
 
-  }
+    // Event Listener on Button[#addItemButton].onAction
+    @FXML
+    /**
+     * This method will add the item to a member by adding it to a temp list when the user presses the
+     * button
+     * 
+     * @param event - press of the add button
+     */
+    public void addItem(ActionEvent event) {
+
+      int numberOfItemWanted;
+
+      // Check if information entered is an integer
+      try {
+        numberOfItemWanted = Integer.parseInt(this.addItemsQuantities.getText());
+      } catch (Exception e) {
+        ViewUtils.showError("The number of items wanted must be an integer");
+        return;
+      }
 
 
-  // Event Listener on Button[#addBundleButton].onAction
-  @FXML
-  /**
-   * This method will add the bundle to a member by adding it to a temp list when the user presses
-   * the button
-   * 
-   * @param event - press of the add button
-   */
-  public void addBundle(ActionEvent event) {
-    int numberOfBundleWanted;
+      BookableItem item = BookableItem.getWithName(addedItemsList.getValue()); // Get the name of the item chosen
 
-    // Check if information entered is an integer
-    try {
-      numberOfBundleWanted = Integer.parseInt(this.addBundlesQuantities.getText());
-    } catch (Exception e) {
-      ViewUtils.showError("The number of bundles wanted must be an integer");
-      return;
-    }
+      if (!(item == null)) { // Check thats the member chose an item.
 
-    BookableItem bundle = BookableItem.getWithName(addedBundlesList.getValue()); // Get the name of the item chosen
+        bookedItemsToAdd.add(item.getName()); // Add the name of the item to the list
 
-    if (!(bundle == null)) { // Check thats the member chose a bundle.
-
-      bookedItemsToAdd.add(bundle.getName()); // Add the name of the item to the list
-
-      allBookedItemsList.add((EquipmentBundle) bundle); // Add the equipment
-                                                                             // bundle to the list
-
-      numberOfItemsToAdd.add(numberOfBundleWanted); // Add the number of equipment requested by the
+        allBookedItemsList.add((Equipment) item); // Add the equipment to the
+                                                                       // list
+        numberOfItemsToAdd.add(numberOfItemWanted); // Add the number of equipment requested by the
                                                     // member
+        
+        
+        refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
+        
+        refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
+
+
+      } else { // The member clicked on add without selecting any item
+        ViewUtils.showError("You have to select an item to add");
+        return;
+
+      }
 
     }
 
-    else { // The member clicked on add without selecting any bundle
-      ViewUtils.showError("You have to select a bundle to add");
-      return;
+
+    // Event Listener on Button[#addBundleButton].onAction
+    @FXML
+    /**
+     * This method will add the bundle to a member by adding it to a temp list when the user presses
+     * the button
+     * 
+     * @param event - press of the add button
+     */
+    public void addBundle(ActionEvent event) {
+      int numberOfBundleWanted;
+
+      // Check if information entered is an integer
+      try {
+        numberOfBundleWanted = Integer.parseInt(this.addBundlesQuantities.getText());
+      } catch (Exception e) {
+        ViewUtils.showError("The number of bundles wanted must be an integer");
+        return;
+      }
+
+      BookableItem bundle = BookableItem.getWithName(addedBundlesList.getValue()); // Get the name of the item chosen
+
+      if (!(bundle == null)) { // Check thats the member chose a bundle.
+
+        bookedItemsToAdd.add(bundle.getName()); // Add the name of the item to the list
+
+        allBookedItemsList.add((EquipmentBundle) bundle); // Add the equipment
+                                                                               // bundle to the list
+
+        numberOfItemsToAdd.add(numberOfBundleWanted); // Add the number of equipment requested by the
+                                                      // member
+
+         
+        refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
+        
+        refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
+
+      }
+
+      else { // The member clicked on add without selecting any bundle
+        ViewUtils.showError("You have to select a bundle to add");
+        return;
+
+      }
 
     }
 
-  }
 
 
+    // Event Listener on Button[#updateMemberButton].onAction
+    @FXML
+    /**
+     * This method will update the info of a member by calling the controller when the user presses
+     * the button
+     * 
+     * @param event - press of the update button
+     */
+    public void updateMemberUI(ActionEvent event) {
 
-  // Event Listener on Button[#updateMemberButton].onAction
-  @FXML
-  /**
-   * This method will update the info of a member by calling the controller when the user presses
-   * the button
-   * 
-   * @param event - press of the update button
-   */
-  public void updateMemberUI(ActionEvent event) {
+      // Get the required parameters from the UI
+      String name = updateFirstName.getText() + updateLastName.getText();
+      String email = memberEmail.getText();
+      String password = updatePassword.getText();
+      String emergency = updateEmergencyPhone.getText();
+      boolean hotel = updateHotelRequiredCheck.isSelected();
+      boolean guide = updateGuideRequiredCheck.isSelected();
 
-    // Get the required parameters from the UI
-    String name = updateFirstName.getText() + updateLastName.getText();
-    String email = memberEmail.getText();
-    String password = updatePassword.getText();
-    String emergency = updateEmergencyPhone.getText();
-    boolean hotel = updateHotelRequiredCheck.isSelected();
-    boolean guide = updateGuideRequiredCheck.isSelected();
+      // Check if information entered is alphanumeric
+      if (!ViewUtils.isAlpha(name)) {
+        ViewUtils.showError("The input must only contain letters.");
+        return;
+      }
 
-    // Check if information entered is alphanumeric
-    if (!ViewUtils.isAlpha(name)) {
-      ViewUtils.showError("The input must only contain letters.");
-      return;
+      int numberOfWeeksWanted;
+
+      // Check if information entered is an integer
+      try {
+        numberOfWeeksWanted = Integer.parseInt(this.updateNumberWeeks.getText());
+      } catch (Exception e) {
+        ViewUtils.showError("The number of weeks wanted must be an integer");
+        return;
+      }
+
+      // Check if information entered is not empty
+      if (name.equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+
+        ViewUtils.showError("The input must not be empty.");
+        return;
+
+      }
+
+      try {
+        ClimbSafeFeatureSet2Controller.updateMember(email, password, name, emergency,
+            numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd); // Try to Update
+                                                                                      // member
+
+        // Compute the total price and weight of the item chosen by the member and if the member
+        // desires a guide
+        totalPriceForUpdate = computeTotalCost(numberOfWeeksWanted, guide, updateAllBookedItemsList,
+            numberOfItemsToUpdate);
+        totalWeightForUpdate = computeTotalWeight(updateAllBookedItemsList, numberOfItemsToUpdate);
+
+
+        if (!guide)
+          // Output the price and weight without taking into account the guide since the member does
+          // not want it
+          ViewUtils.showSuccess("Update successfully processed for member " + name + '\n'
+              + "Total Price of equipment is " + totalPriceForUpdate
+              + " s and the the total weight is " + totalWeightForUpdate + " lb.");
+
+        else {
+
+          int totalCostForGuide = system.getPriceOfGuidePerWeek() * numberOfWeeksWanted;
+
+          // Output the price and weight taking into account the guide since the member wants it
+          ViewUtils.showSuccess("Update successfully processed for member " + name + '\n'
+              + "Total Price of equipment is: " + totalPriceForUpdate
+              + " s, Total price of the guide is: " + totalCostForGuide
+              + " s and the the total weight is " + totalWeightForUpdate + " lb.");
+
+        }
+
+
+        // Clear the temporary lists for the next customer
+        bookedItemsToUpdate.clear();
+        numberOfItemsToUpdate.clear();
+
+        // Clear the price and weight
+        totalPriceForUpdate = 0;
+        totalWeightForUpdate = 0;
+
+        // Catch and output the error if there's one
+      } catch (InvalidInputException e) {
+        ViewUtils.showError(e.getMessage());
+        return;
+      }
+
+
     }
 
-    int numberOfWeeksWanted;
+    // Event Listener on Button[#updateAddItemButton].onAction
+    @FXML
+    /**
+     * This method will update the items booked to a member by adding them to a temp list when the
+     * user presses the button
+     * 
+     * @param event - press of the update button
+     */
+    public void updateItem(ActionEvent event) {
+      int numberOfItemWanted;
 
-    // Check if information entered is an integer
-    try {
-      numberOfWeeksWanted = Integer.parseInt(this.updateNumberWeeks.getText());
-    } catch (Exception e) {
-      ViewUtils.showError("The number of weeks wanted must be an integer");
-      return;
+
+      // Check if information entered is an integer
+      try {
+        numberOfItemWanted = Integer.parseInt(this.updateItemQuantity.getText());
+      } catch (Exception e) {
+        ViewUtils.showError("The number of items wanted must be an integer");
+        return;
+      }
+
+
+      BookableItem item = BookableItem.getWithName(updateItemName.getValue());
+
+      if (!(item == null)) { // Check thats the member chose an item.
+
+        bookedItemsToUpdate.add(item.getName()); // Add the name of the item to the list
+
+        numberOfItemsToUpdate.add(numberOfItemWanted); // Add the number of equipment requested by the
+                                                       // member
+
+        updateAllBookedItemsList.add((Equipment) item); // Add the equipment to
+                                                                             // the list
+
+      }
+
+      else { // The member clicked on add without selecting any item
+        ViewUtils.showError("You have to select an item to add");
+        return;
+
+      }
+
     }
 
-    // Check if information entered is not empty
-    if (name.equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+    // Event Listener on Button[#updateAddIBundleBuntton].onAction
+    @FXML
+    /**
+     * This method will update the bundles booked to a member by adding to a temp list when the user
+     * presses the button
+     * 
+     * @param event - press of the update button
+     */
+    public void updateBundle(ActionEvent event) {
+      int numberOfBundleWanted;
 
-      ViewUtils.showError("The input must not be empty.");
-      return;
+      // Check if information entered is an integer
+      try {
+        numberOfBundleWanted = Integer.parseInt(updateBundleQuantity.getText());
+      } catch (Exception e) {
+        ViewUtils.showError("The number of bundles wanted must be an integer");
+        return;
+      }
+
+      BookableItem bundle = BookableItem.getWithName(updateBundleName.getValue());
+
+
+      if (!(bundle == null)) { // Check thats the member chose a bundle.
+
+        bookedItemsToUpdate.add(bundle.getName()); // Add the name of the bundle to the list
+
+        numberOfItemsToUpdate.add(numberOfBundleWanted); // Add the number of equipment requested by
+                                                         // the member
+
+        updateAllBookedItemsList.add((EquipmentBundle) bundle); // Add the
+                                                                                     // equipment
+                                                                                     // bundle to the
+                                                                                     // list
+      }
+
+      else { // The member clicked on add without selecting any bundle
+        ViewUtils.showError("You have to select a bundle to add");
+        return;
+
+      }
 
     }
 
-    try {
-      ClimbSafeFeatureSet2Controller.updateMember(email, password, name, emergency,
-          numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd); // Try to Update
-                                                                                    // member
-
-      // Compute the total price and weight of the item chosen by the member and if the member
-      // desires a guide
-      totalPriceForUpdate = computeTotalCost(numberOfWeeksWanted, guide, updateAllBookedItemsList,
-          numberOfItemsToUpdate);
-      totalWeightForUpdate = computeTotalWeight(updateAllBookedItemsList, numberOfItemsToUpdate);
 
 
-      if (!guide)
-        // Output the price and weight without taking into account the guide since the member does
-        // not want it
-        ViewUtils.showSuccess("Update successfully processed for member " + name + '\n'
-            + "Total Price of equipment is " + totalPriceForUpdate
-            + " s and the the total weight is " + totalWeightForUpdate + " lb.");
+    // Event Listener on Button[#deleteMemberButton].onAction
+    @FXML
+    /**
+     * This method will delete the member by calling the controller when the user presses the button
+     * 
+     * @param event - press of the delete button
+     */
+    public void deleteMemberUI(ActionEvent event) {
 
-      else {
+      // Get the required parameters from the UI
+      String email = toBedeletedMemberEmail.getText();
 
-        int totalCostForGuide = system.getPriceOfGuidePerWeek() * numberOfWeeksWanted;
 
-        // Output the price and weight taking into account the guide since the member wants it
-        ViewUtils.showSuccess("Update successfully processed for member " + name + '\n'
-            + "Total Price of equipment is: " + totalPriceForUpdate
-            + " s, Total price of the guide is: " + totalCostForGuide
-            + " s and the the total weight is " + totalWeightForUpdate + " lb.");
+
+      // Check if information entered is not empty
+      if (email.equals("")) {
+
+        ViewUtils.showError("The input must not be empty.");
+        return;
 
       }
 
 
-      // Clear the temporary lists for the next customer
-      bookedItemsToUpdate.clear();
-      numberOfItemsToUpdate.clear();
+      // Delete the member with the select email
+      ClimbSafeFeatureSet1Controller.deleteMember(email);
 
-      // Clear the price and weight
-      totalPriceForUpdate = 0;
-      totalWeightForUpdate = 0;
+      ViewUtils.showSuccess("The account with email "+email+" was successfully deleted.");
 
-      // Catch and output the error if there's one
-    } catch (InvalidInputException e) {
-      ViewUtils.showError(e.getMessage());
-      return;
     }
 
 
-  }
-
-  // Event Listener on Button[#updateAddItemButton].onAction
+     // Event Listener on Button[#removeItems].onAction
   @FXML
-  /**
-   * This method will update the items booked to a member by adding them to a temp list when the
-   * user presses the button
-   * 
-   * @param event - press of the update button
-   */
-  public void updateItem(ActionEvent event) {
-    int numberOfItemWanted;
-
-
-    // Check if information entered is an integer
-    try {
-      numberOfItemWanted = Integer.parseInt(this.updateItemQuantity.getText());
-    } catch (Exception e) {
-      ViewUtils.showError("The number of items wanted must be an integer");
+  public void removeItemsFromChosen(ActionEvent event) {
+    
+    if(listOfItemsChosen.getSelectionModel().isEmpty()) {
+      ViewUtils.showError("Please select an equipment item to delete.");
       return;
     }
-
-
-    BookableItem item = BookableItem.getWithName(updateItemName.getValue());
-
-    if (!(item == null)) { // Check thats the member chose an item.
-
-      bookedItemsToUpdate.add(item.getName()); // Add the name of the item to the list
-
-      numberOfItemsToUpdate.add(numberOfItemWanted); // Add the number of equipment requested by the
-                                                     // member
-
-      updateAllBookedItemsList.add((Equipment) item); // Add the equipment to
-                                                                           // the list
-
-    }
-
-    else { // The member clicked on add without selecting any item
-      ViewUtils.showError("You have to select an item to add");
-      return;
-
-    }
-
+    bookedItemsToAdd.remove(listOfItemsChosen.getSelectionModel().getSelectedIndex());
+    numberOfItemsToAdd.remove(listOfNumberOfItemsChosen.getSelectionModel().getSelectedIndex());
+    refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
+    refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
   }
-
-  // Event Listener on Button[#updateAddIBundleBuntton].onAction
+  // Event Listener on Button[#addPathButton].onAction
   @FXML
-  /**
-   * This method will update the bundles booked to a member by adding to a temp list when the user
-   * presses the button
-   * 
-   * @param event - press of the update button
-   */
-  public void updateBundle(ActionEvent event) {
-    int numberOfBundleWanted;
-
-    // Check if information entered is an integer
-    try {
-      numberOfBundleWanted = Integer.parseInt(updateBundleQuantity.getText());
-    } catch (Exception e) {
-      ViewUtils.showError("The number of bundles wanted must be an integer");
-      return;
-    }
-
-    BookableItem bundle = BookableItem.getWithName(updateBundleName.getValue());
-
-
-    if (!(bundle == null)) { // Check thats the member chose a bundle.
-
-      bookedItemsToUpdate.add(bundle.getName()); // Add the name of the bundle to the list
-
-      numberOfItemsToUpdate.add(numberOfBundleWanted); // Add the number of equipment requested by
-                                                       // the member
-
-      updateAllBookedItemsList.add((EquipmentBundle) bundle); // Add the
-                                                                                   // equipment
-                                                                                   // bundle to the
-                                                                                   // list
-    }
-
-    else { // The member clicked on add without selecting any bundle
-      ViewUtils.showError("You have to select a bundle to add");
-      return;
-
-    }
-
+  public void addPath(ActionEvent event) {
+    
   }
-
-
-
-  // Event Listener on Button[#deleteMemberButton].onAction
+  
+  // Event Listener on ListView[#listOfItemsChosen].onMouseClicked
   @FXML
-  /**
-   * This method will delete the member by calling the controller when the user presses the button
-   * 
-   * @param event - press of the delete button
-   */
-  public void deleteMemberUI(ActionEvent event) {
-
-    // Get the required parameters from the UI
-    String email = toBedeletedMemberEmail.getText();
-
-
-
-    // Check if information entered is not empty
-    if (email.equals("")) {
-
-      ViewUtils.showError("The input must not be empty.");
-      return;
-
-    }
-
-
-    // Delete the member with the select email
-    ClimbSafeFeatureSet1Controller.deleteMember(email);
-
-    ViewUtils.showSuccess("The account with email "+email+" was successfully deleted.");
+ 
+  public void selectItem(MouseEvent event) {
+    listOfNumberOfItemsChosen.getSelectionModel().select(listOfItemsChosen.getSelectionModel().getSelectedIndex());
 
   }
 
+  // Event Listener on ListView[#listOfNumberOfItemsChosen].onMouseClicked
+  @FXML
+  public void selectQuantity(MouseEvent event) {
+    listOfItemsChosen.getSelectionModel().select(listOfNumberOfItemsChosen.getSelectionModel().getSelectedIndex());
 
+  }
+
+  
+  private void refreshListViewString(ListView<Label> listView, List<String> names) {
+    listView.getItems().clear();
+    for (String string : names) {
+      listView.getItems().add(new Label(string));      
+    }
+    listView.refresh();
+  }
+  
+  private void refreshListViewInteger(ListView<Label> listView, List<Integer> quantities) {
+    listView.getItems().clear();
+    for (Integer ints : quantities) {
+      listView.getItems().add(new Label(String.valueOf(ints)));      
+    }
+    listView.refresh();
+  }
+  
+  
+  
+
+  public List<String> getPathName() {
+    
+    List<String> climbingPathNames = new ArrayList();
+    
+    climbingPathNames.add("No paths in system.");
+    
+    List<ClimbingPath> allPaths = system.getClimbingPaths();
+    
+    String name = "";
+    
+    if(allPaths.size() > 0) {
+      climbingPathNames.clear();
+      
+      for(ClimbingPath path : allPaths) {
+       
+        name = "Location: " +path.getLocation() + " with difficulty: "+path.getDifficulty()+" and length: "+path.getLength();
+        climbingPathNames.add(name);
+        
+      }
+  }
+  
+    return climbingPathNames;
+  }
+  
+  
+  public void initialize() {
+    
+    List<String> itemsList = getNameOfItems();
+    List<String> bundlesList = getNameOfBundles();
+    
+    refreshListViewString(listOfClimbingPaths, getPathName());
+
+    
+    if(itemsList.size() > 0) {
+
+      addedItemsList.setItems(FXCollections.observableList(itemsList));
+      updateItemName.setItems(FXCollections.observableList(itemsList));
+      addedItemsList.setPromptText("Available items");
+      updateItemName.setPromptText("Available items");
+
+    }
+    
+    else {
+      addedItemsList.getItems().clear();
+      updateItemName.getItems().clear();
+      addedItemsList.setPromptText("No items in system");
+      updateItemName.setPromptText("No items in system");
+    }
+    
+    if(bundlesList.size() > 0) {
+      addedBundlesList.setItems(FXCollections.observableList(bundlesList));
+      updateBundleName.setItems(FXCollections.observableList(bundlesList));
+    }
+  }
+  
+  public void RefreshMemberRegister(Event event) {
+   
+    
+    initialize();
+    
+}
+  public void RefreshMemberUpdate(Event event) {
+ 
+    initialize();
+
+}
+  public void RefreshMemberDelete(Event event) {
+    
+    initialize();
+
+}
+  
+  
+ 
+  
+  
   /**
    * Helper method that computes the total price of the equipment booked by a member.
    * 
@@ -648,66 +804,64 @@ public class MemberOperationsController {
    
     system = ClimbSafeApplication.getClimbSafe();
     
-    List<String> list = new ArrayList<>();
+    List<String> listOfNames = new ArrayList<>();
+          
+      for(Equipment item : system.getEquipment()) {
+        
+        listOfNames.add(item.getName());
+        
+      }
     
-    for(Equipment item : system.getEquipment()) {
-      
-      list.add(item.getName());
-      
-    }
-    return list;
+    return listOfNames;
   }
   
   private List<String> getNameOfBundles(){
     
     system = ClimbSafeApplication.getClimbSafe();
     
-    List<String> list = new ArrayList<>();
+    List<String> listOfNames = new ArrayList<>();
     
     for(EquipmentBundle bundle : system.getBundles()) {
       
-      list.add(bundle.getName());
+      listOfNames.add(bundle.getName());
       
     }
-    return list;
+    return listOfNames;
   }
   
-  
-  
-  public void initialize() {
-    
-    List<String> itemsList = getNameOfItems();
-    List<String> bundlesList = getNameOfBundles();
-    
-    if(itemsList.size() > 0) {
-      addedItemsList.setItems(FXCollections.observableList(itemsList));
-      updateItemName.setItems(FXCollections.observableList(itemsList));
-
+	
+	
+	
+	
+	   // Event Listener on ListView[#listOfClimbingPaths].onMouseClicked
+    @FXML
+    public void selectPath(MouseEvent event) {
+        // TODO Autogenerated
     }
-    if(bundlesList.size() > 0) {
-      addedBundlesList.setItems(FXCollections.observableList(bundlesList));
-      updateBundleName.setItems(FXCollections.observableList(bundlesList));
+	
+	   // Event Listener on ListView[#listOfClimbingPathsUpdate].onMouseClicked
+    @FXML
+    public void selectPathUpdate(MouseEvent event) {
+        // TODO Autogenerated
     }
-  }
-  
-  public void RefreshMemberRegister(Event event) {
-   
-    
-    initialize();
-    
-}
-  public void RefreshMemberUpdate(Event event) {
- 
-    initialize();
-
-}
-  public void RefreshMemberDelete(Event event) {
-    
-    initialize();
-
-}
-  
-  
-  
-
+    // Event Listener on Button[#updatePathButton].onAction
+    @FXML
+    public void updatePath(ActionEvent event) {
+        // TODO Autogenerated
+    }
+    // Event Listener on Button[#removeItemsUpdate].onAction
+    @FXML
+    public void removeItemsFromChosenUpdate(ActionEvent event) {
+        // TODO Autogenerated
+    }
+    // Event Listener on ListView[#listOfItemsChosenUpdate].onMouseClicked
+    @FXML
+    public void selectItemUpdate(MouseEvent event) {
+        // TODO Autogenerated
+    }
+    // Event Listener on ListView[#listOfINumberOftemsChosenUpdate].onMouseClicked
+    @FXML
+    public void selectQuantitiesUpdate(MouseEvent event) {
+        // TODO Autogenerated
+    }
 }

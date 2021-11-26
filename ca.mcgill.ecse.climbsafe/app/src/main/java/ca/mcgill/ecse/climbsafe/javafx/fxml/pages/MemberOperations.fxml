@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -16,7 +22,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<TabPane prefHeight="681.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.MemberOperationsController">
+<TabPane prefHeight="681.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.MemberOperationsController">
    <tabs>
       <Tab id="EqTab1" fx:id="registerMemberTab" onSelectionChanged="#RefreshMemberRegister" text="Register Member">
          <content>
@@ -41,12 +47,12 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="registerMemberButton" mnemonicParsing="false" onAction="#registerMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Register" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                  <Button fx:id="registerMemberButton" mnemonicParsing="false" onAction="#registerMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Register" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
+                        <Insets left="40.0" />
                      </GridPane.margin>
                   </Button>
                   <TextField fx:id="addFirstName" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="John" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
@@ -140,7 +146,7 @@
                         <Font name="System Italic" size="12.0" />
                      </font>
                   </TextField>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="264.0" text="Guide required?" textFill="WHITE" wrapText="true" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="264.0" text="Guide required?" textFill="WHITE" wrapText="true" GridPane.rowIndex="6" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria" size="16.0" />
                      </font>
@@ -151,7 +157,7 @@
                         <Insets left="20.0" />
                      </padding>
                      <GridPane.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </GridPane.margin>
                   </Label>
                   <Label alignment="CENTER" layoutX="10.0" layoutY="352.0" text="Hotel required?" textFill="WHITE" wrapText="true" GridPane.rowIndex="5" GridPane.valignment="TOP">
@@ -168,69 +174,15 @@
                         <Insets top="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <CheckBox fx:id="guideRequiredCheck" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                  <CheckBox fx:id="guideRequiredCheck" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
                      <GridPane.margin>
-                        <Insets bottom="20.0" />
+                        <Insets top="20.0" />
                      </GridPane.margin></CheckBox>
                   <CheckBox fx:id="hotelRequiredCheck" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets top="20.0" />
                      </GridPane.margin></CheckBox>
-                  <Label alignment="CENTER" layoutX="553.0" layoutY="103.0" text="Add items:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="553.0" layoutY="248.0" text="Add bundles:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </Label>
-                  <Button fx:id="addItemButton" layoutX="308.0" layoutY="502.0" mnemonicParsing="false" onAction="#addItem" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
-                     <font>
-                        <Font name="Cambria Bold" size="14.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="addBundleButton" layoutX="717.0" layoutY="119.0" mnemonicParsing="false" onAction="#addBundle" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
-                     <font>
-                        <Font name="Cambria Bold" size="14.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Button>
-                  <TextField fx:id="addItemsQuantities" alignment="CENTER" layoutX="990.0" layoutY="183.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="59.0" promptText="Quantity" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="addBundlesQuantities" alignment="CENTER" layoutX="912.0" layoutY="242.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="59.0" promptText="Quantity" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="111.0" text="Total weight: " textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                  <Label alignment="CENTER" layoutX="553.0" layoutY="103.0" text="Add items:" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria" size="16.0" />
                      </font>
@@ -244,7 +196,7 @@
                         <Insets top="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="557.0" layoutY="564.0" text="Total price of the climb:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                  <Label alignment="CENTER" layoutX="553.0" layoutY="248.0" text="Add bundles:" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="Cambria" size="16.0" />
                      </font>
@@ -256,6 +208,60 @@
                      </padding>
                      <GridPane.margin>
                         <Insets bottom="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Button fx:id="addItemButton" layoutX="308.0" layoutY="502.0" mnemonicParsing="false" onAction="#addItem" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" top="18.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button fx:id="addBundleButton" layoutX="717.0" layoutY="119.0" mnemonicParsing="false" onAction="#addBundle" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="5.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <TextField fx:id="addItemsQuantities" alignment="CENTER" layoutX="990.0" layoutY="183.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="59.0" promptText="Quantity" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets right="10.0" top="20.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="addBundlesQuantities" alignment="CENTER" layoutX="912.0" layoutY="242.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="59.0" promptText="Quantity" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="93.0" text="Total weight: " textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets top="3.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="557.0" layoutY="564.0" prefHeight="20.0" prefWidth="157.0" text="Total price of the climb:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets />
                      </GridPane.margin>
                   </Label>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="143.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT">
@@ -275,27 +281,90 @@
                         <Image url="@../../../../../../../../../../../logo.png" />
                      </image>
                   </ImageView>
-                  <ComboBox fx:id="addedItemsList" prefWidth="150.0" promptText=" Available items" GridPane.columnIndex="5" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                  <ComboBox fx:id="addedBundlesList" layoutX="478.0" layoutY="292.0" prefWidth="150.0" promptText=" Available items" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-                  <Label fx:id="showTotalWeight" text="0 lb" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                  <ComboBox fx:id="addedItemsList" prefWidth="150.0" promptText=" Available items" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets left="5.0" top="20.0" />
+                     </GridPane.margin></ComboBox>
+                  <ComboBox fx:id="addedBundlesList" layoutX="478.0" layoutY="292.0" prefWidth="150.0" promptText=" Available items" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="5.0" />
+                     </GridPane.margin></ComboBox>
+                  <Label fx:id="showTotalWeight" text="ll" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="25.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="showTotalPrice" layoutX="669.0" layoutY="487.0" text="ll" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets right="25.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="457.0" layoutY="526.0" text="Calculated after registration." textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="10.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <ListView fx:id="listOfItemsChosen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#selectItem" prefHeight="100.0" prefWidth="180.0" GridPane.columnIndex="5" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin>
+                  </ListView>
+                  <ListView fx:id="listOfNumberOfItemsChosen" layoutX="649.0" layoutY="361.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#selectQuantity" prefHeight="100.0" prefWidth="50.0" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin>
+                  </ListView>
+                  <Button fx:id="removeItems" layoutX="516.0" layoutY="450.0" mnemonicParsing="false" onAction="#removeItemsFromChosen" prefHeight="30.0" prefWidth="85.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Remove" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="100.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="170.0" layoutY="381.0" text="Choose Climbing Path:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="addPathButton" layoutX="516.0" layoutY="379.0" mnemonicParsing="false" onAction="#addPath" prefHeight="30.0" prefWidth="71.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Choose" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="30.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <ListView fx:id="listOfClimbingPaths" layoutX="649.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#selectPath" prefHeight="100.0" prefWidth="233.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <Label fx:id="registrationSucessfulMessage" alignment="CENTER" text="LL" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets top="25.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Italic" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="showTotalPrice" layoutX="669.0" layoutY="487.0" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
-                     <GridPane.margin>
-                        <Insets bottom="25.0" />
-                     </GridPane.margin>
+                  <Label alignment="CENTER" layoutX="170.0" layoutY="411.0" text="Added equipments:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
                      <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="457.0" layoutY="526.0" text="Calculated after registration." textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
-                     <font>
-                        <Font name="System Italic" size="10.0" />
+                        <Font name="Cambria" size="16.0" />
                      </font>
                      <opaqueInsets>
                         <Insets />
@@ -313,12 +382,14 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.76788330078125" minWidth="0.0" prefWidth="126.57373046875" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="465.55230712890625" minWidth="10.0" prefWidth="219.42626953125" />
                   <ColumnConstraints />
+                  <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="80.20000839233398" minHeight="35.20000305175781" prefHeight="43.0" />
                   <RowConstraints maxHeight="178.80616760253906" minHeight="10.0" prefHeight="70.40001220703125" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="151.2293243408203" minHeight="10.0" prefHeight="65.60000610351562" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="171.9999755859375" minHeight="10.0" prefHeight="99.19999999999999" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="117.59999999999997" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="117.59999999999997" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="200.43087768554688" minHeight="10.0" prefHeight="148.80000000000007" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="264.800048828125" minHeight="10.0" prefHeight="200.800048828125" vgrow="NEVER" />
@@ -349,12 +420,12 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button id="updateEquipmentButton" fx:id="updateMemberButton" mnemonicParsing="false" onAction="#updateMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Member" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                  <Button id="updateEquipmentButton" fx:id="updateMemberButton" mnemonicParsing="false" onAction="#updateMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Member" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets bottom="110.0" left="10.0" right="10.0" />
+                        <Insets bottom="50.0" left="10.0" right="10.0" />
                      </GridPane.margin>
                   </Button>
                   <TextField fx:id="updateLastName" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0" promptText="Last name" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
@@ -557,6 +628,119 @@
                         <Insets top="10.0" />
                      </GridPane.margin>
                   </ComboBox>
+                  <Label alignment="CENTER" text="Added equipments:" textFill="WHITE" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets top="15.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <ListView fx:id="listOfClimbingPathsUpdate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#selectPathUpdate" prefHeight="100.0" prefWidth="233.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets right="15.0" />
+                     </GridPane.margin>
+                  </ListView>
+                  <Button fx:id="updatePathButton" mnemonicParsing="false" onAction="#updatePath" prefHeight="30.0" prefWidth="71.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets right="90.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Label alignment="CENTER" prefHeight="47.0" prefWidth="119.0" text="Choose Climbing Path:" textFill="WHITE" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="removeItemsUpdate" mnemonicParsing="false" onAction="#removeItemsFromChosenUpdate" prefHeight="30.0" prefWidth="85.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Remove" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="40.0" top="25.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <ListView fx:id="listOfItemsChosenUpdate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#selectItemUpdate" prefHeight="100.0" prefWidth="139.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets left="135.0" />
+                     </GridPane.margin>
+                  </ListView>
+                  <ListView fx:id="listOfINumberOftemsChosenUpdate" layoutX="685.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#selectQuantitiesUpdate" prefHeight="100.0" prefWidth="40.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets right="15.0" />
+                     </GridPane.margin>
+                  </ListView>
+                  <Label fx:id="registrationSucessfulMessage1" alignment="CENTER" text="LL" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                     <font>
+                        <Font name="System Italic" size="13.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="125.0" top="50.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Calculated after registration." textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="10.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets right="25.0" top="50.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="showTotalPrice1" text="ll" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="50.0" right="50.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="showTotalWeight1" text="ll" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets right="50.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="157.0" text="Total price of the climb:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets right="100.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="93.0" text="Total weight: " textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets bottom="50.0" right="100.0" />
+                     </GridPane.margin>
+                  </Label>
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.03128051757812" minWidth="10.0" prefWidth="137.02737426757812" />
@@ -566,16 +750,17 @@
                   <ColumnConstraints />
                   <ColumnConstraints />
                   <ColumnConstraints />
+                  <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="39.33706283569336" minHeight="5.619579315185547" prefHeight="39.33706283569336" />
                   <RowConstraints maxHeight="286.64338302612305" minHeight="0.0" prefHeight="37.66293716430664" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="370.87486267089844" minHeight="10.0" prefHeight="55.82867431640625" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="329.3887481689453" minHeight="10.0" prefHeight="65.65377807617188" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="254.08200073242188" minHeight="0.0" prefHeight="91.0000061035156" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="341.1426696777344" minHeight="10.0" prefHeight="95.79999389648435" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="287.6622619628906" minHeight="10.0" prefHeight="100.39998779296877" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="203.60001220703123" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="254.08200073242188" minHeight="0.0" prefHeight="107.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="341.1426696777344" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="287.6622619628906" minHeight="10.0" prefHeight="101.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="166.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
          </content>
