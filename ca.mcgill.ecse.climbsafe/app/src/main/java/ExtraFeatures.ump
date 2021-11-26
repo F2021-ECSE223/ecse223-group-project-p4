@@ -42,6 +42,10 @@ class ClimbingPath {
   }
 }
 
+class Member {
+	lazy selectedClimbingLocation;
+}
+
 association {
 	1 ClimbSafe <@>- * Review;
 	1 ClimbSafe <@>- * ClimbingPath;
