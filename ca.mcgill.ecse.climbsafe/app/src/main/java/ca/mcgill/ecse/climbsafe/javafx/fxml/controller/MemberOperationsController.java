@@ -211,6 +211,7 @@ public class MemberOperationsController {
       String email = addEmail.getText();
       String password = addPassword.getText();
       String emergency = addEmergencyPhone.getText();
+      
       ClimbingPath location = system.getClimbingPaths().get(pathIndexRegister);
       
       boolean hotel = hotelRequiredCheck.isSelected();
@@ -295,8 +296,8 @@ public class MemberOperationsController {
         totalWeight = 0;
         pathIndexRegister = 0;
         
-        if(location != null)
-          ExtraFeaturesController.setClimbingPath(email, location.getLocation());
+    
+         ExtraFeaturesController.setClimbingPath(email, location.getLocation());
         
         
         // Catch and output the error if there's one
@@ -952,6 +953,9 @@ public class MemberOperationsController {
       }
       
       pathIndexRegister = listOfClimbingPaths.getSelectionModel().getSelectedIndex();
+      
+      
+      
       chosenPath.setText(listOfClimbingPaths.getSelectionModel().getSelectedItem().getText());
 
     }
