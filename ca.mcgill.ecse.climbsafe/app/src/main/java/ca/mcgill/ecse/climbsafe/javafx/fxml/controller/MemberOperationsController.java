@@ -132,6 +132,10 @@ public class MemberOperationsController {
 	@FXML
 	private Label showTotalWeight1;
 	@FXML
+	private Label chosenPath;
+	@FXML
+	private Label chosenPathUpdate;
+	@FXML
 	private Tab deleteMemberTab;
 	@FXML
 	private Button deleteMemberButton;
@@ -163,6 +167,33 @@ public class MemberOperationsController {
     private int pathIndexRegister ;
     private int pathIndexUpdate ;
 
+    private void clearFieldsInRegister() {
+      addFirstName.clear(); 
+      addLastName.clear(); 
+      addEmail.clear();
+      addPassword.clear();
+      addEmergencyPhone.clear();
+      hotelRequiredCheck.disarm();
+      guideRequiredCheck.disarm();
+      chosenPath.setText("");
+      addNumberWeeks.setText("");
+      addItemsQuantities.setText("");
+      addBundlesQuantities.setText("");
+    }
+    private void clearFieldsInUpdate() {
+      updateFirstName.clear(); 
+      updateLastName.clear(); 
+      memberEmail.clear();
+      updatePassword.clear();
+      updateEmergencyPhone.clear();
+      updateHotelRequiredCheck.disarm();
+      updateGuideRequiredCheck.disarm();
+      chosenPathUpdate.setText("");
+    }
+    private void clearFieldsInDelete() {
+      toBedeletedMemberEmail.clear();
+    }
+    
 
     // Event Listener on Button[#registerMemberButton].onAction
     @FXML
@@ -176,11 +207,12 @@ public class MemberOperationsController {
 
       // Get the required parameters from the UI
 
-      String name = addFirstName.getText() +" " + addLastName.getText();
+      String name = addFirstName.getText() + " " + addLastName.getText();
       String email = addEmail.getText();
       String password = addPassword.getText();
       String emergency = addEmergencyPhone.getText();
-      ClimbingPath location = system.getClimbingPath(pathIndexRegister);
+      ClimbingPath location = system.getClimbingPaths().get(pathIndexRegister);
+      
       boolean hotel = hotelRequiredCheck.isSelected();
       boolean guide = guideRequiredCheck.isSelected();
 
@@ -225,6 +257,7 @@ public class MemberOperationsController {
         totalWeight = computeTotalWeight(allBookedItemsList, numberOfItemsToAdd);
 
         registrationSucessfulMessage.setText("Registration successfully processed for member " + name);
+        clearFieldsInRegister();
 
         if (!guide) {
           // Output the price and weight without taking into account the guide since the member does
@@ -249,8 +282,8 @@ public class MemberOperationsController {
               + totalCostForGuide + " s and the the total weight is " + totalWeight + " lb.");
 
           // Set the price and weight on the screen
-          showTotalPrice.setText( totalWeight+ " lb");
-          showTotalWeight.setText( totalPriceWithGuide+ " s");
+          showTotalPrice.setText( totalPriceWithGuide+ " s");
+          showTotalWeight.setText(totalWeight + " lb");
         }
 
 
@@ -321,6 +354,7 @@ public class MemberOperationsController {
       }
 
     }
+    
 
 
     // Event Listener on Button[#addBundleButton].onAction
@@ -382,11 +416,11 @@ public class MemberOperationsController {
     public void updateMemberUI(ActionEvent event) {
 
       // Get the required parameters from the UI
-      String name = updateFirstName.getText() + updateLastName.getText();
+      String name = updateFirstName.getText() + " " +  updateLastName.getText();
       String email = memberEmail.getText();
       String password = updatePassword.getText();
       String emergency = updateEmergencyPhone.getText();
-      ClimbingPath location = system.getClimbingPath(pathIndexUpdate) ;
+      ClimbingPath location =  system.getClimbingPaths().get(pathIndexUpdate);
       boolean hotel = updateHotelRequiredCheck.isSelected();
       boolean guide = updateGuideRequiredCheck.isSelected();
 
@@ -425,11 +459,14 @@ public class MemberOperationsController {
             numberOfItemsToUpdate);
         totalWeightForUpdate = computeTotalWeight(updateAllBookedItemsList, numberOfItemsToUpdate);
 
+        registrationSucessfulMessage1.setText("Update successfully processed for member " + name);
+        clearFieldsInUpdate();
+
 
         if (!guide)
           // Output the price and weight without taking into account the guide since the member does
           // not want it
-          ViewUtils.showSuccess("Update successfully processed for member " + name + '\n'
+          ViewUtils.showSuccess("Update successfully processed for member " + name + "." + '\n'
               + "Total Price of equipment is " + totalPriceForUpdate
               + " s and the the total weight is " + totalWeightForUpdate + " lb.");
 
@@ -440,12 +477,17 @@ public class MemberOperationsController {
           // Output the price and weight taking into account the guide since the member wants it
           ViewUtils.showSuccess("Update successfully processed for member " + name + '\n'
               + "Total Price of equipment is: " + totalPriceForUpdate
-              + " s, Total price of the guide is: " + totalCostForGuide
+              + " s, total price of the guide is: " + totalCostForGuide
               + " s and the the total weight is " + totalWeightForUpdate + " lb.");
 
+          int totalPriceWithGuide = totalCostForGuide + totalPriceForUpdate;
+          showTotalPrice1.setText( totalWeightForUpdate+ " lb");
+          showTotalWeight1.setText( totalPriceWithGuide+ " s");
         }
 
+        // Set the price and weight on the screen
 
+        
         // Clear the temporary lists for the next customer
         bookedItemsToUpdate.clear();
         numberOfItemsToUpdate.clear();
@@ -454,6 +496,7 @@ public class MemberOperationsController {
         totalPriceForUpdate = 0;
         totalWeightForUpdate = 0;
         
+        if(location != null)
         ExtraFeaturesController.setClimbingPath(email, location.getLocation());
 
 
@@ -588,6 +631,7 @@ public class MemberOperationsController {
 
       // Delete the member with the select email
       ClimbSafeFeatureSet1Controller.deleteMember(email);
+      clearFieldsInDelete();
 
       ViewUtils.showSuccess("The account with email "+email+" was successfully deleted.");
 
@@ -670,7 +714,7 @@ public class MemberOperationsController {
       
       for(ClimbingPath path : allPaths) {
        
-        name = "Location: " +path.getLocation() + " with difficulty: "+path.getDifficulty()+" and length: "+path.getLength()+" Km.";
+        name = path.getLocation() + ", "+path.getDifficulty()+", "+path.getLength()+" Km.";
         climbingPathNames.add(name);
         
       }
@@ -688,6 +732,9 @@ public class MemberOperationsController {
     refreshListViewString(listOfClimbingPaths, getPathName());
     
     refreshListViewString(listOfClimbingPathsUpdate, getPathName());
+
+    registrationSucessfulMessage1.setText("");
+    registrationSucessfulMessage.setText("");
 
 
     
@@ -882,7 +929,7 @@ public class MemberOperationsController {
 	   // Event Listener on ListView[#listOfClimbingPaths].onMouseClicked
     @FXML
     public void selectPath(MouseEvent event) {
-      listOfClimbingPaths.getSelectionModel().select(listOfClimbingPaths.getSelectionModel().getSelectedIndex());;
+      listOfClimbingPaths.getSelectionModel().select(listOfClimbingPaths.getSelectionModel().getSelectedIndex());
     }
 	
 	   // Event Listener on ListView[#listOfClimbingPathsUpdate].onMouseClicked
@@ -905,6 +952,8 @@ public class MemberOperationsController {
       }
       
       pathIndexRegister = listOfClimbingPaths.getSelectionModel().getSelectedIndex();
+      chosenPath.setText(listOfClimbingPaths.getSelectionModel().getSelectedItem().getText());
+
     }
     
     // Event Listener on Button[#updatePathButton].onAction
@@ -921,6 +970,9 @@ public class MemberOperationsController {
       }
 
       pathIndexUpdate = listOfClimbingPathsUpdate.getSelectionModel().getSelectedIndex();
+      
+      chosenPathUpdate.setText(listOfClimbingPathsUpdate.getSelectionModel().getSelectedItem().getText());
+
     }
     // Event Listener on Button[#removeItemsUpdate].onAction
 
@@ -934,4 +986,6 @@ public class MemberOperationsController {
     public void selectQuantitiesUpdate(MouseEvent event) {
       listOfItemsChosenUpdate.getSelectionModel().select(listOfINumberOftemsChosenUpdate.getSelectionModel().getSelectedIndex());
     }
+
+    
 }

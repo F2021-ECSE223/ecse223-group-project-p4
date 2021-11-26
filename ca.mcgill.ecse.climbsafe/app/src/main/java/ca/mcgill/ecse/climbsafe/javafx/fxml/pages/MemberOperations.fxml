@@ -290,20 +290,20 @@
                      <GridPane.margin>
                         <Insets bottom="20.0" left="5.0" />
                      </GridPane.margin></ComboBox>
-                  <Label fx:id="showTotalWeight" text="ll" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                  <Label fx:id="showTotalWeight" alignment="CENTER_RIGHT" prefHeight="19.0" prefWidth="83.0" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets right="25.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="20.0" />
+                        <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="showTotalPrice" layoutX="669.0" layoutY="487.0" text="ll" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+                  <Label fx:id="showTotalPrice" alignment="CENTER_RIGHT" layoutX="669.0" layoutY="487.0" prefHeight="19.0" prefWidth="82.0" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets right="25.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="20.0" />
+                        <Font size="15.0" />
                      </font>
                   </Label>
                   <Label alignment="CENTER" layoutX="457.0" layoutY="526.0" text="Calculated after registration." textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.rowSpan="2" GridPane.valignment="CENTER">
@@ -335,7 +335,7 @@
                         <Insets top="100.0" />
                      </GridPane.margin>
                   </Button>
-                  <Label alignment="CENTER" layoutX="170.0" layoutY="381.0" text="Choose Climbing Path:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                  <Label alignment="CENTER" layoutX="170.0" layoutY="381.0" text="Choose Climbing Path:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
                      <font>
                         <Font name="Cambria" size="16.0" />
                      </font>
@@ -355,7 +355,7 @@
                      </GridPane.margin>
                   </Button>
                   <ListView fx:id="listOfClimbingPaths" layoutX="649.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#selectPath" prefHeight="100.0" prefWidth="233.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                  <Label fx:id="registrationSucessfulMessage" alignment="CENTER" text="LL" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                  <Label fx:id="registrationSucessfulMessage" alignment="CENTER" prefHeight="33.0" prefWidth="207.0" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets top="25.0" />
                      </GridPane.margin>
@@ -363,7 +363,7 @@
                         <Font name="System Italic" size="13.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="170.0" layoutY="411.0" text="Added equipments:" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                  <Label alignment="CENTER" layoutX="170.0" layoutY="411.0" text="Added equipments:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
                      <font>
                         <Font name="Cambria" size="16.0" />
                      </font>
@@ -373,6 +373,11 @@
                      <padding>
                         <Insets left="20.0" />
                      </padding>
+                  </Label>
+                  <Label fx:id="chosenPath" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="115.0" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
                   </Label>
                </children>
                <columnConstraints>
@@ -656,7 +661,7 @@
                         <Insets right="90.0" />
                      </GridPane.margin>
                   </Button>
-                  <Label alignment="CENTER" prefHeight="68.0" prefWidth="112.0" text="Choose Climbing Path:" textFill="WHITE" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                  <Label alignment="CENTER" prefHeight="68.0" prefWidth="136.0" text="Choose Climbing Path:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria" size="16.0" />
                      </font>
@@ -685,7 +690,7 @@
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </ListView>
-                  <Label fx:id="registrationSucessfulMessage1" alignment="CENTER" text="LL" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                  <Label fx:id="registrationSucessfulMessage1" alignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Italic" size="13.0" />
                      </font>
@@ -704,20 +709,20 @@
                         <Insets right="25.0" top="50.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="showTotalPrice1" text="ll" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                  <Label fx:id="showTotalPrice1" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="54.0" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="14.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets bottom="50.0" right="50.0" />
+                        <Insets bottom="50.0" right="25.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="showTotalWeight1" text="ll" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                  <Label fx:id="showTotalWeight1" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="58.0" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="14.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets right="50.0" />
+                        <Insets right="25.0" />
                      </GridPane.margin>
                   </Label>
                   <Label alignment="CENTER" prefHeight="20.0" prefWidth="157.0" text="Total price of the climb:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
@@ -740,6 +745,14 @@
                      </opaqueInsets>
                      <GridPane.margin>
                         <Insets bottom="50.0" right="100.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="chosenPathUpdate" alignment="CENTER" prefHeight="35.0" prefWidth="139.0" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="25.0" />
                      </GridPane.margin>
                   </Label>
                </children>
