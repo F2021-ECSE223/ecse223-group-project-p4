@@ -160,8 +160,8 @@ public class MemberOperationsController {
     private Integer totalPriceForUpdate = 0;
     private Integer totalWeightForUpdate = 0;
     
-    private int pathIndexRegister = 0;
-    private int pathIndexUpdate = 0;
+    private int pathIndexRegister ;
+    private int pathIndexUpdate ;
 
 
     // Event Listener on Button[#registerMemberButton].onAction
@@ -176,7 +176,7 @@ public class MemberOperationsController {
 
       // Get the required parameters from the UI
 
-      String name = addFirstName.getText() + addLastName.getText();
+      String name = addFirstName.getText() +" " + addLastName.getText();
       String email = addEmail.getText();
       String password = addPassword.getText();
       String emergency = addEmergencyPhone.getText();
@@ -224,17 +224,18 @@ public class MemberOperationsController {
             computeTotalCost(numberOfWeeksWanted, guide, allBookedItemsList, numberOfItemsToAdd);
         totalWeight = computeTotalWeight(allBookedItemsList, numberOfItemsToAdd);
 
+        registrationSucessfulMessage.setText("Registration successfully processed for member " + name);
 
         if (!guide) {
           // Output the price and weight without taking into account the guide since the member does
           // not want it
-          ViewUtils.showSuccess("Registration successfully processed for member " + name + '\n'
+          ViewUtils.showSuccess("Registration successfully processed for member " + name +"."+ '\n'
               + "Total Price of equipment is " + totalPrice + " s and the the total weight is "
               + totalWeight + " lb.");
 
         // Set the price and weight on the screen
-        showTotalWeight.setText(totalPrice + " lb");
-        showTotalPrice.setText(totalWeight + " s");
+        showTotalWeight.setText(totalWeight + " lb");
+        showTotalPrice.setText(totalPrice  + " s");
         }
         else {
           // Output the price and weight taking into account the guide since the member wants it
@@ -243,13 +244,13 @@ public class MemberOperationsController {
 
          int totalPriceWithGuide = totalCostForGuide + totalPrice;
 
-          ViewUtils.showSuccess("Registration successfully processed for member " + name + '\n'
-              + "Total Price of equipment is: " + totalPrice + " s, Total price of the guide is: "
+          ViewUtils.showSuccess("Registration successfully processed for member " + name +"."+ '\n'
+              + "Total Price of equipment is " + totalPrice + " s, total price for the guide is "
               + totalCostForGuide + " s and the the total weight is " + totalWeight + " lb.");
 
           // Set the price and weight on the screen
-          showTotalWeight.setText(totalPriceWithGuide + " lb");
-          showTotalPrice.setText(totalWeight + " s");
+          showTotalPrice.setText( totalWeight+ " lb");
+          showTotalWeight.setText( totalPriceWithGuide+ " s");
         }
 
 
@@ -259,9 +260,12 @@ public class MemberOperationsController {
         // Clear the price and weight
         totalPrice = 0;
         totalWeight = 0;
+        pathIndexRegister = 0;
         
-        ExtraFeaturesController.setClimbingPath(email, location.getLocation());
-
+        if(location != null)
+          ExtraFeaturesController.setClimbingPath(email, location.getLocation());
+        
+        
         // Catch and output the error if there's one
       } catch (InvalidInputException e) {
         ViewUtils.showError(e.getMessage());
@@ -603,6 +607,18 @@ public class MemberOperationsController {
     refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
     refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
   }
+  
+  @FXML
+  public void removeItemsFromChosenUpdate(ActionEvent event) {
+    if(listOfItemsChosenUpdate.getSelectionModel().isEmpty()) {
+      ViewUtils.showError("Please select an item to delete.");
+      return;
+    }
+    bookedItemsToUpdate.remove(listOfItemsChosenUpdate.getSelectionModel().getSelectedIndex());
+    numberOfItemsToUpdate.remove(listOfINumberOftemsChosenUpdate.getSelectionModel().getSelectedIndex());
+    refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
+    refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);
+  }
 
   // Event Listener on ListView[#listOfItemsChosen].onMouseClicked
   @FXML
@@ -736,9 +752,7 @@ public class MemberOperationsController {
 
 }
   
-  
- 
-  
+
   
   /**
    * Helper method that computes the total price of the equipment booked by a member.
@@ -864,10 +878,7 @@ public class MemberOperationsController {
     return listOfNames;
   }
   
-	
-	
-	
-	
+
 	   // Event Listener on ListView[#listOfClimbingPaths].onMouseClicked
     @FXML
     public void selectPath(MouseEvent event) {
@@ -908,22 +919,11 @@ public class MemberOperationsController {
         ViewUtils.showError("Please select a path to climb.");
         return;
       }
-      
-      
+
       pathIndexUpdate = listOfClimbingPathsUpdate.getSelectionModel().getSelectedIndex();
     }
     // Event Listener on Button[#removeItemsUpdate].onAction
-    @FXML
-    public void removeItemsFromChosenUpdate(ActionEvent event) {
-      if(listOfItemsChosen.getSelectionModel().isEmpty()) {
-        ViewUtils.showError("Please select an item to delete.");
-        return;
-      }
-      bookedItemsToUpdate.remove(listOfItemsChosenUpdate.getSelectionModel().getSelectedIndex());
-      numberOfItemsToUpdate.remove(listOfINumberOftemsChosenUpdate.getSelectionModel().getSelectedIndex());
-      refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
-      refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);
-    }
+
     // Event Listener on ListView[#listOfItemsChosenUpdate].onMouseClicked
     @FXML
     public void selectItemUpdate(MouseEvent event) {
