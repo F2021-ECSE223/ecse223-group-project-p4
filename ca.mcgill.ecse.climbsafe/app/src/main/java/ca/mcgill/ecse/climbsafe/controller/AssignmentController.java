@@ -16,7 +16,7 @@ public class AssignmentController {
     // If the assignments were already initialized, throw an exception
     if (ClimbSafeApplication.getClimbSafe().getAssignments().size() > 0)
       throw new InvalidInputException("Assignments were already initiated for the current season");
-    
+
     // Else initiate all assignments
     for (Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
       int weeksTaken = 0;
@@ -75,6 +75,16 @@ public class AssignmentController {
    * @throws InvalidInputException
    */
   public static void startTrips(int weekNr) throws InvalidInputException {
+
+
+    if (weekNr < 1) {
+      throw new InvalidInputException("Week number must be at least 1");
+    }
+    if (weekNr > ClimbSafeApplication.getClimbSafe().getNrWeeks()) {
+      throw new InvalidInputException(
+          "Week number cannot be bigger than the number of weeks in the season");
+
+    }
 
     for (Assignment assignment : ClimbSafeApplication.getClimbSafe().getAssignments()) {
 
