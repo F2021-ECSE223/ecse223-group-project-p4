@@ -18,32 +18,44 @@ public class AssignmentController {
       throw new InvalidInputException("Assignments were already initiated for the current season");
     
     // Else initiate all assignments
-    for (Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
-      int weeksTaken = 0;
+    if(ClimbSafeApplication.getClimbSafe().getGuides().size() == 0) {
+      
       for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
-        if (member.getAssignment() == null) {
-          if (member.getGuideRequired()) {
-            if (member.getNrWeeks() <= ClimbSafeApplication.getClimbSafe().getNrWeeks()
-                - weeksTaken) {
-              Assignment assignment = new Assignment(weeksTaken + 1,
-                  weeksTaken + member.getNrWeeks(), member, ClimbSafeApplication.getClimbSafe());
-              assignment.setGuide(guide);
-              ClimbSafeApplication.getClimbSafe().addAssignment(assignment);
-              weeksTaken += member.getNrWeeks();
-            } else {
-              if (ClimbSafeApplication.getClimbSafe().getGuides()
-                  .indexOf(guide) == ClimbSafeApplication.getClimbSafe().getGuides().size() - 1) {
-                throw new InvalidInputException(
-                    "Assignments could not be completed for all members");
-              }
-            }
-          } else {
-            ClimbSafeApplication.getClimbSafe().addAssignment(new Assignment(1, member.getNrWeeks(),
-                member, ClimbSafeApplication.getClimbSafe()));
-          }
+        if (!member.getGuideRequired()) {
+          ClimbSafeApplication.getClimbSafe().addAssignment(new Assignment(1, member.getNrWeeks(),
+              member, ClimbSafeApplication.getClimbSafe()));
         }
       }
-
+    }
+    
+    else {
+      for (Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
+        int weeksTaken = 0;
+        for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
+          if (member.getAssignment() == null) {
+            if (member.getGuideRequired()) {
+              if (member.getNrWeeks() <= ClimbSafeApplication.getClimbSafe().getNrWeeks()
+                  - weeksTaken) {
+                Assignment assignment = new Assignment(weeksTaken + 1,
+                    weeksTaken + member.getNrWeeks(), member, ClimbSafeApplication.getClimbSafe());
+                assignment.setGuide(guide);
+                ClimbSafeApplication.getClimbSafe().addAssignment(assignment);
+                weeksTaken += member.getNrWeeks();
+              } else {
+                if (ClimbSafeApplication.getClimbSafe().getGuides()
+                    .indexOf(guide) == ClimbSafeApplication.getClimbSafe().getGuides().size() - 1) {
+                  throw new InvalidInputException(
+                      "Assignments could not be completed for all members");
+                }
+              }
+            } else {
+              ClimbSafeApplication.getClimbSafe().addAssignment(new Assignment(1, member.getNrWeeks(),
+                  member, ClimbSafeApplication.getClimbSafe()));
+            }
+          }
+        }
+  
+      }
     }
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }

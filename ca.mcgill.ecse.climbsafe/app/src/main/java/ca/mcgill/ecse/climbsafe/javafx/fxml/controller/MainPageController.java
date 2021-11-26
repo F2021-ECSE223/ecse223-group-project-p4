@@ -27,6 +27,6 @@ public class MainPageController {
   // Event Listener on Tab.onSelectionChanged
   @FXML
   public void refreshAssignmentsTab(Event event) {
-    assignmentTabController.refresh();
+    assignmentTabController.initialize();
   }
 }

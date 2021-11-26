@@ -1,29 +1,55 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 
-import java.util.ArrayList;
+import javafx.fxml.FXML;
+
+import javafx.scene.control.Button;
 import java.util.List;
 import ca.mcgill.ecse.climbsafe.controller.AssignmentController;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet6Controller;
 import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
 import ca.mcgill.ecse.climbsafe.controller.TOAssignment;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableColumn;
 
 public class AssignmentOperationsController {
   @FXML
   private Button initiateAssignment;
   @FXML
   private TableView assignmentTable;
+  @FXML
+  private TableColumn memberNameCol;
+  @FXML
+  private TableColumn memberEmailCol;
+  @FXML
+  private TableColumn guideNameCol;
+  @FXML
+  private TableColumn guideEmailCol;
+  @FXML
+  private TableColumn hotelNameCol;
+  @FXML
+  private TableColumn startWeekCol;
+  @FXML
+  private TableColumn endWeekCol;
+  @FXML
+  private TableColumn guideCostCol;
+  @FXML
+  private TableColumn equipmentCostCol;
+  @FXML
+  private TableColumn statusCol;
+  @FXML
+  private TableColumn authorizationCodeCol;
+  @FXML
+  private TableColumn refundCol;
+  @FXML
+  private TableColumn ratingCol;
+  @FXML
+  private TableColumn commentCol;
+  @FXML
+  private TableColumn climbLengthCol;
 
-  private String[] TOAssignmentProperties =
-      {"memberEmail", "memberName", "guideEmail", "guideName", "hotelName", "startWeek", "endWeek",
-          "totalCostForGuide", "totalCostForEquipment", "status", "authorizationCode",
-          "refundedPercentageAmount", "climbRating", "climbComment", "climbLength"};
 
   // Event Listener on Button[#initiateAssignment].onAction
   @FXML
@@ -36,24 +62,28 @@ public class AssignmentOperationsController {
     }
   }
 
-  public void refresh() {
+  @SuppressWarnings("unchecked")
+  public void initialize() {
 
-    ObservableList<TOAssignment> data = FXCollections.observableArrayList();
     List<TOAssignment> assignments = ClimbSafeFeatureSet6Controller.getAssignments();
 
-    for (TOAssignment assignment : assignments) {
-      data.add(assignment);
-    }
-
-    for (int i = 0; i < assignmentTable.getColumns().size(); i++) {
-      assignmentTable.getVisibleLeafColumn(i).setCellValueFactory(
-          new PropertyValueFactory<TOAssignment, String>(TOAssignmentProperties[i]));
-    }
+    memberNameCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("memberName"));
+    memberEmailCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("memberEmail"));
+    guideNameCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("guideName"));
+    guideEmailCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("guideEmail"));
+    hotelNameCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("hotelName"));
+    startWeekCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("startWeek"));
+    endWeekCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("endWeek"));
+    guideCostCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("guideCost"));
+    equipmentCostCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("equipmentCost"));
+    statusCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("status"));
+    authorizationCodeCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("authorizationCode"));
+    refundCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("refund"));
+    ratingCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("rating"));
+    commentCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("comment"));
+    climbLengthCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("climbLength"));
     
-    assignmentTable.setItems(data);
-
-
+    assignmentTable.getItems().setAll(assignments);
 
   }
-
 }

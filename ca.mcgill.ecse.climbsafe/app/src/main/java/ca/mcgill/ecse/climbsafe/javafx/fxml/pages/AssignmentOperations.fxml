@@ -73,23 +73,23 @@
       </Button>
       <ScrollPane GridPane.columnSpan="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" GridPane.rowSpan="2">
          <content>
-            <TableView fx:id="assignmentTable" prefHeight="509.0" prefWidth="871.0" style="-fx-background-color: rgb(84,82,82);">
+            <TableView fx:id="assignmentTable" prefHeight="493.0" style="-fx-background-color: rgb(84,82,82);">
               <columns>
-                <TableColumn prefWidth="207.0" text="Member name" />
-                <TableColumn minWidth="0.0" prefWidth="207.0" text="Member email" />
-                  <TableColumn minWidth="0.0" prefWidth="207.0" text="Guide name" />
-                  <TableColumn prefWidth="207.0" text="Guide email" />
-                  <TableColumn prefWidth="207.0" text="Hotel name" />
-                  <TableColumn prefWidth="207.0" text="Start week" />
-                  <TableColumn prefWidth="207.0" text="End week" />
-                  <TableColumn prefWidth="207.0" text="Guide cost" />
-                  <TableColumn prefWidth="207.0" text="Equipment cost" />
-                  <TableColumn prefWidth="207.0" text="Status" />
-                  <TableColumn prefWidth="412076.0" text="Authorization code" />
-                  <TableColumn prefWidth="207.0" text="Refund" />
-                  <TableColumn prefWidth="207.0" text="Rating" />
-                  <TableColumn prefWidth="207.0" text="Comment" />
-                  <TableColumn prefWidth="207.0" text="Climb length" />
+                <TableColumn fx:id="memberNameCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Member name" />
+                <TableColumn fx:id="memberEmailCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Member email" />
+                  <TableColumn fx:id="guideNameCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Guide name" />
+                  <TableColumn fx:id="guideEmailCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Guide email" />
+                  <TableColumn fx:id="hotelNameCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Hotel name" />
+                  <TableColumn fx:id="startWeekCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Start week" />
+                  <TableColumn fx:id="endWeekCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="End week" />
+                  <TableColumn fx:id="guideCostCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Guide cost" />
+                  <TableColumn fx:id="equipmentCostCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Equipment cost" />
+                  <TableColumn fx:id="statusCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Status" />
+                  <TableColumn fx:id="authorizationCodeCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Authorization code" />
+                  <TableColumn fx:id="refundCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Refund" />
+                  <TableColumn fx:id="ratingCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Rating" />
+                  <TableColumn fx:id="commentCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Comment" />
+                  <TableColumn fx:id="climbLengthCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Climb length" />
               </columns>
             </TableView>
          </content>
