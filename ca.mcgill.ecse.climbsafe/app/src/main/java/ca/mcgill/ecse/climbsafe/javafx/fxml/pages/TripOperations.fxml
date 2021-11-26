@@ -61,17 +61,17 @@
 				<Insets />
 			</opaqueInsets>
 		</Label>
-		<Button fx:id="startTripButton" mnemonicParsing="false" onAction="#startTrips" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Start trips" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+		<Button fx:id="startTripButton" mnemonicParsing="false" onAction="#startTrips" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Start trips" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
 			<font>
 				<Font size="14.0" />
 			</font>
 		</Button>
-		<Button fx:id="finishTripButton" mnemonicParsing="false" onAction="#finishTrip" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Finish trip" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+		<Button fx:id="finishTripButton" mnemonicParsing="false" onAction="#finishTrip" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Finish trip" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
 			<font>
 				<Font size="14.0" />
 			</font>
 		</Button>
-		<Button fx:id="cancelTripButton" mnemonicParsing="false" onAction="#cancelTrip" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Cancel trip" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+		<Button fx:id="cancelTripButton" mnemonicParsing="false" onAction="#cancelTrip" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Cancel trip" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.rowIndex="5">
 			<font>
 				<Font size="14.0" />
 			</font>

@@ -27,7 +27,7 @@
 		<RowConstraints maxHeight="188.18301391601562" minHeight="10.0" prefHeight="122.14456176757812" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<Button fx:id="payButtton" mnemonicParsing="false" onAction="#payForTrip" prefHeight="46.0" prefWidth="238.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Process payment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+		<Button fx:id="payButtton" mnemonicParsing="false" onAction="#payForTrip" prefHeight="46.0" prefWidth="238.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Process payment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
 			<font>
 				<Font size="20.0" />
 			</font>

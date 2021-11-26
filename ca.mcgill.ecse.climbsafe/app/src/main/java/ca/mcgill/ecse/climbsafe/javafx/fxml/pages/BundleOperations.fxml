@@ -55,7 +55,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="addBundleButton" mnemonicParsing="false" onAction="#addBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <Button fx:id="addBundleButton" mnemonicParsing="false" onAction="#addBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -130,7 +130,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <Button fx:id="addItemButton" mnemonicParsing="false" onAction="#addItem" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+                  <Button fx:id="addItemButton" mnemonicParsing="false" onAction="#addItem" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -141,7 +141,7 @@
                      </font>
                   </TextField>
                   <ComboBox fx:id="addItemCombo" prefHeight="26.0" prefWidth="182.0" promptText=" Available items" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                  <Button fx:id="rmItemButton" mnemonicParsing="false" onAction="#rmItem" prefHeight="30.0" prefWidth="111.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Remove Item" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+                  <Button fx:id="rmItemButton" mnemonicParsing="false" onAction="#rmItem" prefHeight="30.0" prefWidth="111.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Remove Item" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -199,7 +199,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button id="updateEquipmentButton" fx:id="updateBundleButton" mnemonicParsing="false" onAction="#updateBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                  <Button id="updateEquipmentButton" fx:id="updateBundleButton" mnemonicParsing="false" onAction="#updateBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="10">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -291,7 +291,7 @@
                         <Image url="@../../../../../../../../../../../logo.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="addItemButton2" mnemonicParsing="false" onAction="#addItem2" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                  <Button fx:id="addItemButton2" mnemonicParsing="false" onAction="#addItem2" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -302,7 +302,7 @@
                      </font>
                   </TextField>
                   <ComboBox fx:id="newItemCombo" prefHeight="26.0" prefWidth="182.0" promptText=" Available items" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                  <Button fx:id="rmItemButton2" mnemonicParsing="false" onAction="#rmIntem2" prefHeight="30.0" prefWidth="122.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Remove item" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                  <Button fx:id="rmItemButton2" mnemonicParsing="false" onAction="#rmIntem2" prefHeight="30.0" prefWidth="122.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Remove item" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="8">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -344,7 +344,7 @@
                   <RowConstraints maxHeight="175.00002441406252" minHeight="10.0" prefHeight="171.80003662109374" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="deleteEquipmentButton" fx:id="deleteBundleButton" mnemonicParsing="false" onAction="#deleteBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Button id="deleteEquipmentButton" fx:id="deleteBundleButton" mnemonicParsing="false" onAction="#deleteBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>

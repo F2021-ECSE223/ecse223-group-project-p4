@@ -32,7 +32,7 @@
                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="buttonAddHotel" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionAddHotel" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                  <Button fx:id="buttonAddHotel" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionAddHotel" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -138,7 +138,7 @@
                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="buttonUpdateHotel" mnemonicParsing="false" onAction="#actionUpdateHotel" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                  <Button fx:id="buttonUpdateHotel" mnemonicParsing="false" onAction="#actionUpdateHotel" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -260,7 +260,7 @@
                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="buttonDeleteHotel" mnemonicParsing="false" onAction="#actionDeleteHotel" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                  <Button fx:id="buttonDeleteHotel" mnemonicParsing="false" onAction="#actionDeleteHotel" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete Hotel" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>

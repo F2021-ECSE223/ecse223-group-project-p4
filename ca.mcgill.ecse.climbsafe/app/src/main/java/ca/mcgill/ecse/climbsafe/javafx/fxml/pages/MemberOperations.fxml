@@ -42,7 +42,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="registerMemberButton" mnemonicParsing="false" onAction="#registerMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Register" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                  <Button fx:id="registerMemberButton" mnemonicParsing="false" onAction="#registerMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Register" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -205,7 +205,7 @@
                         <Insets bottom="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <Button fx:id="addItemButton" layoutX="308.0" layoutY="502.0" mnemonicParsing="false" onAction="#addItem" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                  <Button fx:id="addItemButton" layoutX="308.0" layoutY="502.0" mnemonicParsing="false" onAction="#addItem" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -213,7 +213,7 @@
                         <Insets left="5.0" top="18.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="addBundleButton" layoutX="717.0" layoutY="119.0" mnemonicParsing="false" onAction="#addBundle" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
+                  <Button fx:id="addBundleButton" layoutX="717.0" layoutY="119.0" mnemonicParsing="false" onAction="#addBundle" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -321,7 +321,7 @@
                         <Insets top="20.0" />
                      </GridPane.margin>
                   </ListView>
-                  <Button fx:id="removeItems" layoutX="516.0" layoutY="450.0" mnemonicParsing="false" onAction="#removeItemsFromChosen" prefHeight="30.0" prefWidth="85.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Remove" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                  <Button fx:id="removeItems" layoutX="516.0" layoutY="450.0" mnemonicParsing="false" onAction="#removeItemsFromChosen" prefHeight="30.0" prefWidth="85.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Remove" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -340,7 +340,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="addPathButton" layoutX="516.0" layoutY="379.0" mnemonicParsing="false" onAction="#addPath" prefHeight="30.0" prefWidth="71.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Choose" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <Button fx:id="addPathButton" layoutX="516.0" layoutY="379.0" mnemonicParsing="false" onAction="#addPath" prefHeight="30.0" prefWidth="71.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Choose" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -415,7 +415,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button id="updateEquipmentButton" fx:id="updateMemberButton" mnemonicParsing="false" onAction="#updateMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Member" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+                  <Button id="updateEquipmentButton" fx:id="updateMemberButton" mnemonicParsing="false" onAction="#updateMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update Member" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -561,7 +561,7 @@
                      <GridPane.margin>
                         <Insets bottom="25.0" />
                      </GridPane.margin></CheckBox>
-                  <Button fx:id="updateAddItemButton" mnemonicParsing="false" onAction="#updateItem" prefHeight="30.0" prefWidth="72.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                  <Button fx:id="updateAddItemButton" mnemonicParsing="false" onAction="#updateItem" prefHeight="30.0" prefWidth="72.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -580,7 +580,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="updateAddIBundleBuntton" layoutX="184.0" layoutY="352.0" mnemonicParsing="false" onAction="#updateBundle" prefHeight="30.0" prefWidth="72.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                  <Button fx:id="updateAddIBundleBuntton" layoutX="184.0" layoutY="352.0" mnemonicParsing="false" onAction="#updateBundle" prefHeight="30.0" prefWidth="72.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -642,7 +642,7 @@
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </ListView>
-                  <Button fx:id="updatePathButton" mnemonicParsing="false" onAction="#updatePath" prefHeight="30.0" prefWidth="71.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                  <Button fx:id="updatePathButton" mnemonicParsing="false" onAction="#updatePath" prefHeight="30.0" prefWidth="71.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -661,7 +661,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="removeItemsUpdate" mnemonicParsing="false" onAction="#removeItemsFromChosenUpdate" prefHeight="30.0" prefWidth="85.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Remove" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                  <Button fx:id="removeItemsUpdate" mnemonicParsing="false" onAction="#removeItemsFromChosenUpdate" prefHeight="30.0" prefWidth="85.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Remove" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -764,7 +764,7 @@
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <children>
-                  <Button id="deleteEquipmentButton" fx:id="deleteMemberButton" mnemonicParsing="false" onAction="#deleteMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete Member" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                  <Button id="deleteEquipmentButton" fx:id="deleteMemberButton" mnemonicParsing="false" onAction="#deleteMemberUI" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete Member" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>

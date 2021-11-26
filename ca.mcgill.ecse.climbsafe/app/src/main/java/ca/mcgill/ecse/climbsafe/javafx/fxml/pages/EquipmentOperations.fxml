@@ -60,7 +60,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="addEquipmentButton" mnemonicParsing="false" onAction="#addEquipmentAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add Equipment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <Button fx:id="addEquipmentButton" mnemonicParsing="false" onAction="#addEquipmentAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add Equipment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -185,7 +185,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button id="updateEquipmentButton" fx:id="updateEquipmentButton" mnemonicParsing="false" onAction="#updateEquipmentAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Equipment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <Button id="updateEquipmentButton" fx:id="updateEquipmentButton" mnemonicParsing="false" onAction="#updateEquipmentAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update Equipment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -305,7 +305,7 @@
                   <RowConstraints maxHeight="175.00002441406252" minHeight="10.0" prefHeight="171.80003662109374" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="deleteEquipmentButton" fx:id="deleteEquipmentButton" mnemonicParsing="false" onAction="#deleteEquipmentAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete Equipment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Button id="deleteEquipmentButton" fx:id="deleteEquipmentButton" mnemonicParsing="false" onAction="#deleteEquipmentAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete Equipment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>

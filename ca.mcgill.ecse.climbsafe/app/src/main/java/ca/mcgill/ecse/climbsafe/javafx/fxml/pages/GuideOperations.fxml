@@ -58,7 +58,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <Button fx:id="registerGuideButton" mnemonicParsing="false" onAction="#registerGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Register Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                  <Button fx:id="registerGuideButton" mnemonicParsing="false" onAction="#registerGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Register Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -182,7 +182,7 @@
                   <RowConstraints maxHeight="98.59995117187498" minHeight="10.0" prefHeight="49.00002441406252" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="updateEquipmentButton" fx:id="updateGuideButton" mnemonicParsing="false" onAction="#updateGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                  <Button id="updateEquipmentButton" fx:id="updateGuideButton" mnemonicParsing="false" onAction="#updateGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -293,7 +293,7 @@
                   <RowConstraints maxHeight="175.00002441406252" minHeight="10.0" prefHeight="171.80003662109374" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="deleteEquipmentButton" fx:id="deleteGuideButton" mnemonicParsing="false" onAction="#deleteGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                  <Button id="deleteEquipmentButton" fx:id="deleteGuideButton" mnemonicParsing="false" onAction="#deleteGuideAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete Guide" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>

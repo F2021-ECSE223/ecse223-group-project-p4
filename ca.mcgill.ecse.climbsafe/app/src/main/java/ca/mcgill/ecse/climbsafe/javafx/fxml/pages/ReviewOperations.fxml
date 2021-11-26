@@ -27,7 +27,7 @@
       <RowConstraints maxHeight="50.0" minHeight="5.0" prefHeight="116.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Button fx:id="submitTripReview" mnemonicParsing="false" onAction="#submitReviewAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Submit Review" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <Button fx:id="submitTripReview" mnemonicParsing="false" onAction="#submitReviewAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Submit Review" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
             <Font name="Cambria Bold" size="14.0" />
          </font>

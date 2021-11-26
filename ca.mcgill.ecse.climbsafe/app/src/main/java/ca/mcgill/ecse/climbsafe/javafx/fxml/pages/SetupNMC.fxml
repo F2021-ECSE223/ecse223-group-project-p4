@@ -29,7 +29,7 @@
       <RowConstraints maxHeight="311.20001831054685" minHeight="10.0" prefHeight="285.6000122070312" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Button fx:id="initiateSeason" mnemonicParsing="false" onAction="#initiateSeason" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Initiate season" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Button fx:id="initiateSeason" mnemonicParsing="false" onAction="#initiateSeason" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Initiate season" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <font>
             <Font name="Cambria Bold" size="14.0" />
          </font>

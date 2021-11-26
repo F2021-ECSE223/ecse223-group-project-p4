@@ -36,7 +36,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="addNewPath" mnemonicParsing="false" onAction="#AddPath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                  <Button fx:id="addNewPath" mnemonicParsing="false" onAction="#AddPath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -158,7 +158,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="updateExistingPath" mnemonicParsing="false" onAction="#UpdatePath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Update " textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                  <Button fx:id="updateExistingPath" mnemonicParsing="false" onAction="#UpdatePath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update " textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="6">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -296,7 +296,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="deleteExistingPath" mnemonicParsing="false" onAction="#deletePath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14); -fx-border-width: ;" text="Delete " textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button fx:id="deleteExistingPath" mnemonicParsing="false" onAction="#deletePath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete " textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
