@@ -39,11 +39,11 @@ public class TripOperationsController {
     try {
       AssignmentController.startTrips(nrWeeks);
       ViewUtils.showSuccess("All trips for week " + nrWeeks + " have started.");
+      weeknrTextField.clear();
 
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
-    weeknrTextField.clear();
   }
 
   // Event Listener on Button[#finishTripButton].onAction
@@ -53,11 +53,12 @@ public class TripOperationsController {
       AssignmentController.finishTrip(memberEmailTextField.getText());
       ViewUtils.showSuccess(
           "The trip was successfully finished for member " + memberEmailTextField.getText());
+      memberEmailTextField.clear();
+
 
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
-    memberEmailTextField.clear();
   }
 
   // Event Listener on Button[#cancelTripButton].onAction
@@ -67,10 +68,10 @@ public class TripOperationsController {
       AssignmentController.cancelTrip(memberEmailTextField.getText());
       ViewUtils.showSuccess(
           "The trip was successfully cancelled for member " + memberEmailTextField.getText());
+      memberEmailTextField.clear();
 
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
-    memberEmailTextField.clear();
   }
 }
