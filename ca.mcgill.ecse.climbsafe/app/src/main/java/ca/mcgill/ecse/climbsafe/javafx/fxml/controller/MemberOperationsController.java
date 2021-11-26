@@ -160,6 +160,9 @@ public class MemberOperationsController {
 
     private Integer totalPriceForUpdate = 0;
     private Integer totalWeightForUpdate = 0;
+    
+    private int pathIndexRegister = 0;
+    private int pathIndexUpdate = 0;
 
 
     // Event Listener on Button[#registerMemberButton].onAction
@@ -178,7 +181,7 @@ public class MemberOperationsController {
       String email = addEmail.getText();
       String password = addPassword.getText();
       String emergency = addEmergencyPhone.getText();
-      String location = ClimbingPaths.getValue();
+      ClimbingPath location = system.getClimbingPath(pathIndexRegister) ;
       boolean hotel = hotelRequiredCheck.isSelected();
       boolean guide = guideRequiredCheck.isSelected();
 
@@ -258,7 +261,7 @@ public class MemberOperationsController {
         totalPrice = 0;
         totalWeight = 0;
         
-        ExtraFeaturesController.setClimbingPath(email, location);
+        ExtraFeaturesController.setClimbingPath(email, location.getLocation());
 
         // Catch and output the error if there's one
       } catch (InvalidInputException e) {
@@ -380,6 +383,7 @@ public class MemberOperationsController {
       String email = memberEmail.getText();
       String password = updatePassword.getText();
       String emergency = updateEmergencyPhone.getText();
+      ClimbingPath location = system.getClimbingPath(pathIndexUpdate) ;
       boolean hotel = updateHotelRequiredCheck.isSelected();
       boolean guide = updateGuideRequiredCheck.isSelected();
 
@@ -446,6 +450,9 @@ public class MemberOperationsController {
         // Clear the price and weight
         totalPriceForUpdate = 0;
         totalWeightForUpdate = 0;
+        
+        ExtraFeaturesController.setClimbingPath(email, location.getLocation());
+
 
         // Catch and output the error if there's one
       } catch (InvalidInputException e) {
@@ -488,6 +495,12 @@ public class MemberOperationsController {
 
         updateAllBookedItemsList.add((Equipment) item); // Add the equipment to
                                                                              // the list
+        
+        
+        refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
+        
+        refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);
+
 
       }
 
@@ -532,6 +545,9 @@ public class MemberOperationsController {
                                                                                      // equipment
                                                                                      // bundle to the
                                                                                      // list
+        refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
+        
+        refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);
       }
 
       else { // The member clicked on add without selecting any bundle
@@ -580,7 +596,7 @@ public class MemberOperationsController {
   public void removeItemsFromChosen(ActionEvent event) {
     
     if(listOfItemsChosen.getSelectionModel().isEmpty()) {
-      ViewUtils.showError("Please select an equipment item to delete.");
+      ViewUtils.showError("Please select an item to delete.");
       return;
     }
     bookedItemsToAdd.remove(listOfItemsChosen.getSelectionModel().getSelectedIndex());
@@ -588,12 +604,7 @@ public class MemberOperationsController {
     refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
     refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
   }
-  // Event Listener on Button[#addPathButton].onAction
-  @FXML
-  public void addPath(ActionEvent event) {
-    
-  }
-  
+
   // Event Listener on ListView[#listOfItemsChosen].onMouseClicked
   @FXML
  
@@ -644,7 +655,7 @@ public class MemberOperationsController {
       
       for(ClimbingPath path : allPaths) {
        
-        name = "Location: " +path.getLocation() + " with difficulty: "+path.getDifficulty()+" and length: "+path.getLength();
+        name = "Location: " +path.getLocation() + " with difficulty: "+path.getDifficulty()+" and length: "+path.getLength()+" Km.";
         climbingPathNames.add(name);
         
       }
@@ -660,6 +671,9 @@ public class MemberOperationsController {
     List<String> bundlesList = getNameOfBundles();
     
     refreshListViewString(listOfClimbingPaths, getPathName());
+    
+    refreshListViewString(listOfClimbingPathsUpdate, getPathName());
+
 
     
     if(itemsList.size() > 0) {
@@ -672,16 +686,38 @@ public class MemberOperationsController {
     }
     
     else {
+      try {
       addedItemsList.getItems().clear();
       updateItemName.getItems().clear();
       addedItemsList.setPromptText("No items in system");
       updateItemName.setPromptText("No items in system");
-    }
+      }catch(Exception e) {
+      addedItemsList.setPromptText("No items in system");
+      updateItemName.setPromptText("No items in system");
+      }
+      }
     
     if(bundlesList.size() > 0) {
       addedBundlesList.setItems(FXCollections.observableList(bundlesList));
       updateBundleName.setItems(FXCollections.observableList(bundlesList));
+      addedBundlesList.setPromptText("Available items");
+      updateBundleName.setPromptText("Available items");
     }
+    
+    else {
+  
+      try {
+        addedBundlesList.getItems().clear();
+        updateBundleName.getItems().clear();
+        addedBundlesList.setPromptText("No items in system");
+        updateBundleName.setPromptText("No items in system");
+      }catch(Exception e) {
+        addedBundlesList.setPromptText("No items in system");
+        updateBundleName.setPromptText("No items in system");
+      }
+
+    }
+      
   }
   
   public void RefreshMemberRegister(Event event) {
@@ -836,32 +872,46 @@ public class MemberOperationsController {
 	   // Event Listener on ListView[#listOfClimbingPaths].onMouseClicked
     @FXML
     public void selectPath(MouseEvent event) {
-        // TODO Autogenerated
+      listOfClimbingPaths.getSelectionModel().select(listOfClimbingPaths.getSelectionModel().getSelectedIndex());;
     }
 	
 	   // Event Listener on ListView[#listOfClimbingPathsUpdate].onMouseClicked
     @FXML
     public void selectPathUpdate(MouseEvent event) {
-        // TODO Autogenerated
+      listOfClimbingPathsUpdate.getSelectionModel().select(listOfClimbingPathsUpdate.getSelectionModel().getSelectedIndex());;
+
     }
+    // Event Listener on Button[#addPathButton].onAction
+    @FXML
+    public void addPath(ActionEvent event) {
+      pathIndexRegister = listOfClimbingPaths.getSelectionModel().getSelectedIndex();
+    }
+    
     // Event Listener on Button[#updatePathButton].onAction
     @FXML
     public void updatePath(ActionEvent event) {
-        // TODO Autogenerated
+      pathIndexUpdate = listOfClimbingPathsUpdate.getSelectionModel().getSelectedIndex();
     }
     // Event Listener on Button[#removeItemsUpdate].onAction
     @FXML
     public void removeItemsFromChosenUpdate(ActionEvent event) {
-        // TODO Autogenerated
+      if(listOfItemsChosen.getSelectionModel().isEmpty()) {
+        ViewUtils.showError("Please select an item to delete.");
+        return;
+      }
+      bookedItemsToUpdate.remove(listOfItemsChosenUpdate.getSelectionModel().getSelectedIndex());
+      numberOfItemsToUpdate.remove(listOfINumberOftemsChosenUpdate.getSelectionModel().getSelectedIndex());
+      refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
+      refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);
     }
     // Event Listener on ListView[#listOfItemsChosenUpdate].onMouseClicked
     @FXML
     public void selectItemUpdate(MouseEvent event) {
-        // TODO Autogenerated
+      listOfINumberOftemsChosenUpdate.getSelectionModel().select(listOfItemsChosenUpdate.getSelectionModel().getSelectedIndex());
     }
     // Event Listener on ListView[#listOfINumberOftemsChosenUpdate].onMouseClicked
     @FXML
     public void selectQuantitiesUpdate(MouseEvent event) {
-        // TODO Autogenerated
+      listOfItemsChosenUpdate.getSelectionModel().select(listOfINumberOftemsChosenUpdate.getSelectionModel().getSelectedIndex());
     }
 }
