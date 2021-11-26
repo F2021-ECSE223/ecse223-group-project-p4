@@ -19,6 +19,7 @@ import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
 import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
 import ca.mcgill.ecse.climbsafe.model.Equipment;
 import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
+import ca.mcgill.ecse.climbsafe.model.Member;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 
@@ -296,8 +297,8 @@ public class MemberOperationsController {
         totalWeight = 0;
         pathIndexRegister = 0;
         
-    
-        
+
+        ((Member) Member.getWithEmail(email)).setSelectedClimbingLocation(path.getLocation());
         
         // Catch and output the error if there's one
       } catch (InvalidInputException e) {
@@ -420,7 +421,7 @@ public class MemberOperationsController {
       String email = memberEmail.getText();
       String password = updatePassword.getText();
       String emergency = updateEmergencyPhone.getText();
-      ClimbingPath location =  system.getClimbingPaths().get(pathIndexUpdate);
+      ClimbingPath path =  system.getClimbingPaths().get(pathIndexUpdate);
       boolean hotel = updateHotelRequiredCheck.isSelected();
       boolean guide = updateGuideRequiredCheck.isSelected();
 
@@ -496,8 +497,8 @@ public class MemberOperationsController {
         totalPriceForUpdate = 0;
         totalWeightForUpdate = 0;
         
-        if(location != null)
-        ExtraFeaturesController.setClimbingPath(email, location.getLocation());
+        ((Member) Member.getWithEmail(email)).setSelectedClimbingLocation(path.getLocation());
+
 
 
         // Catch and output the error if there's one
