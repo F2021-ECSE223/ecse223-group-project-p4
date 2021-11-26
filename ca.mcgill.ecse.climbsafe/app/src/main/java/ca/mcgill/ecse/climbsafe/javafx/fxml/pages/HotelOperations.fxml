@@ -16,7 +16,7 @@
 
 <TabPane prefHeight="681.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.HotelOperationsController">
    <tabs>
-      <Tab text="Add Hotel">
+      <Tab closable="false" text="Add Hotel">
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
@@ -121,7 +121,7 @@
             </GridPane>
          </content>
       </Tab>
-      <Tab text="Update Hotel">
+      <Tab closable="false" text="Update Hotel">
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
@@ -246,7 +246,7 @@
             </GridPane>
          </content>
       </Tab>
-      <Tab text="Delete Hotel">
+      <Tab closable="false" text="Delete Hotel">
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>

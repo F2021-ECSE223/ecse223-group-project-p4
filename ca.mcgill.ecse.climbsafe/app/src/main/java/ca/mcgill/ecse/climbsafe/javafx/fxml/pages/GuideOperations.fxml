@@ -16,7 +16,7 @@
 
 <TabPane prefHeight="681.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.GuideOperationsController">
    <tabs>
-      <Tab id="EqTab1" text="Register Guide">
+      <Tab id="EqTab1" closable="false" text="Register Guide">
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
@@ -158,7 +158,7 @@
             </GridPane>
          </content>
       </Tab>
-      <Tab id="EqTab2" text="Update Guide">
+      <Tab id="EqTab2" closable="false" text="Update Guide">
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
@@ -273,7 +273,7 @@
             </GridPane>
          </content>
       </Tab>
-      <Tab id="EqTab3" text="Delete Guide">
+      <Tab id="EqTab3" closable="false" text="Delete Guide">
          <content>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>

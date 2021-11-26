@@ -14,9 +14,9 @@
 						<fx:include source="pages/SetupNMC.fxml" />
 					</content>
 				</Tab>
-				<Tab text="Member Registration">
+				<Tab onSelectionChanged="#refreshMemberTab" text="Member Registration">
 					<content>
-						<fx:include source="pages/MemberOperations.fxml" />
+						<fx:include fx:id="memberTab" source="pages/MemberOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Guide Registration">
@@ -31,7 +31,7 @@
 				</Tab>
 				<Tab onSelectionChanged="#refreshBundleTab" text="Bundles">
 					<content>
-						<fx:include source="pages/BundleOperations.fxml" fx:id="bundleTab"/>
+						<fx:include fx:id="bundleTab" source="pages/BundleOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Climbing Paths">
@@ -44,9 +44,9 @@
 						<fx:include source="pages/HotelOperations.fxml" />
 					</content>
 				</Tab>
-				<Tab text="Assignments">
+				<Tab onSelectionChanged="#refreshAssignmentsTab" text="Assignments">
 					<content>
-						<fx:include source="pages/AssignmentOperations.fxml" />
+						<fx:include fx:id="assignmentTab" source="pages/AssignmentOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Payment">

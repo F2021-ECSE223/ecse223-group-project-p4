@@ -76,21 +76,22 @@ public class BundleOperationsController {
   @FXML
   private ListView<Label> rmBundleList;
   private ArrayList<String> equipmentToBeAdded = new ArrayList<String>();
-  private ArrayList<String> quantitiesToBeAdded = new ArrayList<String>(); 
+  private ArrayList<String> quantitiesToBeAdded = new ArrayList<String>();
   private ArrayList<String> equipmentToBeUpdated = new ArrayList<String>();
   private ArrayList<String> quantitiesToBeUpdated = new ArrayList<String>();
+
   @FXML
   public void initialize() {
     List<String> equipment = getEquipment();
-    if(equipment.size() == 0) {
+    if (equipment.size() == 0) {
       addItemCombo.getItems().clear();
       newItemCombo.getItems().clear();
-    }
-    else {
-    addItemCombo.setItems(FXCollections.observableList(equipment));
-    newItemCombo.setItems(FXCollections.observableList(equipment));
+    } else {
+      addItemCombo.setItems(FXCollections.observableList(equipment));
+      newItemCombo.setItems(FXCollections.observableList(equipment));
     }
   }
+
   // Event Listener on Tab[#BundleTab1].onSelectionChanged
   @FXML
   public void RefreshSystemBundles(Event event) {
@@ -101,7 +102,7 @@ public class BundleOperationsController {
   @FXML
   public void addBundleAction(ActionEvent event) {
     String name = addBundleName.getText();
-    if(!ViewUtils.isAlpha(name)) {
+    if (!ViewUtils.isAlpha(name)) {
       ViewUtils.showError("Bundle name can only contain letters.");
       return;
     }
@@ -112,10 +113,12 @@ public class BundleOperationsController {
       ViewUtils.showError("Discount can only be an integer.");
       return;
     }
-    
+
     try {
-      ClimbSafeFeatureSet5Controller.addEquipmentBundle(name, discount, equipmentToBeAdded, stringListToInteger(quantitiesToBeAdded));
-      ViewUtils.showSuccess("Successfully added bundle \"" + name +"\" with a discount of \"" + Integer.toString(discount) + "\" to the system.");
+      ClimbSafeFeatureSet5Controller.addEquipmentBundle(name, discount, equipmentToBeAdded,
+          stringListToInteger(quantitiesToBeAdded));
+      ViewUtils.showSuccess("Successfully added bundle \"" + name + "\" with a discount of \""
+          + Integer.toString(discount) + "\" to the system.");
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
@@ -124,7 +127,7 @@ public class BundleOperationsController {
   // Event Listener on Button[#addItemButton].onAction
   @FXML
   public void addItem(ActionEvent event) {
-    if(addItemCombo.getSelectionModel().isEmpty()) {
+    if (addItemCombo.getSelectionModel().isEmpty()) {
       ViewUtils.showError("Please Select an Equipment from the List.");
       return;
     }
@@ -137,7 +140,7 @@ public class BundleOperationsController {
     }
     equipmentToBeAdded.add(addItemCombo.getValue());
     quantitiesToBeAdded.add(Integer.toString(quantity));
-    
+
     refreshListView(bundleEqList, equipmentToBeAdded);
     refreshListView(bundleEqQtList, quantitiesToBeAdded);
   }
@@ -145,7 +148,7 @@ public class BundleOperationsController {
   // Event Listener on Button[#rmItemButton].onAction
   @FXML
   public void rmItem(ActionEvent event) {
-    if(bundleEqList.getSelectionModel().isEmpty()) {
+    if (bundleEqList.getSelectionModel().isEmpty()) {
       ViewUtils.showError("Please select an equipment item to delete.");
       return;
     }
@@ -177,12 +180,12 @@ public class BundleOperationsController {
   @FXML
   public void updateBundleAction(ActionEvent event) {
     String oldName = oldBundleName.getText();
-    if(!ViewUtils.isAlpha(oldName)) {
+    if (!ViewUtils.isAlpha(oldName)) {
       ViewUtils.showError("Old bundle name can only contain letters.");
       return;
     }
     String name = newBundleName.getText();
-    if(!ViewUtils.isAlpha(name)) {
+    if (!ViewUtils.isAlpha(name)) {
       ViewUtils.showError("New bundle name can only contain letters.");
       return;
     }
@@ -193,10 +196,12 @@ public class BundleOperationsController {
       ViewUtils.showError("new Discount can only be an integer.");
       return;
     }
-    
+
     try {
-      ClimbSafeFeatureSet5Controller.updateEquipmentBundle(oldName,name, discount, equipmentToBeUpdated, stringListToInteger(quantitiesToBeUpdated));
-      ViewUtils.showSuccess("Successfully updated bundle \"" + oldName +"\" to the new bundle \"" + name + "\" with a discount of \"" + Integer.toString(discount) + "\" to the system.");
+      ClimbSafeFeatureSet5Controller.updateEquipmentBundle(oldName, name, discount,
+          equipmentToBeUpdated, stringListToInteger(quantitiesToBeUpdated));
+      ViewUtils.showSuccess("Successfully updated bundle \"" + oldName + "\" to the new bundle \""
+          + name + "\" with a discount of \"" + Integer.toString(discount) + "\" to the system.");
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
@@ -205,7 +210,7 @@ public class BundleOperationsController {
   // Event Listener on Button[#addItemButton2].onAction
   @FXML
   public void addItem2(ActionEvent event) {
-    if(newItemCombo.getSelectionModel().isEmpty()) {
+    if (newItemCombo.getSelectionModel().isEmpty()) {
       ViewUtils.showError("Please Select an Equipment from the List.");
       return;
     }
@@ -218,7 +223,7 @@ public class BundleOperationsController {
     }
     equipmentToBeUpdated.add(newItemCombo.getValue());
     quantitiesToBeUpdated.add(Integer.toString(quantity));
-    
+
     refreshListView(newEqList, equipmentToBeUpdated);
     refreshListView(newQtList, quantitiesToBeUpdated);
   }
@@ -226,7 +231,7 @@ public class BundleOperationsController {
   // Event Listener on Button[#rmItemButton2].onAction
   @FXML
   public void rmIntem2(ActionEvent event) {
-    if(newEqList.getSelectionModel().isEmpty()) {
+    if (newEqList.getSelectionModel().isEmpty()) {
       ViewUtils.showError("Please select an equipment item to delete.");
       return;
     }
@@ -263,11 +268,10 @@ public class BundleOperationsController {
     }
     try {
       String toBeDeleted = rmBundleList.getSelectionModel().getSelectedItem().getText();
-      ClimbSafeFeatureSet6Controller
-          .deleteEquipmentBundle(toBeDeleted);
+      ClimbSafeFeatureSet6Controller.deleteEquipmentBundle(toBeDeleted);
       refreshBundles(rmBundleList, rmDiscountList);
       ViewUtils.showSuccess("Successfully deleted bundle \"" + toBeDeleted + "\" from the system.");
-      
+
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
@@ -295,6 +299,7 @@ public class BundleOperationsController {
     rmBundleList.refresh();
     rmDiscountList.refresh();
   }
+
   private List<String> getEquipment() {
     List<String> list = new ArrayList<String>();
     for (Equipment equipment : ClimbSafeApplication.getClimbSafe().getEquipment()) {
@@ -302,14 +307,16 @@ public class BundleOperationsController {
     }
     return list;
   }
+
   private void refreshListView(ListView<Label> listView, List<String> data) {
     listView.getItems().clear();
     for (String string : data) {
-      listView.getItems().add(new Label(string));      
+      listView.getItems().add(new Label(string));
     }
     listView.refresh();
   }
-  private List<Integer> stringListToInteger(List<String> list){
+
+  private List<Integer> stringListToInteger(List<String> list) {
     List<Integer> ints = new ArrayList<Integer>();
     for (String s : list) {
       ints.add(Integer.parseInt(s));

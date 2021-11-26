@@ -18,7 +18,7 @@
 
 <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82);" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.BundleOperationsController">
    <tabs>
-      <Tab id="EqTab1" fx:id="BundleTab1" onSelectionChanged="#RefreshSystemBundles" text="Add Bundle">
+      <Tab id="EqTab1" fx:id="BundleTab1" closable="false" onSelectionChanged="#RefreshSystemBundles" text="Add Bundle">
          <content>
             <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-max-height: 100%;">
                <columnConstraints>
@@ -162,7 +162,7 @@
             </GridPane>
          </content>
       </Tab>
-      <Tab id="EqTab2" fx:id="BundleTab2" onSelectionChanged="#RefreshSystemBundles2" text="Update Bundle">
+      <Tab id="EqTab2" fx:id="BundleTab2" closable="false" onSelectionChanged="#RefreshSystemBundles2" text="Update Bundle">
          <content>
             <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
@@ -323,7 +323,7 @@
             </GridPane>
          </content>
       </Tab>
-      <Tab id="EqTab3" fx:id="BundleTab3" onSelectionChanged="#RefreshSystemBundles3" text="Delete Bundle">
+      <Tab id="EqTab3" fx:id="BundleTab3" closable="false" onSelectionChanged="#RefreshSystemBundles3" text="Delete Bundle">
          <content>
             <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>

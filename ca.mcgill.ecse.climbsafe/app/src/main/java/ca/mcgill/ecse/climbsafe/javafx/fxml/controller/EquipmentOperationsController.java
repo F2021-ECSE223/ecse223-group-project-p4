@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet4Controller;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet6Controller;
-import ca.mcgill.ecse.climbsafe.model.BookableItem;
+import ca.mcgill.ecse.climbsafe.model.Equipment;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.ListView;
@@ -49,8 +49,6 @@ public class EquipmentOperationsController {
   @FXML
   private Button deleteEquipmentButton;
   @FXML
-  private TextField rmEquipmentName;
-  @FXML
   private ListView<Label> equipmentList;
 
   // Event Listener on Tab[#EqTab1].onSelectionChanged
@@ -84,6 +82,7 @@ public class EquipmentOperationsController {
     try {
       ClimbSafeFeatureSet4Controller.addEquipment(name, weight, price);
       refreshEquipmentList(SystemEquipment);
+      ViewUtils.showSuccess("Successfully added equipment \"" + name + "\" to the system.");
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
@@ -125,6 +124,10 @@ public class EquipmentOperationsController {
     try {
       ClimbSafeFeatureSet4Controller.updateEquipment(oldName, newName, weight, price);
       refreshEquipmentList(SystemEquipment1);
+      ViewUtils
+          .showSuccess("Successfully updated equipment \"" + oldName + "\" to the new equipment \""
+              + newName + "\" with a weight of " + Integer.toString(weight) + " lbs and a price of "
+              + Integer.toString(price) + " $/Week.");
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
@@ -139,11 +142,12 @@ public class EquipmentOperationsController {
   // Event Listener on Button[#deleteEquipmentButton].onAction
   @FXML
   public void deleteEquipmentAction(ActionEvent event) {
-    String toBeDeleted = rmEquipmentName.getText();
-    if (!ViewUtils.isAlpha(toBeDeleted)) {
-      ViewUtils.showError("Equipment Name must only contain letters.");
+    String toBeDeleted = equipmentList.getSelectionModel().getSelectedItem().getText();
+    if (toBeDeleted == null) {
+      ViewUtils.showError("Please select an Equipment from the list.");
       return;
     }
+    toBeDeleted = toBeDeleted.split(", ")[0];
     try {
       ClimbSafeFeatureSet6Controller.deleteEquipment(toBeDeleted);
       refreshEquipmentList(equipmentList);
@@ -154,8 +158,9 @@ public class EquipmentOperationsController {
 
   private void refreshEquipmentList(ListView<Label> eqList) {
     eqList.getItems().clear();
-    for (BookableItem eqItem : ClimbSafeApplication.getClimbSafe().getEquipment()) {
-      eqList.getItems().add(new Label(eqItem.getName()));
+    for (Equipment eqItem : ClimbSafeApplication.getClimbSafe().getEquipment()) {
+      eqList.getItems().add(new Label(eqItem.getName() + ", " + Integer.toString(eqItem.getWeight())
+          + " lbs, " + Integer.toString(eqItem.getPricePerWeek()) + "$"));
     }
     eqList.refresh();
   }

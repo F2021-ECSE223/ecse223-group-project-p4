@@ -313,37 +313,10 @@
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <TextField id="rmEquipmentName" fx:id="rmEquipmentName" prefHeight="26.0" prefWidth="286.0" promptText="Rope, Hammer..." GridPane.columnIndex="2" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Label alignment="CENTER" text="Equipment Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </Label>
-                  <ListView id="equipmentList" fx:id="equipmentList" prefHeight="70.0" prefWidth="156.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <ListView id="equipmentList" fx:id="equipmentList" prefHeight="70.0" prefWidth="156.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label alignment="CENTER" text="Remove Equipment:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Cambria" size="21.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </Label>
-                  <Label alignment="CENTER" text="System Equipment:" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Cambria" size="18.0" />
                      </font>
                      <opaqueInsets>
                         <Insets />
