@@ -85,10 +85,11 @@
                   <TableColumn fx:id="guideCostCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Guide cost" />
                   <TableColumn fx:id="equipmentCostCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Equipment cost" />
                   <TableColumn fx:id="statusCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Status" />
-                  <TableColumn fx:id="authorizationCodeCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Authorization code" />
+                  <TableColumn fx:id="authorizationCodeCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Authorization code" />
                   <TableColumn fx:id="refundCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Refund" />
                   <TableColumn fx:id="ratingCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Rating" />
                   <TableColumn fx:id="commentCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Comment" />
+                  <TableColumn fx:id="climbLocationCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Climb location" />
                   <TableColumn fx:id="climbLengthCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Climb length" />
               </columns>
             </TableView>
