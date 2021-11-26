@@ -29,12 +29,10 @@ public class TripPaymentController {
           .showSuccess("Payment successfully processed for member " + memberEmailTextField.getText()
               + '\n' + "Authorization code: " + authCodeTextField.getText());
 
+      authCodeTextField.clear();
+      memberEmailTextField.clear();
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
-
-    authCodeTextField.clear();
-    memberEmailTextField.clear();
-
   }
 }

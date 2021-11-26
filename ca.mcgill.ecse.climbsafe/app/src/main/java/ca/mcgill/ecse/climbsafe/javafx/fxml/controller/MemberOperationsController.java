@@ -19,7 +19,6 @@ import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
 import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
 import ca.mcgill.ecse.climbsafe.model.Equipment;
 import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
-import ca.mcgill.ecse.climbsafe.model.Member;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 
@@ -73,15 +72,15 @@ public class MemberOperationsController {
 	@FXML
 	private Label showTotalPrice;
 	@FXML
-	private ListView listOfItemsChosen;
+	private ListView<Label> listOfItemsChosen;
 	@FXML
-	private ListView listOfNumberOfItemsChosen;
+	private ListView<Label> listOfNumberOfItemsChosen;
 	@FXML
 	private Button removeItems;
 	@FXML
 	private Button addPathButton;
 	@FXML
-	private ListView listOfClimbingPaths;
+	private ListView<Label> listOfClimbingPaths;
 	@FXML
 	private Label registrationSucessfulMessage;
 	@FXML
@@ -117,15 +116,15 @@ public class MemberOperationsController {
 	@FXML
 	private ComboBox<String> updateBundleName;
 	@FXML
-	private ListView listOfClimbingPathsUpdate;
+	private ListView<Label> listOfClimbingPathsUpdate;
 	@FXML
 	private Button updatePathButton;
 	@FXML
 	private Button removeItemsUpdate;
 	@FXML
-	private ListView listOfItemsChosenUpdate;
+	private ListView<Label> listOfItemsChosenUpdate;
 	@FXML
-	private ListView listOfINumberOftemsChosenUpdate;
+	private ListView<Label> listOfINumberOftemsChosenUpdate;
 	@FXML
 	private Label registrationSucessfulMessage1;
 	@FXML
@@ -181,7 +180,7 @@ public class MemberOperationsController {
       String email = addEmail.getText();
       String password = addPassword.getText();
       String emergency = addEmergencyPhone.getText();
-      ClimbingPath location = system.getClimbingPath(pathIndexRegister) ;
+      ClimbingPath location = system.getClimbingPath(pathIndexRegister);
       boolean hotel = hotelRequiredCheck.isSelected();
       boolean guide = guideRequiredCheck.isSelected();
 
@@ -884,12 +883,33 @@ public class MemberOperationsController {
     // Event Listener on Button[#addPathButton].onAction
     @FXML
     public void addPath(ActionEvent event) {
+      if(listOfClimbingPaths.getSelectionModel().isEmpty()) {
+        ViewUtils.showError("Please select a path to climb.");
+        return;
+      }
+      
+      if(listOfClimbingPaths.getSelectionModel().getSelectedItem().getText().equals("No paths in system.")) {
+        ViewUtils.showError("Please select a path to climb.");
+        return;
+      }
+      
       pathIndexRegister = listOfClimbingPaths.getSelectionModel().getSelectedIndex();
     }
     
     // Event Listener on Button[#updatePathButton].onAction
     @FXML
     public void updatePath(ActionEvent event) {
+      if(listOfClimbingPathsUpdate.getSelectionModel().isEmpty()) {
+        ViewUtils.showError("Please select a path to climb.");
+        return;
+      }
+      
+      if(listOfClimbingPathsUpdate.getSelectionModel().getSelectedItem().getText().equals("No paths in system.")) {
+        ViewUtils.showError("Please select a path to climb.");
+        return;
+      }
+      
+      
       pathIndexUpdate = listOfClimbingPathsUpdate.getSelectionModel().getSelectedIndex();
     }
     // Event Listener on Button[#removeItemsUpdate].onAction
