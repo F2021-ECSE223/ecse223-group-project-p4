@@ -212,7 +212,7 @@ public class MemberOperationsController {
       String password = addPassword.getText();
       String emergency = addEmergencyPhone.getText();
       
-      ClimbingPath location = system.getClimbingPaths().get(pathIndexRegister);
+      ClimbingPath path = system.getClimbingPaths().get(pathIndexRegister);
       
       boolean hotel = hotelRequiredCheck.isSelected();
       boolean guide = guideRequiredCheck.isSelected();
@@ -297,7 +297,6 @@ public class MemberOperationsController {
         pathIndexRegister = 0;
         
     
-         ExtraFeaturesController.setClimbingPath(email, location.getLocation());
         
         
         // Catch and output the error if there's one
