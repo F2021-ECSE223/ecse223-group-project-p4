@@ -327,10 +327,10 @@
          <content>
             <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.79998168945312" minWidth="10.0" prefWidth="141.40001831054687" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="392.4" minWidth="10.0" prefWidth="205.6" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.60000000000002" minWidth="10.0" prefWidth="102.39995117187499" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.00002441406247" minWidth="4.7999999999999545" prefWidth="262.40004882812497" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="315.20002136230465" minWidth="10.0" prefWidth="269.59998779296876" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="392.4" minWidth="10.0" prefWidth="217.4000244140625" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.60003662109375" minWidth="10.0" prefWidth="110.4000122070313" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.00002441406247" minWidth="4.7999999999999545" prefWidth="115.9999877929688" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.79995117187502" minWidth="10.0" prefWidth="132.0000122070312" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.199951171875" minWidth="10.0" prefWidth="27.999975585937477" />
                </columnConstraints>
@@ -344,7 +344,7 @@
                   <RowConstraints maxHeight="175.00002441406252" minHeight="10.0" prefHeight="171.80003662109374" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="deleteEquipmentButton" fx:id="deleteBundleButton" mnemonicParsing="false" onAction="#deleteBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Button id="deleteEquipmentButton" fx:id="deleteBundleButton" mnemonicParsing="false" onAction="#deleteBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -375,12 +375,12 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                      <image>
                         <Image url="@../../../../../../../../../../../logo.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" text="(Select Bundle from Table)" textFill="WHITE" GridPane.rowIndex="4">
+                  <Label alignment="CENTER" text="(Select Bundle from Table)" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <font>
                         <Font name="Cambria" size="9.0" />
                      </font>
@@ -391,8 +391,8 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <ListView fx:id="rmDiscountList" onMouseClicked="#rmDiscountSelected" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <ListView fx:id="rmBundleList" onMouseClicked="#rmBundleSelected" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ListView fx:id="rmDiscountList" maxWidth="-Infinity" onMouseClicked="#rmDiscountSelected" prefHeight="200.0" prefWidth="110.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <ListView fx:id="rmBundleList" maxWidth="-Infinity" onMouseClicked="#rmBundleSelected" prefHeight="200.0" prefWidth="220.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label alignment="CENTER" prefHeight="38.0" prefWidth="237.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Bundles" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Cambria" size="12.0" />
