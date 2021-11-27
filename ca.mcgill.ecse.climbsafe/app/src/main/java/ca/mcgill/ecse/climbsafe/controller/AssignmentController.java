@@ -1,6 +1,8 @@
 package ca.mcgill.ecse.climbsafe.controller;
 
 
+import java.util.List;
+import java.util.Random;
 import ca.mcgill.ecse.climbsafe.application.*;
 import ca.mcgill.ecse.climbsafe.model.*;
 import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
@@ -18,16 +20,16 @@ public class AssignmentController {
       throw new InvalidInputException("Assignments were already initiated for the current season");
 
     // Else initiate all assignments
-    if(ClimbSafeApplication.getClimbSafe().getGuides().size() == 0) {
-      
+    if (ClimbSafeApplication.getClimbSafe().getGuides().size() == 0) {
+
       for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
         if (!member.getGuideRequired()) {
-          ClimbSafeApplication.getClimbSafe().addAssignment(new Assignment(1, member.getNrWeeks(),
-              member, ClimbSafeApplication.getClimbSafe()));
+          ClimbSafeApplication.getClimbSafe().addAssignment(
+              new Assignment(1, member.getNrWeeks(), member, ClimbSafeApplication.getClimbSafe()));
         }
       }
     }
-    
+
     else {
       for (Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
         int weeksTaken = 0;
@@ -49,14 +51,22 @@ public class AssignmentController {
                 }
               }
             } else {
-              ClimbSafeApplication.getClimbSafe().addAssignment(new Assignment(1, member.getNrWeeks(),
-                  member, ClimbSafeApplication.getClimbSafe()));
+              ClimbSafeApplication.getClimbSafe().addAssignment(new Assignment(1,
+                  member.getNrWeeks(), member, ClimbSafeApplication.getClimbSafe()));
             }
           }
         }
-  
+
       }
     }
+
+    // Assigning a random hotel and the desired climbing location chosen at registration
+    for (Assignment assignment : ClimbSafeApplication.getClimbSafe().getAssignments()) {
+      if(assignment.getMember().getHotelRequired()) assignment.setHotel(getRandomHotel());
+      assignment.setClimbingPath(
+          ClimbingPath.getWithLocation(assignment.getMember().getSelectedClimbingLocation()));
+    }
+
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
@@ -170,7 +180,17 @@ public class AssignmentController {
           "Member with email address " + memberEmail + " does not exist");
 
     return member;
+  }
 
-
+  /**
+   * Used to get a random hotel out of the hotels that exist in the system
+   * 
+   * @author Wassim Jabbour
+   * @return A random hotel that exists in the system
+   */
+  private static Hotel getRandomHotel() {
+    List<Hotel> hotels = ClimbSafeApplication.getClimbSafe().getHotels();
+    Random rand = new Random();
+    return hotels.get(rand.nextInt(ClimbSafeApplication.getClimbSafe().getHotels().size()));
   }
 }
