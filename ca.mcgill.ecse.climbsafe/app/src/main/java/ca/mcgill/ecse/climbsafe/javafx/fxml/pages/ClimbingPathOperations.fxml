@@ -27,9 +27,9 @@
 						<ColumnConstraints hgrow="SOMETIMES" maxWidth="151.66666666666669" minWidth="10.0" prefWidth="147.66666666666669" />
 						<ColumnConstraints hgrow="SOMETIMES" maxWidth="252.33328247070312" minWidth="10.0" prefWidth="77.77774047851562" />
 						<ColumnConstraints hgrow="SOMETIMES" maxWidth="528.6666666666666" minWidth="10.0" prefWidth="154.44437662760413" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.00005086263013" minWidth="0.0" prefWidth="102.11110432942712" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.00005086263013" minWidth="10.0" prefWidth="100.55556233723962" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.00005086263013" minWidth="10.0" prefWidth="60.99997965494788" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="383.00005086263013" minWidth="0.0" prefWidth="102.11110432942712" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="383.00005086263013" minWidth="10.0" prefWidth="100.55556233723962" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="383.00005086263013" minWidth="10.0" prefWidth="60.99997965494788" />
 					</columnConstraints>
 					<rowConstraints>
 						<RowConstraints maxHeight="106.66666285196939" minHeight="10.0" prefHeight="106.66666285196939" vgrow="SOMETIMES" />
@@ -39,7 +39,7 @@
 						<RowConstraints maxHeight="237.33333333333331" minHeight="0.0" prefHeight="33.44444783528644" vgrow="SOMETIMES" />
 						<RowConstraints maxHeight="351.22221883138025" minHeight="0.0" prefHeight="82.22223917643231" vgrow="SOMETIMES" />
 						<RowConstraints maxHeight="445.6666615804037" minHeight="10.0" prefHeight="69.66666666666669" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="345.3333435058594" minHeight="10.0" prefHeight="173.66666666666669" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="345.3333435058594" minHeight="10.0" prefHeight="173.66666666666669" vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
 						<Button fx:id="addNewPath" mnemonicParsing="false" onAction="#AddPath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="6">
@@ -142,33 +142,33 @@
 							</font>
 						</TextField>
 						<ComboBox fx:id="addDifficultyCombo" prefWidth="150.0" promptText="Select Difficulty" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Name" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Cambria" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <ListView fx:id="pathList" onMouseClicked="#selectedEq" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                  <ListView fx:id="pathDistList" onMouseClicked="#selectedEq" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                  <Label alignment="CENTER" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text=" Distance [km]" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Cambria" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <ListView fx:id="pathDiffList" onMouseClicked="#selectedEq" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-                  <Label alignment="CENTER" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Difficulty" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Cambria" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
+						<Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Name" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="4">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<ListView fx:id="pathList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+						<ListView fx:id="pathDistList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+						<Label alignment="CENTER" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text=" Distance [km]" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="4">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<ListView fx:id="pathDiffList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+						<Label alignment="CENTER" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Difficulty" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="4">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
 					</children>
 				</GridPane>
 			</content>
@@ -182,9 +182,9 @@
 						<ColumnConstraints hgrow="SOMETIMES" maxWidth="148.800048828125" minWidth="10.0" prefWidth="148.800048828125" />
 						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 						<ColumnConstraints hgrow="SOMETIMES" maxWidth="148.55558268229169" minWidth="10.0" prefWidth="128.99997965494788" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.22224934895837" minWidth="10.0" prefWidth="101.66668701171875" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.3333740234375" minWidth="10.0" prefWidth="91.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.44439697265625" minWidth="10.0" prefWidth="49.7777099609375" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="158.22224934895837" minWidth="10.0" prefWidth="101.66668701171875" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="165.3333740234375" minWidth="10.0" prefWidth="91.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="84.44439697265625" minWidth="10.0" prefWidth="49.7777099609375" />
 					</columnConstraints>
 					<rowConstraints>
 						<RowConstraints maxHeight="80.22220993041992" minHeight="10.0" prefHeight="80.22220993041992" vgrow="SOMETIMES" />
@@ -194,7 +194,7 @@
 						<RowConstraints maxHeight="254.33333333333337" minHeight="10.0" prefHeight="90.66665649414062" vgrow="SOMETIMES" />
 						<RowConstraints maxHeight="240.77780151367188" minHeight="10.0" prefHeight="76.5555318196615" vgrow="SOMETIMES" />
 						<RowConstraints maxHeight="301.5555725097657" minHeight="10.0" prefHeight="138.44444783528644" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="244.33328247070312" minHeight="10.0" prefHeight="64.2222900390625" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="244.33328247070312" minHeight="10.0" prefHeight="64.2222900390625" vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
 						<Button fx:id="updateExistingPath" mnemonicParsing="false" onAction="#UpdatePath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update " textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="6">
@@ -307,45 +307,45 @@
 							</padding>
 						</Label>
 						<Separator prefWidth="200.0" GridPane.columnSpan="8" GridPane.rowSpan="2" />
-                  <ComboBox fx:id="newDifficultyCombo" prefWidth="150.0" promptText="Select Difficulty" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Path Name" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Cambria" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Difficulty" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Cambria" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <ListView fx:id="newPathList" onMouseClicked="#selectedEq" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                  <ListView fx:id="newDistList" onMouseClicked="#selectedEq" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-                  <ListView fx:id="newDiffList" onMouseClicked="#selectedEq" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="115.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Distance [km]" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Cambria" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Label>
-                  <Label alignment="CENTER" text="Available Paths:" textFill="WHITE" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Cambria" size="21.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
+						<ComboBox fx:id="newDifficultyCombo" prefWidth="150.0" promptText="Select Difficulty" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+						<Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Path Name" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="3">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Difficulty" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="3">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<ListView fx:id="newPathList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+						<ListView fx:id="newDistList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+						<ListView fx:id="newDiffList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+						<Label alignment="CENTER" prefHeight="37.0" prefWidth="115.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Distance [km]" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="3">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<GridPane.margin>
+								<Insets />
+							</GridPane.margin>
+						</Label>
+						<Label alignment="CENTER" text="Available Paths:" textFill="WHITE" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="21.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
 					</children>
 				</GridPane>
 			</content>
@@ -395,55 +395,55 @@
 								<Image url="@../../../../../../../../../../../logo.png" />
 							</image>
 						</ImageView>
-                  <Label alignment="CENTER" text="Remove Path" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
-                     <font>
-                        <Font name="Cambria" size="21.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </Label>
-                  <ListView fx:id="rmPathList" onMouseClicked="#selectedEq" prefHeight="196.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ListView fx:id="rmDistList" onMouseClicked="#selectedEq" prefHeight="196.0" prefWidth="156.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <ListView fx:id="rmDiffList" onMouseClicked="#selectedEq" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Path Name" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Cambria" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="237.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Distance [km]" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Cambria" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Difficulty" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Cambria" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <Label alignment="CENTER" text="(Select Path from Table)" textFill="WHITE" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Cambria" size="10.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </Label>
+						<Label alignment="CENTER" text="Remove Path" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+							<font>
+								<Font name="Cambria" size="21.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+						</Label>
+						<ListView fx:id="rmPathList" onMouseClicked="#selectedPath" prefHeight="196.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+						<ListView fx:id="rmDistList" onMouseClicked="#selectedPath" prefHeight="196.0" prefWidth="156.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+						<ListView fx:id="rmDiffList" onMouseClicked="#selectedPath" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+						<Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Path Name" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<Label alignment="CENTER" prefHeight="45.0" prefWidth="237.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Distance [km]" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Difficulty" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<Label alignment="CENTER" text="(Select Path from Table)" textFill="WHITE" GridPane.rowIndex="3">
+							<font>
+								<Font name="Cambria" size="10.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+						</Label>
 					</children>
 				</GridPane>
 			</content>
