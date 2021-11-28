@@ -108,7 +108,7 @@ public class ClimbingPathOperationsController {
     }
 
     @FXML
-    void selectedEq(MouseEvent event) {
+    void selectedPath(MouseEvent event) {
 
     }
 
