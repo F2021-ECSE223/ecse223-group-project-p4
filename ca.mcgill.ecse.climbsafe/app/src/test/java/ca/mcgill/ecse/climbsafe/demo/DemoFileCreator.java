@@ -2,7 +2,6 @@ package ca.mcgill.ecse.climbsafe.demo;
 
 import java.sql.Date;
 import java.util.Calendar;
-
 import ca.mcgill.ecse.climbsafe.demo.persistence.ClimbSafePersistence;
 import ca.mcgill.ecse.climbsafe.model.Administrator;
 import ca.mcgill.ecse.climbsafe.model.ClimbSafe;

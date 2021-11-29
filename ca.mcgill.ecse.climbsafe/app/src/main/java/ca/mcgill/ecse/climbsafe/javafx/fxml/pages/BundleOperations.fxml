@@ -380,9 +380,9 @@
                         <Image url="@../../../../../../../../../../../logo.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" text="(Select Bundle from Table)" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                  <Label alignment="CENTER" text="(Select Bundle from Table)" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                      <font>
-                        <Font name="Cambria" size="9.0" />
+                        <Font name="Cambria" size="21.0" />
                      </font>
                      <opaqueInsets>
                         <Insets />

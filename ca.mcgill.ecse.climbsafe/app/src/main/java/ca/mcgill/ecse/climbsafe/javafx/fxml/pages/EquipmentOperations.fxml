@@ -314,7 +314,7 @@
                      </GridPane.margin>
                   </Button>
                   <ListView id="equipmentList" fx:id="equipmentList" maxWidth="-Infinity" prefHeight="70.0" prefWidth="250.0" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                  <Label alignment="CENTER" text="Remove Equipment:" textFill="WHITE" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Label alignment="CENTER" text="Remove Equipment:" textFill="WHITE" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font name="Cambria" size="21.0" />
                      </font>
@@ -339,6 +339,17 @@
                         <Image url="@../../../../../../../../../../../logo.png" />
                      </image>
                   </ImageView>
+                  <Label alignment="CENTER" text="(Select item from table)" textFill="WHITE" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Cambria" size="21.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
                </children>
             </GridPane>
          </content>

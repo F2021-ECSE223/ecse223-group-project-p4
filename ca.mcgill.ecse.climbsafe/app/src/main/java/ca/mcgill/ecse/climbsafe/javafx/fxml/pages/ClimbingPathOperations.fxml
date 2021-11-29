@@ -395,7 +395,7 @@
 								<Image url="@../../../../../../../../../../../logo.png" />
 							</image>
 						</ImageView>
-						<Label alignment="CENTER" text="Remove Path" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+						<Label alignment="CENTER" text="Remove Path:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
 							<font>
 								<Font name="Cambria" size="21.0" />
 							</font>
@@ -433,17 +433,17 @@
 								<Insets />
 							</opaqueInsets>
 						</Label>
-						<Label alignment="CENTER" text="(Select Path from Table)" textFill="WHITE" GridPane.rowIndex="3">
-							<font>
-								<Font name="Cambria" size="10.0" />
-							</font>
-							<opaqueInsets>
-								<Insets />
-							</opaqueInsets>
-							<padding>
-								<Insets left="20.0" />
-							</padding>
-						</Label>
+                  <Label alignment="CENTER" text="(Select path from table)" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="21.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
 					</children>
 				</GridPane>
 			</content>
