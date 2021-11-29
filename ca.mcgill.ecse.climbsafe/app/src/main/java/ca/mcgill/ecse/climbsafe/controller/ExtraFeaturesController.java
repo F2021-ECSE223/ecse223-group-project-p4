@@ -31,6 +31,15 @@ public class ExtraFeaturesController {
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
+  /**
+   * Adds a new climbing path to the system
+   * 
+   * @author Matthieu Hakim
+   * @param location
+   * @param length
+   * @param difficulty
+   * @throws InvalidInputException
+   */
   public static void addClimbingPath(String location, int length, String difficulty)
       throws InvalidInputException {
 
@@ -63,6 +72,16 @@ public class ExtraFeaturesController {
     ClimbSafePersistence.save(system);
   }
 
+  /**
+   * Updates a climbing path in the system
+   * 
+   * @author Karl Rouhana
+   * @param oldLocation
+   * @param newLocation
+   * @param newLength
+   * @param newDifficulty
+   * @throws InvalidInputException
+   */
   public static void updateClimbingPath(String oldLocation, String newLocation, int newLength,
       String newDifficulty) throws InvalidInputException {
 
