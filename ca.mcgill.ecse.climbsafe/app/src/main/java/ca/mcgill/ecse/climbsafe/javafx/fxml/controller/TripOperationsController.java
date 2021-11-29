@@ -25,6 +25,14 @@ public class TripOperationsController {
 
   // Event Listener on Button[#startTripButton].onAction
   @FXML
+  
+  /**
+   * Starts all the trips for a given week
+   * 
+   * @author Matthieu Hakim
+   * @param event
+   */
+  
   public void startTrips(ActionEvent event) {
 
     int nrWeeks = -1;
@@ -48,6 +56,13 @@ public class TripOperationsController {
 
   // Event Listener on Button[#finishTripButton].onAction
   @FXML
+  
+  /**
+   * Finish the trip of a given member
+   * 
+   * @author Matthieu Hakim
+   * @param event
+   */
   public void finishTrip(ActionEvent event) {
     try {
       AssignmentController.finishTrip(memberEmailTextField.getText());
@@ -63,6 +78,12 @@ public class TripOperationsController {
 
   // Event Listener on Button[#cancelTripButton].onAction
   @FXML
+  /**
+   * Cancel the trip of a given member
+   * 
+   * @author Matthieu Hakim
+   * @param event
+   */
   public void cancelTrip(ActionEvent event) {
     try {
       AssignmentController.cancelTrip(memberEmailTextField.getText());
