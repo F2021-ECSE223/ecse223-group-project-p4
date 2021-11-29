@@ -73,7 +73,7 @@
       </Button>
       <ScrollPane GridPane.columnSpan="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" GridPane.rowSpan="2">
          <content>
-            <TableView fx:id="assignmentTable" prefHeight="493.0" style="-fx-background-color: rgb(84,82,82);">
+            <TableView fx:id="assignmentTable" prefHeight="493.0" style="-fx-background-color: rgb(84,82,82);" stylesheets="@tableViewStyle.css">
               <columns>
                 <TableColumn fx:id="memberNameCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Member name" />
                 <TableColumn fx:id="memberEmailCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Member email" />
