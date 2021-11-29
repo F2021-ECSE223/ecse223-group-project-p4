@@ -187,7 +187,8 @@ public class ClimbingPathOperationsController {
 	    ViewUtils.showError("Please select a path to be deleted.");
 	    return;
 	  }try {
-	    String toBeDeleted = rmPathList.getSelectionModel().getSelectedItem().toString();
+	    String toBeDeleted = rmPathList.getSelectionModel().getSelectedItem().getText();
+	    System.out.println(toBeDeleted);
 	    ExtraFeaturesController.deleteClimbingPath(toBeDeleted);
 	    refreshPaths(rmPathList, rmDistList, rmDiffList);
 	    ViewUtils.showSuccess("Successfully deleted path \"" + toBeDeleted+"\" from the system.");
@@ -195,8 +196,6 @@ public class ClimbingPathOperationsController {
 	  }catch(Exception e) {
 	    ViewUtils.showError(e.getMessage());
 	  }
-	  
-	  
 	}
 	// Event Listener on ListView[#rmPathList].onMouseClicked
 	@FXML
