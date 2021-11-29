@@ -2,7 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -15,351 +17,436 @@
 <?import javafx.scene.text.Font?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.ClimbingPathOperationsController">
-  <tabs>
-    <Tab closable="false" text="Add Path ">
-         <content>
-            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="155.199951171875" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.800048828125" minWidth="10.0" prefWidth="148.800048828125" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Button fx:id="addNewPath" mnemonicParsing="false" onAction="#AddPath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                     <font>
-                        <Font name="Cambria Bold" size="14.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <TextField fx:id="newPathName" prefHeight="26.0" prefWidth="286.0" promptText="Enter Name " GridPane.columnIndex="2" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label alignment="CENTER" text="Location : " textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="100.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <TextField fx:id="newPathDifficulty" prefHeight="26.0" prefWidth="286.0" promptText="Enter difficulty level" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Label alignment="CENTER" text="Difficulty:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="100.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <TextField fx:id="newPathDistance" prefHeight="26.0" prefWidth="286.0" promptText="Enter distance [km]" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Label alignment="CENTER" text="Distance:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="100.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label alignment="CENTER" text="Add Path:" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="70.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Separator prefWidth="200.0" GridPane.columnSpan="5" GridPane.rowSpan="2" />
-                  <Label alignment="CENTER" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                  </Label>
-                  <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
-                     <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </GridPane>
-         </content></Tab>
-    <Tab closable="false" text="Update Path ">
-         <content>
-            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="155.199951171875" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.800048828125" minWidth="10.0" prefWidth="148.800048828125" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Button fx:id="updateExistingPath" mnemonicParsing="false" onAction="#UpdatePath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update " textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="Cambria Bold" size="14.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="300.0" text="Old Location Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="20.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <TextField fx:id="updatedPathDifficulty" prefHeight="26.0" prefWidth="286.0" promptText="Enter difficulty level" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Label alignment="CENTER" text="New Difficulty:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="65.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <TextField fx:id="updatedPathDistance" prefHeight="26.0" prefWidth="286.0" promptText="Enter distance [km]" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Label alignment="CENTER" text="New Distance: " textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="70.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label alignment="CENTER" text="Update Path:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="300.0" text="New Location Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="20.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <TextField fx:id="updatedPathName" prefHeight="26.0" prefWidth="286.0" promptText="Enter Name " GridPane.columnIndex="2" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="oldPathName" prefHeight="26.0" prefWidth="286.0" promptText="Enter Name " GridPane.columnIndex="2" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </TextField>
-                  <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
-                     <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                  </Label>
-                  <Separator prefWidth="200.0" GridPane.columnSpan="5" GridPane.rowSpan="2" />
-               </children>
-            </GridPane>
-         </content></Tab>
-      <Tab closable="false" text="Delete Path">
-         <content>
-            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="155.199951171875" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.800048828125" minWidth="10.0" prefWidth="148.800048828125" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Button fx:id="deleteExistingPath" mnemonicParsing="false" onAction="#deletePath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete " textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Cambria Bold" size="14.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <TextField fx:id="pathToDelete" prefHeight="26.0" prefWidth="286.0" promptText="Enter Name " GridPane.columnIndex="2" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label alignment="CENTER" text="Location : " textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Cambria" size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="100.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label alignment="CENTER" text="Delete Path:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets left="40.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Separator prefWidth="200.0" GridPane.columnSpan="5" GridPane.rowSpan="2" />
-                  <Label alignment="CENTER" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                  </Label>
-                  <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
-                     <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </GridPane>
-         </content>
-      </Tab>
-  </tabs>
+	<tabs>
+		<Tab fx:id="addPathTab" closable="false" onSelectionChanged="#RefreshSystemPaths1" text="Add Path ">
+			<content>
+				<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="869.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="155.199951171875" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="151.66666666666669" minWidth="10.0" prefWidth="147.66666666666669" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="252.33328247070312" minWidth="10.0" prefWidth="77.77774047851562" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="528.6666666666666" minWidth="10.0" prefWidth="154.44437662760413" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="383.00005086263013" minWidth="0.0" prefWidth="102.11110432942712" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="383.00005086263013" minWidth="10.0" prefWidth="100.55556233723962" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="383.00005086263013" minWidth="10.0" prefWidth="60.99997965494788" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="106.66666285196939" minHeight="10.0" prefHeight="106.66666285196939" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="190.3333536783854" minHeight="10.0" prefHeight="100.00000381469727" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="229.3333282470703" minHeight="10.0" prefHeight="72.9999694824219" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="229.3333282470703" minHeight="0.0" prefHeight="27.55555216471356" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="237.33333333333331" minHeight="0.0" prefHeight="33.44444783528644" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="351.22221883138025" minHeight="0.0" prefHeight="82.22223917643231" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="445.6666615804037" minHeight="10.0" prefHeight="69.66666666666669" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="345.3333435058594" minHeight="10.0" prefHeight="173.66666666666669" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Button fx:id="addNewPath" mnemonicParsing="false" onAction="#AddPath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="6">
+							<font>
+								<Font name="Cambria Bold" size="14.0" />
+							</font>
+							<GridPane.margin>
+								<Insets left="10.0" right="10.0" />
+							</GridPane.margin>
+						</Button>
+						<Label alignment="CENTER" text="Path Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="16.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+							<GridPane.margin>
+								<Insets left="50.0" />
+							</GridPane.margin>
+						</Label>
+						<Label alignment="CENTER" text="Difficulty:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+							<font>
+								<Font name="Cambria" size="16.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+							<GridPane.margin>
+								<Insets left="60.0" />
+							</GridPane.margin>
+						</Label>
+						<TextField fx:id="newPathDistance" prefHeight="26.0" prefWidth="286.0" promptText="Enter distance [km]" GridPane.columnIndex="2" GridPane.rowIndex="5">
+							<font>
+								<Font name="System Italic" size="12.0" />
+							</font>
+						</TextField>
+						<Label alignment="CENTER" text="Distance:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+							<font>
+								<Font name="Cambria" size="16.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+							<GridPane.margin>
+								<Insets left="60.0" />
+							</GridPane.margin>
+						</Label>
+						<Label alignment="CENTER" text="Create Path:" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+							<font>
+								<Font name="Cambria" size="21.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+							<GridPane.margin>
+								<Insets left="70.0" />
+							</GridPane.margin>
+						</Label>
+						<Separator prefWidth="200.0" GridPane.columnSpan="8" GridPane.rowSpan="2" />
+						<Label alignment="CENTER" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
+							<font>
+								<Font name="Cambria" size="24.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="30.0" />
+							</padding>
+						</Label>
+						<ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+							<image>
+								<Image url="@../../../../../../../../../../../logo.png" />
+							</image>
+						</ImageView>
+						<Label alignment="CENTER" text="Available Paths:" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="21.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<TextField fx:id="addBundleName" prefHeight="26.0" prefWidth="286.0" promptText="Enter Name" GridPane.columnIndex="2" GridPane.rowIndex="2">
+							<font>
+								<Font name="System Italic" size="12.0" />
+							</font>
+						</TextField>
+						<ComboBox fx:id="addDifficultyCombo" prefWidth="150.0" promptText="Select Difficulty" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+						<Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Name" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="4">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<ListView fx:id="pathList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+						<ListView fx:id="pathDistList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+						<Label alignment="CENTER" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text=" Distance [km]" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="4">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<ListView fx:id="pathDiffList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+						<Label alignment="CENTER" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Difficulty" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="4">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+					</children>
+				</GridPane>
+			</content>
+		</Tab>
+		<Tab fx:id="UpdatePathTab" closable="false" onSelectionChanged="#RefreshSystemPaths2" text="Update Path ">
+			<content>
+				<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="871.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="155.199951171875" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="148.800048828125" minWidth="10.0" prefWidth="148.800048828125" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="148.55558268229169" minWidth="10.0" prefWidth="128.99997965494788" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="158.22224934895837" minWidth="10.0" prefWidth="101.66668701171875" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="165.3333740234375" minWidth="10.0" prefWidth="91.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="84.44439697265625" minWidth="10.0" prefWidth="49.7777099609375" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="80.22220993041992" minHeight="10.0" prefHeight="80.22220993041992" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="139.1111068725586" minHeight="10.0" prefHeight="79.77779006958008" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="165.4444580078125" minHeight="10.0" prefHeight="107.22222391764325" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="175.3333282470703" minHeight="0.0" prefHeight="38.77777608235675" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="254.33333333333337" minHeight="10.0" prefHeight="90.66665649414062" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="240.77780151367188" minHeight="10.0" prefHeight="76.5555318196615" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="301.5555725097657" minHeight="10.0" prefHeight="138.44444783528644" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="244.33328247070312" minHeight="10.0" prefHeight="64.2222900390625" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Button fx:id="updateExistingPath" mnemonicParsing="false" onAction="#UpdatePath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update " textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="6">
+							<font>
+								<Font name="Cambria Bold" size="14.0" />
+							</font>
+							<GridPane.margin>
+								<Insets left="10.0" right="10.0" />
+							</GridPane.margin>
+						</Button>
+						<Label alignment="CENTER" prefHeight="30.0" prefWidth="300.0" text="Old Path Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="16.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+							<GridPane.margin>
+								<Insets left="10.0" />
+							</GridPane.margin>
+						</Label>
+						<Label alignment="CENTER" text="New Difficulty:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+							<font>
+								<Font name="Cambria" size="16.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+							<GridPane.margin>
+								<Insets left="20.0" />
+							</GridPane.margin>
+						</Label>
+						<TextField fx:id="updatedPathDistance" prefHeight="26.0" prefWidth="286.0" promptText="Enter distance [km]" GridPane.columnIndex="2" GridPane.rowIndex="5">
+							<font>
+								<Font name="System Italic" size="12.0" />
+							</font>
+						</TextField>
+						<Label alignment="CENTER" text="New Distance: " textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+							<font>
+								<Font name="Cambria" size="16.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+							<GridPane.margin>
+								<Insets left="20.0" />
+							</GridPane.margin>
+						</Label>
+						<Label alignment="CENTER" text="Update Path:" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+							<font>
+								<Font name="Cambria" size="24.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+							<GridPane.margin>
+								<Insets left="30.0" />
+							</GridPane.margin>
+						</Label>
+						<Label alignment="CENTER" prefHeight="30.0" prefWidth="300.0" text="New Path Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+							<font>
+								<Font name="Cambria" size="16.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+							<GridPane.margin>
+								<Insets left="10.0" />
+							</GridPane.margin>
+						</Label>
+						<TextField fx:id="updatedPathName" prefHeight="26.0" prefWidth="286.0" promptText="Enter Name " GridPane.columnIndex="2" GridPane.rowIndex="3">
+							<font>
+								<Font name="System Italic" size="12.0" />
+							</font>
+						</TextField>
+						<TextField fx:id="oldPathName" prefHeight="26.0" prefWidth="286.0" promptText="Enter Name " GridPane.columnIndex="2" GridPane.rowIndex="2">
+							<font>
+								<Font name="System Italic" size="12.0" />
+							</font>
+						</TextField>
+						<ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+							<image>
+								<Image url="@../../../../../../../../../../../logo.png" />
+							</image>
+						</ImageView>
+						<Label alignment="CENTER" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
+							<font>
+								<Font name="Cambria" size="24.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="30.0" />
+							</padding>
+						</Label>
+						<Separator prefWidth="200.0" GridPane.columnSpan="8" GridPane.rowSpan="2" />
+						<ComboBox fx:id="newDifficultyCombo" prefWidth="150.0" promptText="Select Difficulty" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+						<Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Path Name" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="3">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Difficulty" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="3">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<ListView fx:id="newPathList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+						<ListView fx:id="newDistList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+						<ListView fx:id="newDiffList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+						<Label alignment="CENTER" prefHeight="37.0" prefWidth="115.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Distance [km]" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="3">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<GridPane.margin>
+								<Insets />
+							</GridPane.margin>
+						</Label>
+						<Label alignment="CENTER" text="Available Paths:" textFill="WHITE" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="21.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+					</children>
+				</GridPane>
+			</content>
+		</Tab>
+		<Tab fx:id="DeletePathTab" closable="false" onSelectionChanged="#RefreshSystemPaths3" text="Delete Path">
+			<content>
+				<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="874.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="254.0" minWidth="10.0" prefWidth="184.6666717529297" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="252.79998779296875" minWidth="10.0" prefWidth="149.999994913737" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="237.33333333333337" minWidth="10.0" prefWidth="117.111083984375" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="244.888916015625" minWidth="10.0" prefWidth="130.66664632161456" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="243.33331298828125" minWidth="10.0" prefWidth="232.66668701171875" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="142.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="91.77777099609375" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="196.0" minHeight="10.0" prefHeight="196.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Button fx:id="deleteExistingPath" mnemonicParsing="false" onAction="#deletePath" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Remove  Path" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4">
+							<font>
+								<Font name="Cambria Bold" size="14.0" />
+							</font>
+							<GridPane.margin>
+								<Insets left="10.0" right="10.0" />
+							</GridPane.margin>
+						</Button>
+						<Separator prefWidth="200.0" GridPane.columnSpan="5" GridPane.rowSpan="2" />
+						<Label alignment="CENTER" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2">
+							<font>
+								<Font name="Cambria" size="24.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="30.0" />
+							</padding>
+						</Label>
+						<ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+							<image>
+								<Image url="@../../../../../../../../../../../logo.png" />
+							</image>
+						</ImageView>
+						<Label alignment="CENTER" text="Remove Path" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+							<font>
+								<Font name="Cambria" size="21.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+						</Label>
+						<ListView fx:id="rmPathList" onMouseClicked="#selectedPath" prefHeight="196.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+						<ListView fx:id="rmDistList" onMouseClicked="#selectedDistance" prefHeight="196.0" prefWidth="156.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+						<ListView fx:id="rmDiffList" onMouseClicked="#selectedDifficulty" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+						<Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Path Name" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<Label alignment="CENTER" prefHeight="45.0" prefWidth="237.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Distance [km]" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<Label alignment="CENTER" prefHeight="115.0" prefWidth="190.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Difficulty" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
+							<font>
+								<Font name="Cambria" size="12.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<Label alignment="CENTER" text="(Select Path from Table)" textFill="WHITE" GridPane.rowIndex="3">
+							<font>
+								<Font name="Cambria" size="10.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+						</Label>
+					</children>
+				</GridPane>
+			</content>
+		</Tab>
+	</tabs>
 </TabPane>

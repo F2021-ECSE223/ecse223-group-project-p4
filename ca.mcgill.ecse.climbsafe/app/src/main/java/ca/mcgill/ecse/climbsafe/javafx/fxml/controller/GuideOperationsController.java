@@ -39,6 +39,28 @@ public class GuideOperationsController {
 	@FXML
 	private TextField rmGuideEmail;
 
+	
+	private void clearFieldsInRegister() {
+	  guidePassword.clear();
+	  guideEmail.clear();
+	  guideFirstName.clear();
+	  guideContact.clear();
+	  guideLastName.clear(); 
+	}
+	
+	private void clearFieldsInUpdate() {
+	  newGuidePassword.clear();
+	  newGuideContact.clear();
+	  updtateGuideEmail.clear();
+	  updateGuideFirstName.clear();
+	  updateGuideLastName.clear(); 
+    }
+   
+	private void clearFieldsInDelete() {
+	  rmGuideEmail.clear();
+    }
+	
+	
 	// Event Listener on Button[#registerGuideButton].onAction
 	@FXML
 	/**
@@ -70,6 +92,9 @@ public class GuideOperationsController {
 	    //Try to register the guide in the system
 	    try {
 	      ClimbSafeFeatureSet3Controller.registerGuide(email, password, name, emergency);
+	      clearFieldsInRegister();
+	       ViewUtils.showSuccess("The guide with email "+email+" was successfully registering.");
+
 	    } catch (Exception e) { // catch and output the error
 	      ViewUtils.showError(e.getMessage());
 	    }
@@ -105,6 +130,9 @@ public class GuideOperationsController {
       //Try to update the guide in the system
         try {
 	      ClimbSafeFeatureSet3Controller.updateGuide(email, password, name, emergency);
+	      clearFieldsInUpdate();
+	       ViewUtils.showSuccess("The guide with email "+email+" was successfully updated.");
+
 	    } catch (Exception e) {    // catch and output the error
 	      ViewUtils.showError(e.getMessage());
 	    }
@@ -120,11 +148,6 @@ public class GuideOperationsController {
 	    // Get the required parameters from the UI
 	    String email = rmGuideEmail.getText();
 
-	    // Check if information entered is alphanumeric
-	    if (!ViewUtils.isAlpha(email)) {
-	      ViewUtils.showError("The input must only contain letters.");
-	      return;
-	    }
 
 	    // Check if information entered is not empty
 	    if (email.equals("")) {
@@ -136,6 +159,10 @@ public class GuideOperationsController {
 
         // Delete the Guide with the select email
 	      ClimbSafeFeatureSet1Controller.deleteGuide(email);
+	      
+	      ViewUtils.showSuccess("The guide with email "+email+" was successfully deleted.");
+	      clearFieldsInDelete();
+
 	  
 
 	}

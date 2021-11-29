@@ -11,7 +11,6 @@ import java.util.List;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet1Controller;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet2Controller;
-import ca.mcgill.ecse.climbsafe.controller.ExtraFeaturesController;
 import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
 import ca.mcgill.ecse.climbsafe.model.BookableItem;
 import ca.mcgill.ecse.climbsafe.model.BundleItem;
@@ -165,8 +164,8 @@ public class MemberOperationsController {
     private Integer totalPriceForUpdate = 0;
     private Integer totalWeightForUpdate = 0;
     
-    private int pathIndexRegister ;
-    private int pathIndexUpdate ;
+    private Integer pathIndexRegister = null;
+    private Integer pathIndexUpdate = null;
 
     private void clearFieldsInRegister() {
       addFirstName.clear(); 
@@ -213,12 +212,16 @@ public class MemberOperationsController {
       String password = addPassword.getText();
       String emergency = addEmergencyPhone.getText();
       
-      ClimbingPath path = system.getClimbingPaths().get(pathIndexRegister);
-      
+
       boolean hotel = hotelRequiredCheck.isSelected();
       boolean guide = guideRequiredCheck.isSelected();
 
 
+      if(pathIndexRegister == null) {
+        ViewUtils.showError("Please select a climbing path.");
+        return;
+      }
+      
       // Check if information entered is alphanumeric
       if (!ViewUtils.isAlpha(name)) {
         ViewUtils.showError("The input must only contain letters.");
@@ -240,7 +243,7 @@ public class MemberOperationsController {
       // Check if information entered is not empty
       if (name.equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
 
-        ViewUtils.showError("The input must not be empty.");
+        ViewUtils.showError("The input fields must not be empty.");
         return;
 
       }
@@ -287,6 +290,16 @@ public class MemberOperationsController {
           showTotalPrice.setText( totalPriceWithGuide+ " s");
           showTotalWeight.setText(totalWeight + " lb");
         }
+        
+        if(pathIndexRegister != null) {
+          ClimbingPath path = system.getClimbingPaths().get(pathIndexRegister);
+          ((Member) Member.getWithEmail(email)).setSelectedClimbingLocation(path.getLocation());
+
+        }
+        
+        
+        
+        
 
 
         // Clear the temporary lists for the next customer
@@ -295,10 +308,10 @@ public class MemberOperationsController {
         // Clear the price and weight
         totalPrice = 0;
         totalWeight = 0;
-        pathIndexRegister = 0;
+        pathIndexRegister = null;
+        
         
 
-        ((Member) Member.getWithEmail(email)).setSelectedClimbingLocation(path.getLocation());
         
         // Catch and output the error if there's one
       } catch (InvalidInputException e) {
@@ -333,6 +346,12 @@ public class MemberOperationsController {
 
       BookableItem item = BookableItem.getWithName(addedItemsList.getValue()); // Get the name of the item chosen
 
+      if(numberOfItemWanted <= 0) {
+        ViewUtils.showError("The number of items wanted must be greater than 0.");
+        return;
+
+      }
+      
       if (!(item == null)) { // Check thats the member chose an item.
 
         bookedItemsToAdd.add(item.getName()); // Add the name of the item to the list
@@ -421,10 +440,19 @@ public class MemberOperationsController {
       String email = memberEmail.getText();
       String password = updatePassword.getText();
       String emergency = updateEmergencyPhone.getText();
-      ClimbingPath path =  system.getClimbingPaths().get(pathIndexUpdate);
+      
+
       boolean hotel = updateHotelRequiredCheck.isSelected();
       boolean guide = updateGuideRequiredCheck.isSelected();
 
+      
+      if(pathIndexUpdate == null) {
+        ViewUtils.showError("Please select a climbing path.");
+        return;
+
+      }
+      
+      
       // Check if information entered is alphanumeric
       if (!ViewUtils.isAlpha(name)) {
         ViewUtils.showError("The input must only contain letters.");
@@ -444,7 +472,7 @@ public class MemberOperationsController {
       // Check if information entered is not empty
       if (name.equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
 
-        ViewUtils.showError("The input must not be empty.");
+        ViewUtils.showError("The input fields must not be empty.");
         return;
 
       }
@@ -486,7 +514,16 @@ public class MemberOperationsController {
           showTotalWeight1.setText( totalPriceWithGuide+ " s");
         }
 
-        // Set the price and weight on the screen
+        
+        
+        
+        if(pathIndexUpdate != null) {
+          ClimbingPath path =  system.getClimbingPaths().get(pathIndexUpdate);
+          ((Member) Member.getWithEmail(email)).setSelectedClimbingLocation(path.getLocation());
+
+        }
+        
+      // Set the price and weight on the screen
 
         
         // Clear the temporary lists for the next customer
@@ -496,8 +533,8 @@ public class MemberOperationsController {
         // Clear the price and weight
         totalPriceForUpdate = 0;
         totalWeightForUpdate = 0;
+        pathIndexUpdate =  null;
         
-        ((Member) Member.getWithEmail(email)).setSelectedClimbingLocation(path.getLocation());
 
 
 
@@ -532,6 +569,12 @@ public class MemberOperationsController {
 
 
       BookableItem item = BookableItem.getWithName(updateItemName.getValue());
+      
+      if(numberOfItemWanted <= 0) {
+        ViewUtils.showError("The number of items wanted must be greater than 0.");
+        return;
+
+      }
 
       if (!(item == null)) { // Check thats the member chose an item.
 
@@ -624,7 +667,7 @@ public class MemberOperationsController {
       // Check if information entered is not empty
       if (email.equals("")) {
 
-        ViewUtils.showError("The input must not be empty.");
+        ViewUtils.showError("The input field must not be empty.");
         return;
 
       }
@@ -634,7 +677,7 @@ public class MemberOperationsController {
       ClimbSafeFeatureSet1Controller.deleteMember(email);
       clearFieldsInDelete();
 
-      ViewUtils.showSuccess("The account with email "+email+" was successfully deleted.");
+      ViewUtils.showSuccess("The member with email "+email+" was successfully deleted.");
 
     }
 
