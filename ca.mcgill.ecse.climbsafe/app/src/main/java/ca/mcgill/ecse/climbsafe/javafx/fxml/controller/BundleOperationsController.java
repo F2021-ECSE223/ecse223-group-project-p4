@@ -283,7 +283,7 @@ public class BundleOperationsController {
       ViewUtils.showError("new Discount can only be an integer.");
       return;
     }
-    // Call the coontroller method, while passing parameters. If any exception is thrown, display it
+    // Call the controller method, while passing parameters. If any exception is thrown, display it
     // in a dialog box.
     try {
       ClimbSafeFeatureSet5Controller.updateEquipmentBundle(oldName, name, discount,
