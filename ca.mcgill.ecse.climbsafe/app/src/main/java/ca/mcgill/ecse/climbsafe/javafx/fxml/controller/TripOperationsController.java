@@ -25,14 +25,14 @@ public class TripOperationsController {
 
   // Event Listener on Button[#startTripButton].onAction
   @FXML
-  
+
   /**
    * Starts all the trips for a given week
    * 
    * @author Matthieu Hakim
    * @param event
    */
-  
+
   public void startTrips(ActionEvent event) {
 
     int nrWeeks = -1;
@@ -56,7 +56,7 @@ public class TripOperationsController {
 
   // Event Listener on Button[#finishTripButton].onAction
   @FXML
-  
+
   /**
    * Finish the trip of a given member
    * 

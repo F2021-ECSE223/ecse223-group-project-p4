@@ -20,7 +20,7 @@ public class TripPaymentController {
 
   // Event Listener on Button[#payButtton].onAction
   @FXML
-  
+
   /**
    * Pays the trip for a certain member with a certain authorization code
    * 
