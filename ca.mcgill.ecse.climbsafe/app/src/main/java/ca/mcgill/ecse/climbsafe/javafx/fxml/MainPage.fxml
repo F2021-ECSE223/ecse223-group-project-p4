@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="710.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.MainPageController">
@@ -59,9 +58,9 @@
 						<fx:include source="pages/TripOperations.fxml" />
 					</content>
 				</Tab>
-				<Tab text="Review Trips">
+				<Tab onSelectionChanged="#refreshReviewTab" text="Review Trips">
 					<content>
-						<fx:include source="pages/ReviewOperations.fxml" />
+						<fx:include fx:id="reviewTab" source="pages/ReviewOperations.fxml" />
 					</content>
 				</Tab>
 			</tabs>
