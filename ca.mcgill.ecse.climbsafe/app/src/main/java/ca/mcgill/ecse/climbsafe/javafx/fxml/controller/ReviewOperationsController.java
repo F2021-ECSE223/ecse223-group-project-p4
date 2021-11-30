@@ -14,49 +14,50 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 
 public class ReviewOperationsController {
-	@FXML
-	private Button submitTripReview;
-	@FXML
-	private TextField memberEmailTripReview;
-	@FXML
-	private TextField commentTripReview;
+  @FXML
+  private Button submitTripReview;
+  @FXML
+  private TextField memberEmailTripReview;
+  @FXML
+  private TextField commentTripReview;
 
-	
-	private String[] rating= {"VeryPoor", "Poor", "Neutral", "Good", "VeryGood"};
 
-	@FXML
-	private ComboBox<String> ratingTripReview;
-	
+  private String[] rating = {"VeryPoor", "Poor", "Neutral", "Good", "VeryGood"};
 
-	public void initialize() {
-	  ratingTripReview.getItems().clear();
-	  for(int  i = 0; i<5; i++) {
-	    ratingTripReview.getItems().add(rating[i]);
-	  }
-	}
-	
-	// Event Listener on Button[#submitTripReview].onAction
-	@FXML
-	public void submitReviewAction(ActionEvent event){
-	  
-	  ratingTripReview.setItems(FXCollections.observableArrayList(rating));
-	  
-	  if(memberEmailTripReview.getText().isBlank()) {
-        ViewUtils.showError("Please enter an email address.");
-         return;
-      }
-	  
-	  if (ratingTripReview.getSelectionModel().isEmpty()) {
-	    ViewUtils.showError("Please select a rating.");
-	    return;
-	  }
-	  try {
-	  ExtraFeaturesController.rateClimb(memberEmailTripReview.getText(), ratingTripReview.getValue(), commentTripReview.getText());
-	  } catch (Exception e) {
-	    ViewUtils.showError("Your email does not exist in the system.");
-	    return;
-	  }
-	  
-	  ViewUtils.showSuccess("Your review was successfully submitted.");
-	}
+  @FXML
+  private ComboBox<String> ratingTripReview;
+
+
+  public void initialize() {
+    ratingTripReview.getItems().clear();
+    for (int i = 0; i < 5; i++) {
+      ratingTripReview.getItems().add(rating[i]);
+    }
+  }
+
+  // Event Listener on Button[#submitTripReview].onAction
+  @FXML
+  public void submitReviewAction(ActionEvent event) {
+
+    ratingTripReview.setItems(FXCollections.observableArrayList(rating));
+
+    if (memberEmailTripReview.getText().isBlank()) {
+      ViewUtils.showError("Please enter an email address.");
+      return;
+    }
+
+    if (ratingTripReview.getSelectionModel().isEmpty()) {
+      ViewUtils.showError("Please select a rating.");
+      return;
+    }
+    try {
+      ExtraFeaturesController.rateClimb(memberEmailTripReview.getText(),
+          ratingTripReview.getValue(), commentTripReview.getText());
+    } catch (Exception e) {
+      ViewUtils.showError("Your email does not exist in the system.");
+      return;
+    }
+
+    ViewUtils.showSuccess("Your review was successfully submitted.");
+  }
 }

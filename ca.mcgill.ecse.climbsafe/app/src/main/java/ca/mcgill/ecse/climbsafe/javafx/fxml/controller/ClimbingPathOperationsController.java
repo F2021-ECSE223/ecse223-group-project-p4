@@ -161,8 +161,8 @@ public class ClimbingPathOperationsController {
       return;
     }
     try {
-      ExtraFeaturesController.updateClimbingPath(oldPathName.getText().trim(), updatedPathName.getText(),
-          Integer.parseInt(updatedPathDistance.getText()),
+      ExtraFeaturesController.updateClimbingPath(oldPathName.getText().trim(),
+          updatedPathName.getText(), Integer.parseInt(updatedPathDistance.getText()),
           newDifficultyCombo.getValue().toString());
       ViewUtils.showSuccess("Successfully updated your path.");
       updatedPathName.clear();
@@ -199,7 +199,7 @@ public class ClimbingPathOperationsController {
     }
     try {
       String toBeDeleted = rmPathList.getSelectionModel().getSelectedItem().getText();
-    
+
       ExtraFeaturesController.deleteClimbingPath(toBeDeleted);
       refreshPaths(rmPathList, rmDistList, rmDiffList);
       ViewUtils.showSuccess("Successfully deleted path \"" + toBeDeleted + "\" from the system.");

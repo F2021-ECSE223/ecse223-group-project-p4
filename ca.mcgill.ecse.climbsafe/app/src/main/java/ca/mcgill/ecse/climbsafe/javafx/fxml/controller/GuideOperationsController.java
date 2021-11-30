@@ -47,20 +47,21 @@ public class GuideOperationsController {
   @FXML
   private ListView<Label> guideEmailList;
 
-  
+
   public void initialize() {
     guideList.getItems().clear();
     guideEmailList.getItems().clear();
-    for(Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
+    for (Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
       guideList.getItems().add(new Label(guide.getName()));
       guideEmailList.getItems().add(new Label(guide.getEmail()));
     }
   }
-  
+
   @FXML
   public void refreshGuides(Event event) {
     initialize();
   }
+
   // Event Listener on Button[#registerGuideButton].onAction
   @FXML
   /**
@@ -82,7 +83,8 @@ public class GuideOperationsController {
     }
 
     // Check if information entered is not empty
-    if (guideFirstName.getText().equals("")|| guideLastName.getText().equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+    if (guideFirstName.getText().equals("") || guideLastName.getText().equals("")
+        || email.equals("") || password.equals("") || emergency.equals("")) {
 
       ViewUtils.showError("The input must not be empty.");
       return;
@@ -111,7 +113,7 @@ public class GuideOperationsController {
   public void updateGuideAction(ActionEvent event) {
 
     // Get the required parameters from the UI
-    String name = updateGuideFirstName.getText() + " " +updateGuideLastName.getText();    
+    String name = updateGuideFirstName.getText() + " " + updateGuideLastName.getText();
     String email = updtateGuideEmail.getText();
     String password = newGuidePassword.getText();
     String emergency = newGuideContact.getText();
@@ -123,7 +125,8 @@ public class GuideOperationsController {
     }
 
     // Check if information entered is not empty
-    if (updateGuideFirstName.getText().equals("") || updateGuideLastName.getText().equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+    if (updateGuideFirstName.getText().equals("") || updateGuideLastName.getText().equals("")
+        || email.equals("") || password.equals("") || emergency.equals("")) {
 
       ViewUtils.showError("The input must not be empty.");
       return;
@@ -138,7 +141,7 @@ public class GuideOperationsController {
     } catch (Exception e) { // catch and output the error
       ViewUtils.showError(e.getMessage());
     }
-    
+
   }
 
 
@@ -163,15 +166,15 @@ public class GuideOperationsController {
 
     // Delete the Guide with the select email
     ClimbSafeFeatureSet1Controller.deleteGuide(email);
-   
-    //Show that the guide with the email was successfully deleted
+
+    // Show that the guide with the email was successfully deleted
     ViewUtils.showSuccess("The guide with email " + email + " was successfully deleted.");
-    
+
     clearFieldsInDelete();
 
   }
-  
-  
+
+
   /**
    * 
    */
@@ -202,7 +205,6 @@ public class GuideOperationsController {
     rmGuideEmail.clear();
   }
 
-  
-  
-  
+
+
 }

@@ -29,7 +29,7 @@ public class SetupNMCController {
     int pricePerGuide;
     Date startDate;
     int nrWeeks;
-    
+
     if (this.startDate.getValue() == null) {
       ViewUtils.showError("Please choose a date");
       return;
@@ -41,7 +41,7 @@ public class SetupNMCController {
       ViewUtils.showError("The price per guide must be an integer");
       return;
     }
-    
+
     startDate = Date.valueOf(this.startDate.getValue());
     Date currentDate = Date.valueOf(java.time.LocalDate.now());
 

@@ -246,7 +246,8 @@ public class MemberOperationsController {
 
 
     // Check if information entered is not empty
-    if (addFirstName.getText().equals("")||addLastName.getText().equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+    if (addFirstName.getText().equals("") || addLastName.getText().equals("") || email.equals("")
+        || password.equals("") || emergency.equals("")) {
 
       ViewUtils.showError("The input fields must not be empty.");
       return;
@@ -309,7 +310,7 @@ public class MemberOperationsController {
       bookedItemsToAdd.clear();
       numberOfItemsToAdd.clear();
       allBookedItemsList.clear();
-      
+
       refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
 
       refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
@@ -480,7 +481,8 @@ public class MemberOperationsController {
     }
 
     // Check if information entered is not empty
-    if (updateFirstName.getText().equals("") ||updateLastName.getText().equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+    if (updateFirstName.getText().equals("") || updateLastName.getText().equals("")
+        || email.equals("") || password.equals("") || emergency.equals("")) {
 
       ViewUtils.showError("The input fields must not be empty.");
       return;
@@ -489,8 +491,9 @@ public class MemberOperationsController {
 
     try {
       ClimbSafeFeatureSet2Controller.updateMember(email, password, name, emergency,
-          numberOfWeeksWanted, guide, hotel, bookedItemsToUpdate, numberOfItemsToUpdate); // Try to Update
-                                                                                    // member
+          numberOfWeeksWanted, guide, hotel, bookedItemsToUpdate, numberOfItemsToUpdate); // Try to
+                                                                                          // Update
+      // member
 
       // Compute the total price and weight of the item chosen by the member and if the member
       // desires a guide
@@ -500,7 +503,7 @@ public class MemberOperationsController {
 
       registrationSucessfulMessage1.setText("Update successfully processed for member " + name);
       clearFieldsInUpdate();
-      
+
 
 
       if (!guide)
@@ -540,7 +543,7 @@ public class MemberOperationsController {
       bookedItemsToUpdate.clear();
       numberOfItemsToUpdate.clear();
       updateAllBookedItemsList.clear();
-      
+
       refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
 
       refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);

@@ -62,6 +62,7 @@ public class EquipmentOperationsController {
   public void initialize() {
     refreshEquipmentList(SystemEquipment);
   }
+
   public void RefreshSystemEquipment(Event event) {
     refreshEquipmentList(SystemEquipment);
   }
