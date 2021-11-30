@@ -29,7 +29,7 @@ public class EquipmentOperationsController {
   @FXML
   private TextField addEqPrice;
   @FXML
-  private ListView<Label> SystemEquipment;
+  private ListView<Label> SystemEquipment = new ListView<Label>();
   @FXML
   private Tab EqTab2;
   @FXML
@@ -41,7 +41,7 @@ public class EquipmentOperationsController {
   @FXML
   private TextField updtEqNewPrice;
   @FXML
-  private ListView<Label> SystemEquipment1;
+  private ListView<Label> SystemEquipment1 = new ListView<Label>();
   @FXML
   private TextField updtEqName;
   @FXML
@@ -49,7 +49,7 @@ public class EquipmentOperationsController {
   @FXML
   private Button deleteEquipmentButton;
   @FXML
-  private ListView<Label> equipmentList;
+  private ListView<Label> equipmentList = new ListView<Label>();
 
   // Event Listener on Tab[#EqTab1].onSelectionChanged
   @FXML

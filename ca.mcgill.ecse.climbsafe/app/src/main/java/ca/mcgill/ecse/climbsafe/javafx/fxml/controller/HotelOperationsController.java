@@ -41,17 +41,17 @@ public class HotelOperationsController {
   private Button buttonDeleteHotel;
 
   @FXML
-  private ListView<Label> HotelList;
+  private ListView<Label> HotelList = new ListView<Label>();
   @FXML
-  private ListView<Label> RatingList;
+  private ListView<Label> RatingList = new ListView<Label>();
   @FXML
-  private ListView<Label> HotelList2;
+  private ListView<Label> HotelList2 = new ListView<Label>();
   @FXML
-  private ListView<Label> RatingList2;
+  private ListView<Label> RatingList2 = new ListView<Label>();
   @FXML
-  private ListView<Label> rmHotelList;
+  private ListView<Label> rmHotelList = new ListView<Label>();
   @FXML
-  private ListView<Label> rmRatingList;
+  private ListView<Label> rmRatingList = new ListView<Label>();
 
 
 

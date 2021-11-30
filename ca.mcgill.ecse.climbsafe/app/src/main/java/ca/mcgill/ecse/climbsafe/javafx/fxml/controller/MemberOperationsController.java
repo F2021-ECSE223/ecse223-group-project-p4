@@ -64,19 +64,19 @@ public class MemberOperationsController {
   @FXML
   private TextField addBundlesQuantities;
   @FXML
-  private ComboBox<String> addedItemsList;
+  private ComboBox<String> addedItemsList = new ComboBox<String>();
   @FXML
-  private ComboBox<String> addedBundlesList;
+  private ComboBox<String> addedBundlesList = new ComboBox<String>();
   @FXML
-  private ListView<Label> listOfItemsChosen;
+  private ListView<Label> listOfItemsChosen = new ListView<Label>();
   @FXML
-  private ListView<Label> listOfNumberOfItemsChosen;
+  private ListView<Label> listOfNumberOfItemsChosen = new ListView<Label>();
   @FXML
   private Button removeItems;
   @FXML
   private Button addPathButton;
   @FXML
-  private ListView<Label> listOfClimbingPaths;
+  private ListView<Label> listOfClimbingPaths = new ListView<Label>();
   @FXML
   private Tab updateMemberTab;
   @FXML
@@ -106,11 +106,11 @@ public class MemberOperationsController {
   @FXML
   private TextField updateBundleQuantity;
   @FXML
-  private ComboBox<String> updateItemName;
+  private ComboBox<String> updateItemName = new ComboBox<String>();
   @FXML
-  private ComboBox<String> updateBundleName;
+  private ComboBox<String> updateBundleName = new ComboBox<String>();
   @FXML
-  private ListView<Label> listOfClimbingPathsUpdate;
+  private ListView<Label> listOfClimbingPathsUpdate = new ListView<Label>();
   @FXML
   private Button updatePathButton;
   @FXML
@@ -118,7 +118,7 @@ public class MemberOperationsController {
   @FXML
   private ListView<Label> listOfItemsChosenUpdate;
   @FXML
-  private ListView<Label> listOfINumberOftemsChosenUpdate;
+  private ListView<Label> listOfINumberOftemsChosenUpdate = new ListView<Label>();
   @FXML
   private Label chosenPath;
   @FXML

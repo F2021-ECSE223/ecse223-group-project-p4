@@ -38,13 +38,13 @@ public class BundleOperationsController {
   @FXML
   private TextField addItemQuantities;
   @FXML
-  private ComboBox<String> addItemCombo;
+  private ComboBox<String> addItemCombo = new ComboBox<String>();
   @FXML
   private Button rmItemButton;
   @FXML
-  private ListView<Label> bundleEqList;
+  private ListView<Label> bundleEqList = new ListView<Label>();
   @FXML
-  private ListView<Label> bundleEqQtList;
+  private ListView<Label> bundleEqQtList = new ListView<Label>();
   @FXML
   private Tab BundleTab2;
   @FXML
@@ -60,21 +60,21 @@ public class BundleOperationsController {
   @FXML
   private TextField newItemQuantity;
   @FXML
-  private ComboBox<String> newItemCombo;
+  private ComboBox<String> newItemCombo = new ComboBox<String>();
   @FXML
   private Button rmItemButton2;
   @FXML
-  private ListView<Label> newEqList;
+  private ListView<Label> newEqList = new ListView<Label>();
   @FXML
-  private ListView<Label> newQtList;
+  private ListView<Label> newQtList = new ListView<Label>();
   @FXML
   private Tab BundleTab3;
   @FXML
   private Button deleteBundleButton;
   @FXML
-  private ListView<Label> rmDiscountList;
+  private ListView<Label> rmDiscountList = new ListView<Label>();
   @FXML
-  private ListView<Label> rmBundleList;
+  private ListView<Label> rmBundleList = new ListView<Label>();
 
   private ArrayList<String> equipmentToBeAdded = new ArrayList<String>();
   private ArrayList<String> quantitiesToBeAdded = new ArrayList<String>();

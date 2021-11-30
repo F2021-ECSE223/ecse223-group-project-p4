@@ -35,13 +35,13 @@ public class ClimbingPathOperationsController {
   @FXML
   private TextField addPathName;
   @FXML
-  private ComboBox<String> addDifficultyCombo;
+  private ComboBox<String> addDifficultyCombo = new ComboBox<String>();
   @FXML
-  private ListView<Label> pathList;
+  private ListView<Label> pathList = new ListView<Label>();
   @FXML
-  private ListView<Label> distList;
+  private ListView<Label> distList = new ListView<Label>();
   @FXML
-  private ListView<Label> diffList;
+  private ListView<Label> diffList = new ListView<Label>();
   @FXML
   private Tab UpdatePathTab;
   @FXML
@@ -53,23 +53,23 @@ public class ClimbingPathOperationsController {
   @FXML
   private TextField oldPathName;
   @FXML
-  private ComboBox<String> newDifficultyCombo;
+  private ComboBox<String> newDifficultyCombo = new ComboBox<String>();
   @FXML
-  private ListView<Label> newPathList;
+  private ListView<Label> newPathList = new ListView<Label>();
   @FXML
-  private ListView<Label> newDistList;
+  private ListView<Label> newDistList = new ListView<Label>();
   @FXML
-  private ListView<Label> newDiffList;
+  private ListView<Label> newDiffList = new ListView<Label>();
   @FXML
   private Tab DeletePathTab;
   @FXML
   private Button deleteExistingPath;
   @FXML
-  private ListView<Label> rmPathList;
+  private ListView<Label> rmPathList = new ListView<Label>();
   @FXML
-  private ListView<Label> rmDistList;
+  private ListView<Label> rmDistList = new ListView<Label>();
   @FXML
-  private ListView<Label> rmDiffList;
+  private ListView<Label> rmDiffList = new ListView<Label>();
 
   /**
    * Sets the options for the difficulty and displays the available paths in the system on all
