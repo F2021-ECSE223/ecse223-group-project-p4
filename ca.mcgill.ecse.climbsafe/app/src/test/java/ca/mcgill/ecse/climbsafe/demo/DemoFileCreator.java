@@ -17,7 +17,7 @@ public class DemoFileCreator {
   public static void main(String[] args) {
     ClimbSafe climbSafe = createDemoData();
     // save
-    ClimbSafePersistence.setFilename("ClimbSafeDemo.data");
+    ClimbSafePersistence.setFilename("data.climbsafe");
     ClimbSafePersistence.save(climbSafe);
     // test
     DemoFileVerifier.verifyClimbSafe(climbSafe);
