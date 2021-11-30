@@ -20,6 +20,13 @@ public class TripPaymentController {
 
   // Event Listener on Button[#payButtton].onAction
   @FXML
+
+  /**
+   * Pays the trip for a certain member with a certain authorization code
+   * 
+   * @author Matthieu Hakm
+   * @param event
+   */
   public void payForTrip(ActionEvent event) {
 
     try {
