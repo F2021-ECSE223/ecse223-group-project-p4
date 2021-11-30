@@ -31,7 +31,7 @@
                <rowConstraints>
                   <RowConstraints />
                   <RowConstraints maxHeight="5.600004017353058" minHeight="0.0" prefHeight="0.0" />
-                  <RowConstraints maxHeight="102.39998474121094" minHeight="10.0" prefHeight="67.39998397827148" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="78.0" minHeight="78.0" prefHeight="78.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="102.39998474121094" minHeight="10.0" prefHeight="67.39998397827148" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="129.6000053405762" minHeight="10.0" prefHeight="73.80001602172851" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="171.9999755859375" minHeight="10.0" prefHeight="114.80000000000001" vgrow="SOMETIMES" />
@@ -40,7 +40,7 @@
                   <RowConstraints maxHeight="98.59995117187498" minHeight="10.0" prefHeight="88.99997558593748" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Separator GridPane.columnSpan="6" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+                  <Separator GridPane.columnSpan="6" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                   <TextField fx:id="addEqWeight" prefHeight="26.0" prefWidth="286.0" promptText="10 lbs" GridPane.columnIndex="2" GridPane.rowIndex="5">
                      <font>
                         <Font name="System Italic" size="12.0" />
@@ -60,7 +60,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="addEquipmentButton" mnemonicParsing="false" onAction="#addEquipmentAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add Equipment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <Button fx:id="addEquipmentButton" mnemonicParsing="false" onAction="#addEquipmentAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add Equipment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -101,7 +101,7 @@
                      </font>
                   </TextField>
                   <ListView fx:id="SystemEquipment" prefHeight="70.0" prefWidth="156.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                  <Label alignment="CENTER" text="Create Equipment:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label alignment="CENTER" text="Create Equipment" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Cambria" size="21.0" />
                      </font>
@@ -123,7 +123,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="597.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="6" GridPane.rowIndex="2">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="816.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="6" GridPane.rowIndex="2">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
@@ -134,9 +134,9 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="67.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <ImageView fitHeight="67.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
+                        <Image url="@logo.png" />
                      </image>
                   </ImageView>
                </children>
@@ -153,11 +153,12 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.2000122070312" minWidth="10.0" prefWidth="50.39999999999998" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.00002441406252" minWidth="10.0" prefWidth="178.40004882812502" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.199951171875" minWidth="10.0" prefWidth="46.999951171874955" />
+                  <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints />
                   <RowConstraints maxHeight="5.600004017353058" minHeight="0.0" prefHeight="0.0" />
-                  <RowConstraints maxHeight="102.39998474121094" minHeight="10.0" prefHeight="67.39998397827148" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="78.0" minHeight="78.0" prefHeight="78.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="102.39998474121094" minHeight="10.0" prefHeight="67.39998397827148" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="129.6000053405762" minHeight="10.0" prefHeight="73.80001602172851" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="171.9999755859375" minHeight="10.0" prefHeight="131.60000305175782" vgrow="SOMETIMES" />
@@ -185,7 +186,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button id="updateEquipmentButton" fx:id="updateEquipmentButton" mnemonicParsing="false" onAction="#updateEquipmentAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update Equipment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <Button id="updateEquipmentButton" fx:id="updateEquipmentButton" mnemonicParsing="false" onAction="#updateEquipmentAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update Equipment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -225,8 +226,8 @@
                         <Font name="System Italic" size="12.0" />
                      </font>
                   </TextField>
-                  <ListView id="equipmentList" fx:id="SystemEquipment1" prefHeight="115.0" prefWidth="179.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="190.0" text="Update Equipment:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <ListView id="equipmentList" fx:id="SystemEquipment1" prefHeight="115.0" prefWidth="179.0" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.rowSpan="3" />
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="190.0" text="Update Equipment" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Cambria" size="21.0" />
                      </font>
@@ -237,7 +238,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Label alignment="CENTER" text="System Equipment:" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                  <Label alignment="CENTER" text="System Equipment" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="4">
                      <font>
                         <Font name="Cambria" size="18.0" />
                      </font>
@@ -265,7 +266,7 @@
                      </font>
                   </TextField>
                   <Separator GridPane.columnSpan="6" GridPane.rowIndex="2" GridPane.rowSpan="2" />
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="597.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="5" GridPane.rowIndex="2">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="597.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="7" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
@@ -276,9 +277,9 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.columnSpan="5" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
+                        <Image url="@logo.png" />
                      </image>
                   </ImageView>
                </children>
@@ -298,7 +299,7 @@
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints />
-                  <RowConstraints maxHeight="138.39999389648438" minHeight="10.0" prefHeight="57.80000610351563" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="78.0" minHeight="78.0" prefHeight="78.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="138.39999389648438" minHeight="10.0" prefHeight="55.399993896484375" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="201.6000274658203" minHeight="10.0" prefHeight="131.60000000000002" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="171.9999755859375" minHeight="10.0" prefHeight="98.19996337890626" vgrow="SOMETIMES" />
@@ -314,7 +315,7 @@
                      </GridPane.margin>
                   </Button>
                   <ListView id="equipmentList" fx:id="equipmentList" maxWidth="-Infinity" prefHeight="70.0" prefWidth="250.0" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                  <Label alignment="CENTER" text="Remove Equipment:" textFill="WHITE" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Label alignment="CENTER" text="Remove Equipment" textFill="WHITE" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font name="Cambria" size="21.0" />
                      </font>
@@ -322,8 +323,8 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <Separator GridPane.columnSpan="6" GridPane.rowIndex="1" GridPane.rowSpan="2" />
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="658.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="6" GridPane.rowIndex="1">
+                  <Separator GridPane.columnSpan="6" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="658.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
@@ -334,9 +335,9 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                  <ImageView fitHeight="67.0" fitWidth="538.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
+                        <Image url="@logo.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" text="(Select item from table)" textFill="WHITE" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2">

@@ -33,7 +33,7 @@
                <rowConstraints>
                   <RowConstraints />
                   <RowConstraints maxHeight="5.600004017353058" minHeight="0.0" prefHeight="0.0" />
-                  <RowConstraints maxHeight="102.39998474121094" minHeight="10.0" prefHeight="67.39998397827148" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="78.0" minHeight="78.0" prefHeight="78.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="102.39998474121094" minHeight="10.0" prefHeight="98.59999084472656" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="135.0000213623047" minHeight="10.0" prefHeight="90.60000915527343" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="171.9999755859375" minHeight="10.0" prefHeight="36.59997863769533" vgrow="SOMETIMES" />
@@ -43,7 +43,7 @@
                   <RowConstraints maxHeight="178.4000122070313" minHeight="10.0" prefHeight="178.4000122070313" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Separator GridPane.columnSpan="7" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+                  <Separator GridPane.columnSpan="7" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                   <Label alignment="CENTER" text="Bundle  Items &amp; Quantities:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font name="Cambria" size="16.0" />
@@ -55,7 +55,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="addBundleButton" mnemonicParsing="false" onAction="#addBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <Button fx:id="addBundleButton" mnemonicParsing="false" onAction="#addBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="9">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -95,7 +95,7 @@
                         <Font name="System Italic" size="12.0" />
                      </font>
                   </TextField>
-                  <Label alignment="CENTER" text="Create Bundle:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label alignment="CENTER" text="Create Bundle" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Cambria" size="21.0" />
                      </font>
@@ -106,7 +106,7 @@
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="724.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="6" GridPane.rowIndex="2">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="724.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="7" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
@@ -117,12 +117,12 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="67.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <ImageView fitHeight="67.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <image>
                         <Image url="@logo.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" text="Bundle Equipment:" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                  <Label alignment="CENTER" text="Bundle Equipment" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <font>
                         <Font name="Cambria" size="21.0" />
                      </font>
@@ -141,13 +141,13 @@
                      </font>
                   </TextField>
                   <ComboBox fx:id="addItemCombo" prefHeight="26.0" prefWidth="182.0" promptText=" Available items" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                  <Button fx:id="rmItemButton" mnemonicParsing="false" onAction="#rmItem" prefHeight="30.0" prefWidth="111.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Remove Item" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+                  <Button fx:id="rmItemButton" mnemonicParsing="false" onAction="#rmItem" prefHeight="30.0" prefWidth="111.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Remove Item" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
                   </Button>
-                  <ListView fx:id="bundleEqList" onMouseClicked="#selectedEq" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                  <ListView fx:id="bundleEqQtList" onMouseClicked="#selectedQt" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                  <ListView fx:id="bundleEqList" onMouseClicked="#selectedEq" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6" GridPane.rowSpan="2" />
+                  <ListView fx:id="bundleEqQtList" onMouseClicked="#selectedQt" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="6" GridPane.rowSpan="2" />
                   <Label alignment="CENTER" prefHeight="64.0" prefWidth="192.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Name" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                      <font>
                         <Font name="Cambria" size="12.0" />
@@ -177,7 +177,7 @@
                <rowConstraints>
                   <RowConstraints />
                   <RowConstraints maxHeight="5.600004017353058" minHeight="0.0" prefHeight="0.0" />
-                  <RowConstraints maxHeight="129.60000000000002" minHeight="10.0" prefHeight="86.00001220703125" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="78.0" minHeight="78.0" prefHeight="78.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="132.99999389648437" minHeight="0.0" prefHeight="50.99999084472657" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="164.4" minHeight="9.00000610351563" prefHeight="57.40000915527344" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="171.9999755859375" minHeight="10.0" prefHeight="86.99998168945314" vgrow="SOMETIMES" />
@@ -199,7 +199,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Button id="updateEquipmentButton" fx:id="updateBundleButton" mnemonicParsing="false" onAction="#updateBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                  <Button id="updateEquipmentButton" fx:id="updateBundleButton" mnemonicParsing="false" onAction="#updateBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Update Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="7" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -239,7 +239,7 @@
                         <Font name="System Italic" size="12.0" />
                      </font>
                   </TextField>
-                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="190.0" text="Update Bundle:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="190.0" text="Update Bundle" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Cambria" size="21.0" />
                      </font>
@@ -250,9 +250,9 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="186.0" text="New Bundle Equipment:" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="236.0" text="New Bundle Equipment:" textFill="WHITE" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                      <font>
-                        <Font name="Cambria" size="14.0" />
+                        <Font name="Cambria" size="21.0" />
                      </font>
                      <opaqueInsets>
                         <Insets />
@@ -275,7 +275,7 @@
                      </font>
                   </TextField>
                   <Separator GridPane.columnSpan="7" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="690.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="6" GridPane.rowIndex="2">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="690.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="7" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
@@ -286,9 +286,9 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
+                        <Image url="@logo.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="addItemButton2" mnemonicParsing="false" onAction="#addItem2" prefHeight="22.0" prefWidth="56.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Add" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
@@ -302,7 +302,7 @@
                      </font>
                   </TextField>
                   <ComboBox fx:id="newItemCombo" prefHeight="26.0" prefWidth="182.0" promptText=" Available items" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                  <Button fx:id="rmItemButton2" mnemonicParsing="false" onAction="#rmIntem2" prefHeight="30.0" prefWidth="122.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Remove item" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                  <Button fx:id="rmItemButton2" mnemonicParsing="false" onAction="#rmIntem2" prefHeight="30.0" prefWidth="122.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Remove item" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -333,10 +333,14 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.00002441406247" minWidth="4.7999999999999545" prefWidth="115.9999877929688" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.79995117187502" minWidth="10.0" prefWidth="132.0000122070312" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.199951171875" minWidth="10.0" prefWidth="27.999975585937477" />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints />
-                  <RowConstraints maxHeight="138.39999389648438" minHeight="10.0" prefHeight="91.79999389648438" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="201.40001831054684" minHeight="10.0" prefHeight="122.39999389648438" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="201.6000274658203" minHeight="10.0" prefHeight="41.400000000000006" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="210.0" minHeight="10.0" prefHeight="210.0" vgrow="SOMETIMES" />
@@ -344,7 +348,7 @@
                   <RowConstraints maxHeight="175.00002441406252" minHeight="10.0" prefHeight="171.80003662109374" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="deleteEquipmentButton" fx:id="deleteBundleButton" mnemonicParsing="false" onAction="#deleteBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                  <Button id="deleteEquipmentButton" fx:id="deleteBundleButton" mnemonicParsing="false" onAction="#deleteBundleAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Delete Bundle" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="7" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>
@@ -352,7 +356,7 @@
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Label alignment="CENTER" text="Remove Bundle:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label alignment="CENTER" text="Remove Bundle" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Cambria" size="21.0" />
                      </font>
@@ -364,7 +368,7 @@
                      </padding>
                   </Label>
                   <Separator GridPane.columnSpan="6" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="658.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="4" GridPane.rowIndex="1">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="658.0" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
@@ -375,9 +379,9 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                  <ImageView fitHeight="67.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.columnSpan="8" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
+                        <Image url="@logo.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" text="(Select Bundle from Table)" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="2">

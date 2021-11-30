@@ -18,9 +18,10 @@
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="662.0" minWidth="10.0" prefWidth="493.59996337890635" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="524.7999877929688" minWidth="10.0" prefWidth="376.8000366210938" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="524.7999877929688" minWidth="10.0" prefWidth="376.8000366210938" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="78.0" minHeight="78.0" prefHeight="78.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="119.0" minHeight="0.0" prefHeight="63.59999389648439" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="237.00001831054686" minHeight="0.0" prefHeight="47.00001220703123" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="668.6000061035156" minHeight="10.0" prefHeight="450.9999877929688" vgrow="SOMETIMES" />
@@ -55,7 +56,7 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Label>
-      <Label alignment="CENTER" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+      <Label alignment="CENTER" text="ClimbSafe" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT">
          <font>
             <Font name="Cambria" size="24.0" />
          </font>
@@ -66,12 +67,12 @@
             <Insets left="30.0" />
          </padding>
       </Label>
-      <Button fx:id="initiateAssignment" mnemonicParsing="false" onAction="#initiateSeason" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Initiate assignment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Button fx:id="initiateAssignment" mnemonicParsing="false" onAction="#initiateSeason" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Initiate assignment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font name="Cambria Bold" size="14.0" />
          </font>
       </Button>
-      <ScrollPane GridPane.columnSpan="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" GridPane.rowSpan="2">
+      <ScrollPane GridPane.columnSpan="3" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" GridPane.rowSpan="2">
          <content>
             <TableView fx:id="assignmentTable" prefHeight="493.0" style="-fx-background-color: rgb(84,82,82);" stylesheets="@tableViewStyle.css">
               <columns>
@@ -95,11 +96,11 @@
             </TableView>
          </content>
       </ScrollPane>
-      <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+      <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="3" GridPane.halignment="RIGHT">
          <image>
-            <Image url="@../../../../../../../../../../../logo.png" />
+            <Image url="@logo.png" />
          </image>
       </ImageView>
-      <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.valignment="BOTTOM" />
+      <Separator prefWidth="200.0" GridPane.columnSpan="3" GridPane.valignment="BOTTOM" />
    </children>
 </GridPane>
