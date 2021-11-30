@@ -190,6 +190,9 @@ public class MemberOperationsController {
     updateHotelRequiredCheck.disarm();
     updateGuideRequiredCheck.disarm();
     chosenPathUpdate.setText("");
+    updateNumberWeeks.setText("");
+    updateBundleQuantity.setText("");
+    updateItemQuantity.setText("");
   }
 
   private void clearFieldsInDelete() {

@@ -60,6 +60,7 @@ public class AssignmentOperationsController {
       AssignmentController.initiateAssignment();
     } catch (InvalidInputException e) {
       ViewUtils.showError(e.getMessage());
+      initialize();
       return;
     }
 
