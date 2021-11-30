@@ -62,7 +62,7 @@ public class AssignmentOperationsController {
       ViewUtils.showError(e.getMessage());
       return;
     }
-    
+
     initialize();
     ViewUtils.showSuccess("Assignments initiated successfully.");
   }
@@ -73,22 +73,29 @@ public class AssignmentOperationsController {
     List<TOAssignment> assignments = ClimbSafeFeatureSet6Controller.getAssignments();
 
     memberNameCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("memberName"));
-    memberEmailCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("memberEmail"));
+    memberEmailCol
+        .setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("memberEmail"));
     guideNameCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("guideName"));
     guideEmailCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("guideEmail"));
     hotelNameCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("hotelName"));
     startWeekCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("startWeek"));
     endWeekCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("endWeek"));
-    guideCostCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("totalCostForGuide"));
-    equipmentCostCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("totalCostForEquipment"));
+    guideCostCol
+        .setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("totalCostForGuide"));
+    equipmentCostCol.setCellValueFactory(
+        new PropertyValueFactory<TOAssignment, Integer>("totalCostForEquipment"));
     statusCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("status"));
-    authorizationCodeCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("authorizationCode"));
-    refundCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("refundedPercentageAmount"));
+    authorizationCodeCol
+        .setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("authorizationCode"));
+    refundCol.setCellValueFactory(
+        new PropertyValueFactory<TOAssignment, Integer>("refundedPercentageAmount"));
     ratingCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("climbRating"));
     commentCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("climbComment"));
-    climbLocationCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("climbLocation"));
-    climbLengthCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("climbLength"));
-    
+    climbLocationCol
+        .setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("climbLocation"));
+    climbLengthCol
+        .setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("climbLength"));
+
     assignmentTable.getItems().setAll(assignments);
 
   }

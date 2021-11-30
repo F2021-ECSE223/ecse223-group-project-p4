@@ -11,6 +11,8 @@ public class MainPageController {
   private MemberOperationsController memberTabController;
   @FXML
   private AssignmentOperationsController assignmentTabController;
+  @FXML
+  private ReviewOperationsController reviewTabController;
 
   // Event Listener on Tab.onSelectionChanged
   @FXML
@@ -28,5 +30,11 @@ public class MainPageController {
   @FXML
   public void refreshAssignmentsTab(Event event) {
     assignmentTabController.initialize();
+  }
+
+  // Event Listener on Tab.onSelectionChanged
+  @FXML
+  public void refreshReviewTab(Event event) {
+    reviewTabController.initialize();
   }
 }
