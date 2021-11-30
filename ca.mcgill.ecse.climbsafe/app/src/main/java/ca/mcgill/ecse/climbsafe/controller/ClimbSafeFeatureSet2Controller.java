@@ -149,8 +149,8 @@ public class ClimbSafeFeatureSet2Controller {
     }
     // Update member details
     Member.getWithEmail(email).setPassword(newPassword);
-    ((NamedUser) Member.getWithEmail(email)).setName(newName);
-    ((NamedUser) Member.getWithEmail(email)).setEmergencyContact(newEmergencyContact);
+    ((Member) Member.getWithEmail(email)).setName(newName);
+    ((Member) Member.getWithEmail(email)).setEmergencyContact(newEmergencyContact);
     ((Member) Member.getWithEmail(email)).setNrWeeks(newNrWeeks);
     ((Member) Member.getWithEmail(email)).setGuideRequired(newGuideRequired);
     ((Member) Member.getWithEmail(email)).setHotelRequired(newHotelRequired);
