@@ -20,35 +20,32 @@
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.9075927734375" minWidth="10.0" prefWidth="217.17108154296875" />
 	</columnConstraints>
 	<rowConstraints>
-		<RowConstraints maxHeight="108.33333587646484" minHeight="10.0" prefHeight="108.33333587646484" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
 		<RowConstraints maxHeight="209.6666717529297" minHeight="10.0" prefHeight="94.66666412353516" vgrow="SOMETIMES" />
 		<RowConstraints maxHeight="230.66665649414062" minHeight="10.0" prefHeight="83.33331298828125" vgrow="SOMETIMES" />
 		<RowConstraints maxHeight="213.00003051757812" minHeight="10.0" prefHeight="93.66668701171875" vgrow="SOMETIMES" />
 		<RowConstraints maxHeight="188.18301391601562" minHeight="10.0" prefHeight="136.33331298828125" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<Button fx:id="payButtton" mnemonicParsing="false" onAction="#payForTrip" prefHeight="46.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Process payment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+		<Button fx:id="payButtton" mnemonicParsing="false" onAction="#payForTrip" prefHeight="24.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Process payment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
 			<font>
-				<Font size="16.0" />
+				<Font name="Cambria Bold" size="14.0" />
 			</font>
 			<GridPane.margin>
 				<Insets />
 			</GridPane.margin>
 		</Button>
-		<Label alignment="CENTER" text="     Climbsafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+		<Label alignment="CENTER" text="     ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="4" GridPane.halignment="CENTER">
 			<font>
-				<Font size="30.0" />
+				<Font size="24.0" />
 			</font>
 			<opaqueInsets>
 				<Insets />
 			</opaqueInsets>
-			<padding>
-				<Insets left="20.0" />
-			</padding>
 		</Label>
-		<Label alignment="CENTER" text="Pay for trip" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+		<Label alignment="CENTER" text="Pay for trip" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
 			<font>
-				<Font size="17.0" />
+				<Font name="Cambria" size="21.0" />
 			</font>
 			<opaqueInsets>
 				<Insets />
@@ -59,7 +56,7 @@
 		</Label>
 		<Label alignment="CENTER" text="Member email:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
 			<font>
-				<Font size="14.0" />
+				<Font name="Cambria" size="16.0" />
 			</font>
 			<opaqueInsets>
 				<Insets />
@@ -67,25 +64,25 @@
 		</Label>
 		<Label alignment="CENTER" text="Authorization Code:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
 			<font>
-				<Font size="14.0" />
+				<Font name="Cambria" size="16.0" />
 			</font>
 			<opaqueInsets>
 				<Insets />
 			</opaqueInsets>
 		</Label>
-		<TextField fx:id="authCodeTextField" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="289.0" promptText="authorization code" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+		<TextField fx:id="authCodeTextField" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="289.0" promptText="authorization code" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
 			<font>
-				<Font name="System Italic" size="14.0" />
+				<Font name="System Italic" size="12.0" />
 			</font>
 		</TextField>
-		<TextField fx:id="memberEmailTextField" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="286.0" promptText="example@mail.com" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+		<TextField fx:id="memberEmailTextField" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="286.0" promptText="example@mail.com" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
 			<font>
-				<Font name="System Italic" size="13.0" />
+				<Font name="System Italic" size="12.0" />
 			</font>
 		</TextField>
-      <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+      <ImageView fitHeight="150.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="4" GridPane.halignment="RIGHT">
          <image>
-            <Image url="@../../../../../../../../../../../logo.png" />
+            <Image url="@logo.png" />
          </image>
       </ImageView>
       <Separator prefWidth="200.0" GridPane.columnSpan="4" GridPane.valignment="BOTTOM" />

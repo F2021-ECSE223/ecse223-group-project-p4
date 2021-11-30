@@ -15,19 +15,22 @@
 
 <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="870.0" style="-fx-background-color: rgb(84,82,82); -fx-alignment: center;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.ReviewOperationsController">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="233.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="141.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="70.8" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="313.2" minWidth="10.0" prefWidth="260.3999877929688" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.0000122070313" minWidth="10.0" prefWidth="222.99997558593742" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="119.00002441406252" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="50.0" minHeight="5.0" prefHeight="116.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="100.79999694824218" minHeight="4.800000762939447" prefHeight="100.79999694824218" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="97.19999999999999" minHeight="10.0" prefHeight="90.00001831054686" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="128.99998779296874" minHeight="10.0" prefHeight="104.99998779296874" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="150.39999999999998" minHeight="5.0" prefHeight="100.80001220703127" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="145.5999877929687" minHeight="0.0" prefHeight="145.5999877929687" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Button fx:id="submitTripReview" mnemonicParsing="false" onAction="#submitReviewAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Submit Review" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <Button fx:id="submitTripReview" mnemonicParsing="false" onAction="#submitReviewAction" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Submit Review" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <font>
             <Font name="Cambria Bold" size="14.0" />
          </font>
@@ -35,7 +38,7 @@
             <Insets left="10.0" right="10.0" />
          </GridPane.margin>
       </Button>
-      <TextField fx:id="memberEmailTripReview" prefHeight="25.0" prefWidth="130.0" promptText="Enter your e-mail" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="memberEmailTripReview" prefHeight="25.0" prefWidth="130.0" promptText="Enter your e-mail" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
@@ -43,7 +46,7 @@
             <Insets />
          </GridPane.margin>
       </TextField>
-      <Label alignment="CENTER" text="E-mail Address:" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Label alignment="CENTER" text="E-mail Address:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
@@ -57,7 +60,7 @@
             <Insets />
          </GridPane.margin>
       </Label>
-      <Label alignment="CENTER" text="Climbsafe" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER">
+      <Label alignment="CENTER" text="ClimbSafe" textFill="WHITE" GridPane.columnSpan="5" GridPane.halignment="CENTER">
          <font>
             <Font name="Cambria" size="24.0" />
          </font>
@@ -68,7 +71,7 @@
             <Insets />
          </GridPane.margin>
       </Label>
-      <Label alignment="CENTER" text="Rating:" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Label alignment="CENTER" text="Rating:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
@@ -82,7 +85,7 @@
             <Insets />
          </GridPane.margin>
       </Label>
-      <Label alignment="CENTER" text="Comment (Optional):" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Label alignment="CENTER" text="Comment (Optional):" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
@@ -96,17 +99,17 @@
             <Insets />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="commentTripReview" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Enter comment" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField fx:id="commentTripReview" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Enter comment" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="ratingTripReview" prefWidth="150.0" promptText="Select Rating" visibleRowCount="5" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+      <ComboBox fx:id="ratingTripReview" prefWidth="150.0" promptText="Select Rating" visibleRowCount="5" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="5" GridPane.halignment="RIGHT">
          <image>
-            <Image url="@../../../../../../../../../../../logo.png" />
+            <Image url="@logo.png" />
          </image>
       </ImageView>
-      <Separator prefWidth="200.0" GridPane.columnSpan="3" GridPane.valignment="BOTTOM" />
+      <Separator prefWidth="200.0" GridPane.columnSpan="5" GridPane.valignment="BOTTOM" />
    </children>
 </GridPane>

@@ -30,7 +30,7 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="205.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="45.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="78.0" minHeight="0.0" prefHeight="78.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="65.0" minHeight="0.0" prefHeight="65.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="88.66667683919272" minHeight="0.0" prefHeight="24.666656494140625" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="130.66666666666666" minHeight="10.0" prefHeight="106.66667683919272" vgrow="SOMETIMES" />
@@ -98,7 +98,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" text="Climbsafe" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER">
+                  <Label alignment="CENTER" text="ClimbSafe" textFill="WHITE" GridPane.columnSpan="6" GridPane.halignment="CENTER">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
@@ -112,9 +112,9 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT">
+                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="6" GridPane.halignment="RIGHT">
                      <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
+                        <Image url="@logo.png" />
                      </image>
                   </ImageView>
                   <Separator prefWidth="200.0" GridPane.columnSpan="6" GridPane.valignment="BOTTOM" />
@@ -153,7 +153,7 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="132.44439697265625" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="100.44443639119467" minHeight="0.0" prefHeight="100.44443639119467" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="78.0" minHeight="0.0" prefHeight="78.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="222.66666920979813" minHeight="0.0" prefHeight="67.44442749023439" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="179.77774556477866" minHeight="10.0" prefHeight="37.11111958821613" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="142.2222137451172" minHeight="10.0" prefHeight="113.5555470784505" vgrow="SOMETIMES" />
@@ -243,7 +243,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="19.0" prefWidth="195.0" text="Climbsafe" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="19.0" prefWidth="195.0" text="ClimbSafe" textFill="WHITE" GridPane.columnSpan="6" GridPane.halignment="CENTER">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
@@ -254,12 +254,12 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT">
+                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="6" GridPane.halignment="RIGHT">
                      <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
+                        <Image url="@logo.png" />
                      </image>
                   </ImageView>
-                  <Separator prefWidth="200.0" GridPane.columnSpan="5" GridPane.valignment="BOTTOM" />
+                  <Separator prefWidth="200.0" GridPane.columnSpan="6" GridPane.valignment="BOTTOM" />
                   <ComboBox fx:id="updateRatingCombo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label alignment="CENTER" prefHeight="37.0" prefWidth="219.0" style="-fx-background-color: grey; -fx-font-weight: bold; -fx-border-color: white;" text="Hotel Name " textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <font>
@@ -293,7 +293,7 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="255.3333333333333" minHeight="10.0" prefHeight="122.88887532552084" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" prefHeight="28.222208658854157" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="244.11104329427084" vgrow="SOMETIMES" />
@@ -320,7 +320,7 @@
                         <Insets left="70.0" />
                      </padding>
                   </Label>
-                  <Label alignment="CENTER" text="Climbsafe" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER">
+                  <Label alignment="CENTER" text="ClimbSafe" textFill="WHITE" GridPane.columnSpan="4" GridPane.halignment="CENTER">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
@@ -345,9 +345,9 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT">
+                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="4" GridPane.halignment="RIGHT">
                      <image>
-                        <Image url="@../../../../../../../../../../../logo.png" />
+                        <Image url="@logo.png" />
                      </image>
                   </ImageView>
                   <Separator prefWidth="200.0" GridPane.columnSpan="4" GridPane.valignment="BOTTOM" />

@@ -22,14 +22,14 @@
       <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="236.4" minHeight="0.0" prefHeight="54.19999694824219" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="78.0" minHeight="0.0" prefHeight="78.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="272.8" minHeight="10.0" prefHeight="76.60000305175782" valignment="CENTER" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="306.4" minHeight="10.0" prefHeight="87.20001831054685" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="309.5999816894531" minHeight="10.0" prefHeight="98.39998779296872" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="311.20001831054685" minHeight="10.0" prefHeight="285.6000122070312" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Button fx:id="initiateSeason" mnemonicParsing="false" onAction="#initiateSeason" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Initiate season" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Button fx:id="initiateSeason" mnemonicParsing="false" onAction="#initiateSeason" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Initiate Season" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <font>
             <Font name="Cambria Bold" size="14.0" />
          </font>
@@ -87,24 +87,21 @@
             <Insets />
          </GridPane.margin>
       </TextField>
-      <Label alignment="CENTER" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="4" GridPane.halignment="CENTER">
+      <Label alignment="CENTER" text="ClimbSafe" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="5" GridPane.halignment="CENTER">
          <font>
             <Font name="Cambria" size="24.0" />
          </font>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-         <padding>
-            <Insets left="30.0" />
-         </padding>
       </Label>
       <DatePicker fx:id="startDate" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <ImageView fitHeight="67.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+      <ImageView fitHeight="67.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="RIGHT">
          <image>
-            <Image url="@../../../../../../../../../../../logo.png" />
+            <Image url="@logo.png" />
          </image>
       </ImageView>
-      <Separator prefWidth="200.0" valignment="TOP" GridPane.columnSpan="4" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM">
+      <Separator prefWidth="1.0" valignment="TOP" GridPane.columnSpan="4" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
