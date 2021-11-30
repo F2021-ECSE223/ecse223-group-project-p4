@@ -306,6 +306,11 @@ public class MemberOperationsController {
       bookedItemsToAdd.clear();
       numberOfItemsToAdd.clear();
       allBookedItemsList.clear();
+      
+      refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
+
+      refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
+
       // Clear the price and weight
       totalPrice = 0;
       totalWeight = 0;
@@ -492,6 +497,7 @@ public class MemberOperationsController {
 
       registrationSucessfulMessage1.setText("Update successfully processed for member " + name);
       clearFieldsInUpdate();
+      
 
 
       if (!guide)
@@ -531,6 +537,12 @@ public class MemberOperationsController {
       bookedItemsToUpdate.clear();
       numberOfItemsToUpdate.clear();
       updateAllBookedItemsList.clear();
+      
+      refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
+
+      refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);
+
+
 
       // Clear the price and weight
       totalPriceForUpdate = 0;
