@@ -243,7 +243,7 @@ public class MemberOperationsController {
 
 
     // Check if information entered is not empty
-    if (name.equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+    if (addFirstName.getText().equals("")||addLastName.getText().equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
 
       ViewUtils.showError("The input fields must not be empty.");
       return;
@@ -252,16 +252,17 @@ public class MemberOperationsController {
 
 
     try {
-      ClimbSafeFeatureSet2Controller.registerMember(email, password, name, emergency,
-          numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd); // Try to
-                                                                                    // register
-                                                                                    // member
 
       // Compute the total price and weight of the item chosen by the member and if the member
       // desires a guide
       totalPrice =
           computeTotalCost(numberOfWeeksWanted, guide, allBookedItemsList, numberOfItemsToAdd);
       totalWeight = computeTotalWeight(allBookedItemsList, numberOfItemsToAdd);
+
+      ClimbSafeFeatureSet2Controller.registerMember(email, password, name, emergency,
+          numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd); // Try to
+                                                                                    // register
+                                                                                    // member
 
       registrationSucessfulMessage
           .setText("Registration successfully processed for member " + name);
@@ -304,6 +305,7 @@ public class MemberOperationsController {
       // Clear the temporary lists for the next customer
       bookedItemsToAdd.clear();
       numberOfItemsToAdd.clear();
+      allBookedItemsList.clear();
       // Clear the price and weight
       totalPrice = 0;
       totalWeight = 0;
@@ -470,7 +472,7 @@ public class MemberOperationsController {
     }
 
     // Check if information entered is not empty
-    if (name.equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+    if (updateFirstName.getText().equals("") ||updateLastName.getText().equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
 
       ViewUtils.showError("The input fields must not be empty.");
       return;
@@ -528,6 +530,7 @@ public class MemberOperationsController {
       // Clear the temporary lists for the next customer
       bookedItemsToUpdate.clear();
       numberOfItemsToUpdate.clear();
+      updateAllBookedItemsList.clear();
 
       // Clear the price and weight
       totalPriceForUpdate = 0;
@@ -674,8 +677,6 @@ public class MemberOperationsController {
     // Delete the member with the select email
     ClimbSafeFeatureSet1Controller.deleteMember(email);
     clearFieldsInDelete();
-
-    ViewUtils.showSuccess("The member with email " + email + " was successfully deleted.");
 
   }
 

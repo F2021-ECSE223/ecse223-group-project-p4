@@ -70,7 +70,7 @@ public class GuideOperationsController {
   public void registerGuideAction(ActionEvent event) {
 
     // Get the required parameters from the UI
-    String name = guideFirstName.getText() + guideLastName.getText();
+    String name = guideFirstName.getText() + " " + guideLastName.getText();
     String email = guideEmail.getText();
     String password = guidePassword.getText();
     String emergency = guideContact.getText();
@@ -82,7 +82,7 @@ public class GuideOperationsController {
     }
 
     // Check if information entered is not empty
-    if (name.equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+    if (guideFirstName.getText().equals("")|| guideLastName.getText().equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
 
       ViewUtils.showError("The input must not be empty.");
       return;
@@ -111,7 +111,7 @@ public class GuideOperationsController {
   public void updateGuideAction(ActionEvent event) {
 
     // Get the required parameters from the UI
-    String name = updateGuideFirstName.getText() + updateGuideLastName.getText();
+    String name = updateGuideFirstName.getText() + " " +updateGuideLastName.getText();    
     String email = updtateGuideEmail.getText();
     String password = newGuidePassword.getText();
     String emergency = newGuideContact.getText();
@@ -123,7 +123,7 @@ public class GuideOperationsController {
     }
 
     // Check if information entered is not empty
-    if (name.equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
+    if (updateGuideFirstName.getText().equals("") || updateGuideLastName.getText().equals("") || email.equals("") || password.equals("") || emergency.equals("")) {
 
       ViewUtils.showError("The input must not be empty.");
       return;
