@@ -18,14 +18,14 @@
 						<fx:include fx:id="memberTab" source="pages/MemberOperations.fxml" />
 					</content>
 				</Tab>
-				<Tab text="Guide Registration">
+				<Tab onSelectionChanged="#refreshGuideTab" text="Guide Registration">
 					<content>
-						<fx:include source="pages/GuideOperations.fxml" />
+						<fx:include fx:id="guideTab" source="pages/GuideOperations.fxml" />
 					</content>
 				</Tab>
-				<Tab text="Equipment Items">
+				<Tab onSelectionChanged="#refreshEquipmentTab" text="Equipment Items">
 					<content>
-						<fx:include source="pages/EquipmentOperations.fxml" />
+						<fx:include fx:id="equipmentTab" source="pages/EquipmentOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab onSelectionChanged="#refreshBundleTab" text="Bundles">

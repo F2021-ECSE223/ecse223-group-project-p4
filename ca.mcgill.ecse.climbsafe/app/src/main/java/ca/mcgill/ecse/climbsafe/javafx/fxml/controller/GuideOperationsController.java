@@ -3,11 +3,15 @@ package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
-
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet1Controller;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet3Controller;
+import ca.mcgill.ecse.climbsafe.model.Guide;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 
 public class GuideOperationsController {
   @FXML
@@ -38,9 +42,25 @@ public class GuideOperationsController {
   private Button deleteGuideButton;
   @FXML
   private TextField rmGuideEmail;
+  @FXML
+  private ListView<Label> guideList;
+  @FXML
+  private ListView<Label> guideEmailList;
 
-
-
+  
+  public void initialize() {
+    guideList.getItems().clear();
+    guideEmailList.getItems().clear();
+    for(Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
+      guideList.getItems().add(new Label(guide.getName()));
+      guideEmailList.getItems().add(new Label(guide.getEmail()));
+    }
+  }
+  
+  @FXML
+  public void refreshGuides(Event event) {
+    initialize();
+  }
   // Event Listener on Button[#registerGuideButton].onAction
   @FXML
   /**
@@ -74,6 +94,7 @@ public class GuideOperationsController {
       ClimbSafeFeatureSet3Controller.registerGuide(email, password, name, emergency);
       clearFieldsInRegister();
       ViewUtils.showSuccess("The guide with email " + email + " was successfully registering.");
+      initialize();
 
     } catch (Exception e) { // catch and output the error
       ViewUtils.showError(e.getMessage());
@@ -117,7 +138,7 @@ public class GuideOperationsController {
     } catch (Exception e) { // catch and output the error
       ViewUtils.showError(e.getMessage());
     }
-
+    
   }
 
 

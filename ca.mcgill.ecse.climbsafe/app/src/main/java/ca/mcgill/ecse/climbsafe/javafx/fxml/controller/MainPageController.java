@@ -13,13 +13,20 @@ public class MainPageController {
   private AssignmentOperationsController assignmentTabController;
   @FXML
   private ReviewOperationsController reviewTabController;
-
+  @FXML
+  private GuideOperationsController guideTabController;
+  @FXML
+  private EquipmentOperationsController equipmentTabController;
   // Event Listener on Tab.onSelectionChanged
   @FXML
   public void refreshMemberTab(Event event) {
     memberTabController.initialize();
   }
-
+  
+  @FXML
+  public void refreshEquipmentTab(Event event) {
+    equipmentTabController.initialize();
+  }
   // Event Listener on Tab.onSelectionChanged
   @FXML
   public void refreshBundleTab(Event event) {
@@ -36,5 +43,10 @@ public class MainPageController {
   @FXML
   public void refreshReviewTab(Event event) {
     reviewTabController.initialize();
+  }
+  
+  @FXML
+  public void refreshGuideTab(Event event) {
+    guideTabController.initialize();
   }
 }

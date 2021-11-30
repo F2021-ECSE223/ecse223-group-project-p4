@@ -147,7 +147,10 @@ public class BundleOperationsController {
       addItemCombo.getSelectionModel().clearSelection();
       addItemQuantities.clear();
       addBundleDiscount.clear();
-
+      bundleEqList.getItems().clear();
+      bundleEqList.getSelectionModel().clearSelection();
+      bundleEqQtList.getItems().clear();
+      bundleEqQtList.getSelectionModel().clearSelection();
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }
@@ -296,6 +299,10 @@ public class BundleOperationsController {
       newItemCombo.getSelectionModel().clearSelection();
       newItemQuantity.clear();
       newBundleDiscount.clear();
+      newEqList.getItems().clear();
+      newEqList.getSelectionModel().clearSelection();
+      newQtList.getItems().clear();
+      newQtList.getSelectionModel().clearSelection();
     } catch (Exception e) {
       ViewUtils.showError(e.getMessage());
     }

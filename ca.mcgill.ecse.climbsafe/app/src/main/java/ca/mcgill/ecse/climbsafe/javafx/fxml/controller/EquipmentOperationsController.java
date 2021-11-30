@@ -59,6 +59,9 @@ public class EquipmentOperationsController {
    * @param event
    * @author Adam Kazma
    */
+  public void initialize() {
+    refreshEquipmentList(SystemEquipment);
+  }
   public void RefreshSystemEquipment(Event event) {
     refreshEquipmentList(SystemEquipment);
   }
