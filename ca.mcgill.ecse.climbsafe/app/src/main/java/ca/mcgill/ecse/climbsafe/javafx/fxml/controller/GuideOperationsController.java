@@ -167,9 +167,6 @@ public class GuideOperationsController {
     // Delete the Guide with the select email
     ClimbSafeFeatureSet1Controller.deleteGuide(email);
 
-    // Show that the guide with the email was successfully deleted
-    ViewUtils.showSuccess("The guide with email " + email + " was successfully deleted.");
-
     clearFieldsInDelete();
 
   }

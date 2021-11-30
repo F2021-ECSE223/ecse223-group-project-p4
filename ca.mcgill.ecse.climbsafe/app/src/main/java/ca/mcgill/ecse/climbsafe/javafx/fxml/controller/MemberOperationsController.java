@@ -68,10 +68,6 @@ public class MemberOperationsController {
   @FXML
   private ComboBox<String> addedBundlesList;
   @FXML
-  private Label showTotalWeight;
-  @FXML
-  private Label showTotalPrice;
-  @FXML
   private ListView<Label> listOfItemsChosen;
   @FXML
   private ListView<Label> listOfNumberOfItemsChosen;
@@ -81,8 +77,6 @@ public class MemberOperationsController {
   private Button addPathButton;
   @FXML
   private ListView<Label> listOfClimbingPaths;
-  @FXML
-  private Label registrationSucessfulMessage;
   @FXML
   private Tab updateMemberTab;
   @FXML
@@ -125,12 +119,6 @@ public class MemberOperationsController {
   private ListView<Label> listOfItemsChosenUpdate;
   @FXML
   private ListView<Label> listOfINumberOftemsChosenUpdate;
-  @FXML
-  private Label registrationSucessfulMessage1;
-  @FXML
-  private Label showTotalPrice1;
-  @FXML
-  private Label showTotalWeight1;
   @FXML
   private Label chosenPath;
   @FXML
@@ -268,34 +256,27 @@ public class MemberOperationsController {
                                                                                     // register
                                                                                     // member
 
-      registrationSucessfulMessage
-          .setText("Registration successfully processed for member " + name);
+  
       clearFieldsInRegister();
 
       if (!guide) {
         // Output the price and weight without taking into account the guide since the member does
         // not want it
         ViewUtils.showSuccess("Registration successfully processed for member " + name + "." + '\n'
-            + "Total Price of equipment is " + totalPrice + " s and the the total weight is "
+            + "Total Price of equipment is " + totalPrice + " $ and the the total weight is "
             + totalWeight + " lb.");
 
-        // Set the price and weight on the screen
-        showTotalWeight.setText(totalWeight + " lb");
-        showTotalPrice.setText(totalPrice + " s");
+
       } else {
         // Output the price and weight taking into account the guide since the member wants it
 
         int totalCostForGuide = system.getPriceOfGuidePerWeek() * numberOfWeeksWanted;
 
-        int totalPriceWithGuide = totalCostForGuide + totalPrice;
 
         ViewUtils.showSuccess("Registration successfully processed for member " + name + "." + '\n'
-            + "Total Price of equipment is " + totalPrice + " s, total price for the guide is "
-            + totalCostForGuide + " s and the the total weight is " + totalWeight + " lb.");
+            + "Total Price of equipment is " + totalPrice + " $, total price for the guide is "
+            + totalCostForGuide + " $ and the the total weight is " + totalWeight + " lb.");
 
-        // Set the price and weight on the screen
-        showTotalPrice.setText(totalPriceWithGuide + " s");
-        showTotalWeight.setText(totalWeight + " lb");
       }
 
       if (pathIndexRegister != null) {
@@ -501,7 +482,6 @@ public class MemberOperationsController {
           numberOfItemsToUpdate);
       totalWeightForUpdate = computeTotalWeight(updateAllBookedItemsList, numberOfItemsToUpdate);
 
-      registrationSucessfulMessage1.setText("Update successfully processed for member " + name);
       clearFieldsInUpdate();
 
 
@@ -511,7 +491,7 @@ public class MemberOperationsController {
         // not want it
         ViewUtils.showSuccess("Update successfully processed for member " + name + "." + '\n'
             + "Total Price of equipment is " + totalPriceForUpdate
-            + " s and the the total weight is " + totalWeightForUpdate + " lb.");
+            + " $ and the the total weight is " + totalWeightForUpdate + " lb.");
 
       else {
 
@@ -520,12 +500,11 @@ public class MemberOperationsController {
         // Output the price and weight taking into account the guide since the member wants it
         ViewUtils.showSuccess("Update successfully processed for member " + name + '\n'
             + "Total Price of equipment is: " + totalPriceForUpdate
-            + " s, total price of the guide is: " + totalCostForGuide
-            + " s and the the total weight is " + totalWeightForUpdate + " lb.");
+            + " $, total price of the guide is: " + totalCostForGuide
+            + " $ and the the total weight is " + totalWeightForUpdate + " lb.");
 
         int totalPriceWithGuide = totalCostForGuide + totalPriceForUpdate;
-        showTotalPrice1.setText(totalWeightForUpdate + " lb");
-        showTotalWeight1.setText(totalPriceWithGuide + " s");
+
       }
 
 
@@ -795,10 +774,6 @@ public class MemberOperationsController {
     refreshListViewString(listOfClimbingPaths, getPathName());
 
     refreshListViewString(listOfClimbingPathsUpdate, getPathName());
-
-    registrationSucessfulMessage1.setText("");
-    registrationSucessfulMessage.setText("");
-
 
 
     if (itemsList.size() > 0) {
