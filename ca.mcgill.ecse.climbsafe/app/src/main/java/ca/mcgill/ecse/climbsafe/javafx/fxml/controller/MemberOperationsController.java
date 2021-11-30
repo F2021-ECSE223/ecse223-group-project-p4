@@ -489,7 +489,7 @@ public class MemberOperationsController {
 
     try {
       ClimbSafeFeatureSet2Controller.updateMember(email, password, name, emergency,
-          numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd); // Try to Update
+          numberOfWeeksWanted, guide, hotel, bookedItemsToUpdate, numberOfItemsToUpdate); // Try to Update
                                                                                     // member
 
       // Compute the total price and weight of the item chosen by the member and if the member
