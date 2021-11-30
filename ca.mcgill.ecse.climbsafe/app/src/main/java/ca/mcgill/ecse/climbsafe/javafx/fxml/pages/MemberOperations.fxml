@@ -329,7 +329,7 @@
                         <Insets top="100.0" />
                      </GridPane.margin>
                   </Button>
-                  <Label alignment="CENTER" layoutX="170.0" layoutY="381.0" text="Choose Climbing Path:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                  <Label alignment="CENTER" layoutX="170.0" layoutY="381.0" text="Choose Climbing Path:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.valignment="TOP">
                      <font>
                         <Font name="Cambria" size="16.0" />
                      </font>
@@ -385,7 +385,7 @@
                   <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="78.0" minHeight="35.20000305175781" prefHeight="78.0" />
+                  <RowConstraints maxHeight="78.0" minHeight="78.0" prefHeight="78.0" />
                   <RowConstraints maxHeight="178.80616760253906" minHeight="10.0" prefHeight="70.40001220703125" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="151.2293243408203" minHeight="10.0" prefHeight="65.60000610351562" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="171.9999755859375" minHeight="10.0" prefHeight="99.19999999999999" vgrow="SOMETIMES" />
@@ -761,7 +761,7 @@
                   <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="78.0" minHeight="5.619579315185547" prefHeight="78.0" />
+                  <RowConstraints maxHeight="78.0" minHeight="78.0" prefHeight="78.0" />
                   <RowConstraints maxHeight="286.64338302612305" minHeight="0.0" prefHeight="37.66293716430664" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="370.87486267089844" minHeight="10.0" prefHeight="55.82867431640625" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="329.3887481689453" minHeight="10.0" prefHeight="65.65377807617188" vgrow="SOMETIMES" />
@@ -835,7 +835,7 @@
                   <ColumnConstraints />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="78.0" minHeight="4.0" prefHeight="78.0" />
+                  <RowConstraints maxHeight="78.0" minHeight="78.0" prefHeight="78.0" />
                   <RowConstraints maxHeight="138.39999389648438" minHeight="0.0" prefHeight="73.67572021484375" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="333.1122131347656" minHeight="0.0" prefHeight="138.32427978515625" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="438.5343017578125" minHeight="10.0" prefHeight="296.87081146240234" vgrow="SOMETIMES" />
