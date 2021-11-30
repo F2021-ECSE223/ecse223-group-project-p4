@@ -199,7 +199,7 @@ public class ClimbingPathOperationsController {
     }
     try {
       String toBeDeleted = rmPathList.getSelectionModel().getSelectedItem().getText();
-      System.out.println(toBeDeleted);
+    
       ExtraFeaturesController.deleteClimbingPath(toBeDeleted);
       refreshPaths(rmPathList, rmDistList, rmDiffList);
       ViewUtils.showSuccess("Successfully deleted path \"" + toBeDeleted + "\" from the system.");

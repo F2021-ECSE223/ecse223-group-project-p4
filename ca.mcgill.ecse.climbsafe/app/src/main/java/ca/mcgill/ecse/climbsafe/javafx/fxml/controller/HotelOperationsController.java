@@ -3,12 +3,20 @@ package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
-
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet1Controller;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet7Controller;
+import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
 import ca.mcgill.ecse.climbsafe.model.Hotel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 
 public class HotelOperationsController {
 	@FXML
@@ -17,8 +25,10 @@ public class HotelOperationsController {
 	private TextField nameAddHotel;
 	@FXML
 	private TextField addressAddHotel;
+	@FXML 
+	private ComboBox<String> addRatingCombo;
 	@FXML
-	private TextField ratingAddHotel;
+	private ComboBox<String> updateRatingCombo;
 	@FXML
 	private Button buttonUpdateHotel;
 	@FXML
@@ -28,12 +38,53 @@ public class HotelOperationsController {
 	@FXML
 	private TextField newAddressUpdateHotel;
 	@FXML
-	private TextField newRatingUpdateHotel;
-	@FXML
 	private Button buttonDeleteHotel;
+	
 	@FXML
-	private TextField nameDeleteHotel;
-
+	private ListView<Label> HotelList;
+	@FXML
+	private ListView<Label> RatingList;
+	@FXML
+    private ListView<Label> HotelList2;
+    @FXML
+    private ListView<Label> RatingList2;
+    @FXML
+    private ListView<Label> rmHotelList;
+    @FXML
+    private ListView<Label> rmRatingList;
+    
+    
+    
+    
+	
+	 ObservableList<String> ratingList=
+	      FXCollections.observableArrayList("One star", "Two star", "Three star", "Four star", "Five star");
+    
+	private void initialize() {
+	  addRatingCombo.setValue("One star");
+	  addRatingCombo.setItems(ratingList);
+	  
+	  refreshHotels(HotelList, RatingList);
+	  refreshHotels(HotelList2, RatingList2);
+	  refreshHotels(rmHotelList, rmRatingList);
+	  
+	  
+	}
+    // Event Listener on Tab[#AddHotelTab].onSelectionChanged
+    @FXML
+    public void refreshAddTab(Event event) {
+      initialize();
+    }
+    // Event Listener on Tab[#UpdateHotelTab].onSelectionChanged
+    @FXML
+    public void refreshUpdateTab(Event event) {
+      initialize();
+    }
+    // Event Listener on Tab[#DeleteHotelTab].onSelectionChanged
+    @FXML
+    public void refreshDeleteTab(Event event) {
+      initialize();
+    }
 	// Event Listener on Button[#buttonAddHotel].onAction
 	@FXML
 	public void actionAddHotel(ActionEvent event) {
@@ -49,26 +100,19 @@ public class HotelOperationsController {
         return;
       }
       
-      if(ratingAddHotel.getText().isBlank()) {
-        ViewUtils.showError("Please enter the rating of the hotel.");
-        return;
-      }
-      int rating;
-      
       try {
-        rating=Integer.parseInt(ratingAddHotel.getText());
-      } catch (Exception e) {
-        ViewUtils.showError("The rating of an hotel must be an integer from 1 to 5.");
-        return;
-      }
-      try {
-        ClimbSafeFeatureSet7Controller.addHotel(nameAddHotel.getText(), addressAddHotel.getText(), rating);
+        ClimbSafeFeatureSet7Controller.addHotel(nameAddHotel.getText(), addressAddHotel.getText(), RatingInt(addRatingCombo.getValue().toString()));
       } catch (Exception e) {
         ViewUtils.showError("Hotel already exists in the system.");
+
         return;
       }
       
       ViewUtils.showSuccess("The hotel was successfully added.");
+      nameAddHotel.clear();
+      addressAddHotel.clear();
+      addRatingCombo.setValue("One star");
+      initialize();
 	}
 	// Event Listener on Button[#buttonUpdateHotel].onAction
 	@FXML
@@ -89,46 +133,75 @@ public class HotelOperationsController {
         ViewUtils.showError("Please enter the address of the new hotel.");
         return;
       }
-	  
-	  if(newRatingUpdateHotel.getText().isBlank()) {
-        ViewUtils.showError("Please enter the rating of the new hotel.");
-        return;
-      }
-	  
-	  int newRating;
-      
+	   
       try {
-        newRating=Integer.parseInt(newRatingUpdateHotel.getText().trim());
+        ClimbSafeFeatureSet7Controller.updateHotel(oldNameUpdateHotel.getText(), newNameUpdateHotel.getText(), newAddressUpdateHotel.getText(), RatingInt(updateRatingCombo.getValue().toString()));
       } catch (Exception e) {
-        ViewUtils.showError("The rating of an hotel must be an integer from 1 to 5.");
+        ViewUtils.showError(e.getMessage());
         return;
       }
+    
+      ViewUtils.showSuccess("The hotel was successfully updated.");
+      oldNameUpdateHotel.clear();
+      newNameUpdateHotel.clear();
+      newAddressUpdateHotel.clear();
+      updateRatingCombo.setValue("One star");
       
-      try {
-        ClimbSafeFeatureSet7Controller.updateHotel(oldNameUpdateHotel.getText(), newNameUpdateHotel.getText(), newAddressUpdateHotel.getText(), newRating);
-      } catch (Exception e) {
-        ViewUtils.showError("Hotel already exists in the system.");
-        return;
-      }
-      
-      ViewUtils.showSuccess("The hotel was successfully added.");
+      initialize();
 	}
 	// Event Listener on Button[#buttonDeleteHotel].onAction
 	@FXML
 	public void actionDeleteHotel(ActionEvent event) {
-		// TODO Autogenerated
-	  if(nameDeleteHotel.getText().isBlank()) {
-	    ViewUtils.showError("Please enter the name of the hotel to be deleted.");
-	    return;
-	  }
-	  
-	  Hotel toBeDeleted=Hotel.getWithName(nameDeleteHotel.getText());
-	  if (toBeDeleted==null) {
-	    ViewUtils.showError("This hotel does not exist in the system.");
-	    return;
-	  }
-	  
-	  ClimbSafeFeatureSet1Controller.deleteHotel(nameDeleteHotel.getText());
-	  ViewUtils.showSuccess("The hotel was successfully deleted.");;
+	
+	 String toBeDeleted = rmHotelList.getSelectionModel().getSelectedItem().getText();
+	 
+	 ClimbSafeFeatureSet1Controller.deleteHotel(toBeDeleted);
+     refreshHotels(rmHotelList, rmRatingList);
+	 ViewUtils.showSuccess("The hotel was successfully deleted.");;
+	 rmHotelList.getSelectionModel().clearSelection();
+	 
+     initialize();
 	}
+	private int RatingInt(String m) {
+	  
+	  switch(m) {
+	    case("One star"):
+	      return 1;
+	    case("Two star"):
+	      return 2;
+	    case("Three star"):
+          return 3;
+        case("Four star"):
+          return 4;
+        case("Five star"):
+          return 5;
+        default:
+          return -1;
+	  }
+	}
+	// Event Listener on ListView[#rmHotelList].onMouseClicked
+	  @FXML
+	  public void selectedHotel(MouseEvent event) {
+
+	    rmRatingList.getSelectionModel().select(rmHotelList.getSelectionModel().getSelectedIndex());
+	     } 
+	   // Event Listener on ListView[#rmHotelList].onMouseClicked
+      @FXML
+      public void selectedRating(MouseEvent event) {
+
+        rmHotelList.getSelectionModel().select(rmRatingList.getSelectionModel().getSelectedIndex());
+         } 
+	private void refreshHotels(ListView<Label> hotelList, ListView<Label> ratingList){
+	  
+	    hotelList.getItems().clear();
+	    ratingList.getItems().clear();
+	    
+	    for (Hotel hotel : ClimbSafeApplication.getClimbSafe().getHotels()) {
+	      hotelList.getItems().add(new Label(hotel.getName()));
+	      ratingList.getItems().add(new Label(hotel.getRating().toString()));
+	      
+	    }
+
 }
+}
+
