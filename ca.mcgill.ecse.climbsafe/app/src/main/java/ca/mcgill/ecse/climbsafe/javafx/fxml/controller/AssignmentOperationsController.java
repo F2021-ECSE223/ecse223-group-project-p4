@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import java.util.List;
 import ca.mcgill.ecse.climbsafe.controller.AssignmentController;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet6Controller;
+import ca.mcgill.ecse.climbsafe.controller.ExtraFeaturesController;
 import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
 import ca.mcgill.ecse.climbsafe.controller.TOAssignment;
 import javafx.event.ActionEvent;
@@ -60,10 +61,12 @@ public class AssignmentOperationsController {
       AssignmentController.initiateAssignment();
     } catch (InvalidInputException e) {
       ViewUtils.showError(e.getMessage());
+      ExtraFeaturesController.setHotelsAndClimbingPaths();
       initialize();
       return;
     }
-
+    
+    ExtraFeaturesController.setHotelsAndClimbingPaths();
     initialize();
     ViewUtils.showSuccess("Assignments initiated successfully.");
   }

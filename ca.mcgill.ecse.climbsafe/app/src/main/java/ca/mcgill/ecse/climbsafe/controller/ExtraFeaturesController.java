@@ -1,5 +1,7 @@
 package ca.mcgill.ecse.climbsafe.controller;
 
+import java.util.List;
+import java.util.Random;
 import ca.mcgill.ecse.climbsafe.application.*;
 import ca.mcgill.ecse.climbsafe.model.*;
 import ca.mcgill.ecse.climbsafe.model.ClimbingPath.Difficulty;
@@ -122,6 +124,16 @@ public class ExtraFeaturesController {
 
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
+  
+  public static void setHotelsAndClimbingPaths() {
+ // Assigning a random hotel and the desired climbing location chosen at registration
+    for (Assignment assignment : ClimbSafeApplication.getClimbSafe().getAssignments()) {
+      if(assignment.getMember().getHotelRequired()) assignment.setHotel(getRandomHotel());
+      assignment.setClimbingPath(
+          ClimbingPath.getWithLocation(assignment.getMember().getSelectedClimbingLocation()));
+    }
+    
+  }
 
 
   private static Difficulty stringToDifficulty(String difficulty) throws InvalidInputException {
@@ -186,6 +198,19 @@ public class ExtraFeaturesController {
           "Climbing path with location " + location + " does not exist");
 
     return climbingPath;
+  }
+  
+  /**
+   * Used to get a random hotel out of the hotels that exist in the system
+   * 
+   * @author Wassim Jabbour
+   * @return A random hotel that exists in the system
+   */
+  private static Hotel getRandomHotel() {
+    List<Hotel> hotels = ClimbSafeApplication.getClimbSafe().getHotels();
+    Random rand = new Random();
+    if(hotels.size() > 0) return hotels.get(rand.nextInt(ClimbSafeApplication.getClimbSafe().getHotels().size()));
+    return null;
   }
 
 

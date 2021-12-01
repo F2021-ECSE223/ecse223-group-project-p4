@@ -60,13 +60,6 @@ public class AssignmentController {
       }
     }
 
-    // Assigning a random hotel and the desired climbing location chosen at registration
-    for (Assignment assignment : ClimbSafeApplication.getClimbSafe().getAssignments()) {
-      if(assignment.getMember().getHotelRequired()) assignment.setHotel(getRandomHotel());
-      assignment.setClimbingPath(
-          ClimbingPath.getWithLocation(assignment.getMember().getSelectedClimbingLocation()));
-    }
-
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
