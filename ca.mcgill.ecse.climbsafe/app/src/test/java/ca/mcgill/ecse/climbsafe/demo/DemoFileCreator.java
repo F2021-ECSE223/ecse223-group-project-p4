@@ -11,6 +11,9 @@ import ca.mcgill.ecse.climbsafe.model.Guide;
 import ca.mcgill.ecse.climbsafe.model.Hotel;
 import ca.mcgill.ecse.climbsafe.model.Hotel.HotelRating;
 import ca.mcgill.ecse.climbsafe.model.Member;
+import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
+import ca.mcgill.ecse.climbsafe.model.ClimbingPath.Difficulty;
+ 
 
 public class DemoFileCreator {
 
@@ -50,6 +53,13 @@ public class DemoFileCreator {
     new Hotel("Climbers' Lodge", "123 Mountain View Road", HotelRating.ThreeStars, climbSafe);
     new Hotel("High Peak", "455 Mountain View Road", HotelRating.FourStars, climbSafe);
 
+    
+    // climbing paths
+    new ClimbingPath("The Death Trail", 23, Difficulty.Hard, climbSafe);
+    new ClimbingPath("Joyful Walk", 2, Difficulty.Easy, climbSafe);
+    new ClimbingPath("Mont Tremblant", 8, Difficulty.Moderate, climbSafe);
+
+    
     // guide
     new Guide("bob@gmail.com", "password", "Bob Hill", "(222) 123-4567", climbSafe);
     new Guide("sarah@yahoo.ca", "pwd", "Sarah Hill", "(222) 123-7654", climbSafe);
@@ -64,10 +74,12 @@ public class DemoFileCreator {
     jane.addBookedItem(1, climbSafe, rope);
     jane.addBookedItem(1, climbSafe, stove);
     jane.addBookedItem(1, climbSafe, pickaxe);
+    jane.setSelectedClimbingLocation("Mont Tremblant");
     Member jack = new Member("jack@hotmail.com", "1234", "Jack Black", "(222) 987-6542", 4, true,
         true, climbSafe);
     jack.addBookedItem(1, climbSafe, standard);
     jack.addBookedItem(1, climbSafe, plus);
+    jack.setSelectedClimbingLocation("The Death Trail");
     new Member("julie@hotmail.com", "1234", "Julie Black", "(222) 987-6543", 1, true, false,
         climbSafe);
     Member jon = new Member("jon@hotmail.com", "1234", "Jon Black", "(222) 987-6544", 3, true,

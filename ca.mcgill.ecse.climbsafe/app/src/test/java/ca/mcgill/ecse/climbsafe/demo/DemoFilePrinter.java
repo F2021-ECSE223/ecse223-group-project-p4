@@ -9,6 +9,8 @@ import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
 import ca.mcgill.ecse.climbsafe.model.Guide;
 import ca.mcgill.ecse.climbsafe.model.Hotel;
 import ca.mcgill.ecse.climbsafe.model.Member;
+import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
+
 
 public class DemoFilePrinter {
 
@@ -34,6 +36,10 @@ public class DemoFilePrinter {
     for (Hotel hotel : climbSafe.getHotels()) {
       System.out.println("Hotel: name = " + hotel.getName() + "; address = " + hotel.getAddress()
           + "; rating = " + hotel.getRating());
+    }
+    for (ClimbingPath path : climbSafe.getClimbingPaths()) {
+      System.out.println("Climbing Path: location = " + path.getLocation() + "; length = " + path.getLength()
+          + "; difficulty = " + path.getDifficulty());
     }
     for (Guide guide : climbSafe.getGuides()) {
       System.out.println(
