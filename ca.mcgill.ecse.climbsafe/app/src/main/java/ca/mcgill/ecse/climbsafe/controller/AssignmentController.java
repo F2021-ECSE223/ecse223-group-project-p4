@@ -56,7 +56,6 @@ public class AssignmentController {
             }
           }
         }
-
       }
     }
 
@@ -184,7 +183,8 @@ public class AssignmentController {
   private static Hotel getRandomHotel() {
     List<Hotel> hotels = ClimbSafeApplication.getClimbSafe().getHotels();
     Random rand = new Random();
-    if(hotels.size() > 0) return hotels.get(rand.nextInt(ClimbSafeApplication.getClimbSafe().getHotels().size()));
+    if (hotels.size() > 0)
+      return hotels.get(rand.nextInt(ClimbSafeApplication.getClimbSafe().getHotels().size()));
     return null;
   }
 }
