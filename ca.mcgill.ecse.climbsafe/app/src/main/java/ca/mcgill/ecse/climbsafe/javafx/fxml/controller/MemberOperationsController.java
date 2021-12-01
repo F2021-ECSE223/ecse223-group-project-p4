@@ -225,7 +225,7 @@ public class MemberOperationsController {
                                                                                     // register
                                                                                     // member
 
-  
+
       clearFieldsInRegister();
 
       if (!guide) {
@@ -588,28 +588,28 @@ public class MemberOperationsController {
       return;
     }
 
-    //Get the bundle item from the selected from the comboBox
+    // Get the bundle item from the selected from the comboBox
     BookableItem bundle = BookableItem.getWithName(updateBundleName.getValue());
 
     // Check thats the member chose a bundle.
-    if (!(bundle == null)) { 
+    if (!(bundle == null)) {
 
       // Add the name of the bundle to the list
-      bookedItemsToUpdate.add(bundle.getName()); 
-  
+      bookedItemsToUpdate.add(bundle.getName());
+
       // Add the number of equipment requested by the member
-      numberOfItemsToUpdate.add(numberOfBundleWanted); 
+      numberOfItemsToUpdate.add(numberOfBundleWanted);
 
       // Add the equipment bundle to the list
-      updateAllBookedItemsList.add((EquipmentBundle) bundle); 
-      
-      //Refresh the list to show the selected bundles and quantities
+      updateAllBookedItemsList.add((EquipmentBundle) bundle);
+
+      // Refresh the list to show the selected bundles and quantities
       refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
       refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);
     }
 
     // The member clicked on add without selecting any bundle
-    else { 
+    else {
       ViewUtils.showError("You have to select a bundle to add");
       return;
 
@@ -633,7 +633,7 @@ public class MemberOperationsController {
 
     // Check if information entered is not empty
     if (email.equals("")) {
-      
+
       ViewUtils.showError("The input field must not be empty.");
       return;
 
@@ -641,6 +641,7 @@ public class MemberOperationsController {
 
     // Delete the member with the select email
     ClimbSafeFeatureSet1Controller.deleteMember(email);
+    ViewUtils.showSuccess("Successfully deleted the member " + email);
     clearFieldsInDelete();
   }
 
@@ -769,75 +770,77 @@ public class MemberOperationsController {
   private void setPromptText(ComboBox<String> box, String prompt) {
     box.setPromptText(prompt);
   }
-  
+
   /**
    * 
    */
   public void initialize() {
 
-    //Get the name of items and bundles from the system
+    // Get the name of items and bundles from the system
     List<String> itemsList = getNameOfItems();
     List<String> bundlesList = getNameOfBundles();
 
-    //Refresh the list of path 
+    // Refresh the list of path
     refreshListViewString(listOfClimbingPaths, getPathName());
     refreshListViewString(listOfClimbingPathsUpdate, getPathName());
 
-    //If there's items in the system, set them to the comboBoxes and set the prompt text appropriately
+    // If there's items in the system, set them to the comboBoxes and set the prompt text
+    // appropriately
     if (itemsList.size() > 0) {
-      
+
       addedItemsList.setItems(FXCollections.observableList(itemsList));
       updateItemName.setItems(FXCollections.observableList(itemsList));
-      
-      setPromptText(addedItemsList,"Available items");
-      setPromptText(updateItemName,"Available items");
+
+      setPromptText(addedItemsList, "Available items");
+      setPromptText(updateItemName, "Available items");
     }
 
-    //If no items in system, clear the names and set the prompt text appropriately
+    // If no items in system, clear the names and set the prompt text appropriately
     else {
-      
+
       try {
-        //Clear the names of the items in the boxes
+        // Clear the names of the items in the boxes
         addedItemsList.getItems().clear();
         updateItemName.getItems().clear();
-        
-        setPromptText(addedItemsList,"No items in system");
-        setPromptText(updateItemName,"No items in system");
-        
-      } 
-      //Catch null pointer exception if initial has no items because cannot clear a empty list 
+
+        setPromptText(addedItemsList, "No items in system");
+        setPromptText(updateItemName, "No items in system");
+
+      }
+      // Catch null pointer exception if initial has no items because cannot clear a empty list
       catch (Exception e) {
-        setPromptText(addedItemsList,"No items in system");
-        setPromptText(updateItemName,"No items in system");
+        setPromptText(addedItemsList, "No items in system");
+        setPromptText(updateItemName, "No items in system");
       }
     }
-    
 
-    //If there's bundle in the system, set them to the comboBoxes and set the prompt text appropriately
+
+    // If there's bundle in the system, set them to the comboBoxes and set the prompt text
+    // appropriately
     if (bundlesList.size() > 0) {
       addedBundlesList.setItems(FXCollections.observableList(bundlesList));
       updateBundleName.setItems(FXCollections.observableList(bundlesList));
-      
-      setPromptText(addedBundlesList,"Available items");
-      setPromptText(updateBundleName,"Available items");
+
+      setPromptText(addedBundlesList, "Available items");
+      setPromptText(updateBundleName, "Available items");
 
     }
-    //If no bundles in system, clear the names and set the prompt text appropriately
+    // If no bundles in system, clear the names and set the prompt text appropriately
     else {
 
       try {
-        //Clear the names of the bundles in the boxes
+        // Clear the names of the bundles in the boxes
         addedBundlesList.getItems().clear();
         updateBundleName.getItems().clear();
-        
-        setPromptText(addedBundlesList,"No items in system");
-        setPromptText(updateBundleName,"No items in system");
 
-      } 
-      //Catch null pointer exception if initial has no items because cannot clear a empty list 
+        setPromptText(addedBundlesList, "No items in system");
+        setPromptText(updateBundleName, "No items in system");
+
+      }
+      // Catch null pointer exception if initial has no items because cannot clear a empty list
       catch (Exception e) {
-        setPromptText(addedBundlesList,"No items in system");
-        setPromptText(updateBundleName,"No items in system");
+        setPromptText(addedBundlesList, "No items in system");
+        setPromptText(updateBundleName, "No items in system");
       }
     }
   }
@@ -850,6 +853,7 @@ public class MemberOperationsController {
     initialize();
 
   }
+
   /**
    * 
    * @param event
@@ -857,6 +861,7 @@ public class MemberOperationsController {
   public void RefreshMemberUpdate(Event event) {
     initialize();
   }
+
   /**
    * 
    * @param event
@@ -915,7 +920,7 @@ public class MemberOperationsController {
     }
 
     // Returning the total price over the trip
-    return totalPrice; 
+    return totalPrice;
 
 
   }
@@ -1028,27 +1033,28 @@ public class MemberOperationsController {
   @FXML
   /**
    * Choose a path for the user in the register tab
+   * 
    * @param event
    */
   public void addPath(ActionEvent event) {
-    
-    //Check if the user selected a path
+
+    // Check if the user selected a path
     if (listOfClimbingPaths.getSelectionModel().isEmpty()) {
       ViewUtils.showError("Please select a path to climb.");
       return;
     }
-    
-    //Check if there's no path in system and "wait for the admin to update this" 
+
+    // Check if there's no path in system and "wait for the admin to update this"
     if (listOfClimbingPaths.getSelectionModel().getSelectedItem().getText()
         .equals("No paths in system.")) {
       ViewUtils.showError("Please select a path to climb.");
       return;
     }
 
-    //Get the index of the path chosen to add it later to the member
+    // Get the index of the path chosen to add it later to the member
     pathIndexRegister = listOfClimbingPaths.getSelectionModel().getSelectedIndex();
-    
-    //Set the path chosen on the screen
+
+    // Set the path chosen on the screen
     chosenPath.setText(listOfClimbingPaths.getSelectionModel().getSelectedItem().getText());
 
   }
@@ -1057,28 +1063,29 @@ public class MemberOperationsController {
   @FXML
   /**
    * Choose a path for the user in the update tab
+   * 
    * @param event
    */
   public void updatePath(ActionEvent event) {
-    
-    //Check if the user selected a path
+
+    // Check if the user selected a path
     if (listOfClimbingPathsUpdate.getSelectionModel().isEmpty()) {
       ViewUtils.showError("Please select a path to climb.");
       return;
     }
 
-    //Check if there's no path in system and "wait for the admin to update this" 
+    // Check if there's no path in system and "wait for the admin to update this"
     if (listOfClimbingPathsUpdate.getSelectionModel().getSelectedItem().getText()
         .equals("No paths in system.")) {
-      
+
       ViewUtils.showError("Please select a path to climb.");
       return;
     }
 
-    //Get the index of the path chosen to add it later to the member
+    // Get the index of the path chosen to add it later to the member
     pathIndexUpdate = listOfClimbingPathsUpdate.getSelectionModel().getSelectedIndex();
 
-    //Set the path chosen on the screen
+    // Set the path chosen on the screen
     chosenPathUpdate
         .setText(listOfClimbingPathsUpdate.getSelectionModel().getSelectedItem().getText());
 
@@ -1088,6 +1095,7 @@ public class MemberOperationsController {
   @FXML
   /**
    * Select the items from the list in update and consequently select the quantity attached
+   * 
    * @param event
    */
   public void selectItemUpdate(MouseEvent event) {
@@ -1099,16 +1107,18 @@ public class MemberOperationsController {
   @FXML
   /**
    * Select the quantities from the list in update and consequently select the item attached
+   * 
    * @param event
    */
   public void selectQuantitiesUpdate(MouseEvent event) {
     listOfItemsChosenUpdate.getSelectionModel()
         .select(listOfINumberOftemsChosenUpdate.getSelectionModel().getSelectedIndex());
   }
-  
+
 
   /**
    * Clear all fields in the register Tab
+   * 
    * @author Karl Rouhana
    */
   private void clearFieldsInRegister() {
@@ -1127,6 +1137,7 @@ public class MemberOperationsController {
 
   /**
    * Clear all fields in the update Tab
+   * 
    * @author Karl Rouhana
    */
   private void clearFieldsInUpdate() {
@@ -1145,7 +1156,8 @@ public class MemberOperationsController {
 
   /**
    * Clear all fields in the delete Tab
-   * @author Karl Rouhana 
+   * 
+   * @author Karl Rouhana
    */
   private void clearFieldsInDelete() {
     toBedeletedMemberEmail.clear();
