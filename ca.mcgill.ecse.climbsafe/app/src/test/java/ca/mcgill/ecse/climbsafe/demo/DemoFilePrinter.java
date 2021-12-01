@@ -38,8 +38,8 @@ public class DemoFilePrinter {
           + "; rating = " + hotel.getRating());
     }
     for (ClimbingPath path : climbSafe.getClimbingPaths()) {
-      System.out.println("Climbing Path: location = " + path.getLocation() + "; length = " + path.getLength()
-          + "; difficulty = " + path.getDifficulty());
+      System.out.println("Climbing Path: location = " + path.getLocation() + "; length = "
+          + path.getLength() + "; difficulty = " + path.getDifficulty());
     }
     for (Guide guide : climbSafe.getGuides()) {
       System.out.println(
@@ -51,7 +51,8 @@ public class DemoFilePrinter {
           + member.getPassword() + "; name = " + member.getName() + "; emergencyContact = "
           + member.getEmergencyContact() + "; nrWeeks = " + member.getNrWeeks()
           + "; guideRequired = " + member.getGuideRequired() + "; hotelRequired = "
-          + member.getHotelRequired());
+          + member.getHotelRequired() + "; Selected Climbing Location = "
+          + member.getSelectedClimbingLocation());
       for (BookedItem item : member.getBookedItems()) {
         System.out.println(
             "   Item: name = " + item.getItem().getName() + "; quantity = " + item.getQuantity());

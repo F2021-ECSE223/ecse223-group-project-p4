@@ -7,6 +7,8 @@ import ca.mcgill.ecse.climbsafe.demo.persistence.ClimbSafePersistence;
 import ca.mcgill.ecse.climbsafe.model.Administrator;
 import ca.mcgill.ecse.climbsafe.model.BookableItem;
 import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
+import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
+import ca.mcgill.ecse.climbsafe.model.ClimbingPath.Difficulty;
 import ca.mcgill.ecse.climbsafe.model.Equipment;
 import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
 import ca.mcgill.ecse.climbsafe.model.Guide;
@@ -34,6 +36,11 @@ public class DemoFileVerifier {
 
     // admin
     verifyAdministrator("admin@nmc.nt", "admin");
+    
+    // climbing path
+    verifyClimbingPath("The Death Trail", Difficulty.Hard, 23);
+    verifyClimbingPath("Joyful Walk", Difficulty.Easy, 2);
+    verifyClimbingPath("Mont Tremblant", Difficulty.Moderate, 8);
 
     // equipment
     assertEquals(3, climbSafe.getEquipment().size());
@@ -139,6 +146,20 @@ public class DemoFileVerifier {
       assertEquals(quantities[i], member.getBookedItem(i).getQuantity());
       assertEquals(bookableItemsNames[i], member.getBookedItem(i).getItem().getName());
     }
+  }
+  
+  /**
+   * To verify that the climbing paths were correctly instantiated
+   * @param location The expected location
+   * @param difficulty The expected difficulty
+   * @param length The expected length
+   * @author Wassim Jabbour
+   */
+  private static void verifyClimbingPath(String location, Difficulty difficulty, int length) {
+    ClimbingPath climbingPath = ClimbingPath.getWithLocation(location);
+    assertNotNull(climbingPath);
+    assertEquals(difficulty, climbingPath.getDifficulty());
+    assertEquals(length, climbingPath.getLength());
   }
 
 }

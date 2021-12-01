@@ -65,7 +65,7 @@ public class AssignmentOperationsController {
       initialize();
       return;
     }
-    
+
     ExtraFeaturesController.setHotelsAndClimbingPaths();
     initialize();
     ViewUtils.showSuccess("Assignments initiated successfully.");
