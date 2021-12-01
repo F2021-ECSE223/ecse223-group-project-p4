@@ -61,6 +61,8 @@ public class HotelOperationsController {
   private void initialize() {
     addRatingCombo.setValue("One star");
     addRatingCombo.setItems(ratingList);
+    updateRatingCombo.setValue("One star");
+    updateRatingCombo.setItems(ratingList);
 
     refreshHotels(HotelList, RatingList);
     refreshHotels(HotelList2, RatingList2);
