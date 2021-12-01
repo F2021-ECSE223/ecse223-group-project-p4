@@ -894,8 +894,9 @@ public class MemberOperationsController {
    */
   private int computeTotalCost(int totalNumberOfWeeks, boolean hasGuide,
       List<BookableItem> listOfBookableItem, List<Integer> listOfNumberOfItems) {
-
-
+    
+    if(listOfBookableItem.size() == 0) return 0;
+    
     int i = 0;
     for (var bookedItem : listOfBookableItem) {
 
