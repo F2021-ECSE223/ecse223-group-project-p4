@@ -69,6 +69,7 @@ public class DemoFileCreator {
         false, climbSafe);
     joe.addBookedItem(1, climbSafe, plus);
     joe.addBookedItem(2, climbSafe, rope);
+    joe.setSelectedClimbingLocation("Mont Tremblant");
     Member jane = new Member("jane@hotmail.com", "1234", "Jane Black", "(222) 987-6541", 3, false,
         false, climbSafe);
     jane.addBookedItem(1, climbSafe, rope);
@@ -87,6 +88,8 @@ public class DemoFileCreator {
     jon.addBookedItem(3, climbSafe, rope);
     jon.addBookedItem(1, climbSafe, stove);
     jon.addBookedItem(2, climbSafe, pickaxe);
+    jon.setSelectedClimbingLocation("The Death Trail");
+
 
     return climbSafe;
   }
