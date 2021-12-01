@@ -54,7 +54,7 @@ public class ReviewOperationsController {
       ExtraFeaturesController.rateClimb(memberEmailTripReview.getText(),
           ratingTripReview.getValue(), commentTripReview.getText());
     } catch (Exception e) {
-      ViewUtils.showError("Your email does not exist in the system.");
+      ViewUtils.showError(e.getMessage());
       return;
     }
 

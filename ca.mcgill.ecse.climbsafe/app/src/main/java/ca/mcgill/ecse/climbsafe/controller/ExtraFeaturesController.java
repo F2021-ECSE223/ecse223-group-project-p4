@@ -13,6 +13,11 @@ public class ExtraFeaturesController {
 
     Member member = (Member) checkMemberExists(memberEmail);
 
+
+    if (member.getAssignment() == null) {
+      throw new InvalidInputException("The assignments have not been initiated yet");
+    }
+
     member.setReview(new Review(stringToRating(rating), comment, member, member.getAssignment(),
         ClimbSafeApplication.getClimbSafe()));
 
