@@ -174,8 +174,6 @@ public class MemberOperationsController {
     String email = addEmail.getText();
     String password = addPassword.getText();
     String emergency = addEmergencyPhone.getText();
-
-
     boolean hotel = hotelRequiredCheck.isSelected();
     boolean guide = guideRequiredCheck.isSelected();
 
@@ -195,12 +193,11 @@ public class MemberOperationsController {
 
     // Check if information entered is an integer
     try {
-      numberOfWeeksWanted = Integer.parseInt(this.addNumberWeeks.getText());
+       numberOfWeeksWanted = Integer.parseInt(this.addNumberWeeks.getText());
     } catch (Exception e) {
       ViewUtils.showError("The number of weeks wanted must be an integer");
       return;
     }
-
 
 
     // Check if information entered is not empty
@@ -221,15 +218,12 @@ public class MemberOperationsController {
           computeTotalCost(numberOfWeeksWanted, guide, allBookedItemsList, numberOfItemsToAdd);
       totalWeight = computeTotalWeight(allBookedItemsList, numberOfItemsToAdd);
 
+      //Try to register the member
       ClimbSafeFeatureSet2Controller.registerMember(email, password, name, emergency,
-          numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd); // Try to
-                                                                                    // register
-                                                                                    // member
-
-
-      clearFieldsInRegister();
+          numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd); 
 
       if (!guide) {
+        
         // Output the price and weight without taking into account the guide since the member does
         // not want it
         ViewUtils.showSuccess("Registration successfully processed for member " + name + "." + '\n'
@@ -242,17 +236,20 @@ public class MemberOperationsController {
 
         int totalCostForGuide = system.getPriceOfGuidePerWeek() * numberOfWeeksWanted;
 
-
         ViewUtils.showSuccess("Registration successfully processed for member " + name + "." + '\n'
             + "Total Price of equipment is " + totalPrice + " $, total price for the guide is "
             + totalCostForGuide + " $ and the the total weight is " + totalWeight + " lb.");
 
       }
 
+      //Check that the member chose a path
       if (pathIndexRegister != null) {
+        
+        //Get the path chosen from the system
         ClimbingPath path = system.getClimbingPaths().get(pathIndexRegister);
+        
+        //Assign the path to the member 
         ((Member) Member.getWithEmail(email)).setSelectedClimbingLocation(path.getLocation());
-
       }
 
 
@@ -262,8 +259,10 @@ public class MemberOperationsController {
       numberOfItemsToAdd.clear();
       allBookedItemsList.clear();
 
-      refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
+      clearFieldsInRegister();
 
+      //Clear the selected items in the table
+      refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
       refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
 
       // Clear the price and weight
@@ -640,16 +639,18 @@ public class MemberOperationsController {
 
     }
 
-    // Delete the member with the select email
-    User toBeDeleted = User.getWithEmail(email); // Return the User with the associated email
+    // Return the User with the associated email
+    User toBeDeleted = User.getWithEmail(email); 
 
-    if (toBeDeleted != null && toBeDeleted instanceof Member) { // If the user exists and is a
-                                                                // member
-      ClimbSafeFeatureSet1Controller.deleteMember(email); // Delete the member
-      ViewUtils.showSuccess("Successfully deleted the member " + email);
+    // If the user exists and is a member
+    if (toBeDeleted != null && toBeDeleted instanceof Member) { 
+      
+      // Delete the member with the select email
+      ClimbSafeFeatureSet1Controller.deleteMember(email); 
+      ViewUtils.showSuccess("Successfully deleted the member with email " + email);
       clearFieldsInDelete();
     } else {
-      ViewUtils.showError("The member does not exist.");
+      ViewUtils.showError("The member with email "+email+" does not exist.");
       return;
     }
   }
