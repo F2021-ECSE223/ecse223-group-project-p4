@@ -36,7 +36,7 @@ public class ClimbSafeFeatureSet1Controller {
           "The number of climbing weeks must be greater than or equal to zero");
 
 
-    if (!(priceOfGuidePerWeek > 0)) // Checks if the price of guide per week is greater than or
+    if (!(priceOfGuidePerWeek >= 0)) // Checks if the price of guide per week is greater than or
                                     // equal to zero
       throw new InvalidInputException(
           "The price of guide per week must be greater than or equal to zero");
