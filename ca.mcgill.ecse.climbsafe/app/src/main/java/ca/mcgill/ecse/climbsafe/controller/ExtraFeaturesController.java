@@ -118,21 +118,28 @@ public class ExtraFeaturesController {
 
     if (path == null) {
       throw new InvalidInputException("No Climbing Path exists at this location");
-    } else {
-      path.delete();
     }
+
+    for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
+      if (member.getSelectedClimbingLocation().equals(location))
+        throw new InvalidInputException(
+            "Cannot delete path because a member selected it as their desired location");
+    }
+
+    path.delete();
 
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
-  
+
   public static void setHotelsAndClimbingPaths() {
- // Assigning a random hotel and the desired climbing location chosen at registration
+    // Assigning a random hotel and the desired climbing location chosen at registration
     for (Assignment assignment : ClimbSafeApplication.getClimbSafe().getAssignments()) {
-      if(assignment.getMember().getHotelRequired()) assignment.setHotel(getRandomHotel());
+      if (assignment.getMember().getHotelRequired())
+        assignment.setHotel(getRandomHotel());
       assignment.setClimbingPath(
           ClimbingPath.getWithLocation(assignment.getMember().getSelectedClimbingLocation()));
     }
-    
+
   }
 
 
@@ -199,7 +206,7 @@ public class ExtraFeaturesController {
 
     return climbingPath;
   }
-  
+
   /**
    * Used to get a random hotel out of the hotels that exist in the system
    * 
@@ -209,7 +216,8 @@ public class ExtraFeaturesController {
   private static Hotel getRandomHotel() {
     List<Hotel> hotels = ClimbSafeApplication.getClimbSafe().getHotels();
     Random rand = new Random();
-    if(hotels.size() > 0) return hotels.get(rand.nextInt(ClimbSafeApplication.getClimbSafe().getHotels().size()));
+    if (hotels.size() > 0)
+      return hotels.get(rand.nextInt(ClimbSafeApplication.getClimbSafe().getHotels().size()));
     return null;
   }
 
