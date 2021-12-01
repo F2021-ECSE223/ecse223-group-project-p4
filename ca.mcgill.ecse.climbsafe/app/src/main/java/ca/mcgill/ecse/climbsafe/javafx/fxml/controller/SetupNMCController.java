@@ -65,5 +65,8 @@ public class SetupNMCController {
     }
 
     ViewUtils.showSuccess("The NMC system was setup successfully");
+    this.startDate.getEditor().clear();
+    this.nrWeeks.clear();
+    this.pricePerGuide.clear();
   }
 }
