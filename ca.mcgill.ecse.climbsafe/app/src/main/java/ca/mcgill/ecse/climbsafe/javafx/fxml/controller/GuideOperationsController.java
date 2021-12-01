@@ -10,6 +10,8 @@ import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet1Controller;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet3Controller;
 import ca.mcgill.ecse.climbsafe.model.Guide;
+import ca.mcgill.ecse.climbsafe.model.Member;
+import ca.mcgill.ecse.climbsafe.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 
@@ -164,11 +166,17 @@ public class GuideOperationsController {
 
     }
 
-    // Delete the Guide with the select email
-    ClimbSafeFeatureSet1Controller.deleteGuide(email);
+    // Delete the guide with the select email
+    User toBeDeleted = User.getWithEmail(email); // Return the User with the associated email
 
-    ViewUtils.showSuccess("Successfully deleted the guide " + email);
-    clearFieldsInDelete();
+    if (toBeDeleted != null && toBeDeleted instanceof Guide) { // If the user exists and is a guide
+      ClimbSafeFeatureSet1Controller.deleteGuide(email); // Delete the guide
+      ViewUtils.showSuccess("Successfully deleted the guide " + email);
+      clearFieldsInDelete();
+    } else {
+      ViewUtils.showError("The guide does not exist.");
+      return;
+    }
 
   }
 

@@ -51,7 +51,7 @@ public class ClimbSafeFeatureSet1Controller {
     system.setStartDate(startDate);
     system.setNrWeeks(nrWeeks);
     system.setPriceOfGuidePerWeek(priceOfGuidePerWeek);
-    
+
     ClimbSafePersistence.save(system);
 
   }
@@ -77,7 +77,7 @@ public class ClimbSafeFeatureSet1Controller {
 
     if (toBeDeleted != null && toBeDeleted instanceof Member) // If the user exists and is a member
       toBeDeleted.delete(); // Delete the member
-    
+
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
@@ -100,24 +100,25 @@ public class ClimbSafeFeatureSet1Controller {
 
     if (toBeDeleted != null && toBeDeleted instanceof Guide) // If the user exists and is a Guide
       toBeDeleted.delete(); // Delete the guide
-    
+
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
 
   }
 
   /**
-   * The deleteHotel method will delete a hotel with the associated name in the system if it
-   * exists in it.
+   * The deleteHotel method will delete a hotel with the associated name in the system if it exists
+   * in it.
+   * 
    * @author Karl Rouhana
    * @param name - the input name of the hotel
    */
   public static void deleteHotel(String name) {
-    
-    Hotel toBeDeleted = Hotel.getWithName(name); 
 
-    if (toBeDeleted != null) 
-      toBeDeleted.delete(); 
-    
+    Hotel toBeDeleted = Hotel.getWithName(name);
+
+    if (toBeDeleted != null)
+      toBeDeleted.delete();
+
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 

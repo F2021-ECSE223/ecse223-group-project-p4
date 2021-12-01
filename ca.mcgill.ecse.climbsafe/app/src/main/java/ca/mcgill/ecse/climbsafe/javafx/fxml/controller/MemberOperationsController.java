@@ -19,6 +19,7 @@ import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
 import ca.mcgill.ecse.climbsafe.model.Equipment;
 import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
 import ca.mcgill.ecse.climbsafe.model.Member;
+import ca.mcgill.ecse.climbsafe.model.User;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 
@@ -640,9 +641,17 @@ public class MemberOperationsController {
     }
 
     // Delete the member with the select email
-    ClimbSafeFeatureSet1Controller.deleteMember(email);
-    ViewUtils.showSuccess("Successfully deleted the member " + email);
-    clearFieldsInDelete();
+    User toBeDeleted = User.getWithEmail(email); // Return the User with the associated email
+
+    if (toBeDeleted != null && toBeDeleted instanceof Member) { // If the user exists and is a
+                                                                // member
+      ClimbSafeFeatureSet1Controller.deleteMember(email); // Delete the member
+      ViewUtils.showSuccess("Successfully deleted the member " + email);
+      clearFieldsInDelete();
+    } else {
+      ViewUtils.showError("The member does not exist.");
+      return;
+    }
   }
 
 
