@@ -102,6 +102,12 @@ public class ExtraFeaturesController {
     if (newLength <= 0)
       throw new InvalidInputException("The length must be greater than 0");
 
+    for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
+      if (member.getSelectedClimbingLocation() != null
+          && member.getSelectedClimbingLocation().equals(oldLocation)) {
+        member.setSelectedClimbingLocation(newLocation);
+      }
+    }
     if (!oldLocation.equals(newLocation))
       climbingPathToChange.setLocation(newLocation);
 
@@ -121,7 +127,8 @@ public class ExtraFeaturesController {
     }
 
     for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
-      if (member.getSelectedClimbingLocation() != null && member.getSelectedClimbingLocation().equals(location))
+      if (member.getSelectedClimbingLocation() != null
+          && member.getSelectedClimbingLocation().equals(location))
         throw new InvalidInputException(
             "Cannot delete path because a member selected it as their desired location");
     }

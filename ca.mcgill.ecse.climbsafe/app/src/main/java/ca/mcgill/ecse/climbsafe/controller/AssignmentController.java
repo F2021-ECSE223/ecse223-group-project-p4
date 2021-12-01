@@ -173,18 +173,4 @@ public class AssignmentController {
 
     return member;
   }
-
-  /**
-   * Used to get a random hotel out of the hotels that exist in the system
-   * 
-   * @author Wassim Jabbour
-   * @return A random hotel that exists in the system
-   */
-  private static Hotel getRandomHotel() {
-    List<Hotel> hotels = ClimbSafeApplication.getClimbSafe().getHotels();
-    Random rand = new Random();
-    if (hotels.size() > 0)
-      return hotels.get(rand.nextInt(ClimbSafeApplication.getClimbSafe().getHotels().size()));
-    return null;
-  }
 }
