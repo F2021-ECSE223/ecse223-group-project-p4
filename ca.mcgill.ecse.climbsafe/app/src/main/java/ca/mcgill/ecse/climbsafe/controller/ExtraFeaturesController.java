@@ -121,7 +121,7 @@ public class ExtraFeaturesController {
     }
 
     for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
-      if (member.getSelectedClimbingLocation().equals(location))
+      if (member.getSelectedClimbingLocation() != null && member.getSelectedClimbingLocation().equals(location))
         throw new InvalidInputException(
             "Cannot delete path because a member selected it as their desired location");
     }
