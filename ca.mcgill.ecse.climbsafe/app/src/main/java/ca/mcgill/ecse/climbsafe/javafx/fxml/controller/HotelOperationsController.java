@@ -26,9 +26,9 @@ public class HotelOperationsController {
   @FXML
   private TextField addressAddHotel;
   @FXML
-  private ComboBox<String> addRatingCombo;
+  private ComboBox<String> addRatingCombo = new ComboBox<String>();
   @FXML
-  private ComboBox<String> updateRatingCombo;
+  private ComboBox<String> updateRatingCombo = new ComboBox<String>();
   @FXML
   private Button buttonUpdateHotel;
   @FXML
