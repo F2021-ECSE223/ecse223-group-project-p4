@@ -26,6 +26,11 @@ public class DemoFileCreator {
     DemoFileVerifier.verifyClimbSafe(climbSafe);
   }
 
+  /**
+   * Edited to fit our demo better with climbing paths
+   * 
+   * @author Edited by Wassim Jabbour
+   */
   private static ClimbSafe createDemoData() {
     // root (NMP program info)
     Calendar calendar = Calendar.getInstance();

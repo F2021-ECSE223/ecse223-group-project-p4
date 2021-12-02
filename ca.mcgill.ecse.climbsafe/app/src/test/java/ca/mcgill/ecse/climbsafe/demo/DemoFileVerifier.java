@@ -30,6 +30,11 @@ public class DemoFileVerifier {
     DemoFilePrinter.printClimbSafe(climbSafe);
   }
 
+  /**
+   * Edited to fit our demo better with climbing paths
+   * 
+   * @author Edited by Wassim Jabbour
+   */
   private static void verifyLoadedClimbSafe(ClimbSafe climbSafe) {
     // root
     verifyClimbSafe(climbSafe, "2022-04-01", 5, 50);

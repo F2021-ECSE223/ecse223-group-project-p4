@@ -14,6 +14,11 @@ import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
 
 public class DemoFilePrinter {
 
+  /**
+   * Edited to fit our demo better with climbing paths
+   * 
+   * @author Edited by Wassim Jabbour
+   */
   public static void printClimbSafe(ClimbSafe climbSafe) {
     System.out.println("ClimbSafe: startDate = " + climbSafe.getStartDate().toString()
         + "; nrOfWeeks = " + climbSafe.getNrWeeks() + "; priceOfGuidePerWeek = "
