@@ -4,33 +4,45 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="710.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.MainPageController">
+<VBox maxHeight="1.7976931348623157E308"
+	maxWidth="1.7976931348623157E308" prefHeight="710.0" prefWidth="870.0"
+	xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="ca.mcgill.ecse.climbsafe.javafx.fxml.controller.MainPageController">
 	<children>
-		<TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="710.0" prefWidth="870.0" tabClosingPolicy="UNAVAILABLE">
+		<TabPane maxHeight="1.7976931348623157E308"
+			maxWidth="1.7976931348623157E308" prefHeight="710.0"
+			prefWidth="870.0" tabClosingPolicy="UNAVAILABLE">
 			<tabs>
 				<Tab text="Setup NMC Program">
 					<content>
 						<fx:include source="pages/SetupNMC.fxml" />
 					</content>
 				</Tab>
-				<Tab onSelectionChanged="#refreshMemberTab" text="Member Registration">
+				<Tab onSelectionChanged="#refreshMemberTab"
+					text="Member Registration">
 					<content>
-						<fx:include fx:id="memberTab" source="pages/MemberOperations.fxml" />
+						<fx:include fx:id="memberTab"
+							source="pages/MemberOperations.fxml" />
 					</content>
 				</Tab>
-				<Tab onSelectionChanged="#refreshGuideTab" text="Guide Registration">
+				<Tab onSelectionChanged="#refreshGuideTab"
+					text="Guide Registration">
 					<content>
-						<fx:include fx:id="guideTab" source="pages/GuideOperations.fxml" />
+						<fx:include fx:id="guideTab"
+							source="pages/GuideOperations.fxml" />
 					</content>
 				</Tab>
-				<Tab onSelectionChanged="#refreshEquipmentTab" text="Equipment Items">
+				<Tab onSelectionChanged="#refreshEquipmentTab"
+					text="Equipment Items">
 					<content>
-						<fx:include fx:id="equipmentTab" source="pages/EquipmentOperations.fxml" />
+						<fx:include fx:id="equipmentTab"
+							source="pages/EquipmentOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab onSelectionChanged="#refreshBundleTab" text="Bundles">
 					<content>
-						<fx:include fx:id="bundleTab" source="pages/BundleOperations.fxml" />
+						<fx:include fx:id="bundleTab"
+							source="pages/BundleOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Climbing Paths">
@@ -43,9 +55,11 @@
 						<fx:include source="pages/HotelOperations.fxml" />
 					</content>
 				</Tab>
-				<Tab onSelectionChanged="#refreshAssignmentsTab" text="Assignments">
+				<Tab onSelectionChanged="#refreshAssignmentsTab"
+					text="Assignments">
 					<content>
-						<fx:include fx:id="assignmentTab" source="pages/AssignmentOperations.fxml" />
+						<fx:include fx:id="assignmentTab"
+							source="pages/AssignmentOperations.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Payment">
@@ -60,7 +74,8 @@
 				</Tab>
 				<Tab onSelectionChanged="#refreshReviewTab" text="Review Trips">
 					<content>
-						<fx:include fx:id="reviewTab" source="pages/ReviewOperations.fxml" />
+						<fx:include fx:id="reviewTab"
+							source="pages/ReviewOperations.fxml" />
 					</content>
 				</Tab>
 			</tabs>

@@ -48,8 +48,8 @@ public class ReviewOperationsController {
    * 
    * Case 3: the method rateClimb in the extra features controller throws an exception if the input
    * email does not exist in the system (the email of the member). If the input email does not
-   * exist, a popup that tells that the email does not exist in the system appears. Nothing is
-   * saved.
+   * exist, the exception is catched and a popup that tells that the email does not exist in the
+   * system appears. Nothing is saved.
    * 
    * Case 4: if none of the three cases above happen, the method rateClimb in the extra features
    * controller will not throw any exception and will save all informations entered in the page.
@@ -62,23 +62,22 @@ public class ReviewOperationsController {
 
     ratingTripReview.setItems(FXCollections.observableArrayList(rating));
 
-    if (memberEmailTripReview.getText().isBlank()) {
-      ViewUtils.showError("Please enter an email address.");
-      return;
+    if (memberEmailTripReview.getText().isBlank()) {  // if no email is entered
+      ViewUtils.showError("Please enter an email address."); // popup
     }
 
-    if (ratingTripReview.getSelectionModel().isEmpty()) {
-      ViewUtils.showError("Please select a rating.");
+    if (ratingTripReview.getSelectionModel().isEmpty()) { // if no rating is selected
+      ViewUtils.showError("Please select a rating."); // popup
       return;
     }
     try {
       ExtraFeaturesController.rateClimb(memberEmailTripReview.getText(),
           ratingTripReview.getValue(), commentTripReview.getText());
-    } catch (Exception e) {
-      ViewUtils.showError(e.getMessage());
+    } catch (Exception e) {  // email was not found in the system
+      ViewUtils.showError(e.getMessage());  // popup
       return;
     }
 
-    ViewUtils.showSuccess("Your review was successfully submitted.");
+    ViewUtils.showSuccess("Your review was successfully submitted.");  // popup showing the success
   }
 }
