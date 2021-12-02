@@ -14,7 +14,7 @@ public class ClimbSafeApplication {
 
 
   /**
-   * Launches the applictation
+   * Launches the application
    * 
    * @param args
    */
