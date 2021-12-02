@@ -150,9 +150,8 @@ public class ClimbSafeFeatureSet2Controller {
     }
     // Enter new booked items for this member
     for (int a = 0; a < newItemNames.size(); a++) {
-      member.addBookedItem(
-          system.addBookedItem(newItemQuantities.get(a), member,
-              BookableItem.getWithName(newItemNames.get(a))));
+      member.addBookedItem(system.addBookedItem(newItemQuantities.get(a), member,
+          BookableItem.getWithName(newItemNames.get(a))));
     }
     // Update member details
     member.setPassword(newPassword);
