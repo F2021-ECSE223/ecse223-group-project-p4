@@ -134,7 +134,7 @@ public class ClimbSafeFeatureSet6Controller {
         length = assignment.getClimbingPath().getLength();
         location = assignment.getClimbingPath().getLocation();
       }
-      
+
 
       // Adding the corresponding TOAssignment to the list we will be returning
       TOassignments.add(new TOAssignment(memberEmail, memberName, guideEmail, guideName, hotelName,
@@ -167,7 +167,7 @@ public class ClimbSafeFeatureSet6Controller {
     for (var bookedItem : assignment.getMember().getBookedItems()) {
 
       // If it is an equipment item
-      if (bookedItem.getItem() instanceof Equipment item)
+      if (bookedItem.getItem()instanceof Equipment item)
         // Multiplying by the number of weeks and the quantity
         totalPrice += bookedItem.getQuantity() * item.getPricePerWeek() * (endWeek - startWeek + 1);
 

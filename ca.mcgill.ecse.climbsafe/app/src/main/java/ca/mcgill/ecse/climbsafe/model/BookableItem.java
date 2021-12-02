@@ -10,7 +10,7 @@ import java.util.*;
  * due to a bug in Umple (association classes cannot be defined in two files)
  */
 // line 56 "../../../../../ClimbSafe.ump"
-// line 62 "../../../../../ClimbSafePersistence.ump"
+// line 66 "../../../../../ClimbSafePersistence.ump"
 public abstract class BookableItem implements Serializable
 {
 
@@ -193,7 +193,12 @@ public abstract class BookableItem implements Serializable
     }
   }
 
-  // line 68 "../../../../../ClimbSafePersistence.ump"
+
+  /**
+   * Retrieves the hashmap from memory.
+   * Author : Common base
+   */
+  // line 74 "../../../../../ClimbSafePersistence.ump"
    public static  void reinitializeUniqueName(List<Equipment> equipment, List<EquipmentBundle> bundles){
     bookableitemsByName = new HashMap<String, BookableItem>();
     for (Equipment e : equipment) {
@@ -214,7 +219,7 @@ public abstract class BookableItem implements Serializable
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 65 "../../../../../ClimbSafePersistence.ump"
+  // line 69 "../../../../../ClimbSafePersistence.ump"
   private static final long serialVersionUID = 7L ;
 
   

@@ -234,6 +234,7 @@ public class ExtraFeaturesController {
 
       case ("Good"):
         return Rating.Good;
+
       case ("VeryGood"):
         return Rating.VeryGood;
 

@@ -5,6 +5,8 @@ class ClimbSafe {
   isA Serializable;
   private static final long serialVersionUID = 1L;
   
+  // Reinitializes all hashmaps.
+  // Author : Common base
   public void reinitialize() {
     User.reinitializeUniqueEmail(this.getAdministrator(), this.getGuides(), this.getMembers());
     BookableItem.reinitializeUniqueName(this.getEquipment(), this.getBundles());
@@ -19,6 +21,8 @@ class User {
   isA Serializable;
   private static final long serialVersionUID = 2L;
   
+  // Retrieves the hashmap from memory.
+  // Author : Common base
   public static void reinitializeUniqueEmail(Administrator admin, List<Guide> guides, List<Member> members) {
     usersByEmail = new HashMap<String, User>();
     if(admin != null) usersByEmail.put(admin.getEmail(), admin);
@@ -64,6 +68,8 @@ class BookableItem {
   isA Serializable;
   private static final long serialVersionUID = 7L;
 
+  // Retrieves the hashmap from memory.
+  // Author : Common base
   public static void reinitializeUniqueName(List<Equipment> equipment, List<EquipmentBundle> bundles) {
     bookableitemsByName = new HashMap<String, BookableItem>();
     for (Equipment e : equipment) {
@@ -96,6 +102,8 @@ class Hotel {
   isA Serializable;
   private static final long serialVersionUID = 10L;
 
+  // Retrieves the hashmap from memory.
+  // Author : Common base
   public static void reinitializeUniqueName(List<Hotel> hotels) {
     hotelsByName = new HashMap<String, Hotel>();
     for (Hotel hotel : hotels) {

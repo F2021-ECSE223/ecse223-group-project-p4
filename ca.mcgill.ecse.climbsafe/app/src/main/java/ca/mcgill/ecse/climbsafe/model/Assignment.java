@@ -5,7 +5,7 @@ package ca.mcgill.ecse.climbsafe.model;
 import java.io.Serializable;
 
 // line 89 "../../../../../ClimbSafe.ump"
-// line 108 "../../../../../ClimbSafePersistence.ump"
+// line 116 "../../../../../ClimbSafePersistence.ump"
 // line 1 "../../../../../AssignmentProcess.ump"
 public class Assignment implements Serializable
 {
@@ -550,17 +550,35 @@ public class Assignment implements Serializable
     }
   }
 
-  // line 71 "../../../../../AssignmentProcess.ump"
+
+  /**
+   * Helper method that checks an authorization code is valid
+   * authCode : The authorization code
+   * author : Wassim Jabbour
+   */
+  // line 74 "../../../../../AssignmentProcess.ump"
    private boolean isValidCode(String authCode){
     return !(authCode == null || authCode.trim().isEmpty());
   }
 
-  // line 75 "../../../../../AssignmentProcess.ump"
+
+  /**
+   * Helper method that throws an exception
+   * error : The error to throw
+   * author : Adam Kazma
+   */
+  // line 81 "../../../../../AssignmentProcess.ump"
    private void throwException(String error){
     throw new RuntimeException(error);
   }
 
-  // line 79 "../../../../../AssignmentProcess.ump"
+
+  /**
+   * Public method that calls the private setState method
+   * state : The state we want to set
+   * author : Wassim Jabbour
+   */
+  // line 88 "../../../../../AssignmentProcess.ump"
    public void setState(AssignmentState state){
     setAssignmentState(state);
   }
@@ -584,7 +602,7 @@ public class Assignment implements Serializable
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 111 "../../../../../ClimbSafePersistence.ump"
+  // line 119 "../../../../../ClimbSafePersistence.ump"
   private static final long serialVersionUID = 11L ;
 
   

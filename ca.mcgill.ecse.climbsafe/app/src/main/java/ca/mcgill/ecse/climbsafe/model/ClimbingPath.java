@@ -264,10 +264,15 @@ public class ClimbingPath implements Serializable
     }
   }
 
-  // line 36 "../../../../../ExtraFeatures.ump"
+
+  /**
+   * To reinitialize the hashmap from memory.
+   * climbingPaths : The climbing paths in the system.
+   * Author : Wassim Jabbour.
+   */
+  // line 38 "../../../../../ExtraFeatures.ump"
    public static  void reinitializeUniquePath(List<ClimbingPath> climbingPaths){
     climbingpathsByLocation = new HashMap<String, ClimbingPath>();
-
     for (ClimbingPath climbingPath : climbingPaths) {
       climbingpathsByLocation.put(climbingPath.getLocation(), climbingPath);
     }

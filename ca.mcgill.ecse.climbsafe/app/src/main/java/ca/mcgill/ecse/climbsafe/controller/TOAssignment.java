@@ -3,7 +3,10 @@
 
 package ca.mcgill.ecse.climbsafe.controller;
 
-// line 3 "../../../../../ClimbSafeTransferObjects.ump"
+/**
+ * Modified to encapsulate extra features Author : Wassim Jabbour
+ */
+// line 5 "../../../../../ClimbSafeTransferObjects.ump"
 public class TOAssignment {
 
   // ------------------------

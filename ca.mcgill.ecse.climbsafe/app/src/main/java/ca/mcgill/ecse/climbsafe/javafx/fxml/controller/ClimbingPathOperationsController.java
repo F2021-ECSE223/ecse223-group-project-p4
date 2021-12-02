@@ -1,4 +1,5 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
+
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.ExtraFeaturesController;
 import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
@@ -16,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class ClimbingPathOperationsController {
-  //Contains the options for the path difficulties 
+  // Contains the options for the path difficulties
   ObservableList<String> difficultyLevelList =
       FXCollections.observableArrayList("Easy", "Moderate", "Hard");
 
@@ -91,8 +92,9 @@ public class ClimbingPathOperationsController {
   @FXML
   /**
    * This initializes all the fields of the add path tab.
-   * @param event  refers to whenever the DeletePath tab is accessed 
-   * @author Tinetendo Makata 
+   * 
+   * @param event refers to whenever the DeletePath tab is accessed
+   * @author Tinetendo Makata
    */
   public void RefreshSystemPaths1(Event event) {
     initialize();
@@ -102,8 +104,9 @@ public class ClimbingPathOperationsController {
   @FXML
   /**
    * This method adds a path to the ClimbSafe system.
-   * @param event refers to when the add path button is clicked 
-   * @author Tinetendo Makata 
+   * 
+   * @param event refers to when the add path button is clicked
+   * @author Tinetendo Makata
    */
   public void AddPath(ActionEvent event) {
 
@@ -139,9 +142,10 @@ public class ClimbingPathOperationsController {
   // Event Listener on Tab[#UpdatePathTab].onSelectionChanged
   @FXML
   /**
-   * This  initializes all the fields of the update path tab.
-   * @param event  refers to whenever the DeletePath tab is accessed.
-   * @author Tinetendo Makata 
+   * This initializes all the fields of the update path tab.
+   * 
+   * @param event refers to whenever the DeletePath tab is accessed.
+   * @author Tinetendo Makata
    */
   public void RefreshSystemPaths2(Event event) {
     initialize();
@@ -188,9 +192,10 @@ public class ClimbingPathOperationsController {
   // Event Listener on Tab[#DeletePathTab].onSelectionChanged
   @FXML
   /**
-   * This  initializes all the fields of the delete  path tab.
-   * @param event  refers to whenever the DeletePath tab is accessed 
-   * @author Tinetendo Makata 
+   * This initializes all the fields of the delete path tab.
+   * 
+   * @param event refers to whenever the DeletePath tab is accessed
+   * @author Tinetendo Makata
    */
   public void RefreshSystemPaths3(Event event) {
     initialize();
@@ -202,7 +207,7 @@ public class ClimbingPathOperationsController {
    * This method call the deleteClimbingPath() controller method and removes the path selected by
    * the user in the system.
    * 
-   * @param event click the remove path button 
+   * @param event click the remove path button
    * @author Tinetendo Makata
    */
   public void deletePath(ActionEvent event) {
@@ -229,7 +234,7 @@ public class ClimbingPathOperationsController {
   /**
    * Selects the corresponding difficulty and distance when a path is selected in the view list
    * 
-   * @param event click of the path name in the path ListView 
+   * @param event click of the path name in the path ListView
    * @author Tinetendo Makata
    */
   public void selectedPath(MouseEvent event) {
@@ -243,7 +248,7 @@ public class ClimbingPathOperationsController {
   /**
    * Selects the corresponding difficulty and path when a distance is selected in the view list
    * 
-   * @param event click of distance in the remove path ListView 
+   * @param event click of distance in the remove path ListView
    * @author Tinetendo Makata
    */
   public void selectedDistance(MouseEvent event) {
@@ -257,7 +262,7 @@ public class ClimbingPathOperationsController {
   /**
    * Selects the corresponding path and distance when a difficulty is selected in the view list
    * 
-   * @param event click of a difficulty in the remove path listView 
+   * @param event click of a difficulty in the remove path listView
    * @author Tinetendo Makata
    */
   public void selectedDifficulty(MouseEvent event) {
@@ -271,8 +276,8 @@ public class ClimbingPathOperationsController {
    * Helper method, refreshes the inputed ListViews of path, distance and difficulty to display the
    * available paths in the system.
    * 
-   * @param pathList List of paths in the system 
-   * @param distList List of path distances 
+   * @param pathList List of paths in the system
+   * @param distList List of path distances
    * @param diffList List of path difficulties
    * @author Tinetendo Makata
    */

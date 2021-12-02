@@ -31,10 +31,11 @@ class ClimbingPath {
   	isA Serializable;
   	private static final long serialVersionUID = 15L;
   	
+  	// To reinitialize the hashmap from memory.
+  	// climbingPaths : The climbing paths in the system.
+  	// Author : Wassim Jabbour.
   	public static void reinitializeUniquePath(List<ClimbingPath> climbingPaths) {
-    
     climbingpathsByLocation = new HashMap<String, ClimbingPath>();
-
     for (ClimbingPath climbingPath : climbingPaths) {
       climbingpathsByLocation.put(climbingPath.getLocation(), climbingPath);
     }

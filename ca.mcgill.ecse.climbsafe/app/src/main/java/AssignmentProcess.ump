@@ -67,14 +67,23 @@ class Assignment{
     }
   }
   
+  // Helper method that checks an authorization code is valid
+  // authCode : The authorization code
+  // author : Wassim Jabbour
   private boolean isValidCode(String authCode){
     return !(authCode == null || authCode.trim().isEmpty());
   }
   
+  // Helper method that throws an exception
+  // error : The error to throw
+  // author : Adam Kazma
   private void throwException(String error){
     throw new RuntimeException(error);
   }
   
+  // Public method that calls the private setState method
+  // state : The state we want to set
+  // author : Wassim Jabbour
   public void setState(AssignmentState state){
     setAssignmentState(state);
   }

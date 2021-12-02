@@ -1236,7 +1236,12 @@ public class ClimbSafe implements Serializable
     
   }
 
-  // line 9 "../../../../../ClimbSafePersistence.ump"
+
+  /**
+   * Reinitializes all hashmaps.
+   * Author : Common base
+   */
+  // line 11 "../../../../../ClimbSafePersistence.ump"
    public void reinitialize(){
     User.reinitializeUniqueEmail(this.getAdministrator(), this.getGuides(), this.getMembers());
     BookableItem.reinitializeUniqueName(this.getEquipment(), this.getBundles());

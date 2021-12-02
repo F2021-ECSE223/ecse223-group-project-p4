@@ -1,5 +1,7 @@
 namespace ca.mcgill.ecse.climbsafe.controller;
 
+// Modified to encapsulate extra features
+// Author : Wassim Jabbour
 class TOAssignment {
   memberEmail;
   memberName;
