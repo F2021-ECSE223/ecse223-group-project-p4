@@ -17,6 +17,15 @@ import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 
 public class ExtraFeaturesController {
 
+  /**
+   * To rate a climb
+   * 
+   * @param memberEmail The email of the member
+   * @param rating The rating of the climb
+   * @param comment The comment of the member
+   * @throws InvalidInputException In case the assignments weren't initiated yet
+   * @author Wassim Jabbour
+   */
   public static void rateClimb(String memberEmail, String rating, String comment)
       throws InvalidInputException {
 
@@ -33,6 +42,14 @@ public class ExtraFeaturesController {
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
+  /**
+   * Sets the climbing path of a member
+   * 
+   * @param memberEmail The email of the member which we want to set the climbing path for
+   * @param location The location of the climbing path
+   * @throws InvalidInputException In case the member / path does not exist
+   * @author Adam Kazma
+   */
   public static void setClimbingPath(String memberEmail, String location)
       throws InvalidInputException {
 
@@ -125,6 +142,12 @@ public class ExtraFeaturesController {
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
+  /**
+   * Deletes a climbing path
+   * 
+   * @param location The location of the path to delete
+   * @throws InvalidInputException If the location is false or a member chose the path
+   */
   public static void deleteClimbingPath(String location) throws InvalidInputException {
 
     ClimbingPath path = ClimbingPath.getWithLocation(location);
@@ -145,6 +168,12 @@ public class ExtraFeaturesController {
     ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
   }
 
+  /**
+   * Sets the hotels and climbing paths of all assignments. Hotels are done randomly since this is
+   * an extra feature for our 6-member team
+   * 
+   * @author Wassim Jabbour
+   */
   public static void setHotelsAndClimbingPaths() {
     // Assigning a random hotel and the desired climbing location chosen at registration
     for (Assignment assignment : ClimbSafeApplication.getClimbSafe().getAssignments()) {
@@ -156,7 +185,14 @@ public class ExtraFeaturesController {
 
   }
 
-
+  /**
+   * Converts a string to a Difficulty for the paths
+   * 
+   * @param difficulty The name of the difficulty
+   * @return The difficulty
+   * @throws InvalidInputException If the difficulty is invalid
+   * @author Tinetendo Makata
+   */
   private static Difficulty stringToDifficulty(String difficulty) throws InvalidInputException {
 
     switch (difficulty) {
@@ -175,6 +211,14 @@ public class ExtraFeaturesController {
     }
   }
 
+  /**
+   * Converts a string to a Rating for the review
+   * 
+   * @param difficulty The name of the rating
+   * @return The rating
+   * @throws InvalidInputException If the rating is invalid
+   * @author Tinetendo Makata
+   */
   private static Rating stringToRating(String rating) throws InvalidInputException {
 
     switch (rating) {
@@ -198,6 +242,14 @@ public class ExtraFeaturesController {
     }
   }
 
+  /**
+   * Checks the member exists
+   * 
+   * @param memberEmail The email of the member
+   * @return Returns the member if he exists
+   * @throws InvalidInputException Throws an exception if the member doesn't exist
+   * @author Matthieu Hakim
+   */
   private static User checkMemberExists(String memberEmail) throws InvalidInputException {
 
     User member = User.getWithEmail(memberEmail);
@@ -209,6 +261,14 @@ public class ExtraFeaturesController {
     return member;
   }
 
+  /**
+   * Checks a climbing path exists at the given location
+   * 
+   * @param location The given location
+   * @return The climbing path (if it exists)
+   * @throws InvalidInputException Throws an exception if no path exists
+   * @author Karl Rouhana
+   */
   private static ClimbingPath checkClimbingPathExists(String location)
       throws InvalidInputException {
 
