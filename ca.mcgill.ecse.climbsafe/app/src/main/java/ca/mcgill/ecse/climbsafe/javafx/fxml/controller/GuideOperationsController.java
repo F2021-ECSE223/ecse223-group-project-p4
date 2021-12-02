@@ -49,9 +49,17 @@ public class GuideOperationsController {
   private ListView<Label> guideEmailList;
 
 
+  /**
+   * Refresh everything that appears on the UI
+   * 
+   * @author Karl Rouhana
+   */
   public void initialize() {
+    // Clear the guide lists
     guideList.getItems().clear();
     guideEmailList.getItems().clear();
+
+    // Add each guide to the list with his email and name
     for (Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
       guideList.getItems().add(new Label(guide.getName()));
       guideEmailList.getItems().add(new Label(guide.getEmail()));
@@ -59,6 +67,12 @@ public class GuideOperationsController {
   }
 
   @FXML
+  /**
+   * Refresh the table of guides
+   * 
+   * @param event
+   * @author Karl Rouhana
+   */
   public void refreshGuides(Event event) {
     initialize();
   }
@@ -66,8 +80,11 @@ public class GuideOperationsController {
   // Event Listener on Button[#registerGuideButton].onAction
   @FXML
   /**
+   * This method will register the info of a guide by calling the controller when the user presses
+   * the button
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void registerGuideAction(ActionEvent event) {
 
@@ -108,8 +125,11 @@ public class GuideOperationsController {
   // Event Listener on Button[#updateGuideButton].onAction
   @FXML
   /**
+   * This method will update the info of a guide by calling the controller when the user presses the
+   * button
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void updateGuideAction(ActionEvent event) {
 
@@ -147,8 +167,10 @@ public class GuideOperationsController {
 
 
   /**
+   * This method will delete the guide by calling the controller when the user presses the button
    * 
    * @param event
+   * @author Karl Rouhana
    */
   // Event Listener on Button[#deleteGuideButton].onAction
   @FXML
@@ -166,28 +188,30 @@ public class GuideOperationsController {
     }
 
     // Return the User with the associated email
-    User toBeDeleted = User.getWithEmail(email); 
-    
+    User toBeDeleted = User.getWithEmail(email);
+
     // If the user exists and is a guide
-    if (toBeDeleted != null && toBeDeleted instanceof Guide) { 
-      
+    if (toBeDeleted != null && toBeDeleted instanceof Guide) {
+
       // Delete the guide
-      ClimbSafeFeatureSet1Controller.deleteGuide(email); 
-      
-      //Output that the guide has been deleted
+      ClimbSafeFeatureSet1Controller.deleteGuide(email);
+
+      // Output that the guide has been deleted
       ViewUtils.showSuccess("Successfully deleted the guide with email " + email);
       clearFieldsInDelete();
-    } 
-    //There's no guide with the input email
+    }
+    // There's no guide with the input email
     else {
-      ViewUtils.showError("The guide with email "+email+" does not exist.");
+      ViewUtils.showError("The guide with email " + email + " does not exist.");
       return;
     }
 
   }
 
   /**
+   * Private helper method that Clear all fields in the register Tab
    * 
+   * @author Karl Rouhana
    */
   private void clearFieldsInRegister() {
     guidePassword.clear();
@@ -198,8 +222,9 @@ public class GuideOperationsController {
   }
 
   /**
+   * Private helper method that Clear all fields in the update Tab
    * 
-   * 
+   * @author Karl Rouhana
    */
   private void clearFieldsInUpdate() {
     newGuidePassword.clear();
@@ -210,7 +235,9 @@ public class GuideOperationsController {
   }
 
   /**
+   * Private helper method that Clear all fields in the delete Tab
    * 
+   * @author Karl Rouhana
    */
   private void clearFieldsInDelete() {
     rmGuideEmail.clear();

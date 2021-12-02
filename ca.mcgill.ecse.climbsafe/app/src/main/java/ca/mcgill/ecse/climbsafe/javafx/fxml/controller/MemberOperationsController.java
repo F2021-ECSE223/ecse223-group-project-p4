@@ -165,6 +165,7 @@ public class MemberOperationsController {
    * the button
    * 
    * @param event - press of the register button
+   * @author Karl Rouhana
    */
   public void registerMemberUI(ActionEvent event) {
 
@@ -178,6 +179,7 @@ public class MemberOperationsController {
     boolean guide = guideRequiredCheck.isSelected();
 
 
+    // checks that the user chose a path
     if (pathIndexRegister == null) {
       ViewUtils.showError("Please select a climbing path.");
       return;
@@ -193,7 +195,7 @@ public class MemberOperationsController {
 
     // Check if information entered is an integer
     try {
-       numberOfWeeksWanted = Integer.parseInt(this.addNumberWeeks.getText());
+      numberOfWeeksWanted = Integer.parseInt(this.addNumberWeeks.getText());
     } catch (Exception e) {
       ViewUtils.showError("The number of weeks wanted must be an integer");
       return;
@@ -218,12 +220,12 @@ public class MemberOperationsController {
           computeTotalCost(numberOfWeeksWanted, guide, allBookedItemsList, numberOfItemsToAdd);
       totalWeight = computeTotalWeight(allBookedItemsList, numberOfItemsToAdd);
 
-      //Try to register the member
+      // Try to register the member
       ClimbSafeFeatureSet2Controller.registerMember(email, password, name, emergency,
-          numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd); 
+          numberOfWeeksWanted, guide, hotel, bookedItemsToAdd, numberOfItemsToAdd);
 
       if (!guide) {
-        
+
         // Output the price and weight without taking into account the guide since the member does
         // not want it
         ViewUtils.showSuccess("Registration successfully processed for member " + name + "." + '\n'
@@ -242,13 +244,13 @@ public class MemberOperationsController {
 
       }
 
-      //Check that the member chose a path
+      // Check that the member chose a path
       if (pathIndexRegister != null) {
-        
-        //Get the path chosen from the system
+
+        // Get the path chosen from the system
         ClimbingPath path = system.getClimbingPaths().get(pathIndexRegister);
-        
-        //Assign the path to the member 
+
+        // Assign the path to the member
         ((Member) Member.getWithEmail(email)).setSelectedClimbingLocation(path.getLocation());
       }
 
@@ -259,18 +261,17 @@ public class MemberOperationsController {
       numberOfItemsToAdd.clear();
       allBookedItemsList.clear();
 
-      clearFieldsInRegister();
 
-      //Clear the selected items in the table
+      // Clear the selected items in the table
       refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
       refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
 
-      // Clear the price and weight
+      // Clear the price and weight and path index
       totalPrice = 0;
       totalWeight = 0;
       pathIndexRegister = null;
 
-
+      clearFieldsInRegister();
 
       // Catch and output the error if there's one
     } catch (InvalidInputException e) {
@@ -289,6 +290,7 @@ public class MemberOperationsController {
    * button
    * 
    * @param event - press of the add button
+   * @author Karl Rouhana
    */
   public void addItem(ActionEvent event) {
 
@@ -303,31 +305,37 @@ public class MemberOperationsController {
     }
 
 
-    BookableItem item = BookableItem.getWithName(addedItemsList.getValue()); // Get the name of the
-                                                                             // item chosen
 
+    // Check that the number entered is bigger than 0
     if (numberOfItemWanted <= 0) {
       ViewUtils.showError("The number of items wanted must be greater than 0.");
       return;
 
     }
 
-    if (!(item == null)) { // Check thats the member chose an item.
 
-      bookedItemsToAdd.add(item.getName()); // Add the name of the item to the list
+    // Get the item chosen from the name chosen in the comboBox
+    BookableItem item = BookableItem.getWithName(addedItemsList.getValue());
 
-      allBookedItemsList.add((Equipment) item); // Add the equipment to the
-                                                // list
-      numberOfItemsToAdd.add(numberOfItemWanted); // Add the number of equipment requested by the
-                                                  // member
+    // Check thats the member chose an item.
+    if (!(item == null)) {
 
+      // Add the name of the item to the list
+      bookedItemsToAdd.add(item.getName());
 
+      // Add the equipment to the list
+      allBookedItemsList.add((Equipment) item);
+
+      // Add the number of equipment requested by the member
+      numberOfItemsToAdd.add(numberOfItemWanted);
+
+      // Refresh the list of items chosen
       refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
-
       refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
 
 
-    } else { // The member clicked on add without selecting any item
+      // The member clicked on add without selecting any item
+    } else {
       ViewUtils.showError("You have to select an item to add");
       return;
 
@@ -344,6 +352,7 @@ public class MemberOperationsController {
    * the button
    * 
    * @param event - press of the add button
+   * @author Karl Rouhana
    */
   public void addBundle(ActionEvent event) {
     int numberOfBundleWanted;
@@ -356,27 +365,35 @@ public class MemberOperationsController {
       return;
     }
 
-    BookableItem bundle = BookableItem.getWithName(addedBundlesList.getValue()); // Get the name of
-                                                                                 // the item chosen
 
-    if (!(bundle == null)) { // Check thats the member chose a bundle.
-
-      bookedItemsToAdd.add(bundle.getName()); // Add the name of the item to the list
-
-      allBookedItemsList.add((EquipmentBundle) bundle); // Add the equipment
-                                                        // bundle to the list
-
-      numberOfItemsToAdd.add(numberOfBundleWanted); // Add the number of equipment requested by the
-                                                    // member
-
-
-      refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
-
-      refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
+    // Check that the number entered is bigger than 0
+    if (numberOfBundleWanted <= 0) {
+      ViewUtils.showError("The number of items wanted must be greater than 0.");
+      return;
 
     }
 
-    else { // The member clicked on add without selecting any bundle
+    // Get the name of the item chosen
+    BookableItem bundle = BookableItem.getWithName(addedBundlesList.getValue());
+
+    // Check thats the member chose a bundle.
+    if (!(bundle == null)) {
+
+      // Add the name of the item to the list
+      bookedItemsToAdd.add(bundle.getName());
+
+      // Add the equipment bundle to the list
+      allBookedItemsList.add((EquipmentBundle) bundle);
+
+      // Add the number of equipment requested by the member
+      numberOfItemsToAdd.add(numberOfBundleWanted);
+
+      // Refresh the list of bundle chosen
+      refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
+      refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
+
+      // The member clicked on add without selecting any bundle
+    } else {
       ViewUtils.showError("You have to select a bundle to add");
       return;
 
@@ -393,6 +410,7 @@ public class MemberOperationsController {
    * the button
    * 
    * @param event - press of the update button
+   * @author Karl Rouhana
    */
   public void updateMemberUI(ActionEvent event) {
 
@@ -402,15 +420,13 @@ public class MemberOperationsController {
     String password = updatePassword.getText();
     String emergency = updateEmergencyPhone.getText();
 
-
     boolean hotel = updateHotelRequiredCheck.isSelected();
     boolean guide = updateGuideRequiredCheck.isSelected();
 
-
+    // Check that the member chose a path
     if (pathIndexUpdate == null) {
       ViewUtils.showError("Please select a climbing path.");
       return;
-
     }
 
 
@@ -436,14 +452,12 @@ public class MemberOperationsController {
 
       ViewUtils.showError("The input fields must not be empty.");
       return;
-
     }
 
     try {
+      // Try to update the member
       ClimbSafeFeatureSet2Controller.updateMember(email, password, name, emergency,
-          numberOfWeeksWanted, guide, hotel, bookedItemsToUpdate, numberOfItemsToUpdate); // Try to
-                                                                                          // Update
-      // member
+          numberOfWeeksWanted, guide, hotel, bookedItemsToUpdate, numberOfItemsToUpdate);
 
       // Compute the total price and weight of the item chosen by the member and if the member
       // desires a guide
@@ -452,8 +466,6 @@ public class MemberOperationsController {
       totalWeightForUpdate = computeTotalWeight(updateAllBookedItemsList, numberOfItemsToUpdate);
 
       clearFieldsInUpdate();
-
-
 
       if (!guide)
         // Output the price and weight without taking into account the guide since the member does
@@ -471,38 +483,32 @@ public class MemberOperationsController {
             + "Total Price of equipment is: " + totalPriceForUpdate
             + " $, total price of the guide is: " + totalCostForGuide
             + " $ and the the total weight is " + totalWeightForUpdate + " lb.");
-
-        int totalPriceWithGuide = totalCostForGuide + totalPriceForUpdate;
-
       }
 
-
-
+      // Check that the member chose a path
       if (pathIndexUpdate != null) {
+
+        // Get the path chosen from the system
         ClimbingPath path = system.getClimbingPaths().get(pathIndexUpdate);
+
+        // Assign the path to the member
         ((Member) Member.getWithEmail(email)).setSelectedClimbingLocation(path.getLocation());
 
       }
-
-      // Set the price and weight on the screen
-
 
       // Clear the temporary lists for the next customer
       bookedItemsToUpdate.clear();
       numberOfItemsToUpdate.clear();
       updateAllBookedItemsList.clear();
 
+      // Refresh the lists
       refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
-
       refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);
 
-
-
-      // Clear the price and weight
+      // Clear the price and weight and path index
       totalPriceForUpdate = 0;
       totalWeightForUpdate = 0;
       pathIndexUpdate = null;
-
 
 
       // Catch and output the error if there's one
@@ -521,6 +527,7 @@ public class MemberOperationsController {
    * user presses the button
    * 
    * @param event - press of the update button
+   * @author Karl Rouhana
    */
   public void updateItem(ActionEvent event) {
     int numberOfItemWanted;
@@ -534,34 +541,34 @@ public class MemberOperationsController {
       return;
     }
 
-
-    BookableItem item = BookableItem.getWithName(updateItemName.getValue());
-
+    // Check if information entered is bigger than 0
     if (numberOfItemWanted <= 0) {
       ViewUtils.showError("The number of items wanted must be greater than 0.");
       return;
-
     }
 
-    if (!(item == null)) { // Check thats the member chose an item.
+    // Get the item chosen from the name chosen in the comboBox
+    BookableItem item = BookableItem.getWithName(updateItemName.getValue());
 
-      bookedItemsToUpdate.add(item.getName()); // Add the name of the item to the list
+    // Check thats the member chose an item.
+    if (!(item == null)) {
 
-      numberOfItemsToUpdate.add(numberOfItemWanted); // Add the number of equipment requested by the
-                                                     // member
+      // Add the name of the item to the list
+      bookedItemsToUpdate.add(item.getName());
 
-      updateAllBookedItemsList.add((Equipment) item); // Add the equipment to
-                                                      // the list
+      // Add the number of equipment requested by the member
+      numberOfItemsToUpdate.add(numberOfItemWanted);
 
+      // Add the equipment to the list
+      updateAllBookedItemsList.add((Equipment) item);
 
+      // refresh the lists
       refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
-
       refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);
 
 
-    }
-
-    else { // The member clicked on add without selecting any item
+      // The member clicked on add without selecting any item
+    } else {
       ViewUtils.showError("You have to select an item to add");
       return;
 
@@ -576,6 +583,7 @@ public class MemberOperationsController {
    * presses the button
    * 
    * @param event - press of the update button
+   * @author Karl Rouhana
    */
   public void updateBundle(ActionEvent event) {
     int numberOfBundleWanted;
@@ -625,6 +633,7 @@ public class MemberOperationsController {
    * This method will delete the member by calling the controller when the user presses the button
    * 
    * @param event - press of the delete button
+   * @author Karl Rouhana
    */
   public void deleteMemberUI(ActionEvent event) {
 
@@ -640,17 +649,17 @@ public class MemberOperationsController {
     }
 
     // Return the User with the associated email
-    User toBeDeleted = User.getWithEmail(email); 
+    User toBeDeleted = User.getWithEmail(email);
 
     // If the user exists and is a member
-    if (toBeDeleted != null && toBeDeleted instanceof Member) { 
-      
+    if (toBeDeleted != null && toBeDeleted instanceof Member) {
+
       // Delete the member with the select email
-      ClimbSafeFeatureSet1Controller.deleteMember(email); 
+      ClimbSafeFeatureSet1Controller.deleteMember(email);
       ViewUtils.showSuccess("Successfully deleted the member with email " + email);
       clearFieldsInDelete();
     } else {
-      ViewUtils.showError("The member with email "+email+" does not exist.");
+      ViewUtils.showError("The member with email " + email + " does not exist.");
       return;
     }
   }
@@ -659,35 +668,51 @@ public class MemberOperationsController {
   // Event Listener on Button[#removeItems].onAction
   @FXML
   /**
+   * Remove the item chosen of the user in register
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void removeItemsFromChosen(ActionEvent event) {
 
+    // Check that the user chose an item
     if (listOfItemsChosen.getSelectionModel().isEmpty()) {
       ViewUtils.showError("Please select an item to delete.");
       return;
     }
+
+    // Remove the selected item and its quantity
     bookedItemsToAdd.remove(listOfItemsChosen.getSelectionModel().getSelectedIndex());
     numberOfItemsToAdd.remove(listOfNumberOfItemsChosen.getSelectionModel().getSelectedIndex());
+
+    // Refresh the lists of items
     refreshListViewString(listOfItemsChosen, bookedItemsToAdd);
     refreshListViewInteger(listOfNumberOfItemsChosen, numberOfItemsToAdd);
   }
 
+
   // Event Listener on Button[#removeItemsUpdate].onAction
   @FXML
   /**
+   * Remove the item chosen of the user in update
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void removeItemsFromChosenUpdate(ActionEvent event) {
+
+    // Check that the user chose an item
     if (listOfItemsChosenUpdate.getSelectionModel().isEmpty()) {
       ViewUtils.showError("Please select an item to delete.");
       return;
     }
+
+    // Remove the selected item and its quantity
     bookedItemsToUpdate.remove(listOfItemsChosenUpdate.getSelectionModel().getSelectedIndex());
     numberOfItemsToUpdate
         .remove(listOfINumberOftemsChosenUpdate.getSelectionModel().getSelectedIndex());
+
+    // Refresh the lists of items
     refreshListViewString(listOfItemsChosenUpdate, bookedItemsToUpdate);
     refreshListViewInteger(listOfINumberOftemsChosenUpdate, numberOfItemsToUpdate);
   }
@@ -695,94 +720,126 @@ public class MemberOperationsController {
   // Event Listener on ListView[#listOfItemsChosen].onMouseClicked
   @FXML
   /**
+   * Select the item chosen of the user in register
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void selectItem(MouseEvent event) {
     listOfNumberOfItemsChosen.getSelectionModel()
         .select(listOfItemsChosen.getSelectionModel().getSelectedIndex());
-
   }
+
 
   // Event Listener on ListView[#listOfNumberOfItemsChosen].onMouseClicked
   @FXML
   /**
+   * Select the quantity chosen of the user in register
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void selectQuantity(MouseEvent event) {
     listOfItemsChosen.getSelectionModel()
         .select(listOfNumberOfItemsChosen.getSelectionModel().getSelectedIndex());
-
   }
 
+
   /**
+   * Refresh the list of names
    * 
    * @param listView
    * @param names
+   * @author Karl Rouhana
    */
   private void refreshListViewString(ListView<Label> listView, List<String> names) {
+
+    // Clear the list
     listView.getItems().clear();
+
     for (String string : names) {
+
+      // Add the names to the selected list
       listView.getItems().add(new Label(string));
     }
+
     listView.refresh();
   }
 
   /**
+   * Refresh the list of quantities
    * 
    * @param listView
    * @param quantities
+   * @author Karl Rouhana
    */
   private void refreshListViewInteger(ListView<Label> listView, List<Integer> quantities) {
+
+    // Clear the list
     listView.getItems().clear();
+
     for (Integer ints : quantities) {
+
+      // Add the quantities to the selected list
       listView.getItems().add(new Label(String.valueOf(ints)));
     }
+
     listView.refresh();
   }
 
 
   /**
+   * Return the climbing path names from the system and show if there's no path in the system
    * 
-   * @return
+   * @return climbingPathNames - the list of climbing path names from the system
+   * @author Karl Rouhana
    */
-  public List<String> getPathName() {
+  private List<String> getPathName() {
 
     List<String> climbingPathNames = new ArrayList();
 
+    // Will be useful if there's no path in system
     climbingPathNames.add("No paths in system.");
 
+    // get all climbing path from the system
     List<ClimbingPath> allPaths = system.getClimbingPaths();
 
     String name = "";
 
+    // If there are path in the system
     if (allPaths.size() > 0) {
+
+      // Clear the list (no more "No paths in system")
       climbingPathNames.clear();
 
       for (ClimbingPath path : allPaths) {
 
+        // Add the name of the climbing path to the list
         name = path.getLocation() + ", " + path.getDifficulty() + ", " + path.getLength() + " Km.";
         climbingPathNames.add(name);
-
       }
     }
 
+    // return the list of path
     return climbingPathNames;
   }
 
 
   /**
+   * Set the prompt tex in the combobox
    * 
    * @param box
    * @param prompt
+   * @author Karl Rouhana
    */
   private void setPromptText(ComboBox<String> box, String prompt) {
     box.setPromptText(prompt);
   }
 
   /**
+   * Refresh everything that appears on the UI
    * 
+   * @author Karl Rouhana
    */
   public void initialize() {
 
@@ -856,7 +913,9 @@ public class MemberOperationsController {
   }
 
   /**
+   * Refresh the register tab when the user chooses this tab
    * 
+   * @author Karl Rouhana
    * @param event
    */
   public void RefreshMemberRegister(Event event) {
@@ -865,7 +924,9 @@ public class MemberOperationsController {
   }
 
   /**
+   * Refresh the Update tab when the user chooses this tab
    * 
+   * @author Karl Rouhana
    * @param event
    */
   public void RefreshMemberUpdate(Event event) {
@@ -873,8 +934,10 @@ public class MemberOperationsController {
   }
 
   /**
+   * Refresh the Delete tab when the user chooses this tab
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void RefreshMemberDelete(Event event) {
     initialize();
@@ -894,9 +957,10 @@ public class MemberOperationsController {
    */
   private int computeTotalCost(int totalNumberOfWeeks, boolean hasGuide,
       List<BookableItem> listOfBookableItem, List<Integer> listOfNumberOfItems) {
-    
-    if(listOfBookableItem.size() == 0 || listOfNumberOfItems.size() == 0) return 0;
-    
+
+    if (listOfBookableItem.size() == 0 || listOfNumberOfItems.size() == 0)
+      return 0;
+
     int i = 0;
     for (var bookedItem : listOfBookableItem) {
 
@@ -980,36 +1044,45 @@ public class MemberOperationsController {
 
 
   /**
-   * 
+   * private helper method to return the names of the items in the system
+   *
+   * @author Karl Rouhana
    * @return
    */
   private List<String> getNameOfItems() {
 
+    // refresh the system instance
     system = ClimbSafeApplication.getClimbSafe();
 
     List<String> listOfNames = new ArrayList<>();
 
+    // Get all equipment from the system
     for (Equipment item : system.getEquipment()) {
 
+      // add the names of the items to the list
       listOfNames.add(item.getName());
 
     }
-
     return listOfNames;
   }
 
   /**
+   * private helper method to return the names of the bundles in the system
    * 
-   * @return
+   * @author Karl Rouhana
+   * @return listOfNames - the list of names of the bundles
    */
   private List<String> getNameOfBundles() {
 
+    // refresh the system instance
     system = ClimbSafeApplication.getClimbSafe();
 
     List<String> listOfNames = new ArrayList<>();
 
+    // Get all equipment from the system
     for (EquipmentBundle bundle : system.getBundles()) {
 
+      // add the names of the bundles to the list
       listOfNames.add(bundle.getName());
 
     }
@@ -1020,8 +1093,10 @@ public class MemberOperationsController {
   // Event Listener on ListView[#listOfClimbingPaths].onMouseClicked
   @FXML
   /**
+   * Select a path for the user in the register tab
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void selectPath(MouseEvent event) {
     listOfClimbingPaths.getSelectionModel()
@@ -1031,8 +1106,10 @@ public class MemberOperationsController {
   // Event Listener on ListView[#listOfClimbingPathsUpdate].onMouseClicked
   @FXML
   /**
+   * Select a path for the user in the update tab
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void selectPathUpdate(MouseEvent event) {
     listOfClimbingPathsUpdate.getSelectionModel()
@@ -1043,9 +1120,10 @@ public class MemberOperationsController {
   // Event Listener on Button[#addPathButton].onAction
   @FXML
   /**
-   * Choose a path for the user in the register tab
+   * Add the path for the user in the register tab
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void addPath(ActionEvent event) {
 
@@ -1076,6 +1154,7 @@ public class MemberOperationsController {
    * Choose a path for the user in the update tab
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void updatePath(ActionEvent event) {
 
@@ -1108,6 +1187,7 @@ public class MemberOperationsController {
    * Select the items from the list in update and consequently select the quantity attached
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void selectItemUpdate(MouseEvent event) {
     listOfINumberOftemsChosenUpdate.getSelectionModel()
@@ -1120,6 +1200,7 @@ public class MemberOperationsController {
    * Select the quantities from the list in update and consequently select the item attached
    * 
    * @param event
+   * @author Karl Rouhana
    */
   public void selectQuantitiesUpdate(MouseEvent event) {
     listOfItemsChosenUpdate.getSelectionModel()
@@ -1128,7 +1209,7 @@ public class MemberOperationsController {
 
 
   /**
-   * Clear all fields in the register Tab
+   * Private helper method that Clear all fields in the register Tab
    * 
    * @author Karl Rouhana
    */
@@ -1147,7 +1228,7 @@ public class MemberOperationsController {
   }
 
   /**
-   * Clear all fields in the update Tab
+   * Private helper method that Clear all fields in the update Tab
    * 
    * @author Karl Rouhana
    */
@@ -1166,7 +1247,7 @@ public class MemberOperationsController {
   }
 
   /**
-   * Clear all fields in the delete Tab
+   * Private helper method that Clear all fields in the delete Tab
    * 
    * @author Karl Rouhana
    */
