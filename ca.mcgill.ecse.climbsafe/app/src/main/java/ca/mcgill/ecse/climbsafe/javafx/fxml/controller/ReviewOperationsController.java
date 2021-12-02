@@ -37,6 +37,27 @@ public class ReviewOperationsController {
 
   // Event Listener on Button[#submitTripReview].onAction
   @FXML
+  /**
+   * A method executed when the button submit is pressed in the review trip page. There are 4 cases:
+   * 
+   * Case 1: the text field to enter the email is empty, a popup that asks to enter the email of the
+   * member appears. Nothing is saved.
+   * 
+   * Case 2: the user does not select a rating, a popup that asks to enter the rating appears.
+   * Nothing is saved.
+   * 
+   * Case 3: the method rateClimb in the extra features controller throws an exception if the input
+   * email does not exist in the system (the email of the member). If the input email does not
+   * exist, a popup that tells that the email does not exist in the system appears. Nothing is
+   * saved.
+   * 
+   * Case 4: if none of the three cases above happen, the method rateClimb in the extra features
+   * controller will not throw any exception and will save all informations entered in the page.
+   * Also, a popup will show the success.
+   * 
+   * @author Ralph Nassar
+   * @param event
+   */
   public void submitReviewAction(ActionEvent event) {
 
     ratingTripReview.setItems(FXCollections.observableArrayList(rating));
