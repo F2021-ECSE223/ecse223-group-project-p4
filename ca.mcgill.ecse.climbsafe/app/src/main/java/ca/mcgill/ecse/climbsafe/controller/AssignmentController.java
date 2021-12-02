@@ -1,10 +1,10 @@
 package ca.mcgill.ecse.climbsafe.controller;
 
-
-import java.util.List;
-import java.util.Random;
-import ca.mcgill.ecse.climbsafe.application.*;
-import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
+import ca.mcgill.ecse.climbsafe.model.Assignment;
+import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
+import ca.mcgill.ecse.climbsafe.model.Guide;
+import ca.mcgill.ecse.climbsafe.model.Member;
 import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 
 public class AssignmentController {
@@ -15,51 +15,50 @@ public class AssignmentController {
    */
   public static void initiateAssignment() throws InvalidInputException {
 
+    // Extracting the system instance into a variable
+    ClimbSafe system = ClimbSafeApplication.getClimbSafe();
+
     // If the assignments were already initialized, throw an exception
-    if (ClimbSafeApplication.getClimbSafe().getAssignments().size() > 0)
+    if (system.getAssignments().size() > 0)
       throw new InvalidInputException("Assignments were already initiated for the current season");
 
     // Else initiate all assignments
-    if (ClimbSafeApplication.getClimbSafe().getGuides().size() == 0) {
+    if (system.getGuides().size() == 0) {
 
-      for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
+      for (Member member : system.getMembers()) {
         if (!member.getGuideRequired()) {
-          ClimbSafeApplication.getClimbSafe().addAssignment(
-              new Assignment(1, member.getNrWeeks(), member, ClimbSafeApplication.getClimbSafe()));
+          system.addAssignment(new Assignment(1, member.getNrWeeks(), member, system));
         }
       }
     }
 
     else {
-      for (Guide guide : ClimbSafeApplication.getClimbSafe().getGuides()) {
+      for (Guide guide : system.getGuides()) {
         int weeksTaken = 0;
-        for (Member member : ClimbSafeApplication.getClimbSafe().getMembers()) {
+        for (Member member : system.getMembers()) {
           if (member.getAssignment() == null) {
             if (member.getGuideRequired()) {
-              if (member.getNrWeeks() <= ClimbSafeApplication.getClimbSafe().getNrWeeks()
-                  - weeksTaken) {
+              if (member.getNrWeeks() <= system.getNrWeeks() - weeksTaken) {
                 Assignment assignment = new Assignment(weeksTaken + 1,
-                    weeksTaken + member.getNrWeeks(), member, ClimbSafeApplication.getClimbSafe());
+                    weeksTaken + member.getNrWeeks(), member, system);
                 assignment.setGuide(guide);
-                ClimbSafeApplication.getClimbSafe().addAssignment(assignment);
+                system.addAssignment(assignment);
                 weeksTaken += member.getNrWeeks();
               } else {
-                if (ClimbSafeApplication.getClimbSafe().getGuides()
-                    .indexOf(guide) == ClimbSafeApplication.getClimbSafe().getGuides().size() - 1) {
+                if (system.getGuides().indexOf(guide) == system.getGuides().size() - 1) {
                   throw new InvalidInputException(
                       "Assignments could not be completed for all members");
                 }
               }
             } else {
-              ClimbSafeApplication.getClimbSafe().addAssignment(new Assignment(1,
-                  member.getNrWeeks(), member, ClimbSafeApplication.getClimbSafe()));
+              system.addAssignment(new Assignment(1, member.getNrWeeks(), member, system));
             }
           }
         }
       }
     }
 
-    ClimbSafePersistence.save(ClimbSafeApplication.getClimbSafe());
+    ClimbSafePersistence.save(system);
   }
 
   /**

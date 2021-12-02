@@ -1,8 +1,7 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 
-import javafx.fxml.FXML;
-
 import javafx.event.Event;
+import javafx.fxml.FXML;
 
 public class MainPageController {
   @FXML
@@ -18,35 +17,67 @@ public class MainPageController {
   @FXML
   private EquipmentOperationsController equipmentTabController;
 
-  // Event Listener on Tab.onSelectionChanged
   @FXML
+  /**
+   * To refresh the member tab when pressed
+   * 
+   * @param event The action of pressing the tab
+   * @author Wassim Jabbour
+   */
   public void refreshMemberTab(Event event) {
     memberTabController.initialize();
   }
 
+  /**
+   * To refresh the equipment tab when pressed
+   * 
+   * @param event The action of pressing the tab
+   * @author Wassim Jabbour
+   */
   @FXML
   public void refreshEquipmentTab(Event event) {
     equipmentTabController.initialize();
   }
 
-  // Event Listener on Tab.onSelectionChanged
+  /**
+   * To refresh the bundle tab when pressed
+   * 
+   * @param event The action of pressing the tab
+   * @author Wassim Jabbour
+   */
   @FXML
   public void refreshBundleTab(Event event) {
     bundleTabController.initialize();
   }
 
-  // Event Listener on Tab.onSelectionChanged
+  /**
+   * To refresh the member tab when pressed
+   * 
+   * @param event
+   * @author Wassim Jabbour
+   */
   @FXML
   public void refreshAssignmentsTab(Event event) {
     assignmentTabController.initialize();
   }
 
-  // Event Listener on Tab.onSelectionChanged
+  /**
+   * To refresh the review tab when pressed
+   * 
+   * @param event The action of pressing the tab
+   * @author Wassim Jabbour
+   */
   @FXML
   public void refreshReviewTab(Event event) {
     reviewTabController.initialize();
   }
 
+  /**
+   * To refresh the guide tab when pressed
+   * 
+   * @param event The action of pressing the tab
+   * @author Wassim Jabbour
+   */
   @FXML
   public void refreshGuideTab(Event event) {
     guideTabController.initialize();

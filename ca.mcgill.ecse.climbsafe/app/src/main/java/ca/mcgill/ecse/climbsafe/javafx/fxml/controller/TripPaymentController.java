@@ -1,14 +1,10 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 
-import javafx.fxml.FXML;
-
-import javafx.scene.control.Button;
-
-import javafx.scene.control.TextField;
-
-import javafx.event.ActionEvent;
-
 import ca.mcgill.ecse.climbsafe.controller.AssignmentController;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class TripPaymentController {
   @FXML

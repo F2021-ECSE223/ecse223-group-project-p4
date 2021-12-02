@@ -1,17 +1,12 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 
-import javafx.fxml.FXML;
-
-import javafx.scene.control.Button;
-
-import javafx.scene.control.TextField;
-import java.lang.reflect.Array;
-import java.util.List;
 import ca.mcgill.ecse.climbsafe.controller.ExtraFeaturesController;
-import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 public class ReviewOperationsController {
   @FXML
@@ -62,7 +57,7 @@ public class ReviewOperationsController {
 
     ratingTripReview.setItems(FXCollections.observableArrayList(rating));
 
-    if (memberEmailTripReview.getText().isBlank()) {  // if no email is entered
+    if (memberEmailTripReview.getText().isBlank()) { // if no email is entered
       ViewUtils.showError("Please enter an email address."); // popup
     }
 
@@ -73,11 +68,11 @@ public class ReviewOperationsController {
     try {
       ExtraFeaturesController.rateClimb(memberEmailTripReview.getText(),
           ratingTripReview.getValue(), commentTripReview.getText());
-    } catch (Exception e) {  // email was not found in the system
-      ViewUtils.showError(e.getMessage());  // popup
+    } catch (Exception e) { // email was not found in the system
+      ViewUtils.showError(e.getMessage()); // popup
       return;
     }
 
-    ViewUtils.showSuccess("Your review was successfully submitted.");  // popup showing the success
+    ViewUtils.showSuccess("Your review was successfully submitted."); // popup showing the success
   }
 }

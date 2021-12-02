@@ -2,10 +2,17 @@ package ca.mcgill.ecse.climbsafe.controller;
 
 import java.util.List;
 import java.util.Random;
-import ca.mcgill.ecse.climbsafe.application.*;
-import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
+import ca.mcgill.ecse.climbsafe.model.Assignment;
+import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
+import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
 import ca.mcgill.ecse.climbsafe.model.ClimbingPath.Difficulty;
+import ca.mcgill.ecse.climbsafe.model.Guide;
+import ca.mcgill.ecse.climbsafe.model.Hotel;
+import ca.mcgill.ecse.climbsafe.model.Member;
+import ca.mcgill.ecse.climbsafe.model.Review;
 import ca.mcgill.ecse.climbsafe.model.Review.Rating;
+import ca.mcgill.ecse.climbsafe.model.User;
 import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 
 public class ExtraFeaturesController {

@@ -1,11 +1,12 @@
 package ca.mcgill.ecse.climbsafe.controller;
 
 import java.sql.Date;
-import java.util.List;
-
-// My imports
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
-import ca.mcgill.ecse.climbsafe.model.*;
+import ca.mcgill.ecse.climbsafe.model.ClimbSafe;
+import ca.mcgill.ecse.climbsafe.model.Guide;
+import ca.mcgill.ecse.climbsafe.model.Hotel;
+import ca.mcgill.ecse.climbsafe.model.Member;
+import ca.mcgill.ecse.climbsafe.model.User;
 import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 
 

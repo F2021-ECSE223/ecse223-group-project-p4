@@ -1,11 +1,7 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 
-import javafx.fxml.FXML;
-
-import javafx.scene.control.Button;
-
-import javafx.scene.control.TextField;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet5Controller;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet6Controller;
@@ -13,16 +9,15 @@ import ca.mcgill.ecse.climbsafe.model.Equipment;
 import ca.mcgill.ecse.climbsafe.model.EquipmentBundle;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-
-import javafx.scene.control.ListView;
-
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
-
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
-import javafx.event.Event;
 
 public class BundleOperationsController {
   @FXML

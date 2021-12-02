@@ -10,6 +10,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ViewUtils {
+
+  /**
+   * Makes a popup window
+   * 
+   * @param title The title of the popup window
+   * @param message The message of the popup window
+   * @author Adam Kazma (inspired from BTMS)
+   */
   public static void makePopupWindow(String title, String message) {
     Stage dialog = new Stage();
     dialog.initModality(Modality.APPLICATION_MODAL);
@@ -33,14 +41,32 @@ public class ViewUtils {
     dialog.show();
   }
 
+  /**
+   * Makes a popup window with title Error
+   * 
+   * @param message The message of the popup window
+   * @author Adam Kazma (inspired from BTMS)
+   */
   public static void showError(String message) {
     makePopupWindow("Error", message);
   }
 
+  /**
+   * Makes a popup window with title Successful Operation
+   * 
+   * @param message The message of the popup window
+   * @author Adam Kazma
+   */
   public static void showSuccess(String message) {
     makePopupWindow("Successful Operation", message);
   }
 
+  /**
+   * Checks that the input string is alphabetic
+   * 
+   * @param name The string we want to check is alpha numeric
+   * @author Adam Kazma (inspired from BTMS)
+   */
   public static boolean isAlpha(String name) {
     for (Character ch : name.toCharArray()) {
       if (!Character.isLetter(ch) && !Character.isWhitespace(ch)) {

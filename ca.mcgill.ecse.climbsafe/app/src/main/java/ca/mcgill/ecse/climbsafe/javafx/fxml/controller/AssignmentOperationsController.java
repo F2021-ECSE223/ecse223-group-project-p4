@@ -1,8 +1,5 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 
-import javafx.fxml.FXML;
-
-import javafx.scene.control.Button;
 import java.util.List;
 import ca.mcgill.ecse.climbsafe.controller.AssignmentController;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet6Controller;
@@ -10,48 +7,49 @@ import ca.mcgill.ecse.climbsafe.controller.ExtraFeaturesController;
 import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
 import ca.mcgill.ecse.climbsafe.controller.TOAssignment;
 import javafx.event.ActionEvent;
-
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.TableColumn;
 
 public class AssignmentOperationsController {
   @FXML
   private Button initiateAssignment;
   @FXML
-  private TableView assignmentTable;
+  private TableView<TOAssignment> assignmentTable;
   @FXML
-  private TableColumn memberNameCol;
+  private TableColumn<TOAssignment, String> memberNameCol;
   @FXML
-  private TableColumn memberEmailCol;
+  private TableColumn<TOAssignment, String> memberEmailCol;
   @FXML
-  private TableColumn guideNameCol;
+  private TableColumn<TOAssignment, String> guideNameCol;
   @FXML
-  private TableColumn guideEmailCol;
+  private TableColumn<TOAssignment, String> guideEmailCol;
   @FXML
-  private TableColumn hotelNameCol;
+  private TableColumn<TOAssignment, String> hotelNameCol;
   @FXML
-  private TableColumn startWeekCol;
+  private TableColumn<TOAssignment, Integer> startWeekCol;
   @FXML
-  private TableColumn endWeekCol;
+  private TableColumn<TOAssignment, Integer> endWeekCol;
   @FXML
-  private TableColumn guideCostCol;
+  private TableColumn<TOAssignment, Integer> guideCostCol;
   @FXML
-  private TableColumn equipmentCostCol;
+  private TableColumn<TOAssignment, Integer> equipmentCostCol;
   @FXML
-  private TableColumn statusCol;
+  private TableColumn<TOAssignment, String> statusCol;
   @FXML
-  private TableColumn authorizationCodeCol;
+  private TableColumn<TOAssignment, String> authorizationCodeCol;
   @FXML
-  private TableColumn refundCol;
+  private TableColumn<TOAssignment, Integer> refundCol;
   @FXML
-  private TableColumn ratingCol;
+  private TableColumn<TOAssignment, String> ratingCol;
   @FXML
-  private TableColumn commentCol;
+  private TableColumn<TOAssignment, String> commentCol;
   @FXML
-  private TableColumn climbLocationCol;
+  private TableColumn<TOAssignment, String> climbLocationCol;
   @FXML
-  private TableColumn climbLengthCol;
+  private TableColumn<TOAssignment, Integer> climbLengthCol;
 
 
   // Event Listener on Button[#initiateAssignment].onAction
@@ -84,7 +82,6 @@ public class AssignmentOperationsController {
     ViewUtils.showSuccess("Assignments initiated successfully.");
   }
 
-  @SuppressWarnings("unchecked")
   /**
    * Refreshes the table, called every time the tab is pressed or when the season is initiated
    * 
@@ -92,8 +89,10 @@ public class AssignmentOperationsController {
    */
   public void initialize() {
 
+    // Retrieving all the assignments
     List<TOAssignment> assignments = ClimbSafeFeatureSet6Controller.getAssignments();
 
+    // Populating each column with the corresponding attribute
     memberNameCol.setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("memberName"));
     memberEmailCol
         .setCellValueFactory(new PropertyValueFactory<TOAssignment, String>("memberEmail"));
@@ -118,6 +117,7 @@ public class AssignmentOperationsController {
     climbLengthCol
         .setCellValueFactory(new PropertyValueFactory<TOAssignment, Integer>("climbLength"));
 
+    // Telling the table which TOAssignments it should use to extract the data
     assignmentTable.getItems().setAll(assignments);
 
   }

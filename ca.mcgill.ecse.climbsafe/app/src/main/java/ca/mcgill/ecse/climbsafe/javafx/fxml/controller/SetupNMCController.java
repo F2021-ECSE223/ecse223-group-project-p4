@@ -1,16 +1,13 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 
-import javafx.fxml.FXML;
-
-import javafx.scene.control.Button;
-
-import javafx.scene.control.TextField;
 import java.sql.Date;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet1Controller;
 import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
 import javafx.event.ActionEvent;
-
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 public class SetupNMCController {
   @FXML
@@ -26,6 +23,7 @@ public class SetupNMCController {
   @FXML
   /**
    * Initiates the climbing season using the inputs on the page
+   * 
    * @param event The event that is called the the initiate season button is pressed
    * @author Wassim Jabbour
    */
@@ -66,7 +64,7 @@ public class SetupNMCController {
       return;
     }
 
-    // Setting up the system and throwing any errors 
+    // Setting up the system and throwing any errors
     try {
       ClimbSafeFeatureSet1Controller.setup(startDate, nrWeeks, pricePerGuide);
     } catch (InvalidInputException e) {

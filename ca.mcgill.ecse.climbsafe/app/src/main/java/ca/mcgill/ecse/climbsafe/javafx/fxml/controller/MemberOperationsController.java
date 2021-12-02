@@ -1,11 +1,5 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 
-import javafx.fxml.FXML;
-
-import javafx.scene.control.Button;
-
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
@@ -22,18 +16,16 @@ import ca.mcgill.ecse.climbsafe.model.Member;
 import ca.mcgill.ecse.climbsafe.model.User;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-
-import javafx.scene.control.Label;
-
-import javafx.scene.control.ListView;
-
-import javafx.scene.control.ComboBox;
-
-import javafx.scene.control.Tab;
-
-import javafx.scene.control.CheckBox;
-
 import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class MemberOperationsController {
   @FXML
@@ -1144,7 +1136,8 @@ public class MemberOperationsController {
     pathIndexRegister = listOfClimbingPaths.getSelectionModel().getSelectedIndex();
 
     // Set the path chosen on the screen
-    chosenPath.setText(listOfClimbingPaths.getSelectionModel().getSelectedItem().getText().split(",")[0]);
+    chosenPath
+        .setText(listOfClimbingPaths.getSelectionModel().getSelectedItem().getText().split(",")[0]);
 
   }
 
@@ -1176,8 +1169,8 @@ public class MemberOperationsController {
     pathIndexUpdate = listOfClimbingPathsUpdate.getSelectionModel().getSelectedIndex();
 
     // Set the path chosen on the screen
-    chosenPathUpdate
-        .setText(listOfClimbingPathsUpdate.getSelectionModel().getSelectedItem().getText().split(",")[0]);
+    chosenPathUpdate.setText(
+        listOfClimbingPathsUpdate.getSelectionModel().getSelectedItem().getText().split(",")[0]);
 
   }
 

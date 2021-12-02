@@ -1,26 +1,20 @@
 package ca.mcgill.ecse.climbsafe.javafx.fxml.controller;
 
-import javafx.fxml.FXML;
-
-import javafx.scene.control.Button;
-
-import javafx.scene.control.TextField;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.ExtraFeaturesController;
 import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-
-import javafx.scene.control.ListView;
-
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
-
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
-import javafx.event.Event;
 
 public class ClimbingPathOperationsController {
   ObservableList<String> difficultyLevelList =
@@ -262,7 +256,6 @@ public class ClimbingPathOperationsController {
    * @param diffList
    * @author Tinetendo Makata
    */
-
   private void refreshPaths(ListView<Label> pathList, ListView<Label> distList,
       ListView<Label> diffList) {
     pathList.getItems().clear();
