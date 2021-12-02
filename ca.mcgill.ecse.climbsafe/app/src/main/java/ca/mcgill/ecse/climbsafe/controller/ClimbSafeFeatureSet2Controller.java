@@ -131,9 +131,11 @@ public class ClimbSafeFeatureSet2Controller {
           "The number of weeks must be greater than zero and less than or equal"
               + " to the number of climbing weeks in the climbing season");
     }
-    if (Member.getWithEmail(email) == null || !(Member.getWithEmail(email) instanceof Member)) {
+    User user = Member.getWithEmail(email);
+    if (user == null || !(user instanceof Member)) {
       throw new InvalidInputException("Member not found");
     }
+    Member member = (Member) user;
     if (email.equals("admin@nmc.nt"))
       throw new InvalidInputException("The email entered is not allowed for members");
 
@@ -142,23 +144,23 @@ public class ClimbSafeFeatureSet2Controller {
         throw new InvalidInputException("Requested item not found");
     }
     // Clear previously booked items for this member
-    for (int i = 0; i < ((Member) Member.getWithEmail(email)).getBookedItems().size(); i++) {
+    for (int i = 0; i < member.getBookedItems().size(); i++) {
       system.getBookedItem(i).delete();
-      ((Member) Member.getWithEmail(email)).getBookedItem(i).delete();
+      member.getBookedItem(i).delete();
     }
     // Enter new booked items for this member
     for (int a = 0; a < newItemNames.size(); a++) {
-      ((Member) Member.getWithEmail(email)).addBookedItem(
-          system.addBookedItem(newItemQuantities.get(a), ((Member) Member.getWithEmail(email)),
+      member.addBookedItem(
+          system.addBookedItem(newItemQuantities.get(a), member,
               BookableItem.getWithName(newItemNames.get(a))));
     }
     // Update member details
-    Member.getWithEmail(email).setPassword(newPassword);
-    ((Member) Member.getWithEmail(email)).setName(newName);
-    ((Member) Member.getWithEmail(email)).setEmergencyContact(newEmergencyContact);
-    ((Member) Member.getWithEmail(email)).setNrWeeks(newNrWeeks);
-    ((Member) Member.getWithEmail(email)).setGuideRequired(newGuideRequired);
-    ((Member) Member.getWithEmail(email)).setHotelRequired(newHotelRequired);
+    member.setPassword(newPassword);
+    member.setName(newName);
+    member.setEmergencyContact(newEmergencyContact);
+    member.setNrWeeks(newNrWeeks);
+    member.setGuideRequired(newGuideRequired);
+    member.setHotelRequired(newHotelRequired);
 
     ClimbSafePersistence.save(system);
   }
