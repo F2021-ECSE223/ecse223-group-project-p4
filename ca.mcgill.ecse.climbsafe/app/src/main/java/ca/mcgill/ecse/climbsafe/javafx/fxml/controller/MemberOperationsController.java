@@ -977,7 +977,7 @@ public class MemberOperationsController {
         // Looping over all the items in the bundle
         for (BundleItem bundleItem : bundle.getBundleItems()) {
           int itemPricePerWeek =
-              bundleItem.getEquipment().getPricePerWeek() * listOfNumberOfItems.get(i);
+              bundleItem.getEquipment().getPricePerWeek() * bundleItem.getQuantity();
           bundlePricePerWeek += itemPricePerWeek;
         }
 
@@ -1144,7 +1144,7 @@ public class MemberOperationsController {
     pathIndexRegister = listOfClimbingPaths.getSelectionModel().getSelectedIndex();
 
     // Set the path chosen on the screen
-    chosenPath.setText(listOfClimbingPaths.getSelectionModel().getSelectedItem().getText());
+    chosenPath.setText(listOfClimbingPaths.getSelectionModel().getSelectedItem().getText().split(",")[0]);
 
   }
 
@@ -1177,7 +1177,7 @@ public class MemberOperationsController {
 
     // Set the path chosen on the screen
     chosenPathUpdate
-        .setText(listOfClimbingPathsUpdate.getSelectionModel().getSelectedItem().getText());
+        .setText(listOfClimbingPathsUpdate.getSelectionModel().getSelectedItem().getText().split(",")[0]);
 
   }
 

@@ -56,11 +56,24 @@ public class AssignmentOperationsController {
 
   // Event Listener on Button[#initiateAssignment].onAction
   @FXML
-  public void initiateSeason(ActionEvent event) {
+  /**
+   * Initiates the assignments for all members
+   * 
+   * @param event The event that is triggered when the initiate button is pressed
+   * @author Wassim Jabbour
+   */
+  public void initiateAssignments(ActionEvent event) {
+
+    // Initiates the assignments and catches any errors
     try {
       AssignmentController.initiateAssignment();
     } catch (InvalidInputException e) {
       ViewUtils.showError(e.getMessage());
+      // In case the assignments were already initiated, we don't want to reassign hotels so we
+      // return
+      if (e.getMessage().equals("Assignments were already initiated for the current season"))
+        return;
+      // If the assignments were partial we still want to refresh
       ExtraFeaturesController.setHotelsAndClimbingPaths();
       initialize();
       return;
@@ -72,6 +85,11 @@ public class AssignmentOperationsController {
   }
 
   @SuppressWarnings("unchecked")
+  /**
+   * Refreshes the table, called every time the tab is pressed or when the season is initiated
+   * 
+   * @author Wassim Jabbour
+   */
   public void initialize() {
 
     List<TOAssignment> assignments = ClimbSafeFeatureSet6Controller.getAssignments();

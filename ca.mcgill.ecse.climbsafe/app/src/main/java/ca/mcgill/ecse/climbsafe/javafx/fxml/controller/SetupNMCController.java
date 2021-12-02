@@ -24,17 +24,24 @@ public class SetupNMCController {
 
   // Event Listener on Button[#initiateSeason].onAction
   @FXML
+  /**
+   * Initiates the climbing season using the inputs on the page
+   * @param event The event that is called the the initiate season button is pressed
+   * @author Wassim Jabbour
+   */
   public void initiateSeason(ActionEvent event) {
 
     int pricePerGuide;
     Date startDate;
     int nrWeeks;
 
+    // Checking the start date was inputted
     if (this.startDate.getValue() == null) {
       ViewUtils.showError("Please choose a date");
       return;
     }
 
+    // Checking the price per guide is an integer
     try {
       pricePerGuide = Integer.parseInt(this.pricePerGuide.getText());
     } catch (Exception e) {
@@ -42,6 +49,7 @@ public class SetupNMCController {
       return;
     }
 
+    // Checking the date is in the future
     startDate = Date.valueOf(this.startDate.getValue());
     Date currentDate = Date.valueOf(java.time.LocalDate.now());
 
@@ -50,6 +58,7 @@ public class SetupNMCController {
       return;
     }
 
+    // Checking the number of weeks is an integer
     try {
       nrWeeks = Integer.parseInt(this.nrWeeks.getText());
     } catch (Exception e) {
@@ -57,6 +66,7 @@ public class SetupNMCController {
       return;
     }
 
+    // Setting up the system and throwing any errors 
     try {
       ClimbSafeFeatureSet1Controller.setup(startDate, nrWeeks, pricePerGuide);
     } catch (InvalidInputException e) {
@@ -64,6 +74,7 @@ public class SetupNMCController {
       return;
     }
 
+    // Throwing a success message and clearing all fields
     ViewUtils.showSuccess("The NMC system was setup successfully");
     this.startDate.getEditor().clear();
     this.nrWeeks.clear();

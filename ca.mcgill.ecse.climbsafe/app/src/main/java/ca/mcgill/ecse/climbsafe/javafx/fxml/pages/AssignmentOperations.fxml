@@ -67,7 +67,7 @@
             <Insets left="30.0" />
          </padding>
       </Label>
-      <Button fx:id="initiateAssignment" mnemonicParsing="false" onAction="#initiateSeason" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Initiate assignment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Button fx:id="initiateAssignment" mnemonicParsing="false" onAction="#initiateAssignments" prefHeight="24.0" prefWidth="174.0" style="-fx-border-radius: 30; -fx-border-style: solid; -fx-border-color: rgb(161,3,14); -fx-background-radius: 50; -fx-background-color: rgb(161,3,14);" text="Initiate assignment" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font name="Cambria Bold" size="14.0" />
          </font>
@@ -89,7 +89,7 @@
                   <TableColumn fx:id="authorizationCodeCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Authorization code" />
                   <TableColumn fx:id="refundCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Refund" />
                   <TableColumn fx:id="ratingCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Rating" />
-                  <TableColumn fx:id="commentCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Comment" />
+                  <TableColumn fx:id="commentCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="300.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Comment" />
                   <TableColumn fx:id="climbLocationCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Climb location" />
                   <TableColumn fx:id="climbLengthCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER;" text="Climb length" />
               </columns>

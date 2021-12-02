@@ -165,7 +165,7 @@ public class ClimbSafeFeatureSet6Controller {
     for (var bookedItem : assignment.getMember().getBookedItems()) {
 
       // If it is an equipment item
-      if (bookedItem.getItem()instanceof Equipment item)
+      if (bookedItem.getItem() instanceof Equipment item)
         // Multiplying by the number of weeks and the quantity
         totalPrice += bookedItem.getQuantity() * item.getPricePerWeek() * (endWeek - startWeek + 1);
 
