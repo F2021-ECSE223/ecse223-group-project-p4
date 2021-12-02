@@ -11,8 +11,6 @@ import javafx.scene.input.MouseEvent;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet1Controller;
 import ca.mcgill.ecse.climbsafe.controller.ClimbSafeFeatureSet7Controller;
-import ca.mcgill.ecse.climbsafe.controller.InvalidInputException;
-import ca.mcgill.ecse.climbsafe.model.ClimbingPath;
 import ca.mcgill.ecse.climbsafe.model.Hotel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -264,8 +262,8 @@ public class HotelOperationsController {
    * Private method that takes as input the string that will correspond in the methods above to the
    * rating of a hotel. Returns 1 if "One Star", 2 if "Two star"...
    * 
+   * @author Ralph Nassar
    * @param m
-   * @return
    */
   private int ratingInt(String m) {
 
@@ -290,6 +288,7 @@ public class HotelOperationsController {
   /**
    * A method that select the hotel, depending on the position of the cursor.
    * 
+   * @author Ralph Nassar
    * @param event
    */
   public void selectedHotel(MouseEvent event) {
@@ -302,6 +301,7 @@ public class HotelOperationsController {
   /**
    * A method that select the rating, depending on the position of the cursor.
    * 
+   * @author Ralph Nassar
    * @param event
    */
   public void selectedRating(MouseEvent event) {
