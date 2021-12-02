@@ -10,6 +10,8 @@ import ca.mcgill.ecse.climbsafe.persistence.ClimbSafePersistence;
 public class AssignmentController {
 
   /**
+   * This method initiates the assignments in the system using the available members and guides.
+   * 
    * @author Adam Kazma, Ralph Nassar
    * @throws InvalidInputException
    */
@@ -23,19 +25,26 @@ public class AssignmentController {
       throw new InvalidInputException("Assignments were already initiated for the current season");
 
     // Else initiate all assignments
+    // First, we check if there is no guides in the system
     if (system.getGuides().size() == 0) {
-
+      // If so, we loop through all members and create assignments for members not requiring a
+      // guide.
       for (Member member : system.getMembers()) {
         if (!member.getGuideRequired()) {
           system.addAssignment(new Assignment(1, member.getNrWeeks(), member, system));
         }
       }
     }
-
+    // If the system has at least one guide
     else {
+      // We loop through all guides
       for (Guide guide : system.getGuides()) {
+        // This variable is used to store the first week where the guide has no assignment
         int weeksTaken = 0;
+        // We loop through all members
         for (Member member : system.getMembers()) {
+          // If the member has no assignment, we check if the guide has enough remaining weeks to
+          // get assigned to the member. If so, we create an assignment.
           if (member.getAssignment() == null) {
             if (member.getGuideRequired()) {
               if (member.getNrWeeks() <= system.getNrWeeks() - weeksTaken) {
@@ -45,6 +54,7 @@ public class AssignmentController {
                 system.addAssignment(assignment);
                 weeksTaken += member.getNrWeeks();
               } else {
+                // If there is no guides remaining for assignment.
                 if (system.getGuides().indexOf(guide) == system.getGuides().size() - 1) {
                   throw new InvalidInputException(
                       "Assignments could not be completed for all members");

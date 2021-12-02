@@ -70,7 +70,7 @@ public class BundleOperationsController {
   private ListView<Label> rmDiscountList = new ListView<Label>();
   @FXML
   private ListView<Label> rmBundleList = new ListView<Label>();
-
+  // Temporary lists of equipment items
   private ArrayList<String> equipmentToBeAdded = new ArrayList<String>();
   private ArrayList<String> quantitiesToBeAdded = new ArrayList<String>();
   private ArrayList<String> equipmentToBeUpdated = new ArrayList<String>();

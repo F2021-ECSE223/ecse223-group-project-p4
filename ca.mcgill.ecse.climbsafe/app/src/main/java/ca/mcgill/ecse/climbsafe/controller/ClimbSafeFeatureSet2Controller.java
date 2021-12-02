@@ -84,10 +84,10 @@ public class ClimbSafeFeatureSet2Controller {
 
     // Adding booked items for this member
     for (int a = 0; a < itemNames.size(); a++) {
-      system.addBookedItem(new BookedItem(itemQuantities.get(a),system, memb,
+      system.addBookedItem(new BookedItem(itemQuantities.get(a), system, memb,
           BookableItem.getWithName(itemNames.get(a))));
     }
-    
+
     ClimbSafePersistence.save(system);
   }
 
@@ -159,7 +159,7 @@ public class ClimbSafeFeatureSet2Controller {
     ((Member) Member.getWithEmail(email)).setNrWeeks(newNrWeeks);
     ((Member) Member.getWithEmail(email)).setGuideRequired(newGuideRequired);
     ((Member) Member.getWithEmail(email)).setHotelRequired(newHotelRequired);
-    
+
     ClimbSafePersistence.save(system);
   }
 
