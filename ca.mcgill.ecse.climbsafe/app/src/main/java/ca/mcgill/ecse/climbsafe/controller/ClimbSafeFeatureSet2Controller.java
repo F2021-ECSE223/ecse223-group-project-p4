@@ -145,7 +145,6 @@ public class ClimbSafeFeatureSet2Controller {
     }
     // Clear previously booked items for this member
     for (int i = 0; i < member.getBookedItems().size(); i++) {
-      system.getBookedItem(i).delete();
       member.getBookedItem(i).delete();
     }
     // Enter new booked items for this member

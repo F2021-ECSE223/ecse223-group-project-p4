@@ -20,12 +20,6 @@ public class AssignmentController {
     // Extracting the system instance into a variable
     ClimbSafe system = ClimbSafeApplication.getClimbSafe();
 
-//    // If the assignments were already initialized, throw an exception
-//    if (system.getAssignments().size() > 0)
-//      throw new InvalidInputException("Assignments were already initiated for the current season");
-
-    for(Member member : system.getMembers()) member.getAssignment().delete();
-    
     // Else initiate all assignments
     // First, we check if there is no guides in the system
     if (system.getGuides().size() == 0) {
