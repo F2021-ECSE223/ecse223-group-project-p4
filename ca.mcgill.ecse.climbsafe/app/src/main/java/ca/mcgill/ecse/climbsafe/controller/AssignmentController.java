@@ -24,7 +24,7 @@ public class AssignmentController {
 //    if (system.getAssignments().size() > 0)
 //      throw new InvalidInputException("Assignments were already initiated for the current season");
 
-    for(Assignment assignment : system.getAssignments()) assignment.delete();
+    for(Member member : system.getMembers()) member.getAssignment().delete();
     
     // Else initiate all assignments
     // First, we check if there is no guides in the system
