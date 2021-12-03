@@ -1,5 +1,6 @@
 package ca.mcgill.ecse.climbsafe.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import ca.mcgill.ecse.climbsafe.application.ClimbSafeApplication;
 import ca.mcgill.ecse.climbsafe.model.BookableItem;
@@ -143,13 +144,14 @@ public class ClimbSafeFeatureSet2Controller {
       if (!BookableItem.hasWithName(itemLabel))
         throw new InvalidInputException("Requested item not found");
     }
+
     // Clear previously booked items for this member
-    for (int i = 0; i < member.getBookedItems().size(); i++) {
+    for (int i = member.getBookedItems().size() - 1; i >= 0; i--) {
       member.getBookedItem(i).delete();
     }
     // Enter new booked items for this member
     for (int a = 0; a < newItemNames.size(); a++) {
-      member.addBookedItem(system.addBookedItem(newItemQuantities.get(a), member,
+      member.addBookedItem(new BookedItem(newItemQuantities.get(a), system, member,
           BookableItem.getWithName(newItemNames.get(a))));
     }
     // Update member details
