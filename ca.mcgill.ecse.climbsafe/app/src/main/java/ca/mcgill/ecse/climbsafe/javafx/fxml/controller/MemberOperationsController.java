@@ -311,7 +311,12 @@ public class MemberOperationsController {
 
     // Check thats the member chose an item.
     if (!(item == null)) {
-
+      for (String eqitem : bookedItemsToAdd) {
+        if (eqitem.equals(item.getName())) {
+          ViewUtils.showError("You already selected this item.");
+          return;
+        }
+      }
       // Add the name of the item to the list
       bookedItemsToAdd.add(item.getName());
 
@@ -370,7 +375,12 @@ public class MemberOperationsController {
 
     // Check thats the member chose a bundle.
     if (!(bundle == null)) {
-
+      for (String eqitem : bookedItemsToAdd) {
+        if (eqitem.equals(bundle.getName())) {
+          ViewUtils.showError("You already selected this item.");
+          return;
+        }
+      }
       // Add the name of the item to the list
       bookedItemsToAdd.add(bundle.getName());
 
@@ -544,7 +554,12 @@ public class MemberOperationsController {
 
     // Check thats the member chose an item.
     if (!(item == null)) {
-
+      for (String eqitem : bookedItemsToUpdate) {
+        if (eqitem.equals(item.getName())) {
+          ViewUtils.showError("You already selected this item.");
+          return;
+        }
+      }
       // Add the name of the item to the list
       bookedItemsToUpdate.add(item.getName());
 
@@ -593,7 +608,12 @@ public class MemberOperationsController {
 
     // Check thats the member chose a bundle.
     if (!(bundle == null)) {
-
+      for (String eqitem : bookedItemsToUpdate) {
+        if (eqitem.equals(bundle.getName())) {
+          ViewUtils.showError("You already selected this item.");
+          return;
+        }
+      }
       // Add the name of the bundle to the list
       bookedItemsToUpdate.add(bundle.getName());
 
